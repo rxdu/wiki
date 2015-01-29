@@ -1,1 +1,5 @@
 site_name: Ruixiang Du - Wiki
+site_author: Ruixiang Du
+site_favicon: favicon.ico
+theme: 'slate'
+site_dir: ../deploy
