@@ -1,17 +1,14 @@
 # Welcome to My Wiki
 
-For full documentation visit [mkdocs.org](http://mkdocs.org).
 
-## Commands
+## Projects
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs help` - Print this help message.
+* [Build Your Own Quadrotor](./Projects/Build-Your-Own-Quadrotor)
+* [IMU Attitude Estimation Library](./Projects/IMU-Attitude-Estimation-Library)
 
-## Project layout
+## Knowledge Base
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+* [Robotics](./Knowledge-Base/Robotics)
+* [Programming](./Knowledge-Base/Programming)
+* [Embedded Development](./Knowledge-Base/Embedded-Development)
+
