@@ -10,7 +10,7 @@
 
 * [Software](./Resource/Software)
 * [Online Course](./Resource/Online-Course)
-* [Useful Articles](./Resource/Useful-Articles)
+* [Online Documents](./Resource/Online-Documents)
 
 ## Knowledge Base
 
