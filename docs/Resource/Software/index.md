@@ -27,7 +27,7 @@
 * [Xenomai](https://xenomai.org/)
 > "Xenomai is about making various real-time operating system APIs available to Linux-based platforms. When the target Linux kernel cannot meet the requirements with respect to response time constraints, Xenomai can also supplement it for delivering stringent real-time guarantees."
 
-**Programming Assitance**
+**Programming Assistance**
 
 * [Pantheios](http://www.pantheios.org/)
 > "Pantheios is an Open Source C/C++ Diagnostic Logging API library, offering an optimal combination of 100% type-safety, efficiency, genericity and extensibility."
