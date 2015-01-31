@@ -6,4 +6,17 @@ theme_dir: 'custom_theme'
 
 site_dir: ../deploy
 
+pages:
+- ['index.md','Home']
+- ['Projects/Build-Your-Own-Quadrotor/index.md','Projects']
+- ['Projects/IMU-Attitude-Estimation-Library/index.md','Projects']
+- ['Resource/Software/index.md','Resource']
+- ['Resource/Online-Course/index.md','Resource']
+- ['Resource/Useful-Articles/index.md','Resource']
+- ['Knowledge-Base/Robotics/index.md','Knowledge Base']
+- ['Knowledge-Base/Programming/index.md','Knowledge Base']
+- ['Knowledge-Base/Embedded-Development/index.md','Knowledge Base']
+
 markdown_extensions: [toc]
+
+google_analytics: ['UA-47255965-1', 'rdu.im']
