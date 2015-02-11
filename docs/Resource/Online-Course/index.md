@@ -19,6 +19,10 @@ Computer Science
 * [IIT: CS 351: Systems Programming](http://moss.cs.iit.edu/cs351/)
 * [IIT: CS 450: Operating Systems](http://moss.cs.iit.edu/cs450/)
 
+Electrical & Computer Engineering
+
+* [Stanford: Convex Optimization](http://stanford.edu/~boyd/cvxbook/)
+
 Robotics
 
 * [CMU: An Introduction to Physically Based Modeling](http://www.cs.cmu.edu/~baraff/pbm/pbm.html)

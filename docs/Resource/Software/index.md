@@ -22,6 +22,9 @@
 * [GNU Octave](https://www.gnu.org/software/octave/)
 >"GNU Octave is a high-level interpreted language, primarily intended for numerical computations. The Octave language is quite similar to Matlab so that most programs are easily portable."
 
+* [OpenGL Mathematics](http://glm.g-truc.net/0.9.6/index.html)
+>"OpenGL Mathematics (GLM) is a header only C++ mathematics library for graphics software based on the OpenGL Shading Language (GLSL) specifications."
+
 **Operating Systems**
 
 * [Xenomai](https://xenomai.org/)

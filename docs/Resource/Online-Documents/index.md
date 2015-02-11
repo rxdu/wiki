@@ -14,4 +14,12 @@ Embedded Development
 
 * [Embedded Programming using the GNU Toolchain](http://www.bravegnu.org/gnu-eprog/)
 
+Robotics
+
+(The following three articles can help you to understand rotations and how quaternions can be used to express rotations.)
+
+* [Understanding Rotations](http://www.essentialmath.com/GDC2012/GDC2012_JMV_Rotations.pdf)
+* [Understanding Quaternions](http://3dgep.com/understanding-quaternions/)
+* [Quaternions and Rotations](http://run.usc.edu/cs520-s12/quaternions/quaternions-cs520.pdf)
+* [Quaternions: How](http://physicsforgames.blogspot.com/2010/02/quaternions.html)
 
