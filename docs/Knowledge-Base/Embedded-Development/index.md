@@ -26,7 +26,7 @@ Bus 001 Device 041: ID 0483:3748 SGS Thomson Microelectronics ST-LINK/V2
 ..
 ```
 
-If the OS cannot find stlink, it might be caused by the permission restriction. Use this command:
+If the tool shows permission restriction when starts, use this command:
 ```
 $ sudo chmod 777 /dev/bus/usb/002/004
 ```
