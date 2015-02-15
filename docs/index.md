@@ -24,9 +24,9 @@
 
 * <del>[2015 Robotics: Science and Systems, Rome, Italy, 07/13-07/17, 2015](http://www.roboticsconference.org/) -- deadline: 01/22/2015</del>
 
-* [IEEE ICAR 2015, Istanbul, Turkey, 07/27-07/31, 2015](http://www.icar2015.org/icar2015_home-1.1.1.html) -- deadline: 02/15/2015
+* <del>[IEEE ICAR 2015, Istanbul, Turkey, 07/27-07/31, 2015](http://www.icar2015.org/icar2015_home-1.1.1.html) -- deadline: 02/15/2015</del>
 
-* [IEEE RO-MAN 2015, Kobe, Japan, 08/31-09/03, 2015](http://www.ro-man2015.org/) -- deadline: 02/16/2015
+* [IEEE RO-MAN 2015, Kobe, Japan, 08/31-09/03, 2015](http://www.ro-man2015.org/) -- deadline: 02/23/2015
 
 * [IEEE/RSJ IROS 2015, Hamburg, German, 09/28-10/03, 2015](http://www.iros2015.org/) -- deadline: 03/01/2015
 
