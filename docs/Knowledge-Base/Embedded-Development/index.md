@@ -10,3 +10,23 @@ $ curl -O link-to-remote-file
 ```
 **su**: get root privileges
 **exit**: log out of "su" mode, shortcut: Ctrl+D 
+
+## STM32F4 Discovery Board
+
+### 1. Setup STLink for on circuit debugging.
+
+* Download stlink from this [git repository](https://github.com/texane/stlink)
+* Follow "README" to build to tools and set up udev rules
+* Connect the board to PC and check if the OS has detected stlink correct
+
+```
+$ lsusb
+..
+Bus 001 Device 041: ID 0483:3748 SGS Thomson Microelectronics ST-LINK/V2
+..
+```
+
+If the OS cannot find stlink, it might be caused by the permission restriction. Use this command:
+```
+$ sudo chmod 777 /dev/bus/usb/002/004
+```
