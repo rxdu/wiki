@@ -1,4 +1,4 @@
-# Embedded Development
+# Embedded System
 
 ## Intel Edison
 

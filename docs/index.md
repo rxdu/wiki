@@ -16,7 +16,7 @@
 
 * [Robotics](./Knowledge-Base/Robotics)
 * [Programming](./Knowledge-Base/Programming)
-* [Embedded Development](./Knowledge-Base/Embedded-Development)
+* [Embedded System](./Knowledge-Base/Embedded-System)
 
 ## Important Dates
 

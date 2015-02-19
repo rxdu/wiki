@@ -15,7 +15,7 @@ pages:
 - ['Resource/Online-Documents/index.md','Resource']
 - ['Knowledge-Base/Robotics/index.md','Knowledge Base']
 - ['Knowledge-Base/Programming/index.md','Knowledge Base']
-- ['Knowledge-Base/Embedded-Development/index.md','Knowledge Base']
+- ['Knowledge-Base/Embedded-System/index.md','Knowledge Base']
 
 markdown_extensions: [toc]
 
