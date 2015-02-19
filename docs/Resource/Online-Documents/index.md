@@ -16,7 +16,7 @@ Embedded Development
 
 Robotics
 
-(The following three articles can help you to understand rotations and how quaternions can be used to express rotations.)
+(The following articles can help you to understand rotations and how quaternions can be used to express rotations.)
 
 * [Understanding Rotations](http://www.essentialmath.com/GDC2012/GDC2012_JMV_Rotations.pdf)
 * [Understanding Quaternions](http://3dgep.com/understanding-quaternions/)
