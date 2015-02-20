@@ -1,1 +1,0 @@
-# IMU Attitude Estimation Library
