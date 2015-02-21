@@ -6,8 +6,8 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <!-- <title>Build Your Own Quadrotor &mdash; RDU-Wiki 1.0 documentation</title> -->
-    <title>Build Your Own Quadrotor</title>
+    <!-- <title>Embedded System &mdash; RDU-Wiki 1.0 documentation</title> -->
+    <title>Embedded System</title>
     
     <link rel="stylesheet" href="../../../_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -33,8 +33,7 @@
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="top" title="RDU-Wiki 1.0 documentation" href="../../../index.html" />
-    <link rel="next" title="IMU Attitude Estimation Library" href="../IMU-Attitude-Estimation-Library/IMU-Attitude-Estimation-Library.html" />
-    <link rel="prev" title="Welcome to Ruixiang’s Wiki" href="../../../index.html" />
+    <link rel="prev" title="Programming" href="../Programming/Programming.html" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <!--[if lte IE 6]>
@@ -51,10 +50,7 @@
           <a href="../../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="../IMU-Attitude-Estimation-Library/IMU-Attitude-Estimation-Library.html" title="IMU Attitude Estimation Library"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="../../../index.html" title="Welcome to Ruixiang’s Wiki"
+          <a href="../Programming/Programming.html" title="Programming"
              accesskey="P">previous</a> |</li>
         <!-- <li class="nav-item nav-item-0"><a href="../../../index.html">RDU-Wiki 1.0 documentation</a> &raquo;</li> -->
         <li class="nav-item nav-item-0"><a href="../../../index.html">Main Page</a> &raquo;</li> 
@@ -66,45 +62,40 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="build-your-own-quadrotor">
-<h1>Build Your Own Quadrotor<a class="headerlink" href="#build-your-own-quadrotor" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="system-components">
-<h2>1. System Components<a class="headerlink" href="#system-components" title="Permalink to this headline">¶</a></h2>
-<ul>
-<li><dl class="first docutils">
-<dt>Hardware</dt>
-<dd><ul class="first last simple">
-<li>Inertial measurement unit (IMU)</li>
-<li>Flight microcontroller</li>
-<li>A mechanical frame * 1</li>
-<li>DC brushless motors * 4</li>
-<li>DSC for brushless motors * 4</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>Software</dt>
-<dd><ul class="first last simple">
-<li>Attitude estimation</li>
-<li>Attitude control</li>
-<li>Position control</li>
-<li>Communications</li>
-</ul>
-</dd>
-</dl>
-</li>
-</ul>
+  <div class="section" id="embedded-system">
+<h1>Embedded System<a class="headerlink" href="#embedded-system" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="intel-edison">
+<h2>Intel Edison<a class="headerlink" href="#intel-edison" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="useful-commands">
+<h3>Useful Commands<a class="headerlink" href="#useful-commands" title="Permalink to this headline">¶</a></h3>
+<p><strong>curl</strong>: download a file</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -O link-to-remote-file
+</pre></div>
 </div>
-<div class="section" id="imu-module">
-<h2>2. IMU Module<a class="headerlink" href="#imu-module" title="Permalink to this headline">¶</a></h2>
-<p>An IMU module is used to estimate the attitude of the quadcopter. Instead of using a commercial flight control board which integrates both a microcontroller and accelerometer/gyro sensors, I&#8217;m using separate modules for development and testing. The testing hardware used:</p>
+<p><strong>su</strong>: get root privileges</p>
+<p><strong>exit</strong>: log out of &#8220;su&#8221; mode, shortcut: Ctrl+D</p>
+</div>
+</div>
+<div class="section" id="stm32f4-discovery-board">
+<h2>STM32F4 Discovery Board<a class="headerlink" href="#stm32f4-discovery-board" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="setup-stlink-for-on-circuit-debugging">
+<h3>Setup STLink for on circuit debugging<a class="headerlink" href="#setup-stlink-for-on-circuit-debugging" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>STM32F4 discovery board</li>
-<li>MPU9250 sensor breakout board</li>
-<li>Serial to USB adapter</li>
+<li>Download stlink from this [git repository](<a class="reference external" href="https://github.com/texane/stlink">https://github.com/texane/stlink</a>)</li>
+<li>Follow &#8220;README&#8221; to build to tools and set up udev rules</li>
+<li>Connect the board to PC and check if the OS has detected stlink correct</li>
 </ul>
-<a class="reference internal image-reference" href="../../../_images/imu.jpg"><img alt="../../../_images/imu.jpg" src="../../../_images/imu.jpg" style="width: 367px;" /></a>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>lsusb
+<span class="nv">$ </span>..
+<span class="nv">$ </span>Bus 001 Device 041: ID 0483:3748 SGS Thomson Microelectronics ST-LINK/V2
+<span class="nv">$ </span>..
+</pre></div>
+</div>
+<p>If the tool shows permission restriction when starts, use this command:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sudo chmod 777 /dev/bus/usb/002/004
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 
@@ -116,19 +107,22 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="../../../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Build Your Own Quadrotor</a><ul>
-<li><a class="reference internal" href="#system-components">1. System Components</a></li>
-<li><a class="reference internal" href="#imu-module">2. IMU Module</a></li>
+<li><a class="reference internal" href="#">Embedded System</a><ul>
+<li><a class="reference internal" href="#intel-edison">Intel Edison</a><ul>
+<li><a class="reference internal" href="#useful-commands">Useful Commands</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#stm32f4-discovery-board">STM32F4 Discovery Board</a><ul>
+<li><a class="reference internal" href="#setup-stlink-for-on-circuit-debugging">Setup STLink for on circuit debugging</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="../../../index.html"
-                        title="previous chapter">Welcome to Ruixiang&#8217;s Wiki</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="../IMU-Attitude-Estimation-Library/IMU-Attitude-Estimation-Library.html"
-                        title="next chapter">IMU Attitude Estimation Library</a></p>
+  <p class="topless"><a href="../Programming/Programming.html"
+                        title="previous chapter">Programming</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../../search.html" method="get">
@@ -153,10 +147,7 @@
           <a href="../../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="../IMU-Attitude-Estimation-Library/IMU-Attitude-Estimation-Library.html" title="IMU Attitude Estimation Library"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="../../../index.html" title="Welcome to Ruixiang’s Wiki"
+          <a href="../Programming/Programming.html" title="Programming"
              >previous</a> |</li>
         <!-- <li class="nav-item nav-item-0"><a href="../../../index.html">RDU-Wiki 1.0 documentation</a> &raquo;</li> -->
         <li class="nav-item nav-item-0"><a href="../../../index.html">Main Page</a> &raquo;</li> 

@@ -60,6 +60,26 @@ div.body {
     overflow: auto;
 }
  
+div.rduhome {
+    color: #ffffff;
+    width: 100%;
+    padding: 13px 0;
+    text-align: center;
+    font-size: 100%;
+    background: transparent;
+    clear:both;
+}
+ 
+div.rduhome a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+div.rduhome a:hover {
+    color: #e88f00;
+    text-decoration: underline;
+} 
+ 
 div.footer {
     color: #ffffff;
     width: 100%;
@@ -345,3 +365,5 @@ div.code-block-caption {
     background-color: #ddd;
     color: #222;
 }
+
+span.strikethrough { text-decoration: line-through; }
