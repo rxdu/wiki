@@ -31,7 +31,12 @@ import os
 extensions = [
     'sphinx.ext.todo',
     'sphinx.ext.mathjax',
+    'sphinxcontrib.googleanalytics',
 ]
+
+# Google Analytics
+googleanalytics_id = 'UA-47255965-1'
+googleanalytics_enabled = True
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
