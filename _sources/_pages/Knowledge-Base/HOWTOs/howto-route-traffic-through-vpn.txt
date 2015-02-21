@@ -68,4 +68,5 @@ Note that you need to change the ip addresses according to your actual situation
 - [1] http://www.cyberciti.biz/faq/how-to-find-gateway-ip-address/
 - [2] http://www.cyberciti.biz/tips/configuring-static-routes-in-debian-or-red-hat-linux-systems.html
 - [3] http://superuser.com/questions/794922/routing-all-traffic-over-vpn-on-ubuntu-linux
+- [4] http://kb.juniper.net/InfoCenter/index?page=content&id=KB25230
 
