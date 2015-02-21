@@ -4,4 +4,4 @@ HOWTOs
 .. toctree::
    :maxdepth: 1
 
-   /_pages/Knowledge-Base/HOWTOs/howto-route-traffic-through-vpn
+   /_pages/Knowledge-Base/HOWTOs/howto-obtain-gurobi-academic-license-off-campus
