@@ -35,7 +35,8 @@
           {%- if not loop.first %}{{ reldelim2 }}{% endif %}</li>
         {%- endfor %}
         {%- block rootrellink %}
-        <li class="nav-item nav-item-0"><a href="{{ pathto(master_doc) }}">{{ shorttitle|e }}</a>{{ reldelim1 }}</li>
+        <!-- <li class="nav-item nav-item-0"><a href="{{ pathto(master_doc) }}">{{ shorttitle|e }}</a>{{ reldelim1 }}</li> -->
+        <li class="nav-item nav-item-0"><a href="{{ pathto(master_doc) }}">Main Page</a>{{ reldelim1 }}</li>
         {%- endblock %}
         {%- for parent in parents %}
           <li class="nav-item nav-item-{{ loop.index }}"><a href="{{ parent.link|e }}" {% if loop.last %}{{ accesskey("U") }}{% endif %}>{{ parent.title }}</a>{{ reldelim1 }}</li>
@@ -102,6 +103,8 @@
 {%- macro css() %}
     <link rel="stylesheet" href="{{ pathto('_static/' + style, 1) }}" type="text/css" />
     <link rel="stylesheet" href="{{ pathto('_static/pygments.css', 1) }}" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Dancing+Script:700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Courgette' rel='stylesheet' type='text/css'>   
     {%- for cssfile in css_files %}
     <link rel="stylesheet" href="{{ pathto(cssfile, 1) }}" type="text/css" />
     {%- endfor %}
@@ -112,9 +115,15 @@
     <meta http-equiv="Content-Type" content="text/html; charset={{ encoding }}" />
     {{ metatags }}
     {%- block htmltitle %}
-    <title>{{ title|striptags|e }}{{ titlesuffix }}</title>
+    <!-- <title>{{ title|striptags|e }}{{ titlesuffix }}</title> -->
+    <title>{{ title|striptags|e }}</title> 
     {%- endblock %}
     {{ css() }}
+    
+    <div class="rduhome"  role="contentinfo">
+		 {% trans %}<a href="http://rdu.im" style="font-family: 'Courgette', serif;" >Return to Ruixiang's Home Page</a>{% endtrans %}
+	</div>
+	
     {%- if not embedded %}
     {{ script() }}
     {%- if use_opensearch %}
