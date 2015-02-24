@@ -8,6 +8,8 @@ Welcome to Ruixiang's Wiki
 
 Projects
 ^^^^^^^^
+______
+
 .. toctree::
    :maxdepth: 1
 
@@ -15,6 +17,7 @@ Projects
    /_pages/Projects/IMU-Attitude-Estimation-Library/IMU-Attitude-Estimation-Library
 Resource
 ^^^^^^^^
+______
 
 .. toctree::
    :maxdepth: 1
@@ -25,6 +28,7 @@ Resource
 
 Knowledge Base
 ^^^^^^^^^^^^^^
+______
 
 .. toctree::
    :maxdepth: 1
@@ -37,6 +41,7 @@ Knowledge Base
 
 Important Dates
 ^^^^^^^^^^^^^^^
+______
 
  ..  role:: strikethrough
 
