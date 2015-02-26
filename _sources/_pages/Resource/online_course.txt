@@ -3,6 +3,7 @@ Online Course
 
 Open Course
 ------------
+_____
 
 * Coursera
 	- `Control of Mobile Robots <https://www.coursera.org/course/conrob>`_
@@ -25,6 +26,7 @@ Open Course
 
 Course Site
 ------------
+_____
 
 Computer Science
 
