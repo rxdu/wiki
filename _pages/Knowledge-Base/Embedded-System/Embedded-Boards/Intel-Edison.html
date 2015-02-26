@@ -17,11 +17,11 @@
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
     </script>
-    <!-- <title>Embedded System &mdash; RDU-Wiki 1.0 documentation</title> -->
-    <title>Embedded System</title>
+    <!-- <title>Intel Edison &mdash; RDU-Wiki 1.0 documentation</title> -->
+    <title>Intel Edison</title>
     
-    <link rel="stylesheet" href="../../../_static/pyramid.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
     <link href='http://fonts.googleapis.com/css?family=Dancing+Script:700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Courgette' rel='stylesheet' type='text/css'>
     
@@ -31,25 +31,26 @@
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../../../',
+        URL_ROOT:    '../../../../',
         VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
-    <script type="text/javascript" src="../../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="RDU-Wiki 1.0 documentation" href="../../../index.html" />
-    <link rel="next" title="Intel Edison" href="Embedded-Boards/Intel-Edison.html" />
-    <link rel="prev" title="Programming" href="../Programming/Programming.html" />
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+    <link rel="top" title="RDU-Wiki 1.0 documentation" href="../../../../index.html" />
+    <link rel="up" title="Embedded System" href="../Embedded-System.html" />
+    <link rel="next" title="STM32F4 Discovery Board" href="STM32F4-Discovery.html" />
+    <link rel="prev" title="Embedded System" href="../Embedded-System.html" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <!--[if lte IE 6]>
-<link rel="stylesheet" href="../../../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../../../../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
 <![endif]-->
 
   </head>
@@ -59,16 +60,17 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="../../../genindex.html" title="General Index"
+          <a href="../../../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="Embedded-Boards/Intel-Edison.html" title="Intel Edison"
+          <a href="STM32F4-Discovery.html" title="STM32F4 Discovery Board"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="../Programming/Programming.html" title="Programming"
+          <a href="../Embedded-System.html" title="Embedded System"
              accesskey="P">previous</a> |</li>
-        <!-- <li class="nav-item nav-item-0"><a href="../../../index.html">RDU-Wiki 1.0 documentation</a> &raquo;</li> -->
-        <li class="nav-item nav-item-0"><a href="../../../index.html">Main Page</a> &raquo;</li> 
+        <!-- <li class="nav-item nav-item-0"><a href="../../../../index.html">RDU-Wiki 1.0 documentation</a> &raquo;</li> -->
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Main Page</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../Embedded-System.html" accesskey="U">Embedded System</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -77,24 +79,16 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="embedded-system">
-<h1>Embedded System<a class="headerlink" href="#embedded-system" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="bare-metal-software">
-<h2>Bare Metal Software<a class="headerlink" href="#bare-metal-software" title="Permalink to this headline">¶</a></h2>
-<p>Embedded software without using an OS.</p>
+  <div class="section" id="intel-edison">
+<h1>Intel Edison<a class="headerlink" href="#intel-edison" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="useful-commands">
+<h2>Useful Commands<a class="headerlink" href="#useful-commands" title="Permalink to this headline">¶</a></h2>
+<p><strong>curl</strong>: download a file</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -O link-to-remote-file
+</pre></div>
 </div>
-<div class="section" id="real-time-operating-systems">
-<h2>Real-Time Operating Systems<a class="headerlink" href="#real-time-operating-systems" title="Permalink to this headline">¶</a></h2>
-<p>RTOS kernels and complete RTOS.</p>
-</div>
-<div class="section" id="embedded-boards">
-<h2>Embedded Boards<a class="headerlink" href="#embedded-boards" title="Permalink to this headline">¶</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="Embedded-Boards/Intel-Edison.html">Intel Edison</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Embedded-Boards/STM32F4-Discovery.html">STM32F4 Discovery Board</a></li>
-</ul>
-</div>
+<p><strong>su</strong>: get root privileges</p>
+<p><strong>exit</strong>: log out of &#8220;su&#8221; mode, shortcut: Ctrl+D</p>
 </div>
 </div>
 
@@ -104,25 +98,23 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../../../index.html">Table Of Contents</a></h3>
+  <h3><a href="../../../../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Embedded System</a><ul>
-<li><a class="reference internal" href="#bare-metal-software">Bare Metal Software</a></li>
-<li><a class="reference internal" href="#real-time-operating-systems">Real-Time Operating Systems</a></li>
-<li><a class="reference internal" href="#embedded-boards">Embedded Boards</a></li>
+<li><a class="reference internal" href="#">Intel Edison</a><ul>
+<li><a class="reference internal" href="#useful-commands">Useful Commands</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="../Programming/Programming.html"
-                        title="previous chapter">Programming</a></p>
+  <p class="topless"><a href="../Embedded-System.html"
+                        title="previous chapter">Embedded System</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="Embedded-Boards/Intel-Edison.html"
-                        title="next chapter">Intel Edison</a></p>
+  <p class="topless"><a href="STM32F4-Discovery.html"
+                        title="next chapter">STM32F4 Discovery Board</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
-    <form class="search" action="../../../search.html" method="get">
+    <form class="search" action="../../../../search.html" method="get">
       <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
@@ -141,16 +133,17 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="../../../genindex.html" title="General Index"
+          <a href="../../../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="Embedded-Boards/Intel-Edison.html" title="Intel Edison"
+          <a href="STM32F4-Discovery.html" title="STM32F4 Discovery Board"
              >next</a> |</li>
         <li class="right" >
-          <a href="../Programming/Programming.html" title="Programming"
+          <a href="../Embedded-System.html" title="Embedded System"
              >previous</a> |</li>
-        <!-- <li class="nav-item nav-item-0"><a href="../../../index.html">RDU-Wiki 1.0 documentation</a> &raquo;</li> -->
-        <li class="nav-item nav-item-0"><a href="../../../index.html">Main Page</a> &raquo;</li> 
+        <!-- <li class="nav-item nav-item-0"><a href="../../../../index.html">RDU-Wiki 1.0 documentation</a> &raquo;</li> -->
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Main Page</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../Embedded-System.html" >Embedded System</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

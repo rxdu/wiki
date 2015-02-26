@@ -1,42 +1,21 @@
 Embedded System
-====================
+===============
 
-Intel Edison
-------------
+Bare Metal Software
+-------------------
 
-Useful Commands
-^^^^^^^^^^^^^^^
+Embedded software without using an OS.
 
-**curl**: download a file
+Real-Time Operating Systems
+---------------------------
 
-.. code-block:: bash
+RTOS kernels and complete RTOS.
 
-   $ curl -O link-to-remote-file
+Embedded Boards
+---------------
 
-**su**: get root privileges
+.. toctree::
+   :maxdepth: 1
 
-**exit**: log out of "su" mode, shortcut: Ctrl+D 
-
-STM32F4 Discovery Board
------------------------
-
-Setup STLink for on circuit debugging
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-* Download stlink from this [git repository](https://github.com/texane/stlink)
-* Follow "README" to build to tools and set up udev rules
-* Connect the board to PC and check if the OS has detected stlink correct
-
-.. code-block:: bash
-
-   $ lsusb
-   $ ..
-   $ Bus 001 Device 041: ID 0483:3748 SGS Thomson Microelectronics ST-LINK/V2
-   $ ..
-
-
-If the tool shows permission restriction when starts, use this command:
-
-.. code-block:: bash
-
-   $ sudo chmod 777 /dev/bus/usb/002/004
+   /_pages/Knowledge-Base/Embedded-System/Embedded-Boards/Intel-Edison
+   /_pages/Knowledge-Base/Embedded-System/Embedded-Boards/STM32F4-Discovery
