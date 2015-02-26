@@ -14,7 +14,7 @@ Programming
 * `Stanford CS Education Library <http://cslibrary.stanford.edu/>`_
 * `GDB Tutorial: A Walkthrough with Examples <http://www.cs.umd.edu/~srhuang/teaching/cmsc212/gdb-tutorial-handout.pdf>`_
 * `Using GNU's GDB Debugger <http://www.dirac.org/linux/gdb/index.php>`_
-
+* `C++ FAQ <https://isocpp.org/faq>`_
 
 Embedded System
 --------------------
