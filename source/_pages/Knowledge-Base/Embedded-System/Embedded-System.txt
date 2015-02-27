@@ -1,21 +1,22 @@
 Embedded System
 ===============
 
+.. contents::
+   :depth: 1
+   :local: 
+
 Bare Metal Software
 -------------------
-_______
 
 Embedded software without using an OS.
 
 Real-Time Operating Systems
 ---------------------------
-_______
 
 RTOS kernels and complete RTOS.
 
 Embedded Boards
 ---------------
-_______
 
 .. toctree::
    :maxdepth: 1
