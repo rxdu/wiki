@@ -15,8 +15,10 @@ ______
 
    /_pages/Projects/Build-Your-Own-Quadrotor/Build-Your-Own-Quadrotor
    /_pages/Projects/IMU-Attitude-Estimation-Library/IMU-Attitude-Estimation-Library
+
 Resource
 ^^^^^^^^
+
 ______
 
 .. toctree::
