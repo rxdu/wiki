@@ -83,26 +83,26 @@ Or you can use the attach command:
 
 .. code-block:: bash
 
-    (gdb) break <function-name> // set break point by function name
+    (gdb) break <function-name> # set break point by function name
     (gdb) break <line-number>
     (gdb) break <file-name:line-number>
     (gdb) break <virtual-memory-address>
     (gdb) break <place-to-break> if <condition>
-    (gdb) info breakpoints	// list all all breakpoints and watchpoints
-    (gdb) disable n		// n is the breakpoint/watchpoint identifier number from listed info
+    (gdb) info breakpoints	# list all all breakpoints and watchpoints
+    (gdb) disable n		# n is the breakpoint/watchpoint identifier number from listed info
     (gdb) enable n
     (gdb) clear <function-name>/<line-number>/<file-name:line-number>/<virtual-memory-address>
     (gdb) delete <breakpoint-identifier>
-    (gdb) delete		// delete all breakpoints	
-    (gdb) continue		// continue execution from breakpoint
+    (gdb) delete		# delete all breakpoints	
+    (gdb) continue		# continue execution from breakpoint
    
 * Manipulating variables
 
 .. code-block:: bash
 
-    (gdb) ptype <var-name>	// print data type
-    (gdb) print <var-name>	// print data value
-    (gdb) print /FMT <var-name>	// o:octal,x:hex,d:decimal,u:unsigned decimal,t:binary, 	f:float,a:address,c:char
+    (gdb) ptype <var-name>	# print data type
+    (gdb) print <var-name>	# print data value
+    (gdb) print /FMT <var-name>	# o:octal,x:hex,d:decimal,u:unsigned decimal,t:binary, 	f:float,a:address,c:char
     (gdb) set <var-name> = <new-value>
     (gdb) print <var-name> = <new-value>
 
@@ -110,9 +110,9 @@ Or you can use the attach command:
 
 .. code-block:: bash
 
-    (gdb) step			// step by line
-    (gdb) istep			// step by instruction
-    (gdb) next			// continue to next line in current stack frame (including function)
+    (gdb) step			# step by line
+    (gdb) istep			# step by instruction
+    (gdb) next			# continue to next line in current stack frame (including function)
     (gdb) continue
-    (gdb) where			// show current line number
+    (gdb) where			# show current line number
     (gdb) list <none>/<line-num>/<range>/<function-name>/<*address>
