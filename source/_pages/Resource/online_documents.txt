@@ -1,26 +1,14 @@
 Online Documents
 ================
 
-Operating Systems
------------------
-_____
-
-* `How Computers Boot Up <http://duartes.org/gustavo/blog/post/how-computers-boot-up/>`_
-* `Anatomy of a Program in Memory <http://duartes.org/gustavo/blog/post/anatomy-of-a-program-in-memory/>`_
-* `How the Kernel Manages Your Memory <http://duartes.org/gustavo/blog/post/how-the-kernel-manages-your-memory/>`_
-
 Programming 
 -----------
-_____
 
 * `Stanford CS Education Library <http://cslibrary.stanford.edu/>`_
-* `GDB Tutorial: A Walkthrough with Examples <http://www.cs.umd.edu/~srhuang/teaching/cmsc212/gdb-tutorial-handout.pdf>`_
-* `Using GNU's GDB Debugger <http://www.dirac.org/linux/gdb/index.php>`_
 * `C++ FAQ <https://isocpp.org/faq>`_
 
 Embedded System
 --------------------
-_____
 
 * `Embedded Programming using the GNU Toolchain <http://www.bravegnu.org/gnu-eprog/>`_
 * `TEXT, DATA and BSS: Code and Data Size Explained <http://mcuoneclipse.com/2013/04/14/text-data-and-bss-code-and-data-size-explained/>`_
@@ -28,7 +16,6 @@ _____
 
 Robotics
 --------
-_____
 
 (The following articles can help you to understand rotations and how quaternions can be used to express rotations.)
 

@@ -4,11 +4,11 @@
    contain the root `toctree` directive.
 
 Welcome to Ruixiang's Wiki
-====================================
+**************************
 
 Projects
-^^^^^^^^
-______
+========
+________
 
 .. toctree::
    :maxdepth: 1
@@ -17,9 +17,8 @@ ______
    /_pages/Projects/IMU-Attitude-Estimation-Library/IMU-Attitude-Estimation-Library
 
 Resource
-^^^^^^^^
-
-______
+========
+________
 
 .. toctree::
    :maxdepth: 1
@@ -29,8 +28,8 @@ ______
    /_pages/Resource/online_documents   
 
 Knowledge Base
-^^^^^^^^^^^^^^
-______
+==============
+________
 
 .. toctree::
    :maxdepth: 1
@@ -42,8 +41,8 @@ ______
 
 
 Important Dates
-^^^^^^^^^^^^^^^
-______
+===============
+________
 
  ..  role:: strikethrough
 
