@@ -83,7 +83,10 @@
 <ul class="simple">
 <li><a class="reference internal" href="#computer-hardware" id="id2">Computer Hardware</a></li>
 <li><a class="reference internal" href="#operating-systems" id="id3">Operating Systems</a></li>
-<li><a class="reference internal" href="#using-gdb-debugger" id="id4">Using GDB Debugger</a></li>
+<li><a class="reference internal" href="#development-tools" id="id4">Development Tools</a><ul>
+<li><a class="reference internal" href="#using-gdb-debugger" id="id5">Using GDB Debugger</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="section" id="computer-hardware">
@@ -99,8 +102,10 @@
 <li><a class="reference external" href="http://duartes.org/gustavo/blog/post/how-the-kernel-manages-your-memory/">How the Kernel Manages Your Memory</a></li>
 </ul>
 </div>
+<div class="section" id="development-tools">
+<h2><a class="toc-backref" href="#id4">Development Tools</a><a class="headerlink" href="#development-tools" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="using-gdb-debugger">
-<h2><a class="toc-backref" href="#id4">Using GDB Debugger</a><a class="headerlink" href="#using-gdb-debugger" title="Permalink to this headline">¶</a></h2>
+<h3><a class="toc-backref" href="#id5">Using GDB Debugger</a><a class="headerlink" href="#using-gdb-debugger" title="Permalink to this headline">¶</a></h3>
 <p>GDB debugger can be a very powerful tool for finding the cause of unexpected behaviors of your program. In a GDB debugging session, you can step your code by line or by instruction and you can also stop your code at a specific line, a function or an address. When your program stops, you can check the values of the variables at that moment. You can even change a variable as you want. Moreover, it allows you to check the status of the stack and inspect how the function are called. The use of GDB may seem not to be as easy as printf() but it can be much more helpful when you&#8217;re trying to find a deeply hidden bug. Actually it&#8217;s not as difficut to learn as it seems to be.</p>
 <p>Here are a few good tutorials to get started:</p>
 <ul class="simple">
@@ -115,14 +120,14 @@
 </ul>
 <p>The following are my notes for quick reference of the most frequently used commands. Some of them are from the above materials.</p>
 <div class="section" id="background-knowledge">
-<h3>Background Knowledge<a class="headerlink" href="#background-knowledge" title="Permalink to this headline">¶</a></h3>
+<h4><strong>Background Knowledge</strong><a class="headerlink" href="#background-knowledge" title="Permalink to this headline">¶</a></h4>
 <p>It can be very helpful to understand stack and stack frames when you use GDB for debugging. This <a class="reference external" href="http://www.dirac.org/linux/gdb/02a-Memory_Layout_And_The_Stack.php#wherearewegoingtogo">page</a> from the tutorial &#8220;Using GNU&#8217;s GDB Debugger&#8221; gives good explanation about them.</p>
 <p>Briefly speaking, stack is a section of the memory and whenever there is a function call, a stack frame is created in the stack. This stack frame is used to store all related information about this call including the all the <a class="reference external" href="http://en.wikipedia.org/wiki/Automatic_variable">automatic variables</a> of the newly called function, the return address and the arguments of the called function. In GDB, you can check how the functions are called from each other by inspecting the stack frames. By switching to a stack frame, you get access to variables in that scope, meaning you can check the values of local variables in the corresponding function. You cannot print or modify a variable if that variable doesn&#8217;t exit in the current stack frame.</p>
 <p>In addition to stack and stack frames, check section <a class="reference internal" href="#operating-system"><em>Operating Systems</em></a> for more information about virtual memory and memory layout.</p>
 <p>Another thing that you need to remember before starting a gdb debugging session is that you need to use &#8220;-g&#8221; flag when compiling your code to include debugging information in the generated executable file.</p>
 </div>
 <div class="section" id="frequently-used-commands">
-<h3>Frequently Used Commands<a class="headerlink" href="#frequently-used-commands" title="Permalink to this headline">¶</a></h3>
+<h4><strong>Frequently Used Commands</strong><a class="headerlink" href="#frequently-used-commands" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li>Starting a debugging session</li>
 </ul>
@@ -192,6 +197,7 @@
 </div>
 </div>
 </div>
+</div>
 
 
           </div>
@@ -204,9 +210,12 @@
 <li><a class="reference internal" href="#">Programming</a><ul>
 <li><a class="reference internal" href="#computer-hardware">Computer Hardware</a></li>
 <li><a class="reference internal" href="#operating-systems">Operating Systems</a></li>
+<li><a class="reference internal" href="#development-tools">Development Tools</a><ul>
 <li><a class="reference internal" href="#using-gdb-debugger">Using GDB Debugger</a><ul>
-<li><a class="reference internal" href="#background-knowledge">Background Knowledge</a></li>
-<li><a class="reference internal" href="#frequently-used-commands">Frequently Used Commands</a></li>
+<li><a class="reference internal" href="#background-knowledge"><strong>Background Knowledge</strong></a></li>
+<li><a class="reference internal" href="#frequently-used-commands"><strong>Frequently Used Commands</strong></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
