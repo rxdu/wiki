@@ -146,26 +146,26 @@
 <ul class="simple">
 <li>Use breakpoints and watchpoints</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>gdb<span class="o">)</span> <span class="nb">break</span> &lt;<span class="k">function</span>-name&gt; // <span class="nb">set break </span>point by <span class="k">function </span>name
+<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>gdb<span class="o">)</span> <span class="nb">break</span> &lt;<span class="k">function</span>-name&gt; <span class="c"># set break point by function name</span>
 <span class="o">(</span>gdb<span class="o">)</span> <span class="nb">break</span> &lt;line-number&gt;
 <span class="o">(</span>gdb<span class="o">)</span> <span class="nb">break</span> &lt;file-name:line-number&gt;
 <span class="o">(</span>gdb<span class="o">)</span> <span class="nb">break</span> &lt;virtual-memory-address&gt;
 <span class="o">(</span>gdb<span class="o">)</span> <span class="nb">break</span> &lt;place-to-break&gt; <span class="k">if</span> &lt;condition&gt;
-<span class="o">(</span>gdb<span class="o">)</span> info breakpoints      // list all all breakpoints and watchpoints
-<span class="o">(</span>gdb<span class="o">)</span> disable n             // n is the breakpoint/watchpoint identifier number from listed info
+<span class="o">(</span>gdb<span class="o">)</span> info breakpoints      <span class="c"># list all all breakpoints and watchpoints</span>
+<span class="o">(</span>gdb<span class="o">)</span> disable n             <span class="c"># n is the breakpoint/watchpoint identifier number from listed info</span>
 <span class="o">(</span>gdb<span class="o">)</span> <span class="nb">enable </span>n
 <span class="o">(</span>gdb<span class="o">)</span> clear &lt;<span class="k">function</span>-name&gt;/&lt;line-number&gt;/&lt;file-name:line-number&gt;/&lt;virtual-memory-address&gt;
 <span class="o">(</span>gdb<span class="o">)</span> delete &lt;breakpoint-identifier&gt;
-<span class="o">(</span>gdb<span class="o">)</span> delete                // delete all breakpoints
-<span class="o">(</span>gdb<span class="o">)</span> <span class="k">continue</span>              // <span class="k">continue </span>execution from breakpoint
+<span class="o">(</span>gdb<span class="o">)</span> delete                <span class="c"># delete all breakpoints</span>
+<span class="o">(</span>gdb<span class="o">)</span> <span class="k">continue</span>              <span class="c"># continue execution from breakpoint</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li>Manipulating variables</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>gdb<span class="o">)</span> ptype &lt;var-name&gt;      // print data <span class="nb">type</span>
-<span class="o">(</span>gdb<span class="o">)</span> print &lt;var-name&gt;      // print data value
-<span class="o">(</span>gdb<span class="o">)</span> print /FMT &lt;var-name&gt; // o:octal,x:hex,d:decimal,u:unsigned decimal,t:binary,         f:float,a:address,c:char
+<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>gdb<span class="o">)</span> ptype &lt;var-name&gt;      <span class="c"># print data type</span>
+<span class="o">(</span>gdb<span class="o">)</span> print &lt;var-name&gt;      <span class="c"># print data value</span>
+<span class="o">(</span>gdb<span class="o">)</span> print /FMT &lt;var-name&gt; <span class="c"># o:octal,x:hex,d:decimal,u:unsigned decimal,t:binary,  f:float,a:address,c:char</span>
 <span class="o">(</span>gdb<span class="o">)</span> <span class="nb">set</span> &lt;var-name&gt; <span class="o">=</span> &lt;new-value&gt;
 <span class="o">(</span>gdb<span class="o">)</span> print &lt;var-name&gt; <span class="o">=</span> &lt;new-value&gt;
 </pre></div>
@@ -173,11 +173,11 @@
 <ul class="simple">
 <li>Stepping and resuming program</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>gdb<span class="o">)</span> step                  // step by line
-<span class="o">(</span>gdb<span class="o">)</span> istep                 // step by instruction
-<span class="o">(</span>gdb<span class="o">)</span> next                  // <span class="k">continue </span>to next line in current stack frame <span class="o">(</span>including <span class="k">function</span><span class="o">)</span>
+<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>gdb<span class="o">)</span> step                  <span class="c"># step by line</span>
+<span class="o">(</span>gdb<span class="o">)</span> istep                 <span class="c"># step by instruction</span>
+<span class="o">(</span>gdb<span class="o">)</span> next                  <span class="c"># continue to next line in current stack frame (including function)</span>
 <span class="o">(</span>gdb<span class="o">)</span> <span class="k">continue</span>
-<span class="o">(</span>gdb<span class="o">)</span> where                 // show current line number
+<span class="o">(</span>gdb<span class="o">)</span> where                 <span class="c"># show current line number</span>
 <span class="o">(</span>gdb<span class="o">)</span> list &lt;none&gt;/&lt;line-num&gt;/&lt;range&gt;/&lt;<span class="k">function</span>-name&gt;/&lt;*address&gt;
 </pre></div>
 </div>
