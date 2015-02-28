@@ -124,7 +124,7 @@
 <div class="section" id="frequently-used-commands">
 <h3>Frequently Used Commands<a class="headerlink" href="#frequently-used-commands" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Start a debugging session</li>
+<li>Starting a debugging session</li>
 </ul>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>gdb &lt;name-of-executable&gt;
 <span class="o">(</span>gdb<span class="o">)</span> run arg1 arg2
@@ -144,7 +144,7 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li>Use breakpoints and watchpoints</li>
+<li>Using breakpoints and watchpoints</li>
 </ul>
 <div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>gdb<span class="o">)</span> <span class="nb">break</span> &lt;<span class="k">function</span>-name&gt; <span class="c"># set break point by function name</span>
 <span class="o">(</span>gdb<span class="o">)</span> <span class="nb">break</span> &lt;line-number&gt;
@@ -179,6 +179,14 @@
 <span class="o">(</span>gdb<span class="o">)</span> <span class="k">continue</span>
 <span class="o">(</span>gdb<span class="o">)</span> where                 <span class="c"># show current line number</span>
 <span class="o">(</span>gdb<span class="o">)</span> list &lt;none&gt;/&lt;line-num&gt;/&lt;range&gt;/&lt;<span class="k">function</span>-name&gt;/&lt;*address&gt;
+</pre></div>
+</div>
+<ul class="simple">
+<li>Checking stack and stack frames</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>gdb<span class="o">)</span> backtrace             <span class="c"># display the current stack status</span>
+<span class="o">(</span>gdb<span class="o">)</span> frame                 <span class="c"># show current stack frame</span>
+<span class="o">(</span>gdb<span class="o">)</span> frame &lt;frame-num&gt;     <span class="c"># switch to frame &lt;frame-num&gt;</span>
 </pre></div>
 </div>
 </div>

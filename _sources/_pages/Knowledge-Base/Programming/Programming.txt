@@ -53,7 +53,7 @@ Another thing that you need to remember before starting a gdb debugging session 
 Frequently Used Commands
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-* Start a debugging session
+* Starting a debugging session
 
 .. code-block:: bash
 
@@ -79,7 +79,7 @@ Or you can use the attach command:
     $ gdb
     (gdb) attach <process-id>
 
-* Use breakpoints and watchpoints
+* Using breakpoints and watchpoints
 
 .. code-block:: bash
 
@@ -116,3 +116,11 @@ Or you can use the attach command:
     (gdb) continue
     (gdb) where			# show current line number
     (gdb) list <none>/<line-num>/<range>/<function-name>/<*address>
+
+* Checking stack and stack frames
+
+.. code-block:: bash
+
+    (gdb) backtrace		# display the current stack status
+    (gdb) frame			# show current stack frame
+    (gdb) frame <frame-num>	# switch to frame <frame-num>
