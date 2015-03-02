@@ -100,7 +100,7 @@
 <div class="section" id="data-storage">
 <h3><a class="toc-backref" href="#id2">Data Storage</a><a class="headerlink" href="#data-storage" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="endianness">
-<h4><strong>Endianness</strong><a class="headerlink" href="#endianness" title="Permalink to this headline">¶</a></h4>
+<h4>Endianness<a class="headerlink" href="#endianness" title="Permalink to this headline">¶</a></h4>
 <p>Big-endian systems store the most significant byte of a word in the smallest address and the least significant byte is stored in the largest address. Little-endian systems, in contrast, store the least significant byte in the smallest address.[1]</p>
 <p>For example, there is a number in hexadecimal: 0x01234567, with the most significant byte 0x01 and least significant byte 0x67. It is stored within the address range 0x100 through 0x103.[2]</p>
 <p>Big-endian:</p>
@@ -160,12 +160,20 @@
 </div>
 <div class="section" id="data-representation">
 <h3><a class="toc-backref" href="#id3">Data Representation</a><a class="headerlink" href="#data-representation" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="integer-representation">
+<h4>Integer Representation<a class="headerlink" href="#integer-representation" title="Permalink to this headline">¶</a></h4>
+<p>Two’s-complement encodings (and others).</p>
+</div>
+<div class="section" id="floating-point-numbers">
+<h4>Floating-Point Numbers<a class="headerlink" href="#floating-point-numbers" title="Permalink to this headline">¶</a></h4>
+<p>IEEE floating-point representation</p>
+</div>
 <div class="section" id="character-encoding">
-<h4><strong>Character Encoding</strong><a class="headerlink" href="#character-encoding" title="Permalink to this headline">¶</a></h4>
+<h4>Character Encoding<a class="headerlink" href="#character-encoding" title="Permalink to this headline">¶</a></h4>
 <p>ASCII and Unicode standards are most commonly used for text encoding. See more details in [3].</p>
 </div>
 <div class="section" id="instruction-encoding">
-<h4><strong>Instruction Encoding</strong><a class="headerlink" href="#instruction-encoding" title="Permalink to this headline">¶</a></h4>
+<h4>Instruction Encoding<a class="headerlink" href="#instruction-encoding" title="Permalink to this headline">¶</a></h4>
 <p>Instruction codings are usually different across different processors or even the same processor running different operating systems.[2]</p>
 </div>
 </div>
@@ -299,12 +307,14 @@
 <li><a class="reference internal" href="#">Programming</a><ul>
 <li><a class="reference internal" href="#computer-systems">Computer Systems</a><ul>
 <li><a class="reference internal" href="#data-storage">Data Storage</a><ul>
-<li><a class="reference internal" href="#endianness"><strong>Endianness</strong></a></li>
+<li><a class="reference internal" href="#endianness">Endianness</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#data-representation">Data Representation</a><ul>
-<li><a class="reference internal" href="#character-encoding"><strong>Character Encoding</strong></a></li>
-<li><a class="reference internal" href="#instruction-encoding"><strong>Instruction Encoding</strong></a></li>
+<li><a class="reference internal" href="#integer-representation">Integer Representation</a></li>
+<li><a class="reference internal" href="#floating-point-numbers">Floating-Point Numbers</a></li>
+<li><a class="reference internal" href="#character-encoding">Character Encoding</a></li>
+<li><a class="reference internal" href="#instruction-encoding">Instruction Encoding</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#bootstrapping">Bootstrapping</a></li>
