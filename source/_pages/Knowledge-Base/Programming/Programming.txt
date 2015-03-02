@@ -13,8 +13,8 @@ Computer Systems
 Data Storage
 ^^^^^^^^^^^^
 
-**Endianness**
-""""""""""""""
+Endianness
+""""""""""
 
 Big-endian systems store the most significant byte of a word in the smallest address and the least significant byte is stored in the largest address. Little-endian systems, in contrast, store the least significant byte in the smallest address.[1]
 
@@ -41,23 +41,26 @@ Different processors may follow different conventions. For example the Intel x86
 Data Representation
 ^^^^^^^^^^^^^^^^^^^
 
-**Integer Representation**
-""""""""""""""""""""""""""
+Integer Representation 
+""""""""""""""""""""""
 
-**Floating-Point Numbers**
-""""""""""""""""""""""""""
+Two’s-complement encodings (and others).
 
 
-**Character Encoding**
-""""""""""""""""""""""""
+Floating-Point Numbers
+""""""""""""""""""""""
+
+IEEE floating-point representation
+
+Character Encoding
+""""""""""""""""""
 
 ASCII and Unicode standards are most commonly used for text encoding. See more details in [3].
 
-**Instruction Encoding**
-""""""""""""""""""""""""
+Instruction Encoding 
+""""""""""""""""""""
 
 Instruction codings are usually different across different processors or even the same processor running different operating systems.[2]
-
 
 Bootstrapping
 ^^^^^^^^^^^^^
