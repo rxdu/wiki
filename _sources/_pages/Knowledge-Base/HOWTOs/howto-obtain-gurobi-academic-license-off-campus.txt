@@ -21,19 +21,26 @@ Configuration steps:
 * Install 64-bit Firefox if you don't have one.
 * Configure Java plugin for Firefox, you may find this `article <http://rdu.im/ubuntu/2014/03/24/install-java-plugin-for-web-browers-on-ubuntu.html>`_ useful.
 * Install IcedTea-Web-plug-in
+
 .. code-block:: bash
 
    $ sudo apt-get install icedtea-7-plugin
+
 * Install the 32-bit Java version. Download the archive file and extract to a folder, for example  **jre-7u3-linux-i586.tar.gz** to **/usr/java32**.
 * Update the alternatives link for Java 
+
 .. code-block:: bash
 
    $ sudo update-alternatives --install /usr/bin/java java /usr/java32/jre1.7.0_03/bin/java 10
+
 * Keep the default Java version to be the 64-bit one.
+
 .. code-block:: bash
 
    $ sudo update-alternatives --config java
+
 * Install the standard 32 bit libraries and components
+
 .. code-block:: bash
 
    $ sudo apt-get  install ia32-libs
@@ -51,6 +58,7 @@ Use *ifconfig* command to check if you have successfully connected to VPN. You s
 If you try to obtain the license now, you would probably find that the Gurobi website still complains that you're not in a campus network. This is because the network traffic from your computer is not going through the VPN channel, even if you've established one.
 
 * Find the remote gateway IP address:
+
 .. code-block:: bash
 
     $ route -n
@@ -58,6 +66,7 @@ If you try to obtain the license now, you would probably find that the Gurobi we
 You should be able to find an IP address starting from "130.215.*.*" via interface "tun0".
 
 * Delete the default gateway and add the new one:
+
 .. code-block:: bash
 
     $ sudo ip route del default via 192.168.1.1
