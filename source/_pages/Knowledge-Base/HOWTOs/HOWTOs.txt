@@ -5,3 +5,4 @@ HOWTOs
    :maxdepth: 1
 
    /_pages/Knowledge-Base/HOWTOs/howto-obtain-gurobi-academic-license-off-campus
+   /_pages/Knowledge-Base/HOWTOs/howto-safely-revert-to-a-previous-commit-in-git
