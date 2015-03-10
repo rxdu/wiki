@@ -7,7 +7,7 @@ Build Your Own Quadrotor
 * Hardware
     - Inertial measurement unit (IMU)
     - Flight microcontroller
-    - A mechanical frame * 1
+    - Mechanical frame * 1
     - DC brushless motors * 4
     - DSC for brushless motors * 4
 * Software

@@ -17,8 +17,8 @@
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
     </script>
-    <!-- <title>HOWTOs &mdash; RDU-Wiki 1.0 documentation</title> -->
-    <title>HOWTOs</title>
+    <!-- <title>How to Safely Revert to a Previous Commit in Git &mdash; RDU-Wiki 1.0 documentation</title> -->
+    <title>How to Safely Revert to a Previous Commit in Git</title>
     
     <link rel="stylesheet" href="../../../_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -44,8 +44,9 @@
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="top" title="RDU-Wiki 1.0 documentation" href="../../../index.html" />
-    <link rel="next" title="How to Obtain Gurobi Academic License Off Campus" href="howto-obtain-gurobi-academic-license-off-campus.html" />
-    <link rel="prev" title="Online Documents" href="../../Resource/online_documents.html" />
+    <link rel="up" title="HOWTOs" href="HOWTOs.html" />
+    <link rel="next" title="Robotics" href="../Robotics/Robotics.html" />
+    <link rel="prev" title="How to Obtain Gurobi Academic License Off Campus" href="howto-obtain-gurobi-academic-license-off-campus.html" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <!--[if lte IE 6]>
@@ -62,13 +63,14 @@
           <a href="../../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="howto-obtain-gurobi-academic-license-off-campus.html" title="How to Obtain Gurobi Academic License Off Campus"
+          <a href="../Robotics/Robotics.html" title="Robotics"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="../../Resource/online_documents.html" title="Online Documents"
+          <a href="howto-obtain-gurobi-academic-license-off-campus.html" title="How to Obtain Gurobi Academic License Off Campus"
              accesskey="P">previous</a> |</li>
         <!-- <li class="nav-item nav-item-0"><a href="../../../index.html">RDU-Wiki 1.0 documentation</a> &raquo;</li> -->
-        <li class="nav-item nav-item-0"><a href="../../../index.html">Main Page</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Main Page</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="HOWTOs.html" accesskey="U">HOWTOs</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -77,14 +79,24 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="howtos">
-<h1>HOWTOs<a class="headerlink" href="#howtos" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="howto-obtain-gurobi-academic-license-off-campus.html">How to Obtain Gurobi Academic License Off Campus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="howto-safely-revert-to-a-previous-commit-in-git.html">How to Safely Revert to a Previous Commit in Git</a></li>
-</ul>
+  <div class="section" id="how-to-safely-revert-to-a-previous-commit-in-git">
+<h1>How to Safely Revert to a Previous Commit in Git<a class="headerlink" href="#how-to-safely-revert-to-a-previous-commit-in-git" title="Permalink to this headline">¶</a></h1>
+<p>[TO BE VERIFIED]</p>
+<p>If you want to commit on top of the current HEAD with the exact state at a different commit, undoing all the intermediate commits, then you can use reset to create the correct state of the index to make the commit.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sudo update-alternatives --config java
+<span class="c"># Reset the index to the desired tree</span>
+<span class="nv">$ </span>git reset 56e05fced
+<span class="c"># Move the branch pointer back to the previous HEAD</span>
+<span class="nv">$ </span>git reset --soft HEAD@<span class="o">{</span>1<span class="o">}</span>
+<span class="nv">$ </span>git commit -m <span class="s2">&quot;Revert to 56e05fced&quot;</span>
+<span class="c"># Update working copy to reflect the new commit</span>
+<span class="nv">$ </span>git reset --hard
+</pre></div>
 </div>
+<ul class="simple">
+<li>[1] <a class="reference external" href="http://stackoverflow.com/questions/9529078/how-do-i-used-git-reset-hard-head-to-revert-to-a-previous-commit">http://stackoverflow.com/questions/9529078/how-do-i-used-git-reset-hard-head-to-revert-to-a-previous-commit</a></li>
+<li>[2] <a class="reference external" href="http://stackoverflow.com/questions/1895059/revert-to-a-commit-by-a-sha-hash-in-git/1895095#1895095">http://stackoverflow.com/questions/1895059/revert-to-a-commit-by-a-sha-hash-in-git/1895095#1895095</a></li>
+</ul>
 </div>
 
 
@@ -94,11 +106,11 @@
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="../../Resource/online_documents.html"
-                        title="previous chapter">Online Documents</a></p>
-  <h4>Next topic</h4>
   <p class="topless"><a href="howto-obtain-gurobi-academic-license-off-campus.html"
-                        title="next chapter">How to Obtain Gurobi Academic License Off Campus</a></p>
+                        title="previous chapter">How to Obtain Gurobi Academic License Off Campus</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../Robotics/Robotics.html"
+                        title="next chapter">Robotics</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../../search.html" method="get">
@@ -123,13 +135,14 @@
           <a href="../../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="howto-obtain-gurobi-academic-license-off-campus.html" title="How to Obtain Gurobi Academic License Off Campus"
+          <a href="../Robotics/Robotics.html" title="Robotics"
              >next</a> |</li>
         <li class="right" >
-          <a href="../../Resource/online_documents.html" title="Online Documents"
+          <a href="howto-obtain-gurobi-academic-license-off-campus.html" title="How to Obtain Gurobi Academic License Off Campus"
              >previous</a> |</li>
         <!-- <li class="nav-item nav-item-0"><a href="../../../index.html">RDU-Wiki 1.0 documentation</a> &raquo;</li> -->
-        <li class="nav-item nav-item-0"><a href="../../../index.html">Main Page</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Main Page</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="HOWTOs.html" >HOWTOs</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

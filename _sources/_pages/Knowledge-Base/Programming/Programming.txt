@@ -192,3 +192,5 @@ Or you can use the attach command:
     (gdb) backtrace		# display the current stack status
     (gdb) frame			# show current stack frame
     (gdb) frame <frame-num>	# switch to frame <frame-num>
+
+
