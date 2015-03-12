@@ -83,8 +83,7 @@
 <h1>How to Safely Revert to a Previous Commit in Git<a class="headerlink" href="#how-to-safely-revert-to-a-previous-commit-in-git" title="Permalink to this headline">¶</a></h1>
 <p>[TO BE VERIFIED]</p>
 <p>If you want to commit on top of the current HEAD with the exact state at a different commit, undoing all the intermediate commits, then you can use reset to create the correct state of the index to make the commit.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sudo update-alternatives --config java
-<span class="c"># Reset the index to the desired tree</span>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># Reset the index to the desired tree</span>
 <span class="nv">$ </span>git reset 56e05fced
 <span class="c"># Move the branch pointer back to the previous HEAD</span>
 <span class="nv">$ </span>git reset --soft HEAD@<span class="o">{</span>1<span class="o">}</span>
