@@ -7,7 +7,6 @@ If you want to commit on top of the current HEAD with the exact state at a diffe
 
 .. code-block:: bash
 
-   $ sudo update-alternatives --config java
    # Reset the index to the desired tree
    $ git reset 56e05fced
    # Move the branch pointer back to the previous HEAD
