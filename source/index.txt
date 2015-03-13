@@ -54,7 +54,7 @@ ________
 
 * :strikethrough:`IEEE RO-MAN 2015, Kobe, Japan, 08/31-09/03, 2015 -- deadline: 02/23/2015`
 
-* `IEEE/RSJ IROS 2015, Hamburg, German, 09/28-10/03, 2015 <http://www.iros2015.org/>`_ -- deadline: 03/01/2015
+* :strikethrough:`IEEE/RSJ IROS 2015, Hamburg, German, 09/28-10/03, 2015 -- deadline: 03/04/2015`
 
 * `IEEE SMC 2015, Hongkong, China, 10/10-10/13, 2015 <http://www.smc2015.org/>`_ -- deadline: 03/31/2015
 
