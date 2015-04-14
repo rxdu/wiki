@@ -100,6 +100,7 @@ Here are a few good tutorials to get started:
 * `Using GNU's GDB Debugger <http://www.dirac.org/linux/gdb/index.php>`_
 * `Guide to Faster, Less Frustrating Debugging <http://heather.cs.ucdavis.edu/~matloff/UnixAndC/CLanguage/Debug.html>`_
 * `RMS's GDB Debugger Tutorial <http://www.unknownroad.com/rtfm/gdbtut/gdbtoc.html>`_
+* `Debugging with GDB <http://www.delorie.com/gnu/docs/gdb/gdb_toc.html>`_
 
 The official manual of GDB can be a good reference after you have already learned the basics and want to check more details of a feature:
 
