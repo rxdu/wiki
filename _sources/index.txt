@@ -56,7 +56,7 @@ ________
 
 * :strikethrough:`IEEE/RSJ IROS 2015, Hamburg, German, 09/28-10/03, 2015 -- deadline: 03/04/2015`
 
-* `IEEE SMC 2015, Hongkong, China, 10/10-10/13, 2015 <http://www.smc2015.org/>`_ -- deadline: 03/31/2015
+* :strikethrough:`IEEE SMC 2015, Hongkong, China, 10/10-10/13, 2015 -- deadline: 03/31/2015`
 
-* `IEEE/RSJ IROS 2016, Daejeon, Korea, 10/19-10/14, 2016 <http://www.iros2016.org/>`_ -- deadline: 
+* `IEEE/RSJ IROS 2016, Daejeon, Korea, 10/19-10/14, 2016 <http://www.iros2016.org/>`_ -- deadline: 03/01/2015
 
