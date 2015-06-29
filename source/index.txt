@@ -62,5 +62,5 @@ ________
 
 * `IEEE/RSJ IROS 2016, Daejeon, Korea, 10/19-10/14, 2016 <http://www.iros2016.org/>`_ -- deadline: 03/01/2016
 
-[Top Publications of Robotics from Google Scholar](https://scholar.google.com/citations?view_op=top_venues&hl=en&vq=eng_robotics)
+`Top Publications of Robotics from Google Scholar <https://scholar.google.com/citations?view_op=top_venues&hl=en&vq=eng_robotics>`_
 
