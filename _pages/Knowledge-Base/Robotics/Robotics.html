@@ -45,7 +45,7 @@
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="top" title="RDU-Wiki 1.0 documentation" href="../../../index.html" />
     <link rel="next" title="Programming" href="../Programming/Programming.html" />
-    <link rel="prev" title="How to Obtain Gurobi Academic License Off Campus" href="../HOWTOs/howto-obtain-gurobi-academic-license-off-campus.html" />
+    <link rel="prev" title="How to Safely Revert to a Previous Commit in Git" href="../HOWTOs/howto-safely-revert-to-a-previous-commit-in-git.html" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <!--[if lte IE 6]>
@@ -65,7 +65,7 @@
           <a href="../Programming/Programming.html" title="Programming"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="../HOWTOs/howto-obtain-gurobi-academic-license-off-campus.html" title="How to Obtain Gurobi Academic License Off Campus"
+          <a href="../HOWTOs/howto-safely-revert-to-a-previous-commit-in-git.html" title="How to Safely Revert to a Previous Commit in Git"
              accesskey="P">previous</a> |</li>
         <!-- <li class="nav-item nav-item-0"><a href="../../../index.html">RDU-Wiki 1.0 documentation</a> &raquo;</li> -->
         <li class="nav-item nav-item-0"><a href="../../../index.html">Main Page</a> &raquo;</li> 
@@ -79,6 +79,57 @@
             
   <div class="section" id="robotics">
 <h1>Robotics<a class="headerlink" href="#robotics" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#kinematics" id="id1">Kinematics</a><ul>
+<li><a class="reference internal" href="#forward-kinematics" id="id2">Forward Kinematics</a></li>
+<li><a class="reference internal" href="#inverse-kinematics" id="id3">Inverse Kinematics</a></li>
+<li><a class="reference internal" href="#jacobian" id="id4">Jacobian</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#dynamics" id="id5">Dynamics</a><ul>
+<li><a class="reference internal" href="#newtonian-method" id="id6">Newtonian Method</a></li>
+<li><a class="reference internal" href="#lagrangian-method" id="id7">Lagrangian Method</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#dynamic-control" id="id8">Dynamic Control</a></li>
+<li><a class="reference internal" href="#obstacle-avoidance" id="id9">Obstacle Avoidance</a></li>
+<li><a class="reference internal" href="#motion-planning" id="id10">Motion Planning</a></li>
+</ul>
+</div>
+<div class="section" id="kinematics">
+<h2><a class="toc-backref" href="#id1">Kinematics</a><a class="headerlink" href="#kinematics" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="forward-kinematics">
+<h3><a class="toc-backref" href="#id2">Forward Kinematics</a><a class="headerlink" href="#forward-kinematics" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="dh-representation">
+<h4>DH Representation<a class="headerlink" href="#dh-representation" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+<div class="section" id="inverse-kinematics">
+<h3><a class="toc-backref" href="#id3">Inverse Kinematics</a><a class="headerlink" href="#inverse-kinematics" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="jacobian">
+<h3><a class="toc-backref" href="#id4">Jacobian</a><a class="headerlink" href="#jacobian" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="dynamics">
+<h2><a class="toc-backref" href="#id5">Dynamics</a><a class="headerlink" href="#dynamics" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="newtonian-method">
+<h3><a class="toc-backref" href="#id6">Newtonian Method</a><a class="headerlink" href="#newtonian-method" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="lagrangian-method">
+<h3><a class="toc-backref" href="#id7">Lagrangian Method</a><a class="headerlink" href="#lagrangian-method" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="dynamic-control">
+<h2><a class="toc-backref" href="#id8">Dynamic Control</a><a class="headerlink" href="#dynamic-control" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="obstacle-avoidance">
+<h2><a class="toc-backref" href="#id9">Obstacle Avoidance</a><a class="headerlink" href="#obstacle-avoidance" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="motion-planning">
+<h2><a class="toc-backref" href="#id10">Motion Planning</a><a class="headerlink" href="#motion-planning" title="Permalink to this headline">¶</a></h2>
+</div>
 </div>
 
 
@@ -87,9 +138,33 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="../../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Robotics</a><ul>
+<li><a class="reference internal" href="#kinematics">Kinematics</a><ul>
+<li><a class="reference internal" href="#forward-kinematics">Forward Kinematics</a><ul>
+<li><a class="reference internal" href="#dh-representation">DH Representation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inverse-kinematics">Inverse Kinematics</a></li>
+<li><a class="reference internal" href="#jacobian">Jacobian</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#dynamics">Dynamics</a><ul>
+<li><a class="reference internal" href="#newtonian-method">Newtonian Method</a></li>
+<li><a class="reference internal" href="#lagrangian-method">Lagrangian Method</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#dynamic-control">Dynamic Control</a></li>
+<li><a class="reference internal" href="#obstacle-avoidance">Obstacle Avoidance</a></li>
+<li><a class="reference internal" href="#motion-planning">Motion Planning</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
-  <p class="topless"><a href="../HOWTOs/howto-obtain-gurobi-academic-license-off-campus.html"
-                        title="previous chapter">How to Obtain Gurobi Academic License Off Campus</a></p>
+  <p class="topless"><a href="../HOWTOs/howto-safely-revert-to-a-previous-commit-in-git.html"
+                        title="previous chapter">How to Safely Revert to a Previous Commit in Git</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="../Programming/Programming.html"
                         title="next chapter">Programming</a></p>
@@ -120,7 +195,7 @@
           <a href="../Programming/Programming.html" title="Programming"
              >next</a> |</li>
         <li class="right" >
-          <a href="../HOWTOs/howto-obtain-gurobi-academic-license-off-campus.html" title="How to Obtain Gurobi Academic License Off Campus"
+          <a href="../HOWTOs/howto-safely-revert-to-a-previous-commit-in-git.html" title="How to Safely Revert to a Previous Commit in Git"
              >previous</a> |</li>
         <!-- <li class="nav-item nav-item-0"><a href="../../../index.html">RDU-Wiki 1.0 documentation</a> &raquo;</li> -->
         <li class="nav-item nav-item-0"><a href="../../../index.html">Main Page</a> &raquo;</li> 
