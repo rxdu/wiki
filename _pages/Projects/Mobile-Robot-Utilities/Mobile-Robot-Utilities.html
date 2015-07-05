@@ -5,9 +5,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <!-- <title>Embedded Development &mdash; RDU-Wiki 1.0 documentation</title> -->
-    <title>Embedded Development</title>
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-47255965-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <!-- <title>Mobile Robot Utilities &mdash; RDU-Wiki 1.0 documentation</title> -->
+    <title>Mobile Robot Utilities</title>
     
     <link rel="stylesheet" href="../../../_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -33,7 +44,8 @@
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="top" title="RDU-Wiki 1.0 documentation" href="../../../index.html" />
-    <link rel="prev" title="Programming" href="../Programming/Programming.html" />
+    <link rel="next" title="Software" href="../../Resource/software.html" />
+    <link rel="prev" title="Build Your Own Quadrotor" href="../Build-Your-Own-Quadrotor/Build-Your-Own-Quadrotor.html" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <!--[if lte IE 6]>
@@ -50,7 +62,10 @@
           <a href="../../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="../Programming/Programming.html" title="Programming"
+          <a href="../../Resource/software.html" title="Software"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../Build-Your-Own-Quadrotor/Build-Your-Own-Quadrotor.html" title="Build Your Own Quadrotor"
              accesskey="P">previous</a> |</li>
         <!-- <li class="nav-item nav-item-0"><a href="../../../index.html">RDU-Wiki 1.0 documentation</a> &raquo;</li> -->
         <li class="nav-item nav-item-0"><a href="../../../index.html">Main Page</a> &raquo;</li> 
@@ -62,33 +77,14 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="embedded-development">
-<h1>Embedded Development<a class="headerlink" href="#embedded-development" title="Permalink to this headline">¶</a></h1>
-<p>## Intel Edison</p>
-<p>### 1. Useful Commands</p>
-<p><strong>curl</strong>: download a file
-<tt class="docutils literal"><span class="pre">`</span>
-<span class="pre">$</span> <span class="pre">curl</span> <span class="pre">-O</span> <span class="pre">link-to-remote-file</span>
-<span class="pre">`</span></tt>
-<strong>su</strong>: get root privileges
-<strong>exit</strong>: log out of &#8220;su&#8221; mode, shortcut: Ctrl+D</p>
-<p>## STM32F4 Discovery Board</p>
-<p>### 1. Setup STLink for on circuit debugging.</p>
-<ul class="simple">
-<li>Download stlink from this [git repository](<a class="reference external" href="https://github.com/texane/stlink">https://github.com/texane/stlink</a>)</li>
-<li>Follow &#8220;README&#8221; to build to tools and set up udev rules</li>
-<li>Connect the board to PC and check if the OS has detected stlink correct</li>
-</ul>
-<p><tt class="docutils literal"><span class="pre">`</span>
-<span class="pre">$</span> <span class="pre">lsusb</span>
-<span class="pre">..</span>
-<span class="pre">Bus</span> <span class="pre">001</span> <span class="pre">Device</span> <span class="pre">041:</span> <span class="pre">ID</span> <span class="pre">0483:3748</span> <span class="pre">SGS</span> <span class="pre">Thomson</span> <span class="pre">Microelectronics</span> <span class="pre">ST-LINK/V2</span>
-<span class="pre">..</span>
-<span class="pre">`</span></tt></p>
-<p>If the tool shows permission restriction when starts, use this command:
-<tt class="docutils literal"><span class="pre">`</span>
-<span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">chmod</span> <span class="pre">777</span> <span class="pre">/dev/bus/usb/002/004</span>
-<span class="pre">`</span></tt></p>
+  <div class="section" id="mobile-robot-utilities">
+<h1>Mobile Robot Utilities<a class="headerlink" href="#mobile-robot-utilities" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="logging-tools">
+<h2>1. Logging Tools<a class="headerlink" href="#logging-tools" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="robot-simulator">
+<h2>2. Robot Simulator<a class="headerlink" href="#robot-simulator" title="Permalink to this headline">¶</a></h2>
+</div>
 </div>
 
 
@@ -97,9 +93,21 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="../../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Mobile Robot Utilities</a><ul>
+<li><a class="reference internal" href="#logging-tools">1. Logging Tools</a></li>
+<li><a class="reference internal" href="#robot-simulator">2. Robot Simulator</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
-  <p class="topless"><a href="../Programming/Programming.html"
-                        title="previous chapter">Programming</a></p>
+  <p class="topless"><a href="../Build-Your-Own-Quadrotor/Build-Your-Own-Quadrotor.html"
+                        title="previous chapter">Build Your Own Quadrotor</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../../Resource/software.html"
+                        title="next chapter">Software</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../../search.html" method="get">
@@ -124,7 +132,10 @@
           <a href="../../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="../Programming/Programming.html" title="Programming"
+          <a href="../../Resource/software.html" title="Software"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../Build-Your-Own-Quadrotor/Build-Your-Own-Quadrotor.html" title="Build Your Own Quadrotor"
              >previous</a> |</li>
         <!-- <li class="nav-item nav-item-0"><a href="../../../index.html">RDU-Wiki 1.0 documentation</a> &raquo;</li> -->
         <li class="nav-item nav-item-0"><a href="../../../index.html">Main Page</a> &raquo;</li> 

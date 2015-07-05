@@ -44,7 +44,7 @@
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="top" title="RDU-Wiki 1.0 documentation" href="../../../index.html" />
-    <link rel="next" title="IMU Attitude Estimation Library" href="../IMU-Attitude-Estimation-Library/IMU-Attitude-Estimation-Library.html" />
+    <link rel="next" title="Mobile Robot Utilities" href="../Mobile-Robot-Utilities/Mobile-Robot-Utilities.html" />
     <link rel="prev" title="Welcome to Ruixiang’s Wiki" href="../../../index.html" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
@@ -62,7 +62,7 @@
           <a href="../../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="../IMU-Attitude-Estimation-Library/IMU-Attitude-Estimation-Library.html" title="IMU Attitude Estimation Library"
+          <a href="../Mobile-Robot-Utilities/Mobile-Robot-Utilities.html" title="Mobile Robot Utilities"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="../../../index.html" title="Welcome to Ruixiang’s Wiki"
@@ -85,8 +85,8 @@
 <li><dl class="first docutils">
 <dt>Hardware</dt>
 <dd><ul class="first last simple">
-<li>Inertial measurement unit (IMU)</li>
-<li>Flight microcontroller</li>
+<li>Inertial measurement unit (IMU) - MPU9250</li>
+<li>Flight controller - STM32F405, Intel Edison</li>
 <li>Mechanical frame * 1</li>
 <li>DC brushless motors * 4</li>
 <li>DSC for brushless motors * 4</li>
@@ -107,15 +107,26 @@
 </li>
 </ul>
 </div>
-<div class="section" id="imu-module">
-<h2>2. IMU Module<a class="headerlink" href="#imu-module" title="Permalink to this headline">¶</a></h2>
-<p>An IMU module is used to estimate the attitude of the quadcopter. Instead of using a commercial flight control board which integrates both a microcontroller and accelerometer/gyro sensors, I&#8217;m using separate modules for development and testing. The testing hardware used:</p>
+<div class="section" id="system-structure">
+<h2>2. System Structure<a class="headerlink" href="#system-structure" title="Permalink to this headline">¶</a></h2>
+<p><strong>Low level controller (STM32F405)</strong></p>
 <ul class="simple">
-<li>STM32F4 discovery board</li>
-<li>MPU9250 sensor breakout board</li>
-<li>Serial to USB adapter</li>
+<li>Acquire sensor data (IMU)</li>
+<li>Motor control</li>
 </ul>
-<a class="reference internal image-reference" href="../../../_images/imu.jpg"><img alt="../../../_images/imu.jpg" src="../../../_images/imu.jpg" style="width: 367px;" /></a>
+<p><strong>High level controller (Intel Edison)</strong></p>
+<ul class="simple">
+<li>IMU data processing</li>
+<li>Vison processing</li>
+<li>Attitude and postion control</li>
+</ul>
+<p><strong>Workstation</strong></p>
+<ul class="simple">
+<li>High level control</li>
+<li>Run computational-heavy algorithms</li>
+<li>Debugging</li>
+</ul>
+<a class="reference internal image-reference" href="../../../_images/sys_struct.jpg"><img alt="../../../_images/sys_struct.jpg" src="../../../_images/sys_struct.jpg" style="width: 600px;" /></a>
 </div>
 </div>
 
@@ -129,7 +140,7 @@
   <ul>
 <li><a class="reference internal" href="#">Build Your Own Quadrotor</a><ul>
 <li><a class="reference internal" href="#system-components">1. System Components</a></li>
-<li><a class="reference internal" href="#imu-module">2. IMU Module</a></li>
+<li><a class="reference internal" href="#system-structure">2. System Structure</a></li>
 </ul>
 </li>
 </ul>
@@ -138,8 +149,8 @@
   <p class="topless"><a href="../../../index.html"
                         title="previous chapter">Welcome to Ruixiang&#8217;s Wiki</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="../IMU-Attitude-Estimation-Library/IMU-Attitude-Estimation-Library.html"
-                        title="next chapter">IMU Attitude Estimation Library</a></p>
+  <p class="topless"><a href="../Mobile-Robot-Utilities/Mobile-Robot-Utilities.html"
+                        title="next chapter">Mobile Robot Utilities</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../../search.html" method="get">
@@ -164,7 +175,7 @@
           <a href="../../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="../IMU-Attitude-Estimation-Library/IMU-Attitude-Estimation-Library.html" title="IMU Attitude Estimation Library"
+          <a href="../Mobile-Robot-Utilities/Mobile-Robot-Utilities.html" title="Mobile Robot Utilities"
              >next</a> |</li>
         <li class="right" >
           <a href="../../../index.html" title="Welcome to Ruixiang’s Wiki"
