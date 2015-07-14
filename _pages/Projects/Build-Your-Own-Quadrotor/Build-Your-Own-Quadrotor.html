@@ -126,7 +126,19 @@
 <li>Run computational-heavy algorithms</li>
 <li>Debugging</li>
 </ul>
+<p>Overall structure:</p>
 <a class="reference internal image-reference" href="../../../_images/sys_struct.jpg"><img alt="../../../_images/sys_struct.jpg" src="../../../_images/sys_struct.jpg" style="width: 600px;" /></a>
+<p>Code structure on STM32F405:</p>
+<a class="reference internal image-reference" href="../../../_images/stm32f4_code.jpg"><img alt="../../../_images/stm32f4_code.jpg" src="../../../_images/stm32f4_code.jpg" style="width: 600px;" /></a>
+<p>Code structure on Intel Edison:</p>
+<p>(To be added)</p>
+</div>
+<div class="section" id="interface-with-mpu9250">
+<h2>3. Interface with MPU9250<a class="headerlink" href="#interface-with-mpu9250" title="Permalink to this headline">¶</a></h2>
+<p>There are two ways to communicate with MPU9250, SPI or I2C. Since SPI is faster and simpler in terms of signal timing (it uses more pins though), I decided to use the SPI interface.</p>
+<a class="reference internal image-reference" href="../../../_images/mpu9250_whoami.jpg"><img alt="../../../_images/mpu9250_whoami.jpg" src="../../../_images/mpu9250_whoami.jpg" style="width: 650px;" /></a>
+<p>To acquire data from MPU9250, the first thing to do is to establish the communication between the MCU and MPU9250. The internal register WHO_AM_I can be used for this check. The above screenshot is captured by a logic analyzer, showing this &#8220;handshake&#8221;: MCU sends the address of WHO_AM_I (0x80 | 0x75 = 0xF5 for reading from register) and gets 0x71 as a reply.</p>
+<p>After the communication is set up properly, we can further configure the registers of MPU9250, like enabling/disabling gyro/acc, selecting full scale of gyro/acc and so on.</p>
 </div>
 </div>
 
@@ -141,6 +153,7 @@
 <li><a class="reference internal" href="#">Build Your Own Quadrotor</a><ul>
 <li><a class="reference internal" href="#system-components">1. System Components</a></li>
 <li><a class="reference internal" href="#system-structure">2. System Structure</a></li>
+<li><a class="reference internal" href="#interface-with-mpu9250">3. Interface with MPU9250</a></li>
 </ul>
 </li>
 </ul>
