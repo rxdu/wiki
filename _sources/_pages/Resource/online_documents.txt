@@ -6,6 +6,7 @@ Programming
 
 * `Stanford CS Education Library <http://cslibrary.stanford.edu/>`_
 * `C++ FAQ <https://isocpp.org/faq>`_
+* `Operating Systems: Three Easy Pieces <http://pages.cs.wisc.edu/~remzi/OSTEP/>`_
 
 Embedded System
 --------------------
