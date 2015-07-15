@@ -38,3 +38,4 @@ Electrical & Computer Engineering
 Robotics
 
 * `CMU: An Introduction to Physically Based Modeling <http://www.cs.cmu.edu/~baraff/pbm/pbm.html>`_
+* `WPI: RBE595/CS525 Motion Planning <http://users.wpi.edu/~dberenson/courses/spring2015motionplanning/index.html>`_
