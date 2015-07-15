@@ -32,6 +32,9 @@ Open-source Software
 * OpenGL Mathematics - http://glm.g-truc.net/0.9.6/index.html
 	*"OpenGL Mathematics (GLM) is a header only C++ mathematics library for graphics software based on the OpenGL Shading Language (GLSL) specifications."*
 
+* GSL - GNU Scientific Library - http://www.gnu.org/software/gsl/
+	*"The GNU Scientific Library (GSL) is a numerical library for C and C++ programmers. It is free software under the GNU General Public License. The library provides a wide range of mathematical routines such as random number generators, special functions and least-squares fitting. There are over 1000 functions in total with an extensive test suite."*
+
 **Operating Systems**
 ^^^^^^^^^^^^^^^^^^^^^
 
