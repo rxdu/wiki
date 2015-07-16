@@ -18,11 +18,23 @@ DH Representation
 Inverse Kinematics
 ^^^^^^^^^^^^^^^^^^
 
+Differential Kinematics
+^^^^^^^^^^^^^^^^^^^^^^^
+
 Jacobian
 ^^^^^^^^
 
 Dynamics
 --------
+
+Rigid Body Dynamics
+^^^^^^^^^^^^^^^^^^^
+
+Reading materials:
+
+`Rigid Body Dynamics <http://www.cs.cmu.edu/afs/cs/academic/class/16741-s07/www/oldlecture21.pdf>`_ by Matthew T. Mason
+
+`Euler's Equations <http://people.duke.edu/~ad159/files/p105/20.pdf>`_ by Adrian Down
 
 Newtonian Method
 ^^^^^^^^^^^^^^^^

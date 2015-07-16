@@ -35,6 +35,9 @@ Open-source Software
 * GSL - GNU Scientific Library - http://www.gnu.org/software/gsl/
 	*"The GNU Scientific Library (GSL) is a numerical library for C and C++ programmers. It is free software under the GNU General Public License. The library provides a wide range of mathematical routines such as random number generators, special functions and least-squares fitting. There are over 1000 functions in total with an extensive test suite."*
 
+* GNU Plot - http://www.gnuplot.info/
+	*"Gnuplot is a portable command-line driven graphing utility for Linux, OS/2, MS Windows, OSX, VMS, and many other platforms. The source code is copyrighted but freely distributed (i.e., you don't have to pay for it). It was originally created to allow scientists and students to visualize mathematical functions and data interactively, but has grown to support many non-interactive uses such as web scripting."*
+
 **Operating Systems**
 ^^^^^^^^^^^^^^^^^^^^^
 
