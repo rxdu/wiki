@@ -6,3 +6,24 @@ Mobile Robot Utilities
 
 2. Robot Simulator
 ------------------
+
+Robot Simulation in V-REP
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Create a robot model
+""""""""""""""""""""
+
+Dynamics considerations.
+
+Set up a simulation scene
+"""""""""""""""""""""""""
+
+Simulation environment.
+
+Connect V-REP with your application
+"""""""""""""""""""""""""""""""""""
+
+Reference:
+
+* `Connect V-REP and Python through Remote API <http://electricals.tk/what_does_a_inverter_do/04__Connecting_V_Rep_and_Python_through_/1119506/>`_
+* `Remote API modus operandi <http://www.coppeliarobotics.com/helpFiles/en/remoteApiModusOperandi.htm>`_
