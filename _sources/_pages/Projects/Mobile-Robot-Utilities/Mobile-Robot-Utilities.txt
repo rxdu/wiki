@@ -52,7 +52,7 @@ Reference:
 * `V-REP Doc - Designing dynamic simulations <http://www.coppeliarobotics.com/helpFiles/en/designingDynamicSimulations.htm>`_
 * `V-REP Tutorial - Importing and preparing rigid bodies tutorial <http://www.coppeliarobotics.com/helpFiles/en/rigidBodyTutorial.htm>`_
 * `V-REP Tutorial - External controller <http://www.coppeliarobotics.com/helpFiles/en/externalControllerTutorial.htm>`_
-* `Connect V-REP and Python through Remote API <http://electricals.tk/what_does_a_inverter_do/04__Connecting_V_Rep_and_Python_through_/1119506/>`_
+* `Youtube Video - Connect V-REP and Python through Remote API <http://electricals.tk/what_does_a_inverter_do/04__Connecting_V_Rep_and_Python_through_/1119506/>`_
 * `V-REP Doc - Remote API modus operandi <http://www.coppeliarobotics.com/helpFiles/en/remoteApiModusOperandi.htm>`_
 * `V-REP Doc - Means of communication in and around V-REP <http://www.coppeliarobotics.com/helpFiles/en/meansOfCommunication.htm>`_
 * `V-REP Doc - Writing code in and around V-REP <http://www.coppeliarobotics.com/helpFiles/en/writingCode.htm>`_
