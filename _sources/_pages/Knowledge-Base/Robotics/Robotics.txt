@@ -8,8 +8,8 @@ Robotics
 Kinematics
 ----------
 
-Forward Kinematics
-^^^^^^^^^^^^^^^^^^
+I. Forward Kinematics
+^^^^^^^^^^^^^^^^^^^^^
 
 DH Representation
 """""""""""""""""
@@ -17,22 +17,21 @@ DH Representation
 Attitude Representation
 """""""""""""""""""""""
 
-* `Representing Attitude: Euler Angles, Unit Quaternions, and Rotation Vectors <http://www.swarthmore.edu/NatSci/mzucker1/e27/diebel2006attitude.pdf>`_
+Reading materials:
 
-Inverse Kinematics
-^^^^^^^^^^^^^^^^^^
+`Representing Attitude: Euler Angles, Unit Quaternions, and Rotation Vectors <http://www.swarthmore.edu/NatSci/mzucker1/e27/diebel2006attitude.pdf>`_
 
-Differential Kinematics
-^^^^^^^^^^^^^^^^^^^^^^^
+II. Inverse Kinematics
+^^^^^^^^^^^^^^^^^^^^^
 
-Jacobian
-^^^^^^^^
+III. Differential Kinematics
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Dynamics
 --------
 
-Rigid Body Dynamics
-^^^^^^^^^^^^^^^^^^^
+I. Rigid Body Dynamics
+^^^^^^^^^^^^^^^^^^^^^^
 
 Reading materials:
 
@@ -40,12 +39,12 @@ Reading materials:
 
 `Euler's Equations <http://people.duke.edu/~ad159/files/p105/20.pdf>`_ by Adrian Down
 
-Newtonian Method
-^^^^^^^^^^^^^^^^
+II. Newtonian Method
+^^^^^^^^^^^^^^^^^^^^
 
 
-Lagrangian Method
-^^^^^^^^^^^^^^^^^
+III. Lagrangian Method
+^^^^^^^^^^^^^^^^^^^^^^
 
 Dynamic Control
 ---------------
