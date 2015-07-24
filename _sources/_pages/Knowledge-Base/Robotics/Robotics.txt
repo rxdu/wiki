@@ -14,6 +14,10 @@ Forward Kinematics
 DH Representation
 """""""""""""""""
 
+Attitude Representation
+"""""""""""""""""""""""
+
+* `Representing Attitude: Euler Angles, Unit Quaternions, and Rotation Vectors <http://www.swarthmore.edu/NatSci/mzucker1/e27/diebel2006attitude.pdf>`_
 
 Inverse Kinematics
 ^^^^^^^^^^^^^^^^^^
