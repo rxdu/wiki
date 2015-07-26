@@ -35,11 +35,11 @@ I. Rigid Body Dynamics
 
 Reading materials:
 
-`Rigid Body Dynamics <http://www.cs.cmu.edu/afs/cs/academic/class/16741-s07/www/oldlecture21.pdf>`_ by Matthew T. Mason
+`Rigid Body Dynamics <http://www.cs.cmu.edu/afs/cs/academic/class/16741-s07/www/oldlecture21.pdf>`_ by Matthew T. Mason (CMU)
 
-`Euler's Equations <http://people.duke.edu/~ad159/files/p105/20.pdf>`_ by Adrian Down
+`Euler's Equations <http://people.duke.edu/~ad159/files/p105/20.pdf>`_ by Adrian Down (Duke U)
 
-`Physically Based Modeling: Principles and Practice <https://www.cs.cmu.edu/~baraff/sigcourse/>`_
+`Physically Based Modeling: Principles and Practice <https://www.cs.cmu.edu/~baraff/sigcourse/>`_ by Andrew Witkin and David Baraff (CMU)
 
 
 II. Newtonian Method
