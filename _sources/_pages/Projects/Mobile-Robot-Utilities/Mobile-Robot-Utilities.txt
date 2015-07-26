@@ -1,6 +1,10 @@
 Mobile Robot Utilities
 ======================
 
+.. contents::
+   :depth: 2
+   :local:
+
 1. Inter-process Communication
 ------------------------------
 

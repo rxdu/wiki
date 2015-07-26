@@ -79,8 +79,15 @@
             
   <div class="section" id="build-your-own-quadrotor">
 <h1>Build Your Own Quadrotor<a class="headerlink" href="#build-your-own-quadrotor" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#system-components" id="id1">1. System Components</a></li>
+<li><a class="reference internal" href="#system-structure" id="id2">2. System Structure</a></li>
+<li><a class="reference internal" href="#interface-with-mpu9250" id="id3">3. Interface with MPU9250</a></li>
+</ul>
+</div>
 <div class="section" id="system-components">
-<h2>1. System Components<a class="headerlink" href="#system-components" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id1">1. System Components</a><a class="headerlink" href="#system-components" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><dl class="first docutils">
 <dt>Hardware</dt>
@@ -108,7 +115,7 @@
 </ul>
 </div>
 <div class="section" id="system-structure">
-<h2>2. System Structure<a class="headerlink" href="#system-structure" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id2">2. System Structure</a><a class="headerlink" href="#system-structure" title="Permalink to this headline">¶</a></h2>
 <p><strong>Low level controller (STM32F405)</strong></p>
 <ul class="simple">
 <li>Acquire sensor data (IMU)</li>
@@ -134,7 +141,7 @@
 <p>(To be added)</p>
 </div>
 <div class="section" id="interface-with-mpu9250">
-<h2>3. Interface with MPU9250<a class="headerlink" href="#interface-with-mpu9250" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id3">3. Interface with MPU9250</a><a class="headerlink" href="#interface-with-mpu9250" title="Permalink to this headline">¶</a></h2>
 <p>There are two ways to communicate with MPU9250, SPI or I2C. Since SPI is faster and simpler in terms of signal timing (it uses more pins though), I decided to use the SPI interface.</p>
 <a class="reference internal image-reference" href="../../../_images/mpu9250_whoami.jpg"><img alt="../../../_images/mpu9250_whoami.jpg" src="../../../_images/mpu9250_whoami.jpg" style="width: 650px;" /></a>
 <p>To acquire data from MPU9250, the first thing to do is to establish the communication between the MCU and MPU9250. The internal register WHO_AM_I can be used for this check. The above screenshot is captured by a logic analyzer, showing this &#8220;handshake&#8221;: MCU sends the address of WHO_AM_I (0x80 | 0x75 = 0xF5 for reading from register) and gets 0x71 as a reply.</p>

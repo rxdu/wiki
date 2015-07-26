@@ -79,8 +79,18 @@
             
   <div class="section" id="mobile-robot-utilities">
 <h1>Mobile Robot Utilities<a class="headerlink" href="#mobile-robot-utilities" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#inter-process-communication" id="id5">1. Inter-process Communication</a></li>
+<li><a class="reference internal" href="#logging-tools" id="id6">2. Logging Tools</a></li>
+<li><a class="reference internal" href="#robot-simulator" id="id7">3. Robot Simulator</a><ul>
+<li><a class="reference internal" href="#robot-simulation-in-v-rep" id="id8">Robot Simulation in V-REP</a></li>
+</ul>
+</li>
+</ul>
+</div>
 <div class="section" id="inter-process-communication">
-<h2>1. Inter-process Communication<a class="headerlink" href="#inter-process-communication" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id5">1. Inter-process Communication</a><a class="headerlink" href="#inter-process-communication" title="Permalink to this headline">¶</a></h2>
 <p>ROS provides an inter-process communication framework that can be used very easily. However it&#8217;s built around TCP/IP and works better in a reliable network. For mobile robots, reliable network often cannot be guaranteed since mobile robots usually need to work far away from the operator and high-speed wired network is impossible in most cases. Lightweight Communications and Marshalling (LCM) was developed by MIT, originally for use in the DARPA autonomous vehicle competition. It uses UDP protocol and optimized for systems that high-bandwidth and low latency are critical. Thus it&#8217;s chosen as the default IPC framework.</p>
 <ul class="simple">
 <li><a class="reference external" href="https://lcm-proj.github.io/">LCM wiki</a></li>
@@ -88,12 +98,12 @@
 </ul>
 </div>
 <div class="section" id="logging-tools">
-<h2>2. Logging Tools<a class="headerlink" href="#logging-tools" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id6">2. Logging Tools</a><a class="headerlink" href="#logging-tools" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="robot-simulator">
-<h2>3. Robot Simulator<a class="headerlink" href="#robot-simulator" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id7">3. Robot Simulator</a><a class="headerlink" href="#robot-simulator" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="robot-simulation-in-v-rep">
-<h3>Robot Simulation in V-REP<a class="headerlink" href="#robot-simulation-in-v-rep" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id8">Robot Simulation in V-REP</a><a class="headerlink" href="#robot-simulation-in-v-rep" title="Permalink to this headline">¶</a></h3>
 <p>V-REP (virtual robot experimentation platform) is a dual-licensed software. It provides free educational license for the pro-edu version and source code with GNU GPL license. Compared to Gazebo, V-REP is self-contained (means less dependencies), cross-platform (linux/windows/mac) and feature rich (more robots/sensors supported out-box). Moreover it&#8217;s more user-friendly and requires less time to set up your customized robot.</p>
 <p>Before starting work with V-REP, I would suggest you to &#8220;play with&#8221; it for a while. Try out different mobile/non-mobile robots and explore what&#8217;s available from the &#8220;Model Browser&#8221;. Watch this <a class="reference external" href="https://www.youtube.com/watch?v=xI-ZEewIzzI">video</a>. But at this point don&#8217;t try to grasp every detail yet. Just try to get yourself familiar with the UI and learn how to change the position/orientation of the robot/component inside the simulation scene.</p>
 <div class="section" id="understand-the-simulation-process">
