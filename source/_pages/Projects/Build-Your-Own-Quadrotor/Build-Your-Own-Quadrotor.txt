@@ -1,6 +1,10 @@
 Build Your Own Quadrotor
 ========================
 
+.. contents::
+   :depth: 2
+   :local:
+
 1. System Components
 --------------------
 
