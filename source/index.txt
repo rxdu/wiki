@@ -14,7 +14,7 @@ ________
    :maxdepth: 1
 
    /_pages/Projects/Build-Your-Own-Quadrotor/Build-Your-Own-Quadrotor
-   /_pages/Projects/Mobile-Robot-Utilities/Mobile-Robot-Utilities
+   /_pages/Projects/Mobile-Robot-Toolkit/Mobile-Robot-Toolkit
 
 Resource
 ========
