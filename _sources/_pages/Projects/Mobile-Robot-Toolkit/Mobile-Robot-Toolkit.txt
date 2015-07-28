@@ -1,0 +1,101 @@
+Mobile Robot Toolkit
+======================
+
+.. contents::
+   :depth: 2
+   :local:
+
+1. Inter-process Communication
+------------------------------
+
+ROS provides an inter-process communication framework that can be used very easily. However it's built around TCP/IP and works better in a reliable network. For mobile robots, reliable network often cannot be guaranteed since mobile robots usually need to work far away from the operator and high-speed wired network is impossible in most cases. Lightweight Communications and Marshalling (LCM) was developed by MIT, originally for use in the DARPA autonomous vehicle competition. It uses UDP protocol and optimized for systems that high-bandwidth and low latency are critical. Thus it's chosen as the default IPC framework.
+
+* `LCM wiki <https://lcm-proj.github.io/>`_
+* `LCM github repo <https://github.com/lcm-proj/lcm>`_
+
+2. Logging Tools
+----------------
+
+This `tech note <http://rdu.im/c/c++/programming/2015/05/26/C-and-C-plus-plus-logging-libraries.html>`_ provides a list of available C/C++ logging frameworks and a brief comparison among them. The final decision I made was to start with g3log. It's open-source, lightweight, asynchronous and in active maintenance. 
+
+* `g3log github repo <https://github.com/KjellKod/g3log>`_
+
+3. Robot Simulator
+------------------
+
+Understand the Simulation Process
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+(May not be 100% accurate, to be verified)
+
+Essentially a robot simulation process is to calculate the system state using it's mathematic model with given initial conditions and inputs. Generally we use ordinary differential equations (ODEs) to describe our robots. By solving for the system states from the set of ODEs at discrete time (0, 1*ts, 2*ts, ...) , we can get the simulated behavior of the robot in the whole simulated period. 
+
+Similarly a physics engine of a simulator can calculate the state of a system using some kind of numerical methods. We can set a step size (|t_phy_s|) for the physics engine so that we can get the calculated system state at time |t_phy_s|, |t_phy_s| * 2, |t_phy_s| * 3 ... consecutively when we call the physics engine to do the calculation. If we invoke the calculation at |f_phy| Hz with the step size of |t_phy_s|, it means we will have the system state simulated from time 0 to |f_phy| * |t_phy_s| in 1 second. For example |f_phy| = 1k Hz, and |t_phy_s| = 1ms, after the last calculation iteration we will get the system state at t = 1k * 1ms = 1s. Since the wall time of the real world elapses for 1s and the simulated system state also advances for 1s, we can say that the real-time factor is 1. 
+
+.. |t_phy_s| replace:: t\ :sub:`phy_s`
+.. |f_phy| replace:: f\ :sub:`phy`
+
+In an extreme condition, if we call the physics engine to calculate very fast and we use a big step size, then by the end of the 1s simulation period, we will get the calculated system state at time |t_s| > 1s. This means time in the simulator elapses faster than time in the real world, thus real-time factor is greater than 1.
+
+.. |t_s| replace:: t\ :sub:`sim_end`
+
+Of course, limited by the computational power of the computer, the update rate of the physics engine cannot be infinitely high. If a system is extremely complex and the the physics engine cannot get a solution within 1s, then even if we set the step size to be 1s (which is pretty large when simulating a process), we still cannot get a real time factor to be equal or greater than 1.
+
+As to the simulation step, it involves sensing and rendering. The physics engine can run at a much higher rate while we don't necessarily update the result to the user at each step. Hence we may have the physics engine run at 1kHz in the background and only refresh the simulation scene for the user at 50Hz. 
+
+Reference:
+
+* `Gazebo Document - Modifying a world : Physics Properties <http://gazebosim.org/tutorials/?tut=modifying_world>`_
+* `V-REP Document - Simulation <http://www.coppeliarobotics.com/helpFiles/en/simulation.htm>`_
+
+Robot Simulation in V-REP
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+V-REP (virtual robot experimentation platform) is a dual-licensed software. It provides free educational license for the pro-edu version and source code with GNU GPL license. Compared to Gazebo, V-REP is self-contained (means less dependencies), cross-platform (linux/windows/mac) and feature rich (more robots/sensors supported out-box). Moreover it's more user-friendly and requires less time to set up your customized robot.
+
+Before starting work with V-REP, I would suggest you to "play with" it for a while. Try out different mobile/non-mobile robots and explore what's available from the "Model Browser". Watch this `video <https://www.youtube.com/watch?v=xI-ZEewIzzI>`_. But at this point don't try to grasp every detail yet. Just try to get yourself familiar with the UI and learn how to change the position/orientation of the robot/component inside the simulation scene.
+
+Key components of a simulation in V-REP 
+"""""""""""""""""""""""""""""""""""""""
+
+There are mainly two parts that you need to take care of for setting up a simulator of your robot. The first part is about the robot. What you need to prepare include the dynamic model (not the mathematic one, but a simplified geometrical model for the physics engine) and the robot mechanical model (a more detailed one compared to the dynamic model for visualization). If you want your robot look better in the simulator, you may also want to prepare texture files, extra 3D components (for example better-looking wheels for your mobile robot). 
+
+The second part is the simulated environment. In V-REP, a simulated environment is called a scene. A scene may include robots, sensors and other elements like furniture, office items. Each one of them is called an object. V-REP makes heavy use of Lua scripts. Almost all objects in the simulation scene are attached with one or more scripts, which are coordinated by the main script which is attached to the scene. The main script controls the "actuation"-"sensing"-"display" process of each object in a simulation step repeatedly to get the simulation running. Refer to this `article <http://www.coppeliarobotics.com/helpFiles/en/mainScript.htm>`_ for more details. As mentioned before, each object is attached with a script. V-REP supports two types of scripts: threaded and non-threaded. In most cases a non-threaded script is used and this type of scripts follows the "actuation"-"sensing"-"display" steps, controlled by the main script. If you want to have more control in addition to the these controlled steps and do something in parallel with the main simulation process, you can do that in a threaded script. Read this `article <http://www.coppeliarobotics.com/helpFiles/en/childScripts.htm>`_ about child scripts.
+
+After getting these two ready, the next thing you need to figure out is how to interface with the simulation scene, such as acquiring sensor data and sending motor commands. Once your robot is simulated in a scene and you can also talk with your robot, you can play with it for whatever purposes, like implementing your dynamic control algothrim or testing the mapping and localization function of your robot, just like you do with your real robot.
+
+At this point, you should have got a rough idea about how V-REP works. For most of the components provided by V-REP, if they don't behave as you desire it to be. Probably you will just need to tweak the attached script. For example, if you want to change the behavior of the propeller module, you just need to open the script, locate to the actuation part and adjust the force/torque formula it use.
+
+Create a robot model
+""""""""""""""""""""
+
+If your robot is very simple (say it only consists of a few primitive shapes - cube, sphere ...), you can start creating your robot right in V-REP. And you can use these shapes for both visualization and dynamics simulation. But if your robot is more complicated, you might want to import your mechanical models (.stl/.obj/.dxf files) to V-REP. In this case, the visualization part should be straightforward since your simulated robot is created from the design file of the real robot. However for the physics engine, these (usually non-convex) shapes can be computational in-efficient and potentially unstable. So it's preferred that you can create a simplified geometrical models for the dynamics calculation. Refer to this `article <http://www.coppeliarobotics.com/helpFiles/en/designingDynamicSimulations.htm>`_ for more details.
+
+In V-REP, you can use put visualization models and dynamics models in different layers so that you can just inspect the part that you're interested in. In V-REP, you need to decide two properties for all parts of your robot: static/non-static, respondable/non-respondable. The basic idea is that non-static parts are considered in the calculation of the physics engine and respondable parts are considered in the collision checking, sensor detection etc. The article " Designing dynamic simulations" describes this in details. In general, you should set your dynamic models to be non-static and respondable, while for the more detailed visualization models they should be static. In addition, you should also set parameters such as mass/inertia properly to the dynamics models. This may require you to know the mathematic model of your robot.
+
+Set up a simulation scene
+"""""""""""""""""""""""""
+
+Once your robot is set up, you can now add more sensors to it. And according to your application, you can even set up different environments such as an office room or a dessert area. Again you may need to tweak the script of the object you add to the scene to make it behave like what you want.
+
+Connect V-REP with your application
+"""""""""""""""""""""""""""""""""""
+
+Now you've got a robot simulated and running in V-REP. What's next? You probably want to read sensor data from the simulated robot and do control over it. That's the main point you want to set up a simulator for it.
+
+V-REP provides a few methods to do so. Basically there are two types of interfacing methods: internal communication and inter-process communication. Refer to this * `tutorial <http://www.coppeliarobotics.com/helpFiles/en/externalControllerTutorial.htm>`_ to know more about the advantages and disadvantages of each method. If you want to use similar code to control both the simulated robot and the real robot, the remote API may be the best one to use. The work flow is that you first start a server when you start the simulation, then call the remote API functions in your normal control code to read sensor data and send motor commands. Your code acts as a client respect to the server. Watch this nice `video <http://electricals.tk/what_does_a_inverter_do/04__Connecting_V_Rep_and_Python_through_/1119506/>`_ for an example and read this `article <http://www.coppeliarobotics.com/helpFiles/en/remoteApiModusOperandi.htm>`_ to know more about the remote API. At this point, you should be able to have a much better understanding of these articles: `article1 <http://www.coppeliarobotics.com/helpFiles/en/meansOfCommunication.htm>`_, `article2 <http://www.coppeliarobotics.com/helpFiles/en/writingCode.htm>`_.
+
+Another point that's worthy of mentioning is that there are different ways of communication between sensors and actuators as discussed in "Means of communication in and around V-REP". The regular API provides support for all of them, but it's not the case for the remote API. If a sensor is using tube to publish its data and you want to get the data via the remote API. One easy solution is that you can just modify the script of that sensor and use signals to send out data, which is a way that both regular API and remote API support.
+
+Reference:
+
+* `Youtube Video - Line-Following Robot | V-Rep Tutorial <https://www.youtube.com/watch?v=xI-ZEewIzzI>`_
+* `V-REP Doc - The main script <http://www.coppeliarobotics.com/helpFiles/en/mainScript.htm>`_
+* `V-REP Doc - Child scripts <http://www.coppeliarobotics.com/helpFiles/en/childScripts.htm>`_
+* `V-REP Doc - Designing dynamic simulations <http://www.coppeliarobotics.com/helpFiles/en/designingDynamicSimulations.htm>`_
+* `V-REP Tutorial - Importing and preparing rigid bodies tutorial <http://www.coppeliarobotics.com/helpFiles/en/rigidBodyTutorial.htm>`_
+* `V-REP Tutorial - External controller <http://www.coppeliarobotics.com/helpFiles/en/externalControllerTutorial.htm>`_
+* `Youtube Video - Connect V-REP and Python through Remote API <http://electricals.tk/what_does_a_inverter_do/04__Connecting_V_Rep_and_Python_through_/1119506/>`_
+* `V-REP Doc - Remote API modus operandi <http://www.coppeliarobotics.com/helpFiles/en/remoteApiModusOperandi.htm>`_
+* `V-REP Doc - Means of communication in and around V-REP <http://www.coppeliarobotics.com/helpFiles/en/meansOfCommunication.htm>`_
+* `V-REP Doc - Writing code in and around V-REP <http://www.coppeliarobotics.com/helpFiles/en/writingCode.htm>`_

@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-47255965-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <!-- <title>Mobile Robot Toolkit &mdash; RDU-Wiki 1.0 documentation</title> -->
+    <title>Mobile Robot Toolkit</title>
+    
+    <link rel="stylesheet" href="../../../_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Dancing+Script:700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Courgette' rel='stylesheet' type='text/css'>
+    
+    <div class="rduhome"  role="contentinfo">
+		 <a href="http://rdu.im" style="font-family: 'Courgette', serif;" >Return to Ruixiang's Home Page</a>
+	</div>
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="RDU-Wiki 1.0 documentation" href="../../../index.html" />
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../../../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head>
+  <body role="document">
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <!-- <li class="nav-item nav-item-0"><a href="../../../index.html">RDU-Wiki 1.0 documentation</a> &raquo;</li> -->
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Main Page</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="mobile-robot-toolkit">
+<h1>Mobile Robot Toolkit<a class="headerlink" href="#mobile-robot-toolkit" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#inter-process-communication" id="id5">1. Inter-process Communication</a></li>
+<li><a class="reference internal" href="#logging-tools" id="id6">2. Logging Tools</a></li>
+<li><a class="reference internal" href="#robot-simulator" id="id7">3. Robot Simulator</a><ul>
+<li><a class="reference internal" href="#understand-the-simulation-process" id="id8">Understand the Simulation Process</a></li>
+<li><a class="reference internal" href="#robot-simulation-in-v-rep" id="id9">Robot Simulation in V-REP</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="inter-process-communication">
+<h2><a class="toc-backref" href="#id5">1. Inter-process Communication</a><a class="headerlink" href="#inter-process-communication" title="Permalink to this headline">¶</a></h2>
+<p>ROS provides an inter-process communication framework that can be used very easily. However it&#8217;s built around TCP/IP and works better in a reliable network. For mobile robots, reliable network often cannot be guaranteed since mobile robots usually need to work far away from the operator and high-speed wired network is impossible in most cases. Lightweight Communications and Marshalling (LCM) was developed by MIT, originally for use in the DARPA autonomous vehicle competition. It uses UDP protocol and optimized for systems that high-bandwidth and low latency are critical. Thus it&#8217;s chosen as the default IPC framework.</p>
+<ul class="simple">
+<li><a class="reference external" href="https://lcm-proj.github.io/">LCM wiki</a></li>
+<li><a class="reference external" href="https://github.com/lcm-proj/lcm">LCM github repo</a></li>
+</ul>
+</div>
+<div class="section" id="logging-tools">
+<h2><a class="toc-backref" href="#id6">2. Logging Tools</a><a class="headerlink" href="#logging-tools" title="Permalink to this headline">¶</a></h2>
+<p>This <a class="reference external" href="http://rdu.im/c/c++/programming/2015/05/26/C-and-C-plus-plus-logging-libraries.html">tech note</a> provides a list of available C/C++ logging frameworks and a brief comparison among them. The final decision I made was to start with g3log. It&#8217;s open-source, lightweight, asynchronous and in active maintenance.</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/KjellKod/g3log">g3log github repo</a></li>
+</ul>
+</div>
+<div class="section" id="robot-simulator">
+<h2><a class="toc-backref" href="#id7">3. Robot Simulator</a><a class="headerlink" href="#robot-simulator" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="understand-the-simulation-process">
+<h3><a class="toc-backref" href="#id8">Understand the Simulation Process</a><a class="headerlink" href="#understand-the-simulation-process" title="Permalink to this headline">¶</a></h3>
+<p>(May not be 100% accurate, to be verified)</p>
+<p>Essentially a robot simulation process is to calculate the system state using it&#8217;s mathematic model with given initial conditions and inputs. Generally we use ordinary differential equations (ODEs) to describe our robots. By solving for the system states from the set of ODEs at discrete time (0, 1*ts, 2*ts, ...) , we can get the simulated behavior of the robot in the whole simulated period.</p>
+<p>Similarly a physics engine of a simulator can calculate the state of a system using some kind of numerical methods. We can set a step size (t<sub>phy_s</sub>) for the physics engine so that we can get the calculated system state at time t<sub>phy_s</sub>, t<sub>phy_s</sub> * 2, t<sub>phy_s</sub> * 3 ... consecutively when we call the physics engine to do the calculation. If we invoke the calculation at f<sub>phy</sub> Hz with the step size of t<sub>phy_s</sub>, it means we will have the system state simulated from time 0 to f<sub>phy</sub> * t<sub>phy_s</sub> in 1 second. For example f<sub>phy</sub> = 1k Hz, and t<sub>phy_s</sub> = 1ms, after the last calculation iteration we will get the system state at t = 1k * 1ms = 1s. Since the wall time of the real world elapses for 1s and the simulated system state also advances for 1s, we can say that the real-time factor is 1.</p>
+<p>In an extreme condition, if we call the physics engine to calculate very fast and we use a big step size, then by the end of the 1s simulation period, we will get the calculated system state at time t<sub>sim_end</sub> &gt; 1s. This means time in the simulator elapses faster than time in the real world, thus real-time factor is greater than 1.</p>
+<p>Of course, limited by the computational power of the computer, the update rate of the physics engine cannot be infinitely high. If a system is extremely complex and the the physics engine cannot get a solution within 1s, then even if we set the step size to be 1s (which is pretty large when simulating a process), we still cannot get a real time factor to be equal or greater than 1.</p>
+<p>As to the simulation step, it involves sensing and rendering. The physics engine can run at a much higher rate while we don&#8217;t necessarily update the result to the user at each step. Hence we may have the physics engine run at 1kHz in the background and only refresh the simulation scene for the user at 50Hz.</p>
+<p>Reference:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://gazebosim.org/tutorials/?tut=modifying_world">Gazebo Document - Modifying a world : Physics Properties</a></li>
+<li><a class="reference external" href="http://www.coppeliarobotics.com/helpFiles/en/simulation.htm">V-REP Document - Simulation</a></li>
+</ul>
+</div>
+<div class="section" id="robot-simulation-in-v-rep">
+<h3><a class="toc-backref" href="#id9">Robot Simulation in V-REP</a><a class="headerlink" href="#robot-simulation-in-v-rep" title="Permalink to this headline">¶</a></h3>
+<p>V-REP (virtual robot experimentation platform) is a dual-licensed software. It provides free educational license for the pro-edu version and source code with GNU GPL license. Compared to Gazebo, V-REP is self-contained (means less dependencies), cross-platform (linux/windows/mac) and feature rich (more robots/sensors supported out-box). Moreover it&#8217;s more user-friendly and requires less time to set up your customized robot.</p>
+<p>Before starting work with V-REP, I would suggest you to &#8220;play with&#8221; it for a while. Try out different mobile/non-mobile robots and explore what&#8217;s available from the &#8220;Model Browser&#8221;. Watch this <a class="reference external" href="https://www.youtube.com/watch?v=xI-ZEewIzzI">video</a>. But at this point don&#8217;t try to grasp every detail yet. Just try to get yourself familiar with the UI and learn how to change the position/orientation of the robot/component inside the simulation scene.</p>
+<div class="section" id="key-components-of-a-simulation-in-v-rep">
+<h4>Key components of a simulation in V-REP<a class="headerlink" href="#key-components-of-a-simulation-in-v-rep" title="Permalink to this headline">¶</a></h4>
+<p>There are mainly two parts that you need to take care of for setting up a simulator of your robot. The first part is about the robot. What you need to prepare include the dynamic model (not the mathematic one, but a simplified geometrical model for the physics engine) and the robot mechanical model (a more detailed one compared to the dynamic model for visualization). If you want your robot look better in the simulator, you may also want to prepare texture files, extra 3D components (for example better-looking wheels for your mobile robot).</p>
+<p>The second part is the simulated environment. In V-REP, a simulated environment is called a scene. A scene may include robots, sensors and other elements like furniture, office items. Each one of them is called an object. V-REP makes heavy use of Lua scripts. Almost all objects in the simulation scene are attached with one or more scripts, which are coordinated by the main script which is attached to the scene. The main script controls the &#8220;actuation&#8221;-&#8220;sensing&#8221;-&#8220;display&#8221; process of each object in a simulation step repeatedly to get the simulation running. Refer to this <a class="reference external" href="http://www.coppeliarobotics.com/helpFiles/en/mainScript.htm">article</a> for more details. As mentioned before, each object is attached with a script. V-REP supports two types of scripts: threaded and non-threaded. In most cases a non-threaded script is used and this type of scripts follows the &#8220;actuation&#8221;-&#8220;sensing&#8221;-&#8220;display&#8221; steps, controlled by the main script. If you want to have more control in addition to the these controlled steps and do something in parallel with the main simulation process, you can do that in a threaded script. Read this <a class="reference external" href="http://www.coppeliarobotics.com/helpFiles/en/childScripts.htm">article</a> about child scripts.</p>
+<p>After getting these two ready, the next thing you need to figure out is how to interface with the simulation scene, such as acquiring sensor data and sending motor commands. Once your robot is simulated in a scene and you can also talk with your robot, you can play with it for whatever purposes, like implementing your dynamic control algothrim or testing the mapping and localization function of your robot, just like you do with your real robot.</p>
+<p>At this point, you should have got a rough idea about how V-REP works. For most of the components provided by V-REP, if they don&#8217;t behave as you desire it to be. Probably you will just need to tweak the attached script. For example, if you want to change the behavior of the propeller module, you just need to open the script, locate to the actuation part and adjust the force/torque formula it use.</p>
+</div>
+<div class="section" id="create-a-robot-model">
+<h4>Create a robot model<a class="headerlink" href="#create-a-robot-model" title="Permalink to this headline">¶</a></h4>
+<p>If your robot is very simple (say it only consists of a few primitive shapes - cube, sphere ...), you can start creating your robot right in V-REP. And you can use these shapes for both visualization and dynamics simulation. But if your robot is more complicated, you might want to import your mechanical models (.stl/.obj/.dxf files) to V-REP. In this case, the visualization part should be straightforward since your simulated robot is created from the design file of the real robot. However for the physics engine, these (usually non-convex) shapes can be computational in-efficient and potentially unstable. So it&#8217;s preferred that you can create a simplified geometrical models for the dynamics calculation. Refer to this <a class="reference external" href="http://www.coppeliarobotics.com/helpFiles/en/designingDynamicSimulations.htm">article</a> for more details.</p>
+<p>In V-REP, you can use put visualization models and dynamics models in different layers so that you can just inspect the part that you&#8217;re interested in. In V-REP, you need to decide two properties for all parts of your robot: static/non-static, respondable/non-respondable. The basic idea is that non-static parts are considered in the calculation of the physics engine and respondable parts are considered in the collision checking, sensor detection etc. The article &#8221; Designing dynamic simulations&#8221; describes this in details. In general, you should set your dynamic models to be non-static and respondable, while for the more detailed visualization models they should be static. In addition, you should also set parameters such as mass/inertia properly to the dynamics models. This may require you to know the mathematic model of your robot.</p>
+</div>
+<div class="section" id="set-up-a-simulation-scene">
+<h4>Set up a simulation scene<a class="headerlink" href="#set-up-a-simulation-scene" title="Permalink to this headline">¶</a></h4>
+<p>Once your robot is set up, you can now add more sensors to it. And according to your application, you can even set up different environments such as an office room or a dessert area. Again you may need to tweak the script of the object you add to the scene to make it behave like what you want.</p>
+</div>
+<div class="section" id="connect-v-rep-with-your-application">
+<h4>Connect V-REP with your application<a class="headerlink" href="#connect-v-rep-with-your-application" title="Permalink to this headline">¶</a></h4>
+<p>Now you&#8217;ve got a robot simulated and running in V-REP. What&#8217;s next? You probably want to read sensor data from the simulated robot and do control over it. That&#8217;s the main point you want to set up a simulator for it.</p>
+<p>V-REP provides a few methods to do so. Basically there are two types of interfacing methods: internal communication and inter-process communication. Refer to this * <a class="reference external" href="http://www.coppeliarobotics.com/helpFiles/en/externalControllerTutorial.htm">tutorial</a> to know more about the advantages and disadvantages of each method. If you want to use similar code to control both the simulated robot and the real robot, the remote API may be the best one to use. The work flow is that you first start a server when you start the simulation, then call the remote API functions in your normal control code to read sensor data and send motor commands. Your code acts as a client respect to the server. Watch this nice <a class="reference external" href="http://electricals.tk/what_does_a_inverter_do/04__Connecting_V_Rep_and_Python_through_/1119506/">video</a> for an example and read this <a class="reference external" href="http://www.coppeliarobotics.com/helpFiles/en/remoteApiModusOperandi.htm">article</a> to know more about the remote API. At this point, you should be able to have a much better understanding of these articles: <a class="reference external" href="http://www.coppeliarobotics.com/helpFiles/en/meansOfCommunication.htm">article1</a>, <a class="reference external" href="http://www.coppeliarobotics.com/helpFiles/en/writingCode.htm">article2</a>.</p>
+<p>Another point that&#8217;s worthy of mentioning is that there are different ways of communication between sensors and actuators as discussed in &#8220;Means of communication in and around V-REP&#8221;. The regular API provides support for all of them, but it&#8217;s not the case for the remote API. If a sensor is using tube to publish its data and you want to get the data via the remote API. One easy solution is that you can just modify the script of that sensor and use signals to send out data, which is a way that both regular API and remote API support.</p>
+<p>Reference:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://www.youtube.com/watch?v=xI-ZEewIzzI">Youtube Video - Line-Following Robot | V-Rep Tutorial</a></li>
+<li><a class="reference external" href="http://www.coppeliarobotics.com/helpFiles/en/mainScript.htm">V-REP Doc - The main script</a></li>
+<li><a class="reference external" href="http://www.coppeliarobotics.com/helpFiles/en/childScripts.htm">V-REP Doc - Child scripts</a></li>
+<li><a class="reference external" href="http://www.coppeliarobotics.com/helpFiles/en/designingDynamicSimulations.htm">V-REP Doc - Designing dynamic simulations</a></li>
+<li><a class="reference external" href="http://www.coppeliarobotics.com/helpFiles/en/rigidBodyTutorial.htm">V-REP Tutorial - Importing and preparing rigid bodies tutorial</a></li>
+<li><a class="reference external" href="http://www.coppeliarobotics.com/helpFiles/en/externalControllerTutorial.htm">V-REP Tutorial - External controller</a></li>
+<li><a class="reference external" href="http://electricals.tk/what_does_a_inverter_do/04__Connecting_V_Rep_and_Python_through_/1119506/">Youtube Video - Connect V-REP and Python through Remote API</a></li>
+<li><a class="reference external" href="http://www.coppeliarobotics.com/helpFiles/en/remoteApiModusOperandi.htm">V-REP Doc - Remote API modus operandi</a></li>
+<li><a class="reference external" href="http://www.coppeliarobotics.com/helpFiles/en/meansOfCommunication.htm">V-REP Doc - Means of communication in and around V-REP</a></li>
+<li><a class="reference external" href="http://www.coppeliarobotics.com/helpFiles/en/writingCode.htm">V-REP Doc - Writing code in and around V-REP</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Mobile Robot Toolkit</a><ul>
+<li><a class="reference internal" href="#inter-process-communication">1. Inter-process Communication</a></li>
+<li><a class="reference internal" href="#logging-tools">2. Logging Tools</a></li>
+<li><a class="reference internal" href="#robot-simulator">3. Robot Simulator</a><ul>
+<li><a class="reference internal" href="#understand-the-simulation-process">Understand the Simulation Process</a></li>
+<li><a class="reference internal" href="#robot-simulation-in-v-rep">Robot Simulation in V-REP</a><ul>
+<li><a class="reference internal" href="#key-components-of-a-simulation-in-v-rep">Key components of a simulation in V-REP</a></li>
+<li><a class="reference internal" href="#create-a-robot-model">Create a robot model</a></li>
+<li><a class="reference internal" href="#set-up-a-simulation-scene">Set up a simulation scene</a></li>
+<li><a class="reference internal" href="#connect-v-rep-with-your-application">Connect V-REP with your application</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <!-- <li class="nav-item nav-item-0"><a href="../../../index.html">RDU-Wiki 1.0 documentation</a> &raquo;</li> -->
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Main Page</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2015, Ruixiang Du.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>
