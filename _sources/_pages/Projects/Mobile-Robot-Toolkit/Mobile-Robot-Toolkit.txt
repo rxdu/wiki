@@ -20,7 +20,16 @@ This `tech note <http://rdu.im/c/c++/programming/2015/05/26/C-and-C-plus-plus-lo
 
 * `g3log github repo <https://github.com/KjellKod/g3log>`_
 
-3. Robot Simulator
+3. Log Analysis
+---------------
+
+After you get a log using the logger, you may need a tool to help you analyze it, especially when you're logging sensor data/system states of the robot to help you do the control. It doesn't give you much useful information by just looking at a full screen of numbers in a log file.
+
+A easy and quick way is to write a Matlab/Octave program. The basic steps may include reading data from the file, doing extra calculation with the data and plot data in 2D/3D. In some cases, say you're trying to tune a controller with a simulator, you may also want your log analyzer to pick up the latest log automatically so that you can do the simulation/logging/analysis process seamlessly.
+
+You can also use C/C++ to write your own log analyzer. `GNU Plot <http://www.gnuplot.info/>`_ is a light-weight library for data plotting. 
+
+4. Robot Simulator
 ------------------
 
 Understand the Simulation Process
