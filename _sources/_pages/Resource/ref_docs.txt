@@ -1,0 +1,51 @@
+Reference Docs
+==============
+
+Online Articles
+---------------
+
+Programming
+^^^^^^^^^^^
+
+* `Stanford CS Education Library <http://cslibrary.stanford.edu/>`_
+* `C++ FAQ <https://isocpp.org/faq>`_
+* `Operating Systems: Three Easy Pieces <http://pages.cs.wisc.edu/~remzi/OSTEP/>`_
+
+Embedded System
+^^^^^^^^^^^^^^^
+
+* `Embedded Programming using the GNU Toolchain <http://www.bravegnu.org/gnu-eprog/>`_
+* `TEXT, DATA and BSS: Code and Data Size Explained <http://mcuoneclipse.com/2013/04/14/text-data-and-bss-code-and-data-size-explained/>`_
+
+
+Robotics
+^^^^^^^^
+
+The following articles can help you to understand rotations and how quaternions can be used to express rotations.
+
+* `Understanding Rotations <http://www.essentialmath.com/GDC2012/GDC2012_JMV_Rotations.pdf>`_
+* `Understanding Quaternions <http://3dgep.com/understanding-quaternions/>`_
+* `Quaternions and Rotations <http://run.usc.edu/cs520-s12/quaternions/quaternions-cs520.pdf>`_
+* `Quaternions: How <http://physicsforgames.blogspot.com/2010/02/quaternions.html>`_
+
+Book List
+----------
+
+Robotics and Artificial Intelligence
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* `Robot Modeling and Control <http://www.wiley.com/WileyCDA/WileyTitle/productCd-EHEP000518.html>`_, by Mark W. Spong, Seth Hutchinson, M. Vidyasagar
+* `Introduction to Autonomous Mobile Robots <http://www.mobilerobots.ethz.ch/>`_, by Roland Siegwart, Illah R. Nourbakhsh, Davide Scaramuzza
+* `Control of Robot Manipulators in Joint Space <http://www.springer.com/us/book/9781852339944>`_, by Rafael Kelly, Victor Santibáñez Davila, Julio Antonio Loría Perez
+* `Robotics: Modelling, Planning and Control <http://www.springer.com/us/book/9781846286414>`_, by Bruno Siciliano, Lorenzo Sciavicco, Luigi Villani, Giuseppe Oriolo
+
+* `Planning Algorithms <http://planning.cs.uiuc.edu/>`_, by Steven M. LaValle
+* `Probabilistic Robotics <http://www.probabilistic-robotics.org/>`_, by Sebastian Thrun, Dieter Fox
+* `Principles of Robot Motion: Theory, Algorithms, and Implementations <http://biorobotics.ri.cmu.edu/book/>`_, by H. Choset, K. M. Lynch, S. Hutchinson, G. Kantor, W. Burgard, L. E. Kavraki and S. Thrun
+
+
+Computer Science
+^^^^^^^^^^^^^^^
+
+* `Artificial Intelligence: A Modern Approach <http://aima.cs.berkeley.edu/>`_, by Stuart J. Russell, Peter Norvig
+* `Computer Systems: A Programmer's Perspective <http://csapp.cs.cmu.edu/>`_, by Randal E. Bryant and David R. O'Hallaron
