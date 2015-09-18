@@ -23,9 +23,9 @@ ________
 .. toctree::
    :maxdepth: 1
 
-   /_pages/Resource/software
    /_pages/Resource/online_course
-   /_pages/Resource/online_documents   
+   /_pages/Resource/ref_docs
+   /_pages/Resource/software
 
 Knowledge Base
 ==============
@@ -36,7 +36,7 @@ ________
 
    /_pages/Knowledge-Base/HOWTOs/HOWTOs
    /_pages/Knowledge-Base/Robotics/Robotics
-   /_pages/Knowledge-Base/Programming/Programming   
+   /_pages/Knowledge-Base/Programming/Programming
    /_pages/Knowledge-Base/Embedded-System/Embedded-System
 
 
@@ -63,4 +63,3 @@ ________
 * `IEEE/RSJ IROS 2016, Daejeon, Korea, 10/19-10/14, 2016 <http://www.iros2016.org/>`_ -- deadline: 03/01/2016
 
 `Top Publications of Robotics from Google Scholar <https://scholar.google.com/citations?view_op=top_venues&hl=en&vq=eng_robotics>`_
-
