@@ -36,6 +36,7 @@ Computer Science
 Electrical & Computer Engineering
 
 * `Stanford: Convex Optimization <http://stanford.edu/~boyd/cvxbook/>`_
+* `Advanced Embedded System Design and Experiments <http://wiki.csie.ncku.edu.tw/embedded/schedule>`_
 
 Robotics
 
