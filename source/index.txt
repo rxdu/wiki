@@ -16,6 +16,7 @@ ________
    /_pages/Resource/online_course
    /_pages/Resource/software
    /_pages/Resource/literature
+   /_pages/Resource/guide
 
 Projects
 ========
