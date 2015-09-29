@@ -42,6 +42,7 @@ ________
 
 Important Dates
 ===============
+________
 
 ..  role:: strikethrough
 
