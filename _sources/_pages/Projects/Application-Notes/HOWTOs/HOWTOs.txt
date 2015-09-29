@@ -1,0 +1,8 @@
+HOWTOs
+======
+
+.. toctree::
+   :maxdepth: 1
+
+   /_pages/Tech-Notes/HOWTOs/howto-obtain-gurobi-academic-license-off-campus
+   /_pages/Tech-Notes/HOWTOs/howto-safely-revert-to-a-previous-commit-in-git

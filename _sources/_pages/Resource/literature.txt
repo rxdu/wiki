@@ -1,6 +1,8 @@
 Referred Literature
 ===================
 
+`Top Publications of Robotics from Google Scholar <https://scholar.google.com/citations?view_op=top_venues&hl=en&vq=eng_robotics>`_
+
 Books
 -----
 

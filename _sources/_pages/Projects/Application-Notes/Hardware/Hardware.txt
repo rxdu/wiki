@@ -1,0 +1,47 @@
+Hardware
+========
+
+.. contents::
+   :depth: 2
+   :local:
+
+Intel Edison
+------------
+
+Useful Commands
+^^^^^^^^^^^^^^^
+
+**curl**: download a file
+
+.. code-block:: bash
+
+   $ curl -O link-to-remote-file
+
+**su**: get root privileges
+
+**exit**: log out of "su" mode, shortcut: Ctrl+D
+
+
+STM32F4-Discovery
+-----------------
+
+Setup STLink for on circuit debugging
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* Download stlink from this [git repository](https://github.com/texane/stlink)
+* Follow "README" to build to tools and set up udev rules
+* Connect the board to PC and check if the OS has detected stlink correct
+
+.. code-block:: bash
+
+   $ lsusb
+   $ ..
+   $ Bus 001 Device 041: ID 0483:3748 SGS Thomson Microelectronics ST-LINK/V2
+   $ ..
+
+
+If the tool shows permission restriction when starts, use this command:
+
+.. code-block:: bash
+
+   $ sudo chmod 777 /dev/bus/usb/002/004

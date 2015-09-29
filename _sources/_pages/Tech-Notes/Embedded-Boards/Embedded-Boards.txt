@@ -1,0 +1,8 @@
+Embedded Boards
+===============
+
+.. toctree::
+   :maxdepth: 1
+
+   /_pages/Tech-Notes/Embedded-Boards/Intel-Edison
+   /_pages/Tech-Notes/Embedded-Boards/STM32F4-Discovery
