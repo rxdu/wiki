@@ -1,0 +1,9 @@
+Guide on Graduate Research
+==========================
+
+* `Computer Science Graduate Research Orientation at WPI <http://web.cs.wpi.edu/~cshue/grad_research.html>`_
+* Richard W. Hamming, `You and Your Research <http://web.cs.iastate.edu/~honavar/hamming.html>`_, Bell Communications Research Colloquium Seminar, 1986.
+* Ronald Azuma, `So long, and thanks for the Ph.D.! <http://www.cs.unc.edu/~azuma/hitch4.html>`_, University of North Carolina, 2014.
+* Marie desJardins, `How to Succeed in Graduate School: A Guide for Students and Advisors <http://www.marymount.edu/marymount.edu/media/Academic_media/advice.pdf>`_, ACM Crossroads Student Magazine, 1994.
+* Dianne Prost O'Leary, `Graduate Study in the Computer and Mathematical Sciences: A Survival Manual <http://www.cs.umd.edu/~oleary/gradstudy/gradstudy.html>`_, University of Maryland, 2009.
+* Mark Dredze, Hanna M. Wallach, `How to Be a Successful PhD Student (in Computer Science (in NLP/ML)) <http://people.cs.umass.edu/~wallach/how_to_be_a_successful_phd_student.pdf>`_, University of Massachusetts, 2012.
