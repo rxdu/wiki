@@ -3,7 +3,13 @@ Embedded System
 
 .. contents::
    :depth: 2
-   :local: 
+   :local:
+
+Embedded Programming
+--------------------
+
+* `Embedded Programming using the GNU Toolchain <http://www.bravegnu.org/gnu-eprog/>`_
+* `TEXT, DATA and BSS: Code and Data Size Explained <http://mcuoneclipse.com/2013/04/14/text-data-and-bss-code-and-data-size-explained/>`_
 
 Bare Metal Software
 -------------------
@@ -14,12 +20,3 @@ Real-Time Operating Systems
 ---------------------------
 
 RTOS kernels and complete RTOS.
-
-Embedded Boards
----------------
-
-.. toctree::
-   :maxdepth: 1
-
-   /_pages/Knowledge-Base/Embedded-System/Embedded-Boards/Intel-Edison
-   /_pages/Knowledge-Base/Embedded-System/Embedded-Boards/STM32F4-Discovery
