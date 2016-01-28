@@ -1,6 +1,10 @@
 Build Your Own Quadrotor
 ========================
 
+.. contents::
+   :depth: 2
+   :local:
+
 1. System Components
 --------------------
 
@@ -63,3 +67,12 @@ To acquire data from MPU9250, the first thing to do is to establish the communic
 
 After the communication is set up properly, we can further configure the registers of MPU9250, like enabling/disabling gyro/acc, selecting full scale of gyro/acc and so on.
 
+4. The Completed Quadrotor
+-------------------------
+
+(Updated on 01/23/2016)
+
+I finally get enough time and money to get all parts to build a complete quadrotor. I choose the CC3D Revolution flight controller since it has a very small foot print and uses similar chips as what I've partially tested before. All parts are selected according to the specifications of commonly seen FPV racing quadrotors. I did a lot of research to find a balance between the performance and my budget when choosing each component. The total cost of the quadrotor and necessary accessories is about $500 dollars. A complete list of the parts will be added soon.
+
+.. image:: /_images/projects/quadrotor/quad250.jpg
+       :width: 650px

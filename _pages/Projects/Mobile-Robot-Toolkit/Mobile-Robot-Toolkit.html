@@ -1,0 +1,549 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-67949307-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <!-- <title>Mobile Robot Toolkit &mdash; RDU-Wiki 1.0 documentation</title> -->
+    <title>Mobile Robot Toolkit</title>
+    
+    <link rel="stylesheet" href="../../../_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Dancing+Script:700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Courgette' rel='stylesheet' type='text/css'>
+    
+    <div class="rduhome"  role="contentinfo">
+		 <a href="http://rdu.im" style="font-family: 'Courgette', serif;" >Return to Ruixiang's Home Page</a>
+	</div>
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="RDU-Wiki 1.0 documentation" href="../../../index.html" />
+    <link rel="next" title="Application Notes" href="../Application-Notes/Application-Notes.html" />
+    <link rel="prev" title="Build Your Own Quadrotor" href="../Build-Your-Own-Quadrotor/Build-Your-Own-Quadrotor.html" />
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../../../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head>
+  <body role="document">
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../Application-Notes/Application-Notes.html" title="Application Notes"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../Build-Your-Own-Quadrotor/Build-Your-Own-Quadrotor.html" title="Build Your Own Quadrotor"
+             accesskey="P">previous</a> |</li>
+        <!-- <li class="nav-item nav-item-0"><a href="../../../index.html">RDU-Wiki 1.0 documentation</a> &raquo;</li> -->
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Main Page</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="mobile-robot-toolkit">
+<h1>Mobile Robot Toolkit<a class="headerlink" href="#mobile-robot-toolkit" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#inter-process-communication" id="id5">1. Inter-process Communication</a></li>
+<li><a class="reference internal" href="#logging-tools" id="id6">2. Logging Tools</a></li>
+<li><a class="reference internal" href="#log-analysis" id="id7">3. Log Analysis</a></li>
+<li><a class="reference internal" href="#robot-simulator" id="id8">4. Robot Simulator</a><ul>
+<li><a class="reference internal" href="#understand-the-simulation-process" id="id9">Understand the Simulation Process</a></li>
+<li><a class="reference internal" href="#robot-simulation-in-v-rep" id="id10">Robot Simulation in V-REP</a></li>
+<li><a class="reference internal" href="#case-study-create-a-quadrotor-simulation-in-v-rep" id="id11">Case Study: Create a Quadrotor Simulation in V-REP</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="inter-process-communication">
+<h2><a class="toc-backref" href="#id5">1. Inter-process Communication</a><a class="headerlink" href="#inter-process-communication" title="Permalink to this headline">¶</a></h2>
+<p>ROS provides an inter-process communication framework that can be used very easily. However it&#8217;s built around TCP/IP and works better in a reliable network. For mobile robots, reliable network often cannot be guaranteed since mobile robots usually need to work far away from the operator and high-speed wired network is impossible in most cases. Lightweight Communications and Marshalling (LCM) was developed by MIT, originally for use in the DARPA autonomous vehicle competition. It uses UDP protocol and optimized for systems that high-bandwidth and low latency are critical. Thus it&#8217;s chosen as the default IPC framework.</p>
+<ul class="simple">
+<li><a class="reference external" href="https://lcm-proj.github.io/">LCM wiki</a></li>
+<li><a class="reference external" href="https://github.com/lcm-proj/lcm">LCM github repo</a></li>
+</ul>
+</div>
+<div class="section" id="logging-tools">
+<h2><a class="toc-backref" href="#id6">2. Logging Tools</a><a class="headerlink" href="#logging-tools" title="Permalink to this headline">¶</a></h2>
+<p>This <a class="reference external" href="http://rdu.im/c/c++/programming/2015/05/26/C-and-C-plus-plus-logging-libraries.html">tech note</a> provides a list of available C/C++ logging frameworks and a brief comparison among them. The final decision I made was to start with g3log. It&#8217;s open-source, lightweight, asynchronous and in active maintenance.</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/KjellKod/g3log">g3log github repo</a></li>
+</ul>
+</div>
+<div class="section" id="log-analysis">
+<h2><a class="toc-backref" href="#id7">3. Log Analysis</a><a class="headerlink" href="#log-analysis" title="Permalink to this headline">¶</a></h2>
+<p>After you get a log using the logger, you may need a tool to help you analyze it, especially when you&#8217;re logging sensor data/system states of the robot to help you do the control. It doesn&#8217;t give you much useful information by just looking at a full screen of numbers in a log file.</p>
+<p>A easy and quick way is to write a Matlab/Octave program. The basic steps may include reading data from the file, doing extra calculation with the data and plot data in 2D/3D. In some cases, say you&#8217;re trying to tune a controller with a simulator, you may also want your log analyzer to pick up the latest log automatically so that you can do the simulation/logging/analysis process seamlessly.</p>
+<p>You can also use C/C++ to write your own log analyzer. <a class="reference external" href="http://www.gnuplot.info/">GNU Plot</a> is a light-weight library for data plotting.</p>
+</div>
+<div class="section" id="robot-simulator">
+<h2><a class="toc-backref" href="#id8">4. Robot Simulator</a><a class="headerlink" href="#robot-simulator" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="understand-the-simulation-process">
+<h3><a class="toc-backref" href="#id9">Understand the Simulation Process</a><a class="headerlink" href="#understand-the-simulation-process" title="Permalink to this headline">¶</a></h3>
+<p>Essentially a robot simulation process is to calculate the system state using it&#8217;s mathematic model with given initial conditions and inputs. Generally we use ordinary differential equations (ODEs) to describe our robots. By solving for the system states from the set of ODEs at discrete time (0, 1*ts, 2*ts, ...) , we can get the simulated behavior of the robot during the simulated period.</p>
+<p>Similarly a physics engine can calculate the state of a system using some kind of numerical methods. (Read about ODE/Bullet for more information) We can set a step size (t<sub>phy_s</sub>) for the physics engine so that we can get the calculated system state at time t<sub>phy_s</sub>, t<sub>phy_s</sub> * 2, t<sub>phy_s</sub> * 3 ... consecutively when we call the physics engine to do the calculation. If we invoke the calculation at f<sub>phy</sub> Hz with the step size of t<sub>phy_s</sub>, it means we will have the system state simulated from time 0 to f<sub>phy</sub> * t<sub>phy_s</sub> in 1 second. For example f<sub>phy</sub> = 1k Hz, and t<sub>phy_s</sub> = 1ms, after the last calculation iteration we will get the system state at t = 1k * 1ms = 1s. Since the wall time of the real world elapses for 1s and the simulated system state also advances for 1s, we can say that the real-time factor is 1.</p>
+<p>In an extreme condition, if we call the physics engine to calculate very fast and we use a big step size, then by the end of the 1s simulation period, we will get the calculated system state at time t<sub>sim_end</sub> &gt; 1s. This means time in the simulator elapses faster than time in the real world, thus real-time factor is greater than 1.</p>
+<p>Of course, limited by the computational power of the computer, the update rate of the physics engine cannot be infinitely high. If a system is extremely complex and the the physics engine cannot get a solution within 1s, then even if we set the step size to be 1s (which is pretty large when simulating a process), we still cannot get a real time factor to be equal or greater than 1.</p>
+<p>As to the simulation step, it involves sensing and rendering. The physics engine can run at a much higher rate while we don&#8217;t necessarily update the result to the user at each step. Hence we may have the physics engine run at 1kHz in the background and only refresh the simulation scene for the user at 50Hz.</p>
+<p>Reference:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://gazebosim.org/tutorials/?tut=modifying_world">Gazebo Document - Modifying a world : Physics Properties</a></li>
+<li><a class="reference external" href="http://www.coppeliarobotics.com/helpFiles/en/simulation.htm">V-REP Document - Simulation</a></li>
+</ul>
+</div>
+<div class="section" id="robot-simulation-in-v-rep">
+<h3><a class="toc-backref" href="#id10">Robot Simulation in V-REP</a><a class="headerlink" href="#robot-simulation-in-v-rep" title="Permalink to this headline">¶</a></h3>
+<p>V-REP (virtual robot experimentation platform) is a dual-licensed software. It provides free educational license for the pro-edu version and source code with GNU GPL license. Compared to Gazebo, V-REP is self-contained (meaning less dependencies), cross-platform (linux/windows/mac) and feature rich (more robots/sensors usable out-of-box). Moreover it&#8217;s more user-friendly and requires less time to set up your customized robot.</p>
+<p>Before starting working with V-REP, I would suggest you to &#8220;play with&#8221; it for a while. Try out different mobile/non-mobile robots and explore what&#8217;s available from the &#8220;Model Browser&#8221;. Watch this <a class="reference external" href="https://www.youtube.com/watch?v=xI-ZEewIzzI">video</a>. But at this point don&#8217;t try to grasp every detail yet. Just get yourself familiar with the UI and learn how to change the position/orientation of the robot/component inside the simulation scene.</p>
+<div class="section" id="key-components-of-a-simulation-in-v-rep">
+<h4>Key components of a simulation in V-REP<a class="headerlink" href="#key-components-of-a-simulation-in-v-rep" title="Permalink to this headline">¶</a></h4>
+<p>There are mainly two parts that you need to take care of for setting up a simulator of your robot. The first part is about the robot. What you need to prepare include the dynamic model (not the mathematic one, but a simplified geometrical model for the physics engine) and the robot mechanical model (a more detailed one compared to the dynamic model for visualization). If you want your robot look better in the simulator, you may also want to prepare texture files, extra 3D components (for example better-looking wheels for your mobile robot).</p>
+<p>The second part is the simulated environment. In V-REP, a simulated environment is called a scene. A scene may include robots, sensors and other elements like furniture, office items. Each one of them is called an object. V-REP makes heavy use of Lua scripts. Almost all objects in the simulation scene are attached with one or more scripts, which are coordinated by the main script which is attached to the scene. The main script controls the &#8220;actuation&#8221;-&#8220;sensing&#8221;-&#8220;display&#8221; process of each object in a simulation step repeatedly to get the simulation running. It also invokes the physics engine to advance in time. Refer to this <a class="reference external" href="http://www.coppeliarobotics.com/helpFiles/en/mainScript.htm">article</a> for more details. As mentioned before, each object is attached with a script. V-REP supports two types of scripts: threaded and non-threaded. In most cases a non-threaded script is used and this type of scripts follows the &#8220;actuation&#8221;-&#8220;sensing&#8221;-&#8220;display&#8221; steps, controlled by the main script. If you want to have more control in addition to the these controlled steps and do something in parallel with the main simulation process, you can do that in a threaded script. Read this <a class="reference external" href="http://www.coppeliarobotics.com/helpFiles/en/childScripts.htm">article</a> about child scripts.</p>
+<p>After getting these two ready, the next thing you need to figure out is how to interface with the simulation scene, such as acquiring sensor data and sending motor commands. Once your robot is simulated in a scene and you can also talk with your robot, you can play with it for whatever purposes, like implementing your dynamic control algothrim or testing the mapping and localization function of your robot, just like you do with your real robot.</p>
+<p>At this point, you should have got a rough idea about how V-REP works. For most of the components provided by V-REP, if they don&#8217;t behave as you desire it to be. Probably you will just need to tweak the attached script. For example, if you want to change the behavior of the propeller module, you just need to open the script, locate to the actuation part and adjust the force/torque formula it use.</p>
+</div>
+<div class="section" id="create-a-robot-model">
+<h4>Create a robot model<a class="headerlink" href="#create-a-robot-model" title="Permalink to this headline">¶</a></h4>
+<p>If your robot is very simple (say it only consists of a few primitive shapes - cube, cylinder, sphere ...), you can start creating your robot right in V-REP. And you can use these shapes for both visualization and dynamics simulation. But if your robot is more complicated, you might want to import your mechanical models (.stl/.obj/.dxf files) to V-REP. In this case, the visualization part should be straightforward since your simulated robot is created from the design file of the real robot. However for the physics engine, these (usually non-convex) shapes can be computational in-efficient and potentially unstable. So it&#8217;s preferred that you can create a simplified geometrical model for the dynamics calculation. Refer to this <a class="reference external" href="http://www.coppeliarobotics.com/helpFiles/en/designingDynamicSimulations.htm">article</a> for more details.</p>
+<p>In V-REP, you can use put visualization models and dynamics models in different layers so that you can just inspect the part that you&#8217;re interested in. In V-REP, you need to decide two properties for all parts of your robot: static/non-static, respondable/non-respondable. The basic idea is that non-static (dynamic) parts are considered in the calculation of the physics engine and respondable parts are considered in the collision checking, sensor detection etc. The article &#8221; Designing dynamic simulations&#8221; describes this in details. In general, you should set your dynamic models to be non-static and respondable, while for the more detailed visualization models they should be static and non-respondable. In addition, you should also set parameters such as mass/inertia properly to the dynamics models. This may require you to know the mathematic model of your robot.</p>
+</div>
+<div class="section" id="set-up-a-simulation-scene">
+<h4>Set up a simulation scene<a class="headerlink" href="#set-up-a-simulation-scene" title="Permalink to this headline">¶</a></h4>
+<p>Once your robot is set up, you can now add more sensors to it. And according to your application, you can even set up different environments such as an office room or a dessert area. Again you may need to tweak the script of the object you add to the scene to make it behave like what you want.</p>
+</div>
+<div class="section" id="connect-v-rep-with-your-application">
+<h4>Connect V-REP with your application<a class="headerlink" href="#connect-v-rep-with-your-application" title="Permalink to this headline">¶</a></h4>
+<p>Now you&#8217;ve got a robot simulated and running in V-REP. What&#8217;s next? You probably want to read sensor data from the simulated robot and do control over it. That&#8217;s the main point you want to set up a simulator for it.</p>
+<p>V-REP provides a few methods to do so. Basically there are two types of interfacing methods: internal communication and inter-process communication. Refer to this * <a class="reference external" href="http://www.coppeliarobotics.com/helpFiles/en/externalControllerTutorial.htm">tutorial</a> to know more about the advantages and disadvantages of each method. If you want to use similar code to control both the simulated robot and the real robot, the remote API may be the best one to use. The work flow is that you first start a server when you start the simulation, then call the remote API functions in your normal control code to read sensor data and send motor commands. Your code acts as a client respect to the server. Watch this nice <a class="reference external" href="https://www.youtube.com/watch?v=SQont-mTnfM">video</a> for an example and read this <a class="reference external" href="http://www.coppeliarobotics.com/helpFiles/en/remoteApiModusOperandi.htm">article</a> to know more about the remote API. At this point, you should be able to have a much better understanding of these articles: <a class="reference external" href="http://www.coppeliarobotics.com/helpFiles/en/meansOfCommunication.htm">article1</a>, <a class="reference external" href="http://www.coppeliarobotics.com/helpFiles/en/writingCode.htm">article2</a>.</p>
+<p>Another point that&#8217;s worthy of mentioning is that there are different ways of communication between sensors and actuators as discussed in &#8220;Means of communication in and around V-REP&#8221;. The regular API provides support for all of them, but it&#8217;s not the case for the remote API. If a sensor is using tube to publish its data and you want to get the data via the remote API. One easy solution is that you can just modify the script of that sensor and use signals to send out data, which is a way that both regular API and remote API support.</p>
+<p>Reference:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://www.youtube.com/watch?v=xI-ZEewIzzI">Youtube Video - Line-Following Robot | V-Rep Tutorial</a></li>
+<li><a class="reference external" href="http://www.coppeliarobotics.com/helpFiles/en/mainScript.htm">V-REP Doc - The main script</a></li>
+<li><a class="reference external" href="http://www.coppeliarobotics.com/helpFiles/en/childScripts.htm">V-REP Doc - Child scripts</a></li>
+<li><a class="reference external" href="http://www.coppeliarobotics.com/helpFiles/en/designingDynamicSimulations.htm">V-REP Doc - Designing dynamic simulations</a></li>
+<li><a class="reference external" href="http://www.coppeliarobotics.com/helpFiles/en/rigidBodyTutorial.htm">V-REP Tutorial - Importing and preparing rigid bodies tutorial</a></li>
+<li><a class="reference external" href="http://www.coppeliarobotics.com/helpFiles/en/externalControllerTutorial.htm">V-REP Tutorial - External controller</a></li>
+<li><a class="reference external" href="https://www.youtube.com/watch?v=SQont-mTnfM">Youtube Video - Connect V-REP and Python through Remote API</a></li>
+<li><a class="reference external" href="http://www.coppeliarobotics.com/helpFiles/en/remoteApiModusOperandi.htm">V-REP Doc - Remote API modus operandi</a></li>
+<li><a class="reference external" href="http://www.coppeliarobotics.com/helpFiles/en/meansOfCommunication.htm">V-REP Doc - Means of communication in and around V-REP</a></li>
+<li><a class="reference external" href="http://www.coppeliarobotics.com/helpFiles/en/writingCode.htm">V-REP Doc - Writing code in and around V-REP</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="case-study-create-a-quadrotor-simulation-in-v-rep">
+<h3><a class="toc-backref" href="#id11">Case Study: Create a Quadrotor Simulation in V-REP</a><a class="headerlink" href="#case-study-create-a-quadrotor-simulation-in-v-rep" title="Permalink to this headline">¶</a></h3>
+<p>In this case study, you will see how to create the simulation of the AscTec Hummingbird Quadrotor.</p>
+<p>Components for the simulation:</p>
+<ul class="simple">
+<li>Quadrotor main frame</li>
+<li>4 propellers</li>
+<li>IMU sensor(gyro + accelerometer)</li>
+</ul>
+<p>It&#8217;s highly recommended to read this <a class="reference external" href="http://www.coppeliarobotics.com/helpFiles/en/rigidBodyTutorial.htm">official tutorial</a> and follow the steps by yourself before you start creating a simulation of your own robot. This case study assumes you&#8217;ve already read the contents of this tutorial and the previous sections of this wiki. The goal is only to show you the work flow of using V-REP with a more specific example, thus a lot of operation details are omitted. If you get any problems in the process, <strong>always remember</strong> to check the <a class="reference external" href="http://www.coppeliarobotics.com/helpFiles/index.html">official documentation</a> and the <a class="reference external" href="http://www.forum.coppeliarobotics.com/index.php">official forum</a>. In most cases you should be able to find the answer. It&#8217;s also very common that you check the implementation of a existing robot model to get an idea of how to implement a specific feature on your own robot. The example robot models and scenes provided by V-REP are very good resources for you to learn V-REP. In addition, you can try to post your question on the forum. According to my experience, they respond to questions very fast.</p>
+<div class="section" id="prepare-the-robot-model">
+<h4>Prepare the robot model<a class="headerlink" href="#prepare-the-robot-model" title="Permalink to this headline">¶</a></h4>
+<p>You need to prepare the mechanical model file(.stl, .obj) to create the body of your robot. If you just want to do experiments with a simulated robot and don&#8217;t really want to design the mechanical structure by yourself, <a class="reference external" href="https://grabcad.com/">this website</a> is a good place for you to look for existing 3d models. People share mechanical designs like RC-Cars, Quarotors on this site and you can use them to create the simulation. Also get yourself familiar with the robot library of V-REP. It&#8217;s very helpful if you know what components are already available so that you can reuse them conveniently. Actuators and sensors are two types of the most commonly used components from V-REP to build your customized robot.</p>
+<p>V-REP provides a very powerful tool to create and modify mechanical model. It&#8217;s recommended that you assemble all the parts together in Solidworks(or other software you prefer) first and export the robot model into a single stl file. You can import this stl to V-REP and divide the model into smaller parts later. Comparatively it can be very tedious and difficult if you import all parts (a set of .stl files) into V-REP directly and then try to assemble them to the right place, especially if your robot consists of a lot of parts.</p>
+<p>Download the stl file for the hummingbird quadrotor from the AscTec <a class="reference external" href="http://wiki.asctec.de/display/AR/CAD+Models">wiki</a>. Import the model into V-REP.</p>
+<a class="reference internal image-reference" href="../../../_images/vrep_import_quad.png"><img alt="../../../_images/vrep_import_quad.png" src="../../../_images/vrep_import_quad.png" style="width: 650px;" /></a>
+<p>If you want the simulated quadrotor to look better, you can now divide the model into smaller parts and apply textures to different parts.</p>
+<a class="reference internal image-reference" href="../../../_images/vrep_model_texture.png"><img alt="../../../_images/vrep_model_texture.png" src="../../../_images/vrep_model_texture.png" style="width: 650px;" /></a>
+</div>
+<div class="section" id="create-a-simplified-dynamic-model-for-simulation">
+<h4>Create a simplified dynamic model for simulation<a class="headerlink" href="#create-a-simplified-dynamic-model-for-simulation" title="Permalink to this headline">¶</a></h4>
+<p>For this imported stl model, it&#8217;s usually non-convex and not proper for dynamic simulation in terms of performance and stability. It&#8217;s a good practice to create a simpler dynamic model from the original stl model for the simulation. This simplified model is the one actually used by the physics engine to do calculation. In other words, the stl model is mainly used to help create the dynamic model, for example, you can extract a pure shape with similar geometrical characters from the stl model to get the dynamic model of a specific part. And after this process, the stl model is mainly for visual effects.</p>
+<p>In this example, the quadrotor frame is abstracted as a sphere with four cuboid shapes.</p>
+<a class="reference internal image-reference" href="../../../_images/vrep_two_models.png"><img alt="../../../_images/vrep_two_models.png" src="../../../_images/vrep_two_models.png" style="width: 650px;" /></a>
+<p>Don&#8217;t forget the adjust the properties of the dynamic model, such as mass, inertia.</p>
+</div>
+<div class="section" id="add-propellers-and-sensors-to-the-quadrotor">
+<h4>Add propellers and sensors to the quadrotor<a class="headerlink" href="#add-propellers-and-sensors-to-the-quadrotor" title="Permalink to this headline">¶</a></h4>
+<p>V-REP provides the model of a propeller with particle simulation so you can use it directly on the quadrotor. You can find the model from /components/locomotion in the model browser. Add four of the propeller into the scene and adjust the position of each.</p>
+<a class="reference internal image-reference" href="../../../_images/vrep_quad_prop.png"><img alt="../../../_images/vrep_quad_prop.png" src="../../../_images/vrep_quad_prop.png" style="width: 650px;" /></a>
+<p>If you want the simulated Hummingbird to be more like the real one in appearance, you can hide the visible parts of the provided propeller model and use a better-looking propeller model. For example, you can download this propeller model from <a class="reference external" href="https://grabcad.com/library/8x3-8-propeller-1">GrabCAD site</a>.</p>
+<p>V-REP also provides models for the sensors. Simply drag a gyro and a accelerometer into the scene and place them at a proper position on the quadrotor. The final quadrotor model is shown in the image below. You can also check the hierarchy structure of the simulated robot in this screenshot.</p>
+<a class="reference internal image-reference" href="../../../_images/vrep_quad_final.png"><img alt="../../../_images/vrep_quad_final.png" src="../../../_images/vrep_quad_final.png" style="width: 650px;" /></a>
+</div>
+<div class="section" id="write-code-to-interface-with-the-quadrotor">
+<h4>Write code to interface with the quadrotor<a class="headerlink" href="#write-code-to-interface-with-the-quadrotor" title="Permalink to this headline">¶</a></h4>
+<p>By now you should have got a working simulated Hummingbird qaudrotor in V-REP. You need to write code to communicate with it(read sensor data from it and send motor commands to it). Here is an example of using the remoteAPI.</p>
+<p>On the V-REP side, add a threaded-script file to the quadrotor model and add the following scripts in it:</p>
+<div class="highlight-lua"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65</pre></div></td><td class="code"><div class="highlight"><pre><span class="n">simSetThreadSwitchTiming</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1">-- Choose a port that is probably not used (try to always use a similar code):</span>
+<span class="n">simSetThreadAutomaticSwitch</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
+<span class="kd">local</span> <span class="n">portNb</span><span class="o">=</span><span class="n">simGetIntegerParameter</span><span class="p">(</span><span class="n">sim_intparam_server_port_next</span><span class="p">)</span>
+<span class="kd">local</span> <span class="n">portStart</span><span class="o">=</span><span class="n">simGetIntegerParameter</span><span class="p">(</span><span class="n">sim_intparam_server_port_start</span><span class="p">)</span>
+<span class="kd">local</span> <span class="n">portRange</span><span class="o">=</span><span class="n">simGetIntegerParameter</span><span class="p">(</span><span class="n">sim_intparam_server_port_range</span><span class="p">)</span>
+<span class="kd">local</span> <span class="n">newPortNb</span><span class="o">=</span><span class="n">portNb</span><span class="o">+</span><span class="mi">1</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">newPortNb</span><span class="o">&gt;=</span><span class="n">portStart</span><span class="o">+</span><span class="n">portRange</span><span class="p">)</span> <span class="k">then</span>
+    <span class="n">newPortNb</span><span class="o">=</span><span class="n">portStart</span>
+<span class="k">end</span>
+<span class="n">simSetIntegerParameter</span><span class="p">(</span><span class="n">sim_intparam_server_port_next</span><span class="p">,</span><span class="n">newPortNb</span><span class="p">)</span>
+<span class="n">simSetThreadAutomaticSwitch</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+
+<span class="c1">-- Check what OS we are using:</span>
+<span class="n">platf</span><span class="o">=</span><span class="n">simGetIntegerParameter</span><span class="p">(</span><span class="n">sim_intparam_platform</span><span class="p">)</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">platf</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span> <span class="k">then</span>
+    <span class="n">pluginFile</span><span class="o">=</span><span class="s1">&#39;</span><span class="s">v_repExtRemoteApi.dll&#39;</span>
+<span class="k">end</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">platf</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="k">then</span>
+    <span class="n">pluginFile</span><span class="o">=</span><span class="s1">&#39;</span><span class="s">libv_repExtRemoteApi.dylib&#39;</span>
+<span class="k">end</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">platf</span><span class="o">==</span><span class="mi">2</span><span class="p">)</span> <span class="k">then</span>
+    <span class="n">pluginFile</span><span class="o">=</span><span class="s1">&#39;</span><span class="s">libv_repExtRemoteApi.so&#39;</span>
+<span class="k">end</span>
+
+<span class="c1">-- Check if the required remote Api plugin is there:</span>
+<span class="n">moduleName</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">moduleVersion</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">index</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">pluginNotFound</span><span class="o">=</span><span class="kc">true</span>
+<span class="k">while</span> <span class="n">moduleName</span> <span class="k">do</span>
+    <span class="n">moduleName</span><span class="p">,</span><span class="n">moduleVersion</span><span class="o">=</span><span class="n">simGetModuleName</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">moduleName</span><span class="o">==</span><span class="s1">&#39;</span><span class="s">RemoteApi&#39;</span><span class="p">)</span> <span class="k">then</span>
+            <span class="n">pluginNotFound</span><span class="o">=</span><span class="kc">false</span>
+    <span class="k">end</span>
+    <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="o">+</span><span class="mi">1</span>
+<span class="k">end</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">pluginNotFound</span><span class="p">)</span> <span class="k">then</span>
+    <span class="c1">-- Plugin was not found</span>
+    <span class="n">simDisplayDialog</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">Error&#39;</span><span class="p">,</span><span class="s2">&quot;</span><span class="s">Remote Api plugin was not found. (&#39;&quot;</span><span class="o">..</span><span class="n">pluginFile</span><span class="o">..</span><span class="s2">&quot;</span><span class="s">&#39;)&amp;&amp;nSimulation will not run properly&quot;</span><span class="p">,</span><span class="n">sim_dlgstyle_ok</span><span class="p">,</span><span class="kc">true</span><span class="p">,</span><span class="kc">nil</span><span class="p">,{</span><span class="mf">0.8</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">},{</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">})</span>
+<span class="k">else</span>
+    <span class="c1">-- Ok, we found the plugin.</span>
+
+    <span class="c1">-- We first start the remote Api server service (this requires the v_repExtRemoteApi plugin):</span>
+    <span class="n">simExtRemoteApiStart</span><span class="p">(</span><span class="n">portNb</span><span class="p">)</span> <span class="c1">-- this server function will automatically close again at simulation end</span>
+
+    <span class="c1">-- Add a banner:</span>
+    <span class="n">black</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">}</span>
+    <span class="n">purple</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">}</span>
+    <span class="n">blue</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.6</span><span class="p">,</span><span class="mf">0.6</span><span class="p">,</span><span class="mi">1</span><span class="p">}</span>
+    <span class="c1">--simAddBanner(&quot;Remote API @ Port: &quot; .. portNb,0,sim_banner_bitmapfont+sim_banner_overlay,nil,simGetObjectAssociatedWithScript(sim_handle_self),black,blue)</span>
+
+    <span class="c1">-- Now we start the client application:</span>
+    <span class="n">result</span><span class="o">=</span><span class="n">simLaunchExecutable</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">quad_sim_river&#39;</span><span class="p">,</span><span class="n">portNb</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">result</span><span class="o">==-</span><span class="mi">1</span><span class="p">)</span> <span class="k">then</span>
+            <span class="c1">-- The executable could not be launched!</span>
+            <span class="n">simDisplayDialog</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">Error&#39;</span><span class="p">,</span><span class="s2">&quot;</span><span class="s">&#39;quad_sim_river&#39; could not be launched. &amp;&amp;nSimulation will not run properly&quot;</span><span class="p">,</span><span class="n">sim_dlgstyle_ok</span><span class="p">,</span><span class="kc">true</span><span class="p">,</span><span class="kc">nil</span><span class="p">,{</span><span class="mf">0.8</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">},{</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">})</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c1">-- This thread ends here. The robot will however still be controlled by</span>
+<span class="c1">-- the client application via the remote Api mechanism!</span>
+</pre></div>
+</td></tr></table></div>
+<p>The above script can start a service when you start the simulation and then you can use remoteAPI functions in your C/C++ program to communicate with the simulation. The code below only shows the general structure to establish a connection between a client and a server.</p>
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61</pre></div></td><td class="code"><div class="highlight"><pre><span class="cp">#include &lt;stdio.h&gt;</span>
+<span class="cp">#include &lt;stdlib.h&gt;</span>
+<span class="cp">#include &lt;iostream&gt;</span>
+<span class="cp">#include &lt;unistd.h&gt;</span>
+
+<span class="k">extern</span> <span class="s">&quot;C&quot;</span> <span class="p">{</span>
+    <span class="cp">#include &quot;extApi.h&quot;</span>
+<span class="cm">/*  #include &quot;extApiCustom.h&quot; // custom remote API functions */</span>
+<span class="p">}</span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">RobotToolkitRIVeR</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span><span class="kt">char</span><span class="o">*</span> <span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">argc</span><span class="o">&gt;=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="p">{</span>
+            <span class="n">portNb</span><span class="o">=</span><span class="n">atoi</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Please indicate following argument(s): &#39;portNumber&#39;!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+            <span class="n">extApi_sleepMs</span><span class="p">(</span><span class="mi">5000</span><span class="p">);</span>
+            <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// start a connection with the server</span>
+    <span class="n">simxInt</span> <span class="n">clientID</span> <span class="o">=</span> <span class="n">simxStart</span><span class="p">((</span><span class="n">simxChar</span><span class="o">*</span><span class="p">)</span><span class="s">&quot;127.0.0.1&quot;</span><span class="p">,</span><span class="n">portNb</span><span class="p">,</span><span class="nb">true</span><span class="p">,</span><span class="nb">true</span><span class="p">,</span><span class="mi">2000</span><span class="p">,</span><span class="mi">5</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">clientID</span><span class="o">!=-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="p">{</span>
+            <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;INFO: Connected to server.&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+            <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;INFO: Enter control loop.&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+            <span class="c1">// the control loop starts here</span>
+            <span class="k">while</span> <span class="p">(</span><span class="n">simxGetConnectionId</span><span class="p">(</span><span class="n">clientID</span><span class="p">)</span><span class="o">!=-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="p">{</span>
+                    <span class="c1">// 1. receive data from robot</span>
+                    <span class="c1">// remoteAPI function calls</span>
+
+                    <span class="c1">// 2. process data and do calculation</span>
+                    <span class="c1">// custom function calls</span>
+
+                    <span class="c1">// 3. send command to robot</span>
+                    <span class="c1">// remoteAPI function calls</span>
+
+                    <span class="n">extApi_sleepMs</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;INFO: Exit control loop.&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+            <span class="c1">// close the connection with server</span>
+            <span class="n">simxFinish</span><span class="p">(</span><span class="n">clientID</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+            <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;ERROR: Failed to connect to server&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>Refer to the tutorials and example scenes to learn how to use remoteAPI, as well as ROS, Matlab interfaces. The &#8220;controlTypeExamples&#8221; scene provided by V-REP is extremely useful for you to learn how each of the interfaces work, both on the V-REP side and on your own code side. You can find more information from this <a class="reference external" href="http://www.coppeliarobotics.com/helpFiles/index.html">page</a>.</p>
+<p>A demonstration video can be found <a class="reference external" href="https://www.youtube.com/watch?v=KdsSgi3Ejbc">here</a>. In this video, direct motor commands were sent to the quadrotor and the quadrotor lift up right after receiving the commands.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Mobile Robot Toolkit</a><ul>
+<li><a class="reference internal" href="#inter-process-communication">1. Inter-process Communication</a></li>
+<li><a class="reference internal" href="#logging-tools">2. Logging Tools</a></li>
+<li><a class="reference internal" href="#log-analysis">3. Log Analysis</a></li>
+<li><a class="reference internal" href="#robot-simulator">4. Robot Simulator</a><ul>
+<li><a class="reference internal" href="#understand-the-simulation-process">Understand the Simulation Process</a></li>
+<li><a class="reference internal" href="#robot-simulation-in-v-rep">Robot Simulation in V-REP</a><ul>
+<li><a class="reference internal" href="#key-components-of-a-simulation-in-v-rep">Key components of a simulation in V-REP</a></li>
+<li><a class="reference internal" href="#create-a-robot-model">Create a robot model</a></li>
+<li><a class="reference internal" href="#set-up-a-simulation-scene">Set up a simulation scene</a></li>
+<li><a class="reference internal" href="#connect-v-rep-with-your-application">Connect V-REP with your application</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#case-study-create-a-quadrotor-simulation-in-v-rep">Case Study: Create a Quadrotor Simulation in V-REP</a><ul>
+<li><a class="reference internal" href="#prepare-the-robot-model">Prepare the robot model</a></li>
+<li><a class="reference internal" href="#create-a-simplified-dynamic-model-for-simulation">Create a simplified dynamic model for simulation</a></li>
+<li><a class="reference internal" href="#add-propellers-and-sensors-to-the-quadrotor">Add propellers and sensors to the quadrotor</a></li>
+<li><a class="reference internal" href="#write-code-to-interface-with-the-quadrotor">Write code to interface with the quadrotor</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../Build-Your-Own-Quadrotor/Build-Your-Own-Quadrotor.html"
+                        title="previous chapter">Build Your Own Quadrotor</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../Application-Notes/Application-Notes.html"
+                        title="next chapter">Application Notes</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../Application-Notes/Application-Notes.html" title="Application Notes"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../Build-Your-Own-Quadrotor/Build-Your-Own-Quadrotor.html" title="Build Your Own Quadrotor"
+             >previous</a> |</li>
+        <!-- <li class="nav-item nav-item-0"><a href="../../../index.html">RDU-Wiki 1.0 documentation</a> &raquo;</li> -->
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Main Page</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2015, Ruixiang Du.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>

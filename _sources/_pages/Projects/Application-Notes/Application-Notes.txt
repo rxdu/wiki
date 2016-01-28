@@ -1,0 +1,25 @@
+Application Notes
+=================
+
+**Hardware**
+
+.. toctree::
+   :maxdepth: 1
+
+   /_pages/Projects/Application-Notes/Hardware/Embedded-Boards/Intel-Edison
+   /_pages/Projects/Application-Notes/Hardware/Embedded-Boards/STM32F4-Discovery
+
+**Software**
+
+.. toctree::
+   :maxdepth: 1
+
+   /_pages/Projects/Application-Notes/Software/gdb
+
+**HOWTOs**
+
+.. toctree::
+   :maxdepth: 1
+
+   /_pages/Projects/Application-Notes/HOWTOs/howto-obtain-gurobi-academic-license-off-campus
+   /_pages/Projects/Application-Notes/HOWTOs/howto-safely-revert-to-a-previous-commit-in-git

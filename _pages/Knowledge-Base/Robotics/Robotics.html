@@ -8,7 +8,7 @@
     <script type="text/javascript">
 
       var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-47255965-1']);
+      _gaq.push(['_setAccount', 'UA-67949307-1']);
       _gaq.push(['_trackPageview']);
 
       (function() {
@@ -45,7 +45,7 @@
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="top" title="RDU-Wiki 1.0 documentation" href="../../../index.html" />
     <link rel="next" title="Programming" href="../Programming/Programming.html" />
-    <link rel="prev" title="How to Safely Revert to a Previous Commit in Git" href="../HOWTOs/howto-safely-revert-to-a-previous-commit-in-git.html" />
+    <link rel="prev" title="How to Safely Revert to a Previous Commit in Git" href="../../Projects/Application-Notes/HOWTOs/howto-safely-revert-to-a-previous-commit-in-git.html" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <!--[if lte IE 6]>
@@ -65,7 +65,7 @@
           <a href="../Programming/Programming.html" title="Programming"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="../HOWTOs/howto-safely-revert-to-a-previous-commit-in-git.html" title="How to Safely Revert to a Previous Commit in Git"
+          <a href="../../Projects/Application-Notes/HOWTOs/howto-safely-revert-to-a-previous-commit-in-git.html" title="How to Safely Revert to a Previous Commit in Git"
              accesskey="P">previous</a> |</li>
         <!-- <li class="nav-item nav-item-0"><a href="../../../index.html">RDU-Wiki 1.0 documentation</a> &raquo;</li> -->
         <li class="nav-item nav-item-0"><a href="../../../index.html">Main Page</a> &raquo;</li> 
@@ -81,54 +81,133 @@
 <h1>Robotics<a class="headerlink" href="#robotics" title="Permalink to this headline">¶</a></h1>
 <div class="contents local topic" id="contents">
 <ul class="simple">
-<li><a class="reference internal" href="#kinematics" id="id1">Kinematics</a><ul>
-<li><a class="reference internal" href="#forward-kinematics" id="id2">Forward Kinematics</a></li>
-<li><a class="reference internal" href="#inverse-kinematics" id="id3">Inverse Kinematics</a></li>
-<li><a class="reference internal" href="#jacobian" id="id4">Jacobian</a></li>
+<li><a class="reference internal" href="#kinematics" id="id3">Kinematics</a><ul>
+<li><a class="reference internal" href="#i-forward-kinematics" id="id4">I. Forward Kinematics</a></li>
+<li><a class="reference internal" href="#ii-inverse-kinematics" id="id5">II. Inverse Kinematics</a></li>
+<li><a class="reference internal" href="#iii-differential-kinematics" id="id6">III. Differential Kinematics</a></li>
+<li><a class="reference internal" href="#iv-reference-materials" id="id7">IV. Reference Materials</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#dynamics" id="id5">Dynamics</a><ul>
-<li><a class="reference internal" href="#newtonian-method" id="id6">Newtonian Method</a></li>
-<li><a class="reference internal" href="#lagrangian-method" id="id7">Lagrangian Method</a></li>
+<li><a class="reference internal" href="#dynamics" id="id8">Dynamics</a><ul>
+<li><a class="reference internal" href="#i-rigid-body-dynamics" id="id9">I. Rigid Body Dynamics</a></li>
+<li><a class="reference internal" href="#ii-newtonian-method" id="id10">II. Newtonian Method</a></li>
+<li><a class="reference internal" href="#iii-lagrangian-method" id="id11">III. Lagrangian Method</a></li>
+<li><a class="reference internal" href="#id1" id="id12">IV. Reference Materials</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#dynamic-control" id="id8">Dynamic Control</a></li>
-<li><a class="reference internal" href="#obstacle-avoidance" id="id9">Obstacle Avoidance</a></li>
-<li><a class="reference internal" href="#motion-planning" id="id10">Motion Planning</a></li>
+<li><a class="reference internal" href="#system-control" id="id13">System Control</a><ul>
+<li><a class="reference internal" href="#i-linear-control-systems" id="id14">I. Linear Control Systems</a></li>
+<li><a class="reference internal" href="#ii-nonlinear-control-systems" id="id15">II. Nonlinear Control Systems</a></li>
+<li><a class="reference internal" href="#iii-reference-materials" id="id16">III. Reference Materials</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#motion-planning" id="id17">Motion Planning</a><ul>
+<li><a class="reference internal" href="#i-potential-field-method" id="id18">I. Potential Field Method</a></li>
+<li><a class="reference internal" href="#ii-cell-decomposition-method" id="id19">II. Cell Decomposition Method</a></li>
+<li><a class="reference internal" href="#iii-sampling-based-method" id="id20">III. Sampling-based Method</a></li>
+<li><a class="reference internal" href="#iv-optimization-based-method" id="id21">IV. Optimization-based Method</a></li>
+<li><a class="reference internal" href="#v-reference-materials" id="id22">V. Reference Materials</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#decision-making" id="id23">Decision Making</a><ul>
+<li><a class="reference internal" href="#i-mdp" id="id24">I. MDP</a></li>
+<li><a class="reference internal" href="#ii-pomdp" id="id25">II. POMDP</a></li>
+<li><a class="reference internal" href="#id2" id="id26">III. Reference Materials</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="section" id="kinematics">
-<h2><a class="toc-backref" href="#id1">Kinematics</a><a class="headerlink" href="#kinematics" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="forward-kinematics">
-<h3><a class="toc-backref" href="#id2">Forward Kinematics</a><a class="headerlink" href="#forward-kinematics" title="Permalink to this headline">¶</a></h3>
+<h2><a class="toc-backref" href="#id3">Kinematics</a><a class="headerlink" href="#kinematics" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="i-forward-kinematics">
+<h3><a class="toc-backref" href="#id4">I. Forward Kinematics</a><a class="headerlink" href="#i-forward-kinematics" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="dh-representation">
 <h4>DH Representation<a class="headerlink" href="#dh-representation" title="Permalink to this headline">¶</a></h4>
 </div>
 </div>
-<div class="section" id="inverse-kinematics">
-<h3><a class="toc-backref" href="#id3">Inverse Kinematics</a><a class="headerlink" href="#inverse-kinematics" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="ii-inverse-kinematics">
+<h3><a class="toc-backref" href="#id5">II. Inverse Kinematics</a><a class="headerlink" href="#ii-inverse-kinematics" title="Permalink to this headline">¶</a></h3>
 </div>
-<div class="section" id="jacobian">
-<h3><a class="toc-backref" href="#id4">Jacobian</a><a class="headerlink" href="#jacobian" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="iii-differential-kinematics">
+<h3><a class="toc-backref" href="#id6">III. Differential Kinematics</a><a class="headerlink" href="#iii-differential-kinematics" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="iv-reference-materials">
+<h3><a class="toc-backref" href="#id7">IV. Reference Materials</a><a class="headerlink" href="#iv-reference-materials" title="Permalink to this headline">¶</a></h3>
+<p>Orientation Representation</p>
+<ul class="simple">
+<li><a class="reference external" href="http://www.swarthmore.edu/NatSci/mzucker1/e27/diebel2006attitude.pdf">Representing Attitude: Euler Angles, Unit Quaternions, and Rotation Vectors</a></li>
+<li><a class="reference external" href="http://www.essentialmath.com/GDC2012/GDC2012_JMV_Rotations.pdf">Understanding Rotations</a></li>
+<li><a class="reference external" href="http://3dgep.com/understanding-quaternions/">Understanding Quaternions</a></li>
+<li><a class="reference external" href="http://run.usc.edu/cs520-s12/quaternions/quaternions-cs520.pdf">Quaternions and Rotations</a></li>
+<li><a class="reference external" href="http://physicsforgames.blogspot.com/2010/02/quaternions.html">Quaternions: How</a></li>
+</ul>
 </div>
 </div>
 <div class="section" id="dynamics">
-<h2><a class="toc-backref" href="#id5">Dynamics</a><a class="headerlink" href="#dynamics" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="newtonian-method">
-<h3><a class="toc-backref" href="#id6">Newtonian Method</a><a class="headerlink" href="#newtonian-method" title="Permalink to this headline">¶</a></h3>
+<h2><a class="toc-backref" href="#id8">Dynamics</a><a class="headerlink" href="#dynamics" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="i-rigid-body-dynamics">
+<h3><a class="toc-backref" href="#id9">I. Rigid Body Dynamics</a><a class="headerlink" href="#i-rigid-body-dynamics" title="Permalink to this headline">¶</a></h3>
 </div>
-<div class="section" id="lagrangian-method">
-<h3><a class="toc-backref" href="#id7">Lagrangian Method</a><a class="headerlink" href="#lagrangian-method" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="ii-newtonian-method">
+<h3><a class="toc-backref" href="#id10">II. Newtonian Method</a><a class="headerlink" href="#ii-newtonian-method" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="iii-lagrangian-method">
+<h3><a class="toc-backref" href="#id11">III. Lagrangian Method</a><a class="headerlink" href="#iii-lagrangian-method" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id1">
+<h3><a class="toc-backref" href="#id12">IV. Reference Materials</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="http://www.cs.cmu.edu/afs/cs/academic/class/16741-s07/www/oldlecture21.pdf">Rigid Body Dynamics</a> by Matthew T. Mason (CMU)</li>
+<li><a class="reference external" href="http://people.duke.edu/~ad159/files/p105/20.pdf">Euler&#8217;s Equations</a> by Adrian Down (Duke U)</li>
+<li><a class="reference external" href="https://www.cs.cmu.edu/~baraff/sigcourse/">Physically Based Modeling: Principles and Practice</a> by Andrew Witkin and David Baraff (CMU)</li>
+</ul>
 </div>
 </div>
-<div class="section" id="dynamic-control">
-<h2><a class="toc-backref" href="#id8">Dynamic Control</a><a class="headerlink" href="#dynamic-control" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="system-control">
+<h2><a class="toc-backref" href="#id13">System Control</a><a class="headerlink" href="#system-control" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="i-linear-control-systems">
+<h3><a class="toc-backref" href="#id14">I. Linear Control Systems</a><a class="headerlink" href="#i-linear-control-systems" title="Permalink to this headline">¶</a></h3>
 </div>
-<div class="section" id="obstacle-avoidance">
-<h2><a class="toc-backref" href="#id9">Obstacle Avoidance</a><a class="headerlink" href="#obstacle-avoidance" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="ii-nonlinear-control-systems">
+<h3><a class="toc-backref" href="#id15">II. Nonlinear Control Systems</a><a class="headerlink" href="#ii-nonlinear-control-systems" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="iii-reference-materials">
+<h3><a class="toc-backref" href="#id16">III. Reference Materials</a><a class="headerlink" href="#iii-reference-materials" title="Permalink to this headline">¶</a></h3>
+</div>
 </div>
 <div class="section" id="motion-planning">
-<h2><a class="toc-backref" href="#id10">Motion Planning</a><a class="headerlink" href="#motion-planning" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id17">Motion Planning</a><a class="headerlink" href="#motion-planning" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="i-potential-field-method">
+<h3><a class="toc-backref" href="#id18">I. Potential Field Method</a><a class="headerlink" href="#i-potential-field-method" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="ii-cell-decomposition-method">
+<h3><a class="toc-backref" href="#id19">II. Cell Decomposition Method</a><a class="headerlink" href="#ii-cell-decomposition-method" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="iii-sampling-based-method">
+<h3><a class="toc-backref" href="#id20">III. Sampling-based Method</a><a class="headerlink" href="#iii-sampling-based-method" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="iv-optimization-based-method">
+<h3><a class="toc-backref" href="#id21">IV. Optimization-based Method</a><a class="headerlink" href="#iv-optimization-based-method" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="v-reference-materials">
+<h3><a class="toc-backref" href="#id22">V. Reference Materials</a><a class="headerlink" href="#v-reference-materials" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="decision-making">
+<h2><a class="toc-backref" href="#id23">Decision Making</a><a class="headerlink" href="#decision-making" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="i-mdp">
+<h3><a class="toc-backref" href="#id24">I. MDP</a><a class="headerlink" href="#i-mdp" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="ii-pomdp">
+<h3><a class="toc-backref" href="#id25">II. POMDP</a><a class="headerlink" href="#ii-pomdp" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id2">
+<h3><a class="toc-backref" href="#id26">III. Reference Materials</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="http://www.pomdp.org/">The POMDP Page</a></li>
+<li><a class="reference external" href="https://sites.google.com/site/dimitriognibenehomepage/my-research-interest/pomdp">Dimitri Ognibene&#8217;s POMDP and MDP page</a></li>
+</ul>
+</div>
 </div>
 </div>
 
@@ -142,28 +221,48 @@
   <ul>
 <li><a class="reference internal" href="#">Robotics</a><ul>
 <li><a class="reference internal" href="#kinematics">Kinematics</a><ul>
-<li><a class="reference internal" href="#forward-kinematics">Forward Kinematics</a><ul>
+<li><a class="reference internal" href="#i-forward-kinematics">I. Forward Kinematics</a><ul>
 <li><a class="reference internal" href="#dh-representation">DH Representation</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#inverse-kinematics">Inverse Kinematics</a></li>
-<li><a class="reference internal" href="#jacobian">Jacobian</a></li>
+<li><a class="reference internal" href="#ii-inverse-kinematics">II. Inverse Kinematics</a></li>
+<li><a class="reference internal" href="#iii-differential-kinematics">III. Differential Kinematics</a></li>
+<li><a class="reference internal" href="#iv-reference-materials">IV. Reference Materials</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#dynamics">Dynamics</a><ul>
-<li><a class="reference internal" href="#newtonian-method">Newtonian Method</a></li>
-<li><a class="reference internal" href="#lagrangian-method">Lagrangian Method</a></li>
+<li><a class="reference internal" href="#i-rigid-body-dynamics">I. Rigid Body Dynamics</a></li>
+<li><a class="reference internal" href="#ii-newtonian-method">II. Newtonian Method</a></li>
+<li><a class="reference internal" href="#iii-lagrangian-method">III. Lagrangian Method</a></li>
+<li><a class="reference internal" href="#id1">IV. Reference Materials</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#dynamic-control">Dynamic Control</a></li>
-<li><a class="reference internal" href="#obstacle-avoidance">Obstacle Avoidance</a></li>
-<li><a class="reference internal" href="#motion-planning">Motion Planning</a></li>
+<li><a class="reference internal" href="#system-control">System Control</a><ul>
+<li><a class="reference internal" href="#i-linear-control-systems">I. Linear Control Systems</a></li>
+<li><a class="reference internal" href="#ii-nonlinear-control-systems">II. Nonlinear Control Systems</a></li>
+<li><a class="reference internal" href="#iii-reference-materials">III. Reference Materials</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#motion-planning">Motion Planning</a><ul>
+<li><a class="reference internal" href="#i-potential-field-method">I. Potential Field Method</a></li>
+<li><a class="reference internal" href="#ii-cell-decomposition-method">II. Cell Decomposition Method</a></li>
+<li><a class="reference internal" href="#iii-sampling-based-method">III. Sampling-based Method</a></li>
+<li><a class="reference internal" href="#iv-optimization-based-method">IV. Optimization-based Method</a></li>
+<li><a class="reference internal" href="#v-reference-materials">V. Reference Materials</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#decision-making">Decision Making</a><ul>
+<li><a class="reference internal" href="#i-mdp">I. MDP</a></li>
+<li><a class="reference internal" href="#ii-pomdp">II. POMDP</a></li>
+<li><a class="reference internal" href="#id2">III. Reference Materials</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="../HOWTOs/howto-safely-revert-to-a-previous-commit-in-git.html"
+  <p class="topless"><a href="../../Projects/Application-Notes/HOWTOs/howto-safely-revert-to-a-previous-commit-in-git.html"
                         title="previous chapter">How to Safely Revert to a Previous Commit in Git</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="../Programming/Programming.html"
@@ -195,7 +294,7 @@
           <a href="../Programming/Programming.html" title="Programming"
              >next</a> |</li>
         <li class="right" >
-          <a href="../HOWTOs/howto-safely-revert-to-a-previous-commit-in-git.html" title="How to Safely Revert to a Previous Commit in Git"
+          <a href="../../Projects/Application-Notes/HOWTOs/howto-safely-revert-to-a-previous-commit-in-git.html" title="How to Safely Revert to a Previous Commit in Git"
              >previous</a> |</li>
         <!-- <li class="nav-item nav-item-0"><a href="../../../index.html">RDU-Wiki 1.0 documentation</a> &raquo;</li> -->
         <li class="nav-item nav-item-0"><a href="../../../index.html">Main Page</a> &raquo;</li> 
