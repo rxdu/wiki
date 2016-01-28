@@ -35,7 +35,7 @@ extensions = [
 ]
 
 # Google Analytics
-googleanalytics_id = 'UA-47255965-1'
+googleanalytics_id = 'UA-67949307-1'
 googleanalytics_enabled = True
 
 # Add any paths that contain templates here, relative to this directory.

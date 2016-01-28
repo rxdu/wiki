@@ -6,6 +6,18 @@
 Welcome to Ruixiang's Wiki
 **************************
 
+Resource
+========
+________
+
+.. toctree::
+   :maxdepth: 1
+
+   /_pages/Resource/online_course
+   /_pages/Resource/software
+   /_pages/Resource/literature
+   /_pages/Resource/guide
+
 Projects
 ========
 ________
@@ -14,18 +26,8 @@ ________
    :maxdepth: 1
 
    /_pages/Projects/Build-Your-Own-Quadrotor/Build-Your-Own-Quadrotor
-   /_pages/Projects/Mobile-Robot-Utilities/Mobile-Robot-Utilities
-
-Resource
-========
-________
-
-.. toctree::
-   :maxdepth: 1
-
-   /_pages/Resource/software
-   /_pages/Resource/online_course
-   /_pages/Resource/online_documents   
+   /_pages/Projects/Mobile-Robot-Toolkit/Mobile-Robot-Toolkit
+   /_pages/Projects/Application-Notes/Application-Notes
 
 Knowledge Base
 ==============
@@ -34,17 +36,15 @@ ________
 .. toctree::
    :maxdepth: 1
 
-   /_pages/Knowledge-Base/HOWTOs/HOWTOs
    /_pages/Knowledge-Base/Robotics/Robotics
-   /_pages/Knowledge-Base/Programming/Programming   
+   /_pages/Knowledge-Base/Programming/Programming
    /_pages/Knowledge-Base/Embedded-System/Embedded-System
-
 
 Important Dates
 ===============
 ________
 
- ..  role:: strikethrough
+..  role:: strikethrough
 
 * :strikethrough:`IEEE ICRA 2015, Seattle, USA, 05/26-05/30, 2015 -- deadline: 10/01/2014`
 
@@ -58,9 +58,6 @@ ________
 
 * :strikethrough:`IEEE SMC 2015, Hongkong, China, 10/10-10/13, 2015 -- deadline: 03/31/2015`
 
-* `IEEE ICRA 2016, Stockholm, Sweden, 05/16-05/21, 2016 <http://www.icra2016.org/>`_ -- deadline: 09/15/2015
+* :strikethrough:`IEEE ICRA 2016, Stockholm, Sweden, 05/16-05/21, 2016 -- deadline: 09/15/2015`
 
 * `IEEE/RSJ IROS 2016, Daejeon, Korea, 10/19-10/14, 2016 <http://www.iros2016.org/>`_ -- deadline: 03/01/2016
-
-`Top Publications of Robotics from Google Scholar <https://scholar.google.com/citations?view_op=top_venues&hl=en&vq=eng_robotics>`_
-

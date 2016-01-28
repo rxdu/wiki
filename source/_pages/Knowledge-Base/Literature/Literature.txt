@@ -1,0 +1,24 @@
+Referred Literature
+===================
+
+Books
+-----
+
+Robotics and Artificial Intelligence
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* `Robot Modeling and Control <http://www.wiley.com/WileyCDA/WileyTitle/productCd-EHEP000518.html>`_, by Mark W. Spong, Seth Hutchinson, M. Vidyasagar
+* `Introduction to Autonomous Mobile Robots <http://www.mobilerobots.ethz.ch/>`_, by Roland Siegwart, Illah R. Nourbakhsh, Davide Scaramuzza
+* `Control of Robot Manipulators in Joint Space <http://www.springer.com/us/book/9781852339944>`_, by Rafael Kelly, Victor Santibáñez Davila, Julio Antonio Loría Perez
+* `Robotics: Modelling, Planning and Control <http://www.springer.com/us/book/9781846286414>`_, by Bruno Siciliano, Lorenzo Sciavicco, Luigi Villani, Giuseppe Oriolo
+
+* `Planning Algorithms <http://planning.cs.uiuc.edu/>`_, by Steven M. LaValle
+* `Probabilistic Robotics <http://www.probabilistic-robotics.org/>`_, by Sebastian Thrun, Dieter Fox
+* `Principles of Robot Motion: Theory, Algorithms, and Implementations <http://biorobotics.ri.cmu.edu/book/>`_, by H. Choset, K. M. Lynch, S. Hutchinson, G. Kantor, W. Burgard, L. E. Kavraki and S. Thrun
+
+
+Computer Science
+^^^^^^^^^^^^^^^
+
+* `Artificial Intelligence: A Modern Approach <http://aima.cs.berkeley.edu/>`_, by Stuart J. Russell, Peter Norvig
+* `Computer Systems: A Programmer's Perspective <http://csapp.cs.cmu.edu/>`_, by Randal E. Bryant and David R. O'Hallaron
