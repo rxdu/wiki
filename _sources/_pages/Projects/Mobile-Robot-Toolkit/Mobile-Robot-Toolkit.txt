@@ -29,6 +29,13 @@ A easy and quick way is to write a Matlab/Octave program. The basic steps may in
 
 You can also use C/C++ to write your own log analyzer. `GNU Plot <http://www.gnuplot.info/>`_ is a light-weight library for data plotting.
 
+(Updated on 03/15/2016)
+
+Recently I've finished implementing a log analyzer using Qt and C++.
+
+.. image:: /_images/projects/robot_toolkit/log_analyzer.png
+       :width: 650px
+
 4. Robot Simulator
 ------------------
 

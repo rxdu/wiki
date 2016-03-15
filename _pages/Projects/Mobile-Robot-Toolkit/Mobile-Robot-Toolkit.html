@@ -112,6 +112,9 @@
 <p>After you get a log using the logger, you may need a tool to help you analyze it, especially when you&#8217;re logging sensor data/system states of the robot to help you do the control. It doesn&#8217;t give you much useful information by just looking at a full screen of numbers in a log file.</p>
 <p>A easy and quick way is to write a Matlab/Octave program. The basic steps may include reading data from the file, doing extra calculation with the data and plot data in 2D/3D. In some cases, say you&#8217;re trying to tune a controller with a simulator, you may also want your log analyzer to pick up the latest log automatically so that you can do the simulation/logging/analysis process seamlessly.</p>
 <p>You can also use C/C++ to write your own log analyzer. <a class="reference external" href="http://www.gnuplot.info/">GNU Plot</a> is a light-weight library for data plotting.</p>
+<p>(Updated on 03/15/2016)</p>
+<p>Recently I&#8217;ve finished implementing a log analyzer using Qt and C++.</p>
+<a class="reference internal image-reference" href="../../../_images/log_analyzer.png"><img alt="../../../_images/log_analyzer.png" src="../../../_images/log_analyzer.png" style="width: 650px;" /></a>
 </div>
 <div class="section" id="robot-simulator">
 <h2><a class="toc-backref" href="#id8">4. Robot Simulator</a><a class="headerlink" href="#robot-simulator" title="Permalink to this headline">¶</a></h2>

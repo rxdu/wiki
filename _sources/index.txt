@@ -46,18 +46,8 @@ ________
 
 ..  role:: strikethrough
 
-* :strikethrough:`IEEE ICRA 2015, Seattle, USA, 05/26-05/30, 2015 -- deadline: 10/01/2014`
-
-* :strikethrough:`Robotics: Science and Systems 2015, Rome, Italy, 07/13-07/17, 2015 -- deadline: 01/22/2015`
-
-* :strikethrough:`IEEE ICAR 2015, Istanbul, Turkey, 07/27-07/31, 2015 -- deadline: 02/15/2015`
-
-* :strikethrough:`IEEE RO-MAN 2015, Kobe, Japan, 08/31-09/03, 2015 -- deadline: 02/23/2015`
-
-* :strikethrough:`IEEE/RSJ IROS 2015, Hamburg, German, 09/28-10/03, 2015 -- deadline: 03/04/2015`
-
-* :strikethrough:`IEEE SMC 2015, Hongkong, China, 10/10-10/13, 2015 -- deadline: 03/31/2015`
-
 * :strikethrough:`IEEE ICRA 2016, Stockholm, Sweden, 05/16-05/21, 2016 -- deadline: 09/15/2015`
 
-* `IEEE/RSJ IROS 2016, Daejeon, Korea, 10/19-10/14, 2016 <http://www.iros2016.org/>`_ -- deadline: 03/01/2016
+* :strikethrough:`IEEE/RSJ IROS 2016, Daejeon, Korea, 10/19-10/14, 2016 -- deadline: 03/01/2016`
+
+* IEEE ICRA 2017, Singapore, 05/29-06/02, 2017 -- deadline: 
