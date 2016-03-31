@@ -1,7 +1,7 @@
 Software Tools
 ==============
 
-Online Tools 
+Online Tools
 ------------
 
 * Online reStructuredText Editor - http://rst.ninjs.org/
@@ -17,7 +17,7 @@ Open-source Software
 **Communication**
 ^^^^^^^^^^^^^^^^^
 
-* Lightweight Communications and Marshalling (LCM) - https://lcm-proj.github.io/ 
+* Lightweight Communications and Marshalling (LCM) - https://lcm-proj.github.io/
 	*"LCM is a set of libraries and tools for message passing and data marshalling, targeted at real-time systems where high-bandwidth and low latency are critical."*
 
 * Low Level Skeleton Library for Communication on GNU/Linux platforms - https://github.com/intel-iot-devkit/mraa
@@ -38,6 +38,12 @@ Open-source Software
 * GNU Plot - http://www.gnuplot.info/
 	*"Gnuplot is a portable command-line driven graphing utility for Linux, OS/2, MS Windows, OSX, VMS, and many other platforms. The source code is copyrighted but freely distributed (i.e., you don't have to pay for it). It was originally created to allow scientists and students to visualize mathematical functions and data interactively, but has grown to support many non-interactive uses such as web scripting."*
 
+**Computer Vision**
+^^^^^^^^^^^^^^^^^^^
+
+* Open source visual servoing platform library (ViSP) - http://visp.inria.fr/
+	*"ViSP standing for Visual Servoing Platform is a modular cross platform library that allows prototyping and developing applications using visual tracking and visual servoing technics at the heart of the researches done by Inria Lagadic team."*
+
 **Operating Systems**
 ^^^^^^^^^^^^^^^^^^^^^
 
@@ -55,7 +61,3 @@ Open-source Software
 
 **Miscellaneous**
 ^^^^^^^^^^^^^^^^^
-
-
-
-
