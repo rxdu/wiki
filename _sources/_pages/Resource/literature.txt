@@ -1,5 +1,5 @@
-Referred Literature
-===================
+Useful References
+=================
 
 `Top Publications of Robotics from Google Scholar <https://scholar.google.com/citations?view_op=top_venues&hl=en&vq=eng_robotics>`_
 
@@ -25,4 +25,10 @@ Computer Science
 * `Artificial Intelligence: A Modern Approach <http://aima.cs.berkeley.edu/>`_, by Stuart J. Russell, Peter Norvig
 * `Computer Systems: A Programmer's Perspective <http://csapp.cs.cmu.edu/>`_, by Randal E. Bryant and David R. O'Hallaron
 
+Websites
+--------
 
+Programming
+^^^^^^^^^^^
+
+* Blog of Scott Meyers: http://scottmeyers.blogspot.com/
