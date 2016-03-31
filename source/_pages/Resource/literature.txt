@@ -28,8 +28,13 @@ Computer Science
 Websites
 --------
 
-Programming
-^^^^^^^^^^^
+Robotics
+^^^^^^^^
+
+* Underactuated Robotics, Algorithms for Walking, Running, Swimming, Flying, and Manipulation: http://underactuated.csail.mit.edu/underactuated.html
+
+Computer Science
+^^^^^^^^^^^^^^^^
 
 * Blog of Scott Meyers: http://scottmeyers.blogspot.com/
 * Eli Bendersky's website: http://eli.thegreenplace.net/
