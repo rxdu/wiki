@@ -24,6 +24,7 @@ Computer Science
 
 * `Artificial Intelligence: A Modern Approach <http://aima.cs.berkeley.edu/>`_, by Stuart J. Russell, Peter Norvig
 * `Computer Systems: A Programmer's Perspective <http://csapp.cs.cmu.edu/>`_, by Randal E. Bryant and David R. O'Hallaron
+* `The Definitive C++ Book Guide and List <http://stackoverflow.com/questions/388242/the-definitive-c-book-guide-and-list>`_
 
 Websites
 --------
