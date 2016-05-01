@@ -14,6 +14,12 @@ Online Tools
 Open-source Software
 --------------------
 
+**Robotics**
+^^^^^^^^^^^^
+
+* Dronecode Software Platform - https://www.dronecode.org/dronecode-software-platform
+	*"Dronecode encompasses open source projects that control flight, enable mission planning, and otherwise make drone flight and advanced functionality possible."*
+
 **Communication**
 ^^^^^^^^^^^^^^^^^
 
