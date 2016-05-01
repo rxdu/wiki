@@ -1,0 +1,21 @@
+Unmanned Aerial Vehicles
+========================
+
+.. contents::
+   :depth: 2
+   :local:
+
+1. Basics
+---------
+
+Modeling and Control
+^^^^^^^^^^^^^^^^^^^^
+
+* Valavanis, Kimon P., and George J. Vachtsevanos. 2014. “**Quadrotor Kinematics and Dynamics.**” In Handbook of Unmanned Aerial Vehicles, 307–28. Springer Netherlands.
+* Mellinger, Daniel, Nathan Michael, and Vijay Kumar. 2012. “**Trajectory Generation and Control for Precise Aggressive Maneuvers with Quadrotors.**” The International Journal of Robotics Research 31 (5): 664–74. [`pdf <https://pdfs.semanticscholar.org/4c98/bd453c389dc3547138b2d59baa1ba855ee40.pdf>`_]
+* Fresk, E., and G. Nikolakopoulos. 2013. “**Full Quaternion Based Attitude Control for a Quadrotor.**” In Control Conference (ECC), 2013 European, 3864–69. [`pdf <http://www.nt.ntnu.no/users/skoge/prost/proceedings/ecc-2013/data/papers/0927.pdf>`_]
+* Lee, Taeyoung, M. Leoky, and N. H. McClamroch. 2010. “**Geometric Tracking Control of a Quadrotor UAV on SE(3).**” In Decision and Control (CDC), 2010 49th IEEE Conference on, 5420–25. [`pdf <https://pdfs.semanticscholar.org/2e83/b6f1d6da2694dd029597911599c03b690afc.pdf>`_]
+
+
+2. Advanced Topics
+------------------
