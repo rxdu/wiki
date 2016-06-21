@@ -83,6 +83,11 @@ Or you can use the attach command:
     (gdb) print /FMT <var-name>	# o:octal,x:hex,d:decimal,u:unsigned decimal,t:binary, 	f:float,a:address,c:char
     (gdb) set <var-name> = <new-value>
     (gdb) print <var-name> = <new-value>
+    (gdb) display <var-name>/<expression>   # automatically display specified var once program is stopped
+    (gdb) info display          # print the list of auto-display items
+    (gdb) enable/disable <display-item-num> # enable or disable the display a var/exp
+    (gdb) undisplay             # delete the item from display list
+
 
 * Stepping and resuming program
 
