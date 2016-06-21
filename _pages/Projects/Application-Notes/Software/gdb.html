@@ -149,6 +149,10 @@
 <span class="o">(</span>gdb<span class="o">)</span> print /FMT &lt;var-name&gt; <span class="c1"># o:octal,x:hex,d:decimal,u:unsigned decimal,t:binary,  f:float,a:address,c:char</span>
 <span class="o">(</span>gdb<span class="o">)</span> <span class="nb">set</span> &lt;var-name&gt; <span class="o">=</span> &lt;new-value&gt;
 <span class="o">(</span>gdb<span class="o">)</span> print &lt;var-name&gt; <span class="o">=</span> &lt;new-value&gt;
+<span class="o">(</span>gdb<span class="o">)</span> display &lt;var-name&gt;/&lt;expression&gt;   <span class="c1"># automatically display specified var once program is stopped</span>
+<span class="o">(</span>gdb<span class="o">)</span> info display          <span class="c1"># print the list of auto-display items</span>
+<span class="o">(</span>gdb<span class="o">)</span> enable/disable &lt;display-item-num&gt; <span class="c1"># enable or disable the display a var/exp</span>
+<span class="o">(</span>gdb<span class="o">)</span> undisplay             <span class="c1"># delete the item from display list</span>
 </pre></div>
 </div>
 <ul class="simple">
