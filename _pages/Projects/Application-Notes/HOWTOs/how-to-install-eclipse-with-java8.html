@@ -17,8 +17,8 @@
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
     </script>
-    <!-- <title>HOWTOs &mdash; RDU-Wiki 1.0 documentation</title> -->
-    <title>HOWTOs</title>
+    <!-- <title>How to Install Eclipse CDT with Java 8 &mdash; RDU-Wiki 1.0 documentation</title> -->
+    <title>How to Install Eclipse CDT with Java 8</title>
     
     <link rel="stylesheet" href="../../../../_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
@@ -69,13 +69,36 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="howtos">
-<h1>HOWTOs<a class="headerlink" href="#howtos" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="howto-obtain-gurobi-academic-license-off-campus.html">How to Obtain Gurobi Academic License Off Campus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="howto-safely-revert-to-a-previous-commit-in-git.html">How to Safely Revert to a Previous Commit in Git</a></li>
-<li class="toctree-l1"><a class="reference internal" href="howto-install-eclipse-cdt-with-java8.html">How to Install Eclipse CDT with Java 8</a></li>
+  <div class="section" id="how-to-install-eclipse-cdt-with-java-8">
+<h1>How to Install Eclipse CDT with Java 8<a class="headerlink" href="#how-to-install-eclipse-cdt-with-java-8" title="Permalink to this headline">¶</a></h1>
+<p>From Eclipse Neon, the minimal required version of Java becomes 8. Here is a note about how to configure the java environment properly to run the latest Eclipse in Ubuntu 14.04.</p>
+<div class="section" id="download-eclipse-cdt">
+<h2>Download Eclipse CDT<a class="headerlink" href="#download-eclipse-cdt" title="Permalink to this headline">¶</a></h2>
+<p>Download eclipse from the [official website](<a class="reference external" href="https://eclipse.org/cdt/downloads.php">https://eclipse.org/cdt/downloads.php</a>). Extract it to your preferred location.</p>
+</div>
+<div class="section" id="install-java-8">
+<h2>Install Java 8<a class="headerlink" href="#install-java-8" title="Permalink to this headline">¶</a></h2>
+<p>Java 8 is not readily available in the apt-get repository of Ubuntu 14.04. You can use the following third-party ppa to install it.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo add-apt-repository ppa:openjdk-r/ppa
+$ sudo apt-get update
+</pre></div>
+</div>
+</div>
+<div class="section" id="configure-the-default-java-runtime">
+<h2>Configure the default Java Runtime<a class="headerlink" href="#configure-the-default-java-runtime" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo update-alternatives --config java
+</pre></div>
+</div>
+<p>Similarly, to choose a default javac compiler, run the following command. (You don&#8217;t need this step if you just want to run Eclipse CDT with no Java development.)</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo update-alternatives --config javac
+</pre></div>
+</div>
+<p>Now you should be able to run the latest Eclipse without the Java version error message.</p>
+<p>Reference:</p>
+<ul class="simple">
+<li>[1] <a class="reference external" href="https://launchpad.net/~openjdk-r/+archive/ubuntu/ppa">https://launchpad.net/~openjdk-r/+archive/ubuntu/ppa</a></li>
+<li>[2] <a class="reference external" href="http://askubuntu.com/questions/705072/is-the-openjdk-r-ppa-trustworty">http://askubuntu.com/questions/705072/is-the-openjdk-r-ppa-trustworty</a></li>
+<li>[3] <a class="reference external" href="https://dzone.com/articles/choosing-java-version-ubuntu">https://dzone.com/articles/choosing-java-version-ubuntu</a></li>
 </ul>
 </div>
 </div>
@@ -86,6 +109,16 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="../../../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">How to Install Eclipse CDT with Java 8</a><ul>
+<li><a class="reference internal" href="#download-eclipse-cdt">Download Eclipse CDT</a></li>
+<li><a class="reference internal" href="#install-java-8">Install Java 8</a></li>
+<li><a class="reference internal" href="#configure-the-default-java-runtime">Configure the default Java Runtime</a></li>
+</ul>
+</li>
+</ul>
+
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../../../search.html" method="get">

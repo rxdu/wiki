@@ -23,3 +23,4 @@ Application Notes
 
    /_pages/Projects/Application-Notes/HOWTOs/howto-obtain-gurobi-academic-license-off-campus
    /_pages/Projects/Application-Notes/HOWTOs/howto-safely-revert-to-a-previous-commit-in-git
+   /_pages/Projects/Application-Notes/HOWTOs/howto-install-eclipse-cdt-with-java8

@@ -1,0 +1,41 @@
+How to Install Eclipse CDT with Java 8
+======================================
+
+From Eclipse Neon, the minimal required version of Java becomes 8. Here is a note about how to configure the java environment properly to run the latest Eclipse in Ubuntu 14.04.
+
+Download Eclipse CDT
+^^^^^^^^^^^^^^^^^^^^
+
+Download eclipse from the [official website](https://eclipse.org/cdt/downloads.php). Extract it to your preferred location.
+
+Install Java 8
+^^^^^^^^^^^^^^
+
+Java 8 is not readily available in the apt-get repository of Ubuntu 14.04. You can use the following third-party ppa to install it.
+
+.. code-block:: bash
+
+  $ sudo add-apt-repository ppa:openjdk-r/ppa
+  $ sudo apt-get update
+  $ sudo apt install openjdk-8-jdk
+
+Configure the default Java Runtime
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: bash
+
+   $ sudo update-alternatives --config java
+
+Similarly, to choose a default javac compiler, run the following command. (You don't need this step if you just want to run Eclipse CDT with no Java development.)
+
+.. code-block:: bash
+
+  $ sudo update-alternatives --config javac
+
+Now you should be able to run the latest Eclipse without the Java version error message.
+
+Reference:
+
+- [1] https://launchpad.net/~openjdk-r/+archive/ubuntu/ppa
+- [2] http://askubuntu.com/questions/705072/is-the-openjdk-r-ppa-trustworty
+- [3] https://dzone.com/articles/choosing-java-version-ubuntu
