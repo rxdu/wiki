@@ -81,6 +81,7 @@
             
   <div class="section" id="how-to-obtain-gurobi-academic-license-off-campus">
 <h1>How to Obtain Gurobi Academic License Off Campus<a class="headerlink" href="#how-to-obtain-gurobi-academic-license-off-campus" title="Permalink to this headline">¶</a></h1>
+<p>(Updated on 08/22/2016 for Ubuntu 14.04 64-bit)</p>
 <p>To use Gurobi, you need to obtain an free academic license. It&#8217;s easy to do so when your computer is connected to the campus network. But if not, you will need to solve two problems to get one: connecting to campus network through VPN and route the network traffic through the VPN channel.</p>
 <div class="section" id="connecting-to-campus-network">
 <h2>Connecting to Campus Network<a class="headerlink" href="#connecting-to-campus-network" title="Permalink to this headline">¶</a></h2>
@@ -95,29 +96,27 @@
 <p>Configuration steps:</p>
 <ul class="simple">
 <li>Install 64-bit Firefox if you don&#8217;t have one.</li>
-<li>Configure Java plugin for Firefox, you may find this <a class="reference external" href="http://rdu.im/ubuntu/2014/03/24/install-java-plugin-for-web-browers-on-ubuntu.html">article</a> useful.</li>
 <li>Install IcedTea-Web-plug-in</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo apt-get install icedtea-7-plugin
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo apt-get install openjdk-7-jre icedtea-7-plugin
 </pre></div>
 </div>
 <ul class="simple">
-<li>Install the 32-bit Java version. Download the archive file and extract to a folder, for example  <strong>jre-7u3-linux-i586.tar.gz</strong> to <strong>/usr/java32</strong>.</li>
-<li>Update the alternatives link for Java</li>
+<li>Install the 32-bit Java version.</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo update-alternatives --install /usr/bin/java java /usr/java32/jre1.7.0_03/bin/java 10
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo apt-get install openjdk-7-jre:i386
+</pre></div>
+</div>
+<ul class="simple">
+<li>Add symbolic link to update-alternatives</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo ln -s /usr/bin/update-alternatives /usr/sbin/
 </pre></div>
 </div>
 <ul class="simple">
 <li>Keep the default Java version to be the 64-bit one.</li>
 </ul>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo update-alternatives --config java
-</pre></div>
-</div>
-<ul class="simple">
-<li>Install the standard 32 bit libraries and components</li>
-</ul>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo apt-get  install ia32-libs
 </pre></div>
 </div>
 <p>Now you can try to connect the VPN. Refer to the original document for more details if you get any problems. Don&#8217;t forget to use <strong>Firefox</strong> to connect to <a class="reference external" href="https://vpn.wpi.edu">https://vpn.wpi.edu</a>. Chrome will not work.</p>
@@ -147,6 +146,7 @@ $ sudo ip route add default via 130.215.*.*
 <li>[2] <a class="reference external" href="http://www.cyberciti.biz/tips/configuring-static-routes-in-debian-or-red-hat-linux-systems.html">http://www.cyberciti.biz/tips/configuring-static-routes-in-debian-or-red-hat-linux-systems.html</a></li>
 <li>[3] <a class="reference external" href="http://superuser.com/questions/794922/routing-all-traffic-over-vpn-on-ubuntu-linux">http://superuser.com/questions/794922/routing-all-traffic-over-vpn-on-ubuntu-linux</a></li>
 <li>[4] <a class="reference external" href="http://kb.juniper.net/InfoCenter/index?page=content&amp;id=KB25230">http://kb.juniper.net/InfoCenter/index?page=content&amp;id=KB25230</a></li>
+<li>[5] <a class="reference external" href="https://wrjih.wordpress.com/2015/09/05/juniper-vpn-msjnc-64-bit-ubuntu-14-04/">https://wrjih.wordpress.com/2015/09/05/juniper-vpn-msjnc-64-bit-ubuntu-14-04/</a></li>
 </ul>
 </div>
 </div>
