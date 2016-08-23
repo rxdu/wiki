@@ -1,6 +1,8 @@
 How to Obtain Gurobi Academic License Off Campus
 ================================================
 
+(Updated on 08/22/2016 for Ubuntu 14.04 64-bit)
+
 To use Gurobi, you need to obtain an free academic license. It's easy to do so when your computer is connected to the campus network. But if not, you will need to solve two problems to get one: connecting to campus network through VPN and route the network traffic through the VPN channel.
 
 Connecting to Campus Network
@@ -19,31 +21,29 @@ What you need:
 Configuration steps:
 
 * Install 64-bit Firefox if you don't have one.
-* Configure Java plugin for Firefox, you may find this `article <http://rdu.im/ubuntu/2014/03/24/install-java-plugin-for-web-browers-on-ubuntu.html>`_ useful.
 * Install IcedTea-Web-plug-in
 
 .. code-block:: bash
 
-   $ sudo apt-get install icedtea-7-plugin
+   $ sudo apt-get install openjdk-7-jre icedtea-7-plugin
 
-* Install the 32-bit Java version. Download the archive file and extract to a folder, for example  **jre-7u3-linux-i586.tar.gz** to **/usr/java32**.
-* Update the alternatives link for Java 
+* Install the 32-bit Java version.
 
 .. code-block:: bash
 
-   $ sudo update-alternatives --install /usr/bin/java java /usr/java32/jre1.7.0_03/bin/java 10
+   $ sudo apt-get install openjdk-7-jre:i386
+
+* Add symbolic link to update-alternatives
+
+.. code-block:: bash
+
+   $ sudo ln -s /usr/bin/update-alternatives /usr/sbin/
 
 * Keep the default Java version to be the 64-bit one.
 
 .. code-block:: bash
 
    $ sudo update-alternatives --config java
-
-* Install the standard 32 bit libraries and components
-
-.. code-block:: bash
-
-   $ sudo apt-get  install ia32-libs
 
 Now you can try to connect the VPN. Refer to the original document for more details if you get any problems. Don't forget to use **Firefox** to connect to https://vpn.wpi.edu. Chrome will not work.
 
@@ -78,4 +78,4 @@ Note that you need to change the ip addresses according to your actual situation
 - [2] http://www.cyberciti.biz/tips/configuring-static-routes-in-debian-or-red-hat-linux-systems.html
 - [3] http://superuser.com/questions/794922/routing-all-traffic-over-vpn-on-ubuntu-linux
 - [4] http://kb.juniper.net/InfoCenter/index?page=content&id=KB25230
-
+- [5] https://wrjih.wordpress.com/2015/09/05/juniper-vpn-msjnc-64-bit-ubuntu-14-04/
