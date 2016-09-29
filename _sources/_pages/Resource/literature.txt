@@ -18,11 +18,12 @@ Robotics and Artificial Intelligence
 * `Probabilistic Robotics <http://www.probabilistic-robotics.org/>`_, by Sebastian Thrun, Dieter Fox
 * `Principles of Robot Motion: Theory, Algorithms, and Implementations <http://biorobotics.ri.cmu.edu/book/>`_, by H. Choset, K. M. Lynch, S. Hutchinson, G. Kantor, W. Burgard, L. E. Kavraki and S. Thrun
 
-
-Computer Science
-^^^^^^^^^^^^^^^^
-
 * `Artificial Intelligence: A Modern Approach <http://aima.cs.berkeley.edu/>`_, by Stuart J. Russell, Peter Norvig
+
+
+Programming
+^^^^^^^^^^^
+
 * `Computer Systems: A Programmer's Perspective <http://csapp.cs.cmu.edu/>`_, by Randal E. Bryant and David R. O'Hallaron
 * `The Definitive C++ Book Guide and List <http://stackoverflow.com/questions/388242/the-definitive-c-book-guide-and-list>`_
 
@@ -34,8 +35,8 @@ Robotics
 
 * Underactuated Robotics, Algorithms for Walking, Running, Swimming, Flying, and Manipulation: http://underactuated.csail.mit.edu/underactuated.html
 
-Computer Science
-^^^^^^^^^^^^^^^^
+Programming
+^^^^^^^^^^^
 
 * Blog of Scott Meyers: http://scottmeyers.blogspot.com/
 * Eli Bendersky's website: http://eli.thegreenplace.net/
