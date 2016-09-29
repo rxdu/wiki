@@ -47,10 +47,10 @@ ________
 
 ..  role:: strikethrough
 
-* The 2017 American Control Conference, 05/24 - 05/26, Seattle, WA, USA -- 09/19/2016
-
-* IEEE ICRA 2017, Singapore, 05/29-06/02, 2017 -- deadline: 09/15/2016
-
 * :strikethrough:`IEEE/RSJ IROS 2016, Daejeon, Korea, 10/19-10/14, 2016 -- deadline: 03/01/2016`
 
+* :strikethrough:`IEEE ICRA 2017, Singapore, 05/29-06/02, 2017 -- deadline: 09/15/2016`
+
 * :strikethrough:`IEEE ICRA 2016, Stockholm, Sweden, 05/16-05/21, 2016 -- deadline: 09/15/2015`
+
+* :strikethrough:`The 2017 American Control Conference, 05/24 - 05/26, Seattle, WA, USA -- 09/19/2016`
