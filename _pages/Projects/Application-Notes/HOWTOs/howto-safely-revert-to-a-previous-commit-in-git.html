@@ -41,11 +41,11 @@
     <script type="text/javascript" src="../../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
     <link rel="top" title="RDU-Wiki 1.0 documentation" href="../../../../index.html" />
     <link rel="up" title="Application Notes" href="../Application-Notes.html" />
-    <link rel="next" title="Robotics" href="../../../Knowledge-Base/Robotics/Robotics.html" />
+    <link rel="next" title="How to Install Eclipse CDT with Java 8" href="howto-install-eclipse-cdt-with-java8.html" />
     <link rel="prev" title="How to Obtain Gurobi Academic License Off Campus" href="howto-obtain-gurobi-academic-license-off-campus.html" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
@@ -63,7 +63,7 @@
           <a href="../../../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="../../../Knowledge-Base/Robotics/Robotics.html" title="Robotics"
+          <a href="howto-install-eclipse-cdt-with-java8.html" title="How to Install Eclipse CDT with Java 8"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="howto-obtain-gurobi-academic-license-off-campus.html" title="How to Obtain Gurobi Academic License Off Campus"
@@ -83,13 +83,13 @@
 <h1>How to Safely Revert to a Previous Commit in Git<a class="headerlink" href="#how-to-safely-revert-to-a-previous-commit-in-git" title="Permalink to this headline">¶</a></h1>
 <p>[TO BE VERIFIED]</p>
 <p>If you want to commit on top of the current HEAD with the exact state at a different commit, undoing all the intermediate commits, then you can use reset to create the correct state of the index to make the commit.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Reset the index to the desired tree</span>
-$ git reset 56e05fced
-<span class="c1"># Move the branch pointer back to the previous HEAD</span>
-$ git reset --soft HEAD@<span class="o">{</span>1<span class="o">}</span>
-$ git commit -m <span class="s2">&quot;Revert to 56e05fced&quot;</span>
-<span class="c1"># Update working copy to reflect the new commit</span>
-$ git reset --hard
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># Reset the index to the desired tree</span>
+<span class="nv">$ </span>git reset 56e05fced
+<span class="c"># Move the branch pointer back to the previous HEAD</span>
+<span class="nv">$ </span>git reset --soft HEAD@<span class="o">{</span>1<span class="o">}</span>
+<span class="nv">$ </span>git commit -m <span class="s2">&quot;Revert to 56e05fced&quot;</span>
+<span class="c"># Update working copy to reflect the new commit</span>
+<span class="nv">$ </span>git reset --hard
 </pre></div>
 </div>
 <ul class="simple">
@@ -108,8 +108,8 @@ $ git reset --hard
   <p class="topless"><a href="howto-obtain-gurobi-academic-license-off-campus.html"
                         title="previous chapter">How to Obtain Gurobi Academic License Off Campus</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="../../../Knowledge-Base/Robotics/Robotics.html"
-                        title="next chapter">Robotics</a></p>
+  <p class="topless"><a href="howto-install-eclipse-cdt-with-java8.html"
+                        title="next chapter">How to Install Eclipse CDT with Java 8</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../../../search.html" method="get">
@@ -134,7 +134,7 @@ $ git reset --hard
           <a href="../../../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="../../../Knowledge-Base/Robotics/Robotics.html" title="Robotics"
+          <a href="howto-install-eclipse-cdt-with-java8.html" title="How to Install Eclipse CDT with Java 8"
              >next</a> |</li>
         <li class="right" >
           <a href="howto-obtain-gurobi-academic-license-off-campus.html" title="How to Obtain Gurobi Academic License Off Campus"
@@ -145,8 +145,8 @@ $ git reset --hard
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2015, Ruixiang Du.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.
+        &copy; Copyright 2016, Ruixiang Du.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
     </div>
   </body>
 </html>

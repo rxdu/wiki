@@ -2,38 +2,53 @@ How to Obtain Gurobi Academic License Off Campus
 ================================================
 
 (Updated on 08/22/2016 for Ubuntu 14.04 64-bit)
+(Updated on 11/28/2016 for Debian Jessie 64-bit)
 
 To use Gurobi, you need to obtain an free academic license. It's easy to do so when your computer is connected to the campus network. But if not, you will need to solve two problems to get one: connecting to campus network through VPN and route the network traffic through the VPN channel.
 
 Connecting to Campus Network
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-WPI uses Juniper Network Connect Client to establish a VPN channel. For Ubuntu 64-bit, it was difficult to make the client work before this `official solution <http://kb.juniper.net/InfoCenter/index?page=content&id=KB25230>`_ is provided recently.
+WPI uses Juniper Network Connect Client to establish a VPN channel. For Ubuntu/Debian 64-bit, it is tricky to make the client work. The `official solution <http://kb.juniper.net/InfoCenter/index?page=content&id=KB25230>`_ was provided but the link doesn't work anymore.
 
 Here is a brief summary:
 
 What you need:
 
-* 64-bit Mozilla Firefox browser
+* 64-bit Mozilla Firefox browser (no need to install the 32-bit version)
 * Java plug-in for Firefox
 * IcedTea-Web-plug-in
 
 Configuration steps:
 
 * Install 64-bit Firefox if you don't have one.
+
+* Install 32-bit libraries
+
+.. code-block:: bash
+
+   # for debian
+   $ sudo dpkg --add-architecture i386
+   $ sudo apt-get update
+   # for ubuntu and earlier version of debian
+   $ sudo apt-get install ia32-libs
+   # for debian jessie
+   $ sudo apt-get install libc6-i386 libxext6:i386 libxrender1:i386 libxtst6:i386 lib32z1
+
 * Install IcedTea-Web-plug-in
 
 .. code-block:: bash
 
-   $ sudo apt-get install openjdk-7-jre icedtea-7-plugin
+   $ sudo apt-get install icedtea-7-plugin
 
-* Install the 32-bit Java version.
+* Install both the 32-bit and 64-bit Java version.
 
 .. code-block:: bash
 
+   $ sudo apt-get install openjdk-7-jre
    $ sudo apt-get install openjdk-7-jre:i386
 
-* Add symbolic link to update-alternatives
+* Add symbolic link to update-alternatives (you don't need to do this in debian)
 
 .. code-block:: bash
 
@@ -44,6 +59,16 @@ Configuration steps:
 .. code-block:: bash
 
    $ sudo update-alternatives --config java
+
+* Install Oracle JRE and bind the java plugin to Firefox
+
+.. code-block:: bash
+
+   $ tar -xvf Downloads/jre-*-linux-x64.tar.gz
+   $ sudo mv Downloads/jre* /usr/lib/jvm
+   $ mkdir ~/.mozilla/plugins/
+   $ cd ~/.mozilla/plugins/
+   $ ln -s /usr/lib/jvm/jre*/lib/amd64/libnpjp2.so
 
 Now you can try to connect the VPN. Refer to the original document for more details if you get any problems. Don't forget to use **Firefox** to connect to https://vpn.wpi.edu. Chrome will not work.
 
@@ -79,3 +104,4 @@ Note that you need to change the ip addresses according to your actual situation
 - [3] http://superuser.com/questions/794922/routing-all-traffic-over-vpn-on-ubuntu-linux
 - [4] http://kb.juniper.net/InfoCenter/index?page=content&id=KB25230
 - [5] https://wrjih.wordpress.com/2015/09/05/juniper-vpn-msjnc-64-bit-ubuntu-14-04/
+- [6] https://www.aldeid.com/wiki/Juniper-network-connect-debian-7.5-64-bit-wheezy
