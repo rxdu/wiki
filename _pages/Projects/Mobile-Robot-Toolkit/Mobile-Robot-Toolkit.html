@@ -41,7 +41,7 @@
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="top" title="RDU-Wiki 1.0 documentation" href="../../../index.html" />
     <link rel="next" title="Application Notes" href="../Application-Notes/Application-Notes.html" />
@@ -273,7 +273,7 @@
 62
 63
 64
-65</pre></div></td><td class="code"><div class="highlight"><pre><span class="n">simSetThreadSwitchTiming</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+65</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">simSetThreadSwitchTiming</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="c1">-- Choose a port that is probably not used (try to always use a similar code):</span>
 <span class="n">simSetThreadAutomaticSwitch</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
@@ -401,13 +401,13 @@
 58
 59
 60
-61</pre></div></td><td class="code"><div class="highlight"><pre><span class="cp">#include &lt;stdio.h&gt;</span>
-<span class="cp">#include &lt;stdlib.h&gt;</span>
-<span class="cp">#include &lt;iostream&gt;</span>
-<span class="cp">#include &lt;unistd.h&gt;</span>
+61</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp"></span>
 
 <span class="k">extern</span> <span class="s">&quot;C&quot;</span> <span class="p">{</span>
-    <span class="cp">#include &quot;extApi.h&quot;</span>
+    <span class="cp">#include</span> <span class="cpf">&quot;extApi.h&quot;</span><span class="cp"></span>
 <span class="cm">/*  #include &quot;extApiCustom.h&quot; // custom remote API functions */</span>
 <span class="p">}</span>
 
@@ -546,7 +546,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &copy; Copyright 2016, Ruixiang Du.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.
     </div>
   </body>
 </html>

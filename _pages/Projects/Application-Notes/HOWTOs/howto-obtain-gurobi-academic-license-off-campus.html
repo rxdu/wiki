@@ -41,7 +41,7 @@
     <script type="text/javascript" src="../../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../../_static/doctools.js"></script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
     <link rel="top" title="RDU-Wiki 1.0 documentation" href="../../../../index.html" />
     <link rel="up" title="Application Notes" href="../Application-Notes.html" />
@@ -82,69 +82,44 @@
   <div class="section" id="how-to-obtain-gurobi-academic-license-off-campus">
 <h1>How to Obtain Gurobi Academic License Off Campus<a class="headerlink" href="#how-to-obtain-gurobi-academic-license-off-campus" title="Permalink to this headline">¶</a></h1>
 <p>(Updated on 08/22/2016 for Ubuntu 14.04 64-bit)</p>
-<p>(Updated on 11/28/2016 for Debian Jessie 64-bit)</p>
 <p>To use Gurobi, you need to obtain an free academic license. It&#8217;s easy to do so when your computer is connected to the campus network. But if not, you will need to solve two problems to get one: connecting to campus network through VPN and route the network traffic through the VPN channel.</p>
 <div class="section" id="connecting-to-campus-network">
 <h2>Connecting to Campus Network<a class="headerlink" href="#connecting-to-campus-network" title="Permalink to this headline">¶</a></h2>
-<p>WPI uses Juniper Network Connect Client to establish a VPN channel. For Ubuntu/Debian 64-bit, it is tricky to make the client work. The <a class="reference external" href="http://kb.juniper.net/InfoCenter/index?page=content&amp;id=KB25230">official solution</a> was provided but the link doesn&#8217;t work anymore.</p>
+<p>WPI uses Juniper Network Connect Client to establish a VPN channel. For Ubuntu 64-bit, it was difficult to make the client work before this <a class="reference external" href="http://kb.juniper.net/InfoCenter/index?page=content&amp;id=KB25230">official solution</a> is provided recently.</p>
 <p>Here is a brief summary:</p>
 <p>What you need:</p>
 <ul class="simple">
-<li>64-bit Mozilla Firefox browser (no need to install the 32-bit version)</li>
+<li>64-bit Mozilla Firefox browser</li>
 <li>Java plug-in for Firefox</li>
 <li>IcedTea-Web-plug-in</li>
 </ul>
 <p>Configuration steps:</p>
 <ul class="simple">
 <li>Install 64-bit Firefox if you don&#8217;t have one.</li>
-<li>Install 32-bit libraries</li>
-</ul>
-<div class="highlight-bash"><div class="highlight"><pre><span class="c"># for debian</span>
-<span class="nv">$ </span>sudo dpkg --add-architecture i386
-<span class="nv">$ </span>sudo apt-get update
-<span class="c"># for ubuntu and earlier version of debian</span>
-<span class="nv">$ </span>sudo apt-get install ia32-libs
-<span class="c"># for debian jessie</span>
-<span class="nv">$ </span>sudo apt-get install libc6-i386 libxext6:i386 libxrender1:i386 libxtst6:i386 lib32z1
-</pre></div>
-</div>
-<ul class="simple">
 <li>Install IcedTea-Web-plug-in</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sudo apt-get install icedtea-7-plugin
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo apt-get install openjdk-7-jre icedtea-7-plugin
 </pre></div>
 </div>
 <ul class="simple">
-<li>Install both the 32-bit and 64-bit Java version.</li>
+<li>Install the 32-bit Java version.</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sudo apt-get install openjdk-7-jre
-<span class="nv">$ </span>sudo apt-get install openjdk-7-jre:i386
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo apt-get install openjdk-7-jre:i386
 </pre></div>
 </div>
 <ul class="simple">
-<li>Add symbolic link to update-alternatives (you don&#8217;t need to do this in debian)</li>
+<li>Add symbolic link to update-alternatives</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sudo ln -s /usr/bin/update-alternatives /usr/sbin/
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo ln -s /usr/bin/update-alternatives /usr/sbin/
 </pre></div>
 </div>
 <ul class="simple">
 <li>Keep the default Java version to be the 64-bit one.</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sudo update-alternatives --config java
-</pre></div>
-</div>
-<ul class="simple">
-<li>Install Oracle JRE and bind the java plugin to Firefox</li>
-</ul>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>tar -xvf Downloads/jre-*-linux-x64.tar.gz
-<span class="nv">$ </span>sudo mv Downloads/jre* /usr/lib/jvm
-<span class="nv">$ </span>mkdir ~/.mozilla/plugins/
-<span class="nv">$ </span><span class="nb">cd</span> ~/.mozilla/plugins/
-<span class="nv">$ </span>ln -s /usr/lib/jvm/jre*/lib/amd64/libnpjp2.so
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo update-alternatives --config java
 </pre></div>
 </div>
 <p>Now you can try to connect the VPN. Refer to the original document for more details if you get any problems. Don&#8217;t forget to use <strong>Firefox</strong> to connect to <a class="reference external" href="https://vpn.wpi.edu">https://vpn.wpi.edu</a>. Chrome will not work.</p>
-<p>Note that the above steps may be redundant. After so many trials and errors, I don&#8217;t really remember which steps are necessary and which ones are not.</p>
 </div>
 <div class="section" id="route-network-traffic-through-vpn-channel">
 <h2>Route Network Traffic through VPN Channel<a class="headerlink" href="#route-network-traffic-through-vpn-channel" title="Permalink to this headline">¶</a></h2>
@@ -154,15 +129,15 @@
 <ul class="simple">
 <li>Find the remote gateway IP address:</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>route -n
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ route -n
 </pre></div>
 </div>
 <p>You should be able to find an IP address starting from &#8220;130.215.*.*&#8221; via interface &#8220;tun0&#8221;.</p>
 <ul class="simple">
 <li>Delete the default gateway and add the new one:</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sudo ip route del default via 192.168.1.1
-<span class="nv">$ </span>sudo ip route add default via 130.215.*.*
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo ip route del default via 192.168.1.1
+$ sudo ip route add default via 130.215.*.*
 </pre></div>
 </div>
 <p>Note that you need to change the ip addresses according to your actual situation. Some routers may use &#8220;192.168.1.254&#8221; as the default gateway ip. <strong>When you finish, you need to change the default gateway back.</strong> Otherwise when you disconnect the VPN channel, you might not be able to connect to the Internet. This method works on my computer. If you encounter any problems, check the reference for more information..</p>
@@ -172,7 +147,6 @@
 <li>[3] <a class="reference external" href="http://superuser.com/questions/794922/routing-all-traffic-over-vpn-on-ubuntu-linux">http://superuser.com/questions/794922/routing-all-traffic-over-vpn-on-ubuntu-linux</a></li>
 <li>[4] <a class="reference external" href="http://kb.juniper.net/InfoCenter/index?page=content&amp;id=KB25230">http://kb.juniper.net/InfoCenter/index?page=content&amp;id=KB25230</a></li>
 <li>[5] <a class="reference external" href="https://wrjih.wordpress.com/2015/09/05/juniper-vpn-msjnc-64-bit-ubuntu-14-04/">https://wrjih.wordpress.com/2015/09/05/juniper-vpn-msjnc-64-bit-ubuntu-14-04/</a></li>
-<li>[6] <a class="reference external" href="https://www.aldeid.com/wiki/Juniper-network-connect-debian-7.5-64-bit-wheezy">https://www.aldeid.com/wiki/Juniper-network-connect-debian-7.5-64-bit-wheezy</a></li>
 </ul>
 </div>
 </div>
@@ -234,7 +208,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &copy; Copyright 2016, Ruixiang Du.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.
     </div>
   </body>
 </html>

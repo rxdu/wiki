@@ -41,7 +41,7 @@
     <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
     <link rel="top" title="RDU-Wiki 1.0 documentation" href="../../../../../index.html" />
     <link rel="up" title="Application Notes" href="../../Application-Notes.html" />
@@ -84,11 +84,59 @@
 <div class="section" id="useful-commands">
 <h2>Useful Commands<a class="headerlink" href="#useful-commands" title="Permalink to this headline">¶</a></h2>
 <p><strong>curl</strong>: download a file</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -O link-to-remote-file
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -O link-to-remote-file
 </pre></div>
 </div>
 <p><strong>su</strong>: get root privileges</p>
 <p><strong>exit</strong>: log out of &#8220;su&#8221; mode, shortcut: Ctrl+D</p>
+</div>
+<div class="section" id="build-debian-image">
+<h2>Build Debian Image<a class="headerlink" href="#build-debian-image" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://jakehewitt.github.io/custom-edison-image/">https://jakehewitt.github.io/custom-edison-image/</a></li>
+</ul>
+</div>
+<div class="section" id="configuration-after-os-install">
+<h2>Configuration after OS Install<a class="headerlink" href="#configuration-after-os-install" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Default account info</li>
+</ul>
+<p>user name: user</p>
+<p>password: edison</p>
+<ul class="simple">
+<li>Wifi Network</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ wpa_passphrase &lt;ssid&gt; &lt;password&gt;
+</pre></div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo nano /etc/network/interfaces
+</pre></div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># interfaces(5) file used by ifup(8) and ifdown(8)</span>
+auto lo
+iface lo inet loopback
+
+auto wlan0
+iface wlan0 inet dhcp
+    wpa-ssid ExampleWifi
+    wpa-psk 81088ba3b4b387ea4d22a4ad369ffa42f4966d2f3d61f6c65cdc001460239dc4
+</pre></div>
+</div>
+<ul class="simple">
+<li>Update system time</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ apt-get install ntp
+</pre></div>
+</div>
+<ul class="simple">
+<li>User account</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo adduser --ingroup users &lt;USERNAME&gt;
+$ sudo adduser &lt;YOUR_USERNAME&gt; sudo
+$ <span class="nb">logout</span>
+$ sudo deluser --remove-home user
+</pre></div>
+</div>
 </div>
 </div>
 
@@ -102,6 +150,8 @@
   <ul>
 <li><a class="reference internal" href="#">Intel Edison</a><ul>
 <li><a class="reference internal" href="#useful-commands">Useful Commands</a></li>
+<li><a class="reference internal" href="#build-debian-image">Build Debian Image</a></li>
+<li><a class="reference internal" href="#configuration-after-os-install">Configuration after OS Install</a></li>
 </ul>
 </li>
 </ul>
@@ -148,7 +198,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &copy; Copyright 2016, Ruixiang Du.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.
     </div>
   </body>
 </html>

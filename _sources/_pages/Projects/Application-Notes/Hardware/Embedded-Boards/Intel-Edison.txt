@@ -12,5 +12,54 @@ Useful Commands
 
 **su**: get root privileges
 
-**exit**: log out of "su" mode, shortcut: Ctrl+D 
+**exit**: log out of "su" mode, shortcut: Ctrl+D
 
+Build Debian Image
+^^^^^^^^^^^^^^^^^^
+
+* https://jakehewitt.github.io/custom-edison-image/
+
+Configuration after OS Install
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* Default account info
+
+user name: user
+
+password: edison
+
+* Wifi Network
+
+.. code-block:: bash
+
+   $ wpa_passphrase <ssid> <password>
+
+.. code-block:: bash
+
+   $ sudo nano /etc/network/interfaces
+
+.. code-block:: bash
+
+   # interfaces(5) file used by ifup(8) and ifdown(8)
+   auto lo
+   iface lo inet loopback
+
+   auto wlan0
+   iface wlan0 inet dhcp
+       wpa-ssid ExampleWifi
+       wpa-psk 81088ba3b4b387ea4d22a4ad369ffa42f4966d2f3d61f6c65cdc001460239dc4
+
+* Update system time
+
+.. code-block:: bash
+
+   $ apt-get install ntp
+
+* User account
+
+.. code-block:: bash
+
+   $ sudo adduser --ingroup users <USERNAME>
+   $ sudo adduser <YOUR_USERNAME> sudo
+   $ logout
+   $ sudo deluser --remove-home user
