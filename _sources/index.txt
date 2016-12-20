@@ -47,10 +47,10 @@ ________
 
 ..  role:: strikethrough
 
-* :strikethrough:`IEEE/RSJ IROS 2016, Daejeon, Korea, 10/19-10/14, 2016 -- deadline: 03/01/2016`
-
 * :strikethrough:`IEEE ICRA 2017, Singapore, 05/29-06/02, 2017 -- deadline: 09/15/2016`
 
-* :strikethrough:`IEEE ICRA 2016, Stockholm, Sweden, 05/16-05/21, 2016 -- deadline: 09/15/2015`
-
 * :strikethrough:`The 2017 American Control Conference, 05/24 - 05/26, Seattle, WA, USA -- 09/19/2016`
+
+* `IEEE/RSJ IROS 2017, Vancouver, BC, Canada <http://www.iros2017.org/>`_ -- deadline: 03/01/2017
+
+* `The 2017 IEEE Conference on Decision and Control, Melbourne, Australia <http://cdc2017.ieeecss.org/>`_ -- deadline: 03/20/2017
