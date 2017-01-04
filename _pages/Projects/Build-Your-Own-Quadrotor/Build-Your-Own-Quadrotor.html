@@ -81,78 +81,77 @@
 <h1>Build Your Own Quadrotor<a class="headerlink" href="#build-your-own-quadrotor" title="Permalink to this headline">¶</a></h1>
 <div class="contents local topic" id="contents">
 <ul class="simple">
-<li><a class="reference internal" href="#system-components" id="id1">1. System Components</a></li>
-<li><a class="reference internal" href="#system-structure" id="id2">2. System Structure</a></li>
-<li><a class="reference internal" href="#interface-with-mpu9250" id="id3">3. Interface with MPU9250</a></li>
+<li><a class="reference internal" href="#hardware-components" id="id1">1. Hardware Components</a></li>
+<li><a class="reference internal" href="#software-structure" id="id2">2. Software Structure</a></li>
+<li><a class="reference internal" href="#interface-with-sensors" id="id3">3. Interface with Sensors</a></li>
 <li><a class="reference internal" href="#the-completed-quadrotor" id="id4">4. The Completed Quadrotor</a></li>
 </ul>
 </div>
-<div class="section" id="system-components">
-<h2><a class="toc-backref" href="#id1">1. System Components</a><a class="headerlink" href="#system-components" title="Permalink to this headline">¶</a></h2>
+<p>(Updated on 01/04/2017)</p>
+<p>Here is a summary of how I built my quadrotors. The primary use of these quadrotors includes: flying for fun, autonomous flight for research. You may find configurations specialized for other purposes somewhere else from the Internet.</p>
+<div class="section" id="hardware-components">
+<h2><a class="toc-backref" href="#id1">1. Hardware Components</a><a class="headerlink" href="#hardware-components" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><dl class="first docutils">
 <dt>Hardware</dt>
 <dd><ul class="first last simple">
-<li>Inertial measurement unit (IMU) - MPU9250</li>
-<li>Flight controller - STM32F405, Intel Edison</li>
-<li>Mechanical frame * 1</li>
+<li>Flight controller * 1</li>
+<li>(Companion computer * 1)</li>
+<li>250 frame * 1</li>
 <li>DC brushless motors * 4</li>
-<li>DSC for brushless motors * 4</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>Software</dt>
-<dd><ul class="first last simple">
-<li>Attitude estimation</li>
-<li>Attitude control</li>
-<li>Position control</li>
-<li>Communications</li>
+<li>ESC for brushless motors * 4</li>
+<li>Power distribution and BEC * 1</li>
+<li>LiPo Battery (3S or 4S)</li>
+<li>Radio receiver and remote controller</li>
 </ul>
 </dd>
 </dl>
 </li>
 </ul>
+<p>There are a lot of possible choices for flight controllers nowadays. I personally own OpenPilot Revolution, Pixracer and BrainFPV RE1. All these boards are based on STM32F4 MCUs and have reasonably rich hardware interfaces exposed, which allows you to add more extension modules. The main advantages of Pixracer and the PX4 software stack are its large user community and support for a large number of peripheral modules. But the downside is that the software packages (including firmware, GCS, ROS etc.) have become very large and can be confusing sometimes for you to fully understand (especially if you may also come across packages from the APM project). The code base for the OpenPilot-rooted project (librepilot, taulabs, dRonin) is relatively smaller and cleaner. The design of GCS is also very intuitive and user-friendly.</p>
+<p>You also have a lot of choices for motors and ESCs from websites like Hobbyking and getFPV. I recently tried the DJI snail propulsion system. I have to say that I love this set of motors/ESCs. They are well-made, very powerful and well documented (for those who want to know better about the characteristics of the motors and propellers). And the price is very reasonable for its quality.</p>
 </div>
-<div class="section" id="system-structure">
-<h2><a class="toc-backref" href="#id2">2. System Structure</a><a class="headerlink" href="#system-structure" title="Permalink to this headline">¶</a></h2>
-<p><strong>Low level controller (STM32F405)</strong></p>
+<div class="section" id="software-structure">
+<h2><a class="toc-backref" href="#id2">2. Software Structure</a><a class="headerlink" href="#software-structure" title="Permalink to this headline">¶</a></h2>
+<p><strong>Low level flight controller</strong></p>
 <ul class="simple">
 <li>Acquire sensor data (IMU)</li>
+<li>Flight attitude/position control</li>
 <li>Motor control</li>
+<li>Telemetry</li>
 </ul>
-<p><strong>High level controller (Intel Edison)</strong></p>
+<p><strong>High level controller</strong></p>
 <ul class="simple">
-<li>IMU data processing</li>
-<li>Vison processing</li>
-<li>Attitude and postion control</li>
+<li>Computer vision</li>
+<li>Motion planning</li>
 </ul>
 <p><strong>Workstation</strong></p>
 <ul class="simple">
-<li>High level control</li>
-<li>Run computational-heavy algorithms</li>
+<li>System monitoring</li>
 <li>Debugging</li>
 </ul>
-<p>Overall structure:</p>
-<a class="reference internal image-reference" href="../../../_images/sys_struct.jpg"><img alt="../../../_images/sys_struct.jpg" src="../../../_images/sys_struct.jpg" style="width: 600px;" /></a>
-<p>Code structure on STM32F405:</p>
-<a class="reference internal image-reference" href="../../../_images/stm32f4_code.jpg"><img alt="../../../_images/stm32f4_code.jpg" src="../../../_images/stm32f4_code.jpg" style="width: 600px;" /></a>
-<p>Code structure on Intel Edison:</p>
-<p>(To be added)</p>
 </div>
-<div class="section" id="interface-with-mpu9250">
-<h2><a class="toc-backref" href="#id3">3. Interface with MPU9250</a><a class="headerlink" href="#interface-with-mpu9250" title="Permalink to this headline">¶</a></h2>
-<p>There are two ways to communicate with MPU9250, SPI or I2C. Since SPI is faster and simpler in terms of signal timing (it uses more pins though), I decided to use the SPI interface.</p>
+<div class="section" id="interface-with-sensors">
+<h2><a class="toc-backref" href="#id3">3. Interface with Sensors</a><a class="headerlink" href="#interface-with-sensors" title="Permalink to this headline">¶</a></h2>
+<p>There are generally two protocols widely used to interface with sensors like MPU9250, SPI or I2C. Since SPI is simpler in terms of signal timing (it uses more pins though) and more importantly much faster than I2C, it gets used in more and more recent flight controllers.</p>
+<p>For digital sensors like MPU9250, the first step is to establish the communication between the MCU and the sensor. It can be very helpful at this time to use a logic analyzer if you cannot find out problems in your code that cause a communication failure.</p>
 <a class="reference internal image-reference" href="../../../_images/mpu9250_whoami.jpg"><img alt="../../../_images/mpu9250_whoami.jpg" src="../../../_images/mpu9250_whoami.jpg" style="width: 650px;" /></a>
-<p>To acquire data from MPU9250, the first thing to do is to establish the communication between the MCU and MPU9250. The internal register WHO_AM_I can be used for this check. The above screenshot is captured by a logic analyzer, showing this &#8220;handshake&#8221;: MCU sends the address of WHO_AM_I (0x80 | 0x75 = 0xF5 for reading from register) and gets 0x71 as a reply.</p>
-<p>After the communication is set up properly, we can further configure the registers of MPU9250, like enabling/disabling gyro/acc, selecting full scale of gyro/acc and so on.</p>
+<p>The internal register WHO_AM_I of MPU9250 can be used to check the communication. The above screenshot is captured by a logic analyzer, showing this &#8220;handshake&#8221;: MCU sends the address of WHO_AM_I (0x80 | 0x75 = 0xF5 for reading from register) and gets 0x71 as a reply.</p>
+<p>After the communication is set up properly, we can further configure the registers of MPU9250, like enabling/disabling gyro/acc, selecting full scale of gyro/acc and so on. You can refer to specific datasheet for more details of each sensor model.</p>
 </div>
 <div class="section" id="the-completed-quadrotor">
 <h2><a class="toc-backref" href="#id4">4. The Completed Quadrotor</a><a class="headerlink" href="#the-completed-quadrotor" title="Permalink to this headline">¶</a></h2>
 <p>(Updated on 01/23/2016)</p>
-<p>I finally get enough time and money to get all parts to build a complete quadrotor. I choose the CC3D Revolution flight controller since it has a very small foot print and uses similar chips as what I&#8217;ve partially tested before. All parts are selected according to the specifications of commonly seen FPV racing quadrotors. I did a lot of research to find a balance between the performance and my budget when choosing each component. The total cost of the quadrotor and necessary accessories is about $500 dollars. A complete list of the parts will be added soon.</p>
+<p>I finally get enough time and money to get all parts to build a complete quadrotor. I choose the CC3D Revolution flight controller since it has a very small foot print and uses similar chips as what I&#8217;ve partially tested before. All parts are selected according to the specifications of commonly seen FPV racing quadrotors. I did a lot of research to find a balance between the performance and my budget when choosing each component. The total cost of the quadrotor and necessary accessories is about $500 dollars.</p>
 <a class="reference internal image-reference" href="../../../_images/quad250.JPG"><img alt="../../../_images/quad250.JPG" src="../../../_images/quad250.JPG" style="width: 650px;" /></a>
+<p>The second build is improved in the following aspects:</p>
+<ul class="simple">
+<li>Better quality frame: <a class="reference external" href="http://mokaframe.com/moka-deluxe">Moka Delux</a> vs <a class="reference external" href="https://hobbyking.com/en_us/kim250-pro-fpv-multrotor-with-pcb.html">Kim250 Pro</a></li>
+<li>Better motor/ESC: DJI Snail vs Multistar Elite 2306-2150KV &#8216;MINI MONSTER&#8217; + Afro Race Spec Mini 20Amp</li>
+<li>Better wire management</li>
+</ul>
+<a class="reference internal image-reference" href="../../../_images/quad250-2.jpg"><img alt="../../../_images/quad250-2.jpg" src="../../../_images/quad250-2.jpg" style="width: 650px;" /></a>
+<p>(I know it&#8217;s generally recommended to put the two antenas at 90 degrees. But I hadn&#8217;t found a good way to mount them in such configuration when I took this photo.)</p>
 </div>
 </div>
 
@@ -165,9 +164,9 @@
   <h3><a href="../../../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Build Your Own Quadrotor</a><ul>
-<li><a class="reference internal" href="#system-components">1. System Components</a></li>
-<li><a class="reference internal" href="#system-structure">2. System Structure</a></li>
-<li><a class="reference internal" href="#interface-with-mpu9250">3. Interface with MPU9250</a></li>
+<li><a class="reference internal" href="#hardware-components">1. Hardware Components</a></li>
+<li><a class="reference internal" href="#software-structure">2. Software Structure</a></li>
+<li><a class="reference internal" href="#interface-with-sensors">3. Interface with Sensors</a></li>
 <li><a class="reference internal" href="#the-completed-quadrotor">4. The Completed Quadrotor</a></li>
 </ul>
 </li>
