@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-67949307-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <!-- <title>Raspberry Pi &mdash; RDU-Wiki 1.0 documentation</title> -->
+    <title>Raspberry Pi</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Dancing+Script:700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Courgette' rel='stylesheet' type='text/css'>
+    
+    <div class="rduhome"  role="contentinfo">
+		 <a href="http://rdu.im" style="font-family: 'Courgette', serif;" >Return to Ruixiang's Home Page</a>
+	</div>
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+    <link rel="top" title="RDU-Wiki 1.0 documentation" href="../../../../../index.html" />
+    <link rel="up" title="Application Notes" href="../../Application-Notes.html" />
+    <link rel="next" title="STM32F4 Discovery Board" href="STM32F4-Discovery.html" />
+    <link rel="prev" title="Intel Edison" href="Intel-Edison.html" />
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../../../../../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head>
+  <body role="document">
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="STM32F4-Discovery.html" title="STM32F4 Discovery Board"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="Intel-Edison.html" title="Intel Edison"
+             accesskey="P">previous</a> |</li>
+        <!-- <li class="nav-item nav-item-0"><a href="../../../../../index.html">RDU-Wiki 1.0 documentation</a> &raquo;</li> -->
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Main Page</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../../Application-Notes.html" accesskey="U">Application Notes</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="raspberry-pi">
+<h1>Raspberry Pi<a class="headerlink" href="#raspberry-pi" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="pican2-on-raspberry-pi-3">
+<h2>PiCAN2 on Raspberry Pi 3<a class="headerlink" href="#pican2-on-raspberry-pi-3" title="Permalink to this headline">¶</a></h2>
+<p>(Tested on Raspberry Pi3 with Raspbian Stretch 2017-09-07)</p>
+<ol class="arabic simple">
+<li>Setup driver</li>
+</ol>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo nano /boot/config.txt
+</pre></div>
+</div>
+<p>Add the following lines</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">dtparam</span><span class="o">=</span><span class="nv">spi</span><span class="o">=</span>on
+<span class="nv">dtoverlay</span><span class="o">=</span>mcp2515-can0,oscillator<span class="o">=</span>16000000,interrupt<span class="o">=</span>25
+<span class="nv">dtoverlay</span><span class="o">=</span>spi-bcm2835
+</pre></div>
+</div>
+<p>Reboot the board.</p>
+<ol class="arabic simple" start="2">
+<li>Bring up CAN interface</li>
+</ol>
+<p>Note that the maximum bitrate is 1000000 for PiCAN2.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo ip link <span class="nb">set</span> can0 up <span class="nb">type</span> can bitrate 100000
+</pre></div>
+</div>
+<p>To bring up the interface when boot, you can modify &#8220;/etc/network/interfaces&#8221;</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo nano /etc/network/interfaces
+</pre></div>
+</div>
+<p>Add the following lines</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>auto can0
+  iface can0 inet manual
+  pre-up /sbin/ip link <span class="nb">set</span> can0 <span class="nb">type</span> can bitrate <span class="m">100000</span> triple-sampling on
+  up /sbin/ifconfig can0 up
+  down /sbin/ifconfig can0 down
+</pre></div>
+</div>
+<p>You can check if CAN is brought up by using command &#8220;ifconfig&#8221;. You should see something similar to this</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ can0: <span class="nv">flags</span><span class="o">=</span>193&lt;UP,RUNNING,NOARP&gt;  mtu 16
+$     unspec 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00  txqueuelen <span class="m">10</span>  <span class="o">(</span>UNSPEC<span class="o">)</span>
+$     RX packets <span class="m">4</span>  bytes <span class="m">32</span> <span class="o">(</span>32.0 B<span class="o">)</span>
+$     RX errors <span class="m">0</span>  dropped <span class="m">0</span>  overruns <span class="m">0</span>  frame 0
+$     TX packets <span class="m">4</span>  bytes <span class="m">32</span> <span class="o">(</span>32.0 B<span class="o">)</span>
+$     TX errors <span class="m">1</span>  dropped <span class="m">1</span> overruns <span class="m">0</span>  carrier <span class="m">1</span>  collisions 0
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Loopback test</li>
+</ol>
+<p>You can use the loopback mode to test if PiCAN2 is working properly. You need to enable the loopback mode first.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo ip link <span class="nb">set</span> can0 down
+$ sudo ip link <span class="nb">set</span> can0 <span class="nb">type</span> can loopback on
+$ sudo ip link <span class="nb">set</span> can0 up <span class="nb">type</span> can bitrate 100000
+</pre></div>
+</div>
+<p>Now open two terminals, one as sender and one as receiver.</p>
+<p>In sender terminal:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ cansend can0 001#1122334455667788
+</pre></div>
+</div>
+<p>In receiver terminal:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ candump can0
+</pre></div>
+</div>
+<p>If successful, you should expect</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ candump can0
+$ can0  <span class="m">001</span>   <span class="o">[</span>8<span class="o">]</span>  <span class="m">11</span> <span class="m">22</span> <span class="m">33</span> <span class="m">44</span> <span class="m">55</span> <span class="m">66</span> <span class="m">77</span> 88
+$ can0  <span class="m">001</span>   <span class="o">[</span>8<span class="o">]</span>  <span class="m">11</span> <span class="m">22</span> <span class="m">33</span> <span class="m">44</span> <span class="m">55</span> <span class="m">66</span> <span class="m">77</span> 88
+</pre></div>
+</div>
+<p>Turn off the loopback mode:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo ip link <span class="nb">set</span> can0 down
+$ sudo ip link <span class="nb">set</span> can0 <span class="nb">type</span> can loopback off
+$ sudo ip link <span class="nb">set</span> can0 up <span class="nb">type</span> can bitrate 100000
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li>More commands</li>
+</ol>
+<p>Use this command to find more information of CAN related commands</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ip link <span class="nb">set</span> can0 up <span class="nb">type</span> can <span class="nb">help</span>
+</pre></div>
+</div>
+<p>Reference</p>
+<ul class="simple">
+<li><a class="reference external" href="http://copperhilltech.com/pican2-controller-area-network-can-interface-for-raspberry-pi/">http://copperhilltech.com/pican2-controller-area-network-can-interface-for-raspberry-pi/</a></li>
+<li><a class="reference external" href="https://raspberrypi.stackexchange.com/questions/51829/unable-to-bring-can-interface-up-on-raspberry-pi-3">https://raspberrypi.stackexchange.com/questions/51829/unable-to-bring-can-interface-up-on-raspberry-pi-3</a></li>
+<li><a class="reference external" href="https://www.raspberrypi.org/forums/viewtopic.php?t=141052">https://www.raspberrypi.org/forums/viewtopic.php?t=141052</a></li>
+<li><a class="reference external" href="https://harrisonsand.com/can-on-the-raspberry-pi/">https://harrisonsand.com/can-on-the-raspberry-pi/</a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../../../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Raspberry Pi</a><ul>
+<li><a class="reference internal" href="#pican2-on-raspberry-pi-3">PiCAN2 on Raspberry Pi 3</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="Intel-Edison.html"
+                        title="previous chapter">Intel Edison</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="STM32F4-Discovery.html"
+                        title="next chapter">STM32F4 Discovery Board</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="STM32F4-Discovery.html" title="STM32F4 Discovery Board"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="Intel-Edison.html" title="Intel Edison"
+             >previous</a> |</li>
+        <!-- <li class="nav-item nav-item-0"><a href="../../../../../index.html">RDU-Wiki 1.0 documentation</a> &raquo;</li> -->
+        <li class="nav-item nav-item-0"><a href="../../../../../index.html">Main Page</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../../Application-Notes.html" >Application Notes</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2017, Ruixiang Du.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.
+    </div>
+  </body>
+</html>

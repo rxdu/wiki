@@ -7,6 +7,7 @@ Application Notes
    :maxdepth: 1
 
    /_pages/Projects/Application-Notes/Hardware/Embedded-Boards/Intel-Edison
+   /_pages/Projects/Application-Notes/Hardware/Embedded-Boards/Raspberry-Pi
    /_pages/Projects/Application-Notes/Hardware/Embedded-Boards/STM32F4-Discovery
 
 **Software**
