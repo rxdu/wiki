@@ -41,7 +41,7 @@
     <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
     <link rel="top" title="RDU-Wiki 1.0 documentation" href="../../../../../index.html" />
     <link rel="up" title="Application Notes" href="../../Application-Notes.html" />
@@ -88,14 +88,14 @@
 <li>Follow &#8220;README&#8221; to build to tools and set up udev rules</li>
 <li>Connect the board to PC and check if the OS has detected stlink correct</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ lsusb
-$ ..
-$ Bus <span class="m">001</span> Device 041: ID 0483:3748 SGS Thomson Microelectronics ST-LINK/V2
-$ ..
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>lsusb
+<span class="nv">$ </span>..
+<span class="nv">$ </span>Bus 001 Device 041: ID 0483:3748 SGS Thomson Microelectronics ST-LINK/V2
+<span class="nv">$ </span>..
 </pre></div>
 </div>
 <p>If the tool shows permission restriction when starts, use this command:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo chmod <span class="m">777</span> /dev/bus/usb/002/004
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sudo chmod 777 /dev/bus/usb/002/004
 </pre></div>
 </div>
 </div>
@@ -157,7 +157,7 @@ $ ..
     </div>
     <div class="footer" role="contentinfo">
         &copy; Copyright 2017, Ruixiang Du.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

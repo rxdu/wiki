@@ -41,7 +41,7 @@
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="top" title="RDU-Wiki 1.0 documentation" href="../../../index.html" />
     <link rel="next" title="Application Notes" href="../Application-Notes/Application-Notes.html" />
@@ -273,7 +273,7 @@
 62
 63
 64
-65</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">simSetThreadSwitchTiming</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+65</pre></div></td><td class="code"><div class="highlight"><pre><span class="n">simSetThreadSwitchTiming</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="c1">-- Choose a port that is probably not used (try to always use a similar code):</span>
 <span class="n">simSetThreadAutomaticSwitch</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
@@ -401,67 +401,67 @@
 58
 59
 60
-61</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp"></span>
+61</pre></div></td><td class="code"><div class="highlight"><pre>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;iostream&gt;
+#include &lt;unistd.h&gt;
 
-<span class="k">extern</span> <span class="s">&quot;C&quot;</span> <span class="p">{</span>
-    <span class="cp">#include</span> <span class="cpf">&quot;extApi.h&quot;</span><span class="cp"></span>
-<span class="cm">/*  #include &quot;extApiCustom.h&quot; // custom remote API functions */</span>
-<span class="p">}</span>
+extern &quot;C&quot; {
+    #include &quot;extApi.h&quot;
+/*  #include &quot;extApiCustom.h&quot; // custom remote API functions */
+}
 
-<span class="k">using</span> <span class="k">namespace</span> <span class="n">RobotToolkitRIVeR</span><span class="p">;</span>
+using namespace RobotToolkitRIVeR;
 
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span><span class="kt">char</span><span class="o">*</span> <span class="n">argv</span><span class="p">[])</span>
-<span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">argc</span><span class="o">&gt;=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="p">{</span>
-            <span class="n">portNb</span><span class="o">=</span><span class="n">atoi</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
-    <span class="p">}</span>
-    <span class="k">else</span>
-    <span class="p">{</span>
-            <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Please indicate following argument(s): &#39;portNumber&#39;!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
-            <span class="n">extApi_sleepMs</span><span class="p">(</span><span class="mi">5000</span><span class="p">);</span>
-            <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="p">}</span>
+int main(int argc,char* argv[])
+{
+    if (argc&gt;=1)
+    {
+            portNb=atoi(argv[1]);
+    }
+    else
+    {
+            printf(&quot;Please indicate following argument(s): &#39;portNumber&#39;!\n&quot;);
+            extApi_sleepMs(5000);
+            return 0;
+    }
 
-    <span class="c1">// start a connection with the server</span>
-    <span class="n">simxInt</span> <span class="n">clientID</span> <span class="o">=</span> <span class="n">simxStart</span><span class="p">((</span><span class="n">simxChar</span><span class="o">*</span><span class="p">)</span><span class="s">&quot;127.0.0.1&quot;</span><span class="p">,</span><span class="n">portNb</span><span class="p">,</span><span class="nb">true</span><span class="p">,</span><span class="nb">true</span><span class="p">,</span><span class="mi">2000</span><span class="p">,</span><span class="mi">5</span><span class="p">);</span>
+    // start a connection with the server
+    simxInt clientID = simxStart((simxChar*)&quot;127.0.0.1&quot;,portNb,true,true,2000,5);
 
-    <span class="k">if</span> <span class="p">(</span><span class="n">clientID</span><span class="o">!=-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="p">{</span>
-            <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;INFO: Connected to server.&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    if (clientID!=-1)
+    {
+            std::cout &lt;&lt; &quot;INFO: Connected to server.&quot; &lt;&lt; std::endl;
 
-            <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;INFO: Enter control loop.&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+            std::cout &lt;&lt; &quot;INFO: Enter control loop.&quot; &lt;&lt; std::endl;
 
-            <span class="c1">// the control loop starts here</span>
-            <span class="k">while</span> <span class="p">(</span><span class="n">simxGetConnectionId</span><span class="p">(</span><span class="n">clientID</span><span class="p">)</span><span class="o">!=-</span><span class="mi">1</span><span class="p">)</span>
-            <span class="p">{</span>
-                    <span class="c1">// 1. receive data from robot</span>
-                    <span class="c1">// remoteAPI function calls</span>
+            // the control loop starts here
+            while (simxGetConnectionId(clientID)!=-1)
+            {
+                    // 1. receive data from robot
+                    // remoteAPI function calls
 
-                    <span class="c1">// 2. process data and do calculation</span>
-                    <span class="c1">// custom function calls</span>
+                    // 2. process data and do calculation
+                    // custom function calls
 
-                    <span class="c1">// 3. send command to robot</span>
-                    <span class="c1">// remoteAPI function calls</span>
+                    // 3. send command to robot
+                    // remoteAPI function calls
 
-                    <span class="n">extApi_sleepMs</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-            <span class="p">}</span>
+                    extApi_sleepMs(2);
+            }
 
-            <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;INFO: Exit control loop.&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+            std::cout &lt;&lt; &quot;INFO: Exit control loop.&quot; &lt;&lt; std::endl;
 
-            <span class="c1">// close the connection with server</span>
-            <span class="n">simxFinish</span><span class="p">(</span><span class="n">clientID</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="k">else</span>
-    <span class="p">{</span>
-            <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;ERROR: Failed to connect to server&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-    <span class="p">}</span>
+            // close the connection with server
+            simxFinish(clientID);
+    }
+    else
+    {
+            std::cout &lt;&lt; &quot;ERROR: Failed to connect to server&quot; &lt;&lt; std::endl;
+    }
 
-    <span class="k">return</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-<span class="p">}</span>
+    return(0);
+}
 </pre></div>
 </td></tr></table></div>
 <p>Refer to the tutorials and example scenes to learn how to use remoteAPI, as well as ROS, Matlab interfaces. The &#8220;controlTypeExamples&#8221; scene provided by V-REP is extremely useful for you to learn how each of the interfaces work, both on the V-REP side and on your own code side. You can find more information from this <a class="reference external" href="http://www.coppeliarobotics.com/helpFiles/index.html">page</a>.</p>
@@ -546,7 +546,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &copy; Copyright 2017, Ruixiang Du.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

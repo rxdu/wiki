@@ -41,7 +41,7 @@
     <script type="text/javascript" src="../../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
     <link rel="top" title="RDU-Wiki 1.0 documentation" href="../../../../index.html" />
     <link rel="up" title="Application Notes" href="../Application-Notes.html" />
@@ -99,7 +99,7 @@
 <h2>Background Knowledge<a class="headerlink" href="#background-knowledge" title="Permalink to this headline">¶</a></h2>
 <p>It can be very helpful to understand stack and stack frames when you use GDB for debugging. This <a class="reference external" href="http://www.dirac.org/linux/gdb/02a-Memory_Layout_And_The_Stack.php#wherearewegoingtogo">page</a> from the tutorial &#8220;Using GNU&#8217;s GDB Debugger&#8221; gives good explanation about them.</p>
 <p>Briefly speaking, stack is a section of the memory and whenever there is a function call, a stack frame is created in the stack. This stack frame is used to store all related information about this call including the all the <a class="reference external" href="http://en.wikipedia.org/wiki/Automatic_variable">automatic variables</a> of the newly called function, the return address and the arguments of the called function. In GDB, you can check how the functions are called from each other by inspecting the stack frames. By switching to a stack frame, you get access to variables in that scope, meaning you can check the values of local variables in the corresponding function. You cannot print or modify a variable if that variable doesn&#8217;t exit in the current stack frame.</p>
-<p>In addition to stack and stack frames, check section <a class="reference internal" href="../../../Knowledge-Base/Programming/Programming.html#operating-system"><span class="std std-ref">IV. Reference Materials</span></a> for more information about virtual memory and memory layout.</p>
+<p>In addition to stack and stack frames, check section <a class="reference internal" href="../../../Knowledge-Base/Programming/Programming.html#operating-system"><em>IV. Reference Materials</em></a> for more information about virtual memory and memory layout.</p>
 <p>Another thing that you need to remember before starting a gdb debugging session is that you need to use &#8220;-g&#8221; flag when compiling your code to include debugging information in the generated executable file.</p>
 </div>
 <div class="section" id="frequently-used-commands">
@@ -107,71 +107,71 @@
 <ul class="simple">
 <li>Starting a debugging session</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ gdb &lt;name-of-executable&gt;
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>gdb &lt;name-of-executable&gt;
 <span class="o">(</span>gdb<span class="o">)</span> run arg1 arg2
 </pre></div>
 </div>
 <p>Arg1 and arg2 will be remembered and used when you run again. If you want to reset or clear the arguments, use:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>gdb<span class="o">)</span> <span class="nb">set</span> args &lt;arg1/arg2/.../or none to clear saved args&gt;
+<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>gdb<span class="o">)</span> <span class="nb">set </span>args &lt;arg1/arg2/.../or none to clear saved args&gt;
 </pre></div>
 </div>
 <p>If your program is already running, you can still use gdb to debug it.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ gdb &lt;name-of-executable&gt; &lt;process-id&gt;
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>gdb &lt;name-of-executable&gt; &lt;process-id&gt;
 </pre></div>
 </div>
 <p>Or you can use the attach command:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ gdb
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>gdb
 <span class="o">(</span>gdb<span class="o">)</span> attach &lt;process-id&gt;
 </pre></div>
 </div>
 <ul class="simple">
 <li>Using breakpoints and watchpoints</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>gdb<span class="o">)</span> <span class="nb">break</span> &lt;<span class="k">function</span>-name&gt; <span class="c1"># set break point by function name</span>
+<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>gdb<span class="o">)</span> <span class="nb">break</span> &lt;<span class="k">function</span>-name&gt; <span class="c"># set break point by function name</span>
 <span class="o">(</span>gdb<span class="o">)</span> <span class="nb">break</span> &lt;line-number&gt;
 <span class="o">(</span>gdb<span class="o">)</span> <span class="nb">break</span> &lt;file-name:line-number&gt;
 <span class="o">(</span>gdb<span class="o">)</span> <span class="nb">break</span> &lt;virtual-memory-address&gt;
 <span class="o">(</span>gdb<span class="o">)</span> <span class="nb">break</span> &lt;place-to-break&gt; <span class="k">if</span> &lt;condition&gt;
-<span class="o">(</span>gdb<span class="o">)</span> info breakpoints      <span class="c1"># list all all breakpoints and watchpoints</span>
-<span class="o">(</span>gdb<span class="o">)</span> disable n             <span class="c1"># n is the breakpoint/watchpoint identifier number from listed info</span>
-<span class="o">(</span>gdb<span class="o">)</span> <span class="nb">enable</span> n
+<span class="o">(</span>gdb<span class="o">)</span> info breakpoints      <span class="c"># list all all breakpoints and watchpoints</span>
+<span class="o">(</span>gdb<span class="o">)</span> disable n             <span class="c"># n is the breakpoint/watchpoint identifier number from listed info</span>
+<span class="o">(</span>gdb<span class="o">)</span> <span class="nb">enable </span>n
 <span class="o">(</span>gdb<span class="o">)</span> clear &lt;<span class="k">function</span>-name&gt;/&lt;line-number&gt;/&lt;file-name:line-number&gt;/&lt;virtual-memory-address&gt;
 <span class="o">(</span>gdb<span class="o">)</span> delete &lt;breakpoint-identifier&gt;
-<span class="o">(</span>gdb<span class="o">)</span> delete                <span class="c1"># delete all breakpoints</span>
-<span class="o">(</span>gdb<span class="o">)</span> <span class="k">continue</span>              <span class="c1"># continue execution from breakpoint</span>
+<span class="o">(</span>gdb<span class="o">)</span> delete                <span class="c"># delete all breakpoints</span>
+<span class="o">(</span>gdb<span class="o">)</span> <span class="k">continue</span>              <span class="c"># continue execution from breakpoint</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li>Manipulating variables</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>gdb<span class="o">)</span> ptype &lt;var-name&gt;      <span class="c1"># print data type</span>
-<span class="o">(</span>gdb<span class="o">)</span> print &lt;var-name&gt;      <span class="c1"># print data value</span>
-<span class="o">(</span>gdb<span class="o">)</span> print /FMT &lt;var-name&gt; <span class="c1"># o:octal,x:hex,d:decimal,u:unsigned decimal,t:binary,  f:float,a:address,c:char</span>
+<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>gdb<span class="o">)</span> ptype &lt;var-name&gt;      <span class="c"># print data type</span>
+<span class="o">(</span>gdb<span class="o">)</span> print &lt;var-name&gt;      <span class="c"># print data value</span>
+<span class="o">(</span>gdb<span class="o">)</span> print /FMT &lt;var-name&gt; <span class="c"># o:octal,x:hex,d:decimal,u:unsigned decimal,t:binary,  f:float,a:address,c:char</span>
 <span class="o">(</span>gdb<span class="o">)</span> <span class="nb">set</span> &lt;var-name&gt; <span class="o">=</span> &lt;new-value&gt;
 <span class="o">(</span>gdb<span class="o">)</span> print &lt;var-name&gt; <span class="o">=</span> &lt;new-value&gt;
-<span class="o">(</span>gdb<span class="o">)</span> display &lt;var-name&gt;/&lt;expression&gt;   <span class="c1"># automatically display specified var once program is stopped</span>
-<span class="o">(</span>gdb<span class="o">)</span> info display          <span class="c1"># print the list of auto-display items</span>
-<span class="o">(</span>gdb<span class="o">)</span> enable/disable &lt;display-item-num&gt; <span class="c1"># enable or disable the display a var/exp</span>
-<span class="o">(</span>gdb<span class="o">)</span> undisplay             <span class="c1"># delete the item from display list</span>
+<span class="o">(</span>gdb<span class="o">)</span> display &lt;var-name&gt;/&lt;expression&gt;   <span class="c"># automatically display specified var once program is stopped</span>
+<span class="o">(</span>gdb<span class="o">)</span> info display          <span class="c"># print the list of auto-display items</span>
+<span class="o">(</span>gdb<span class="o">)</span> <span class="nb">enable</span>/disable &lt;display-item-num&gt; <span class="c"># enable or disable the display a var/exp</span>
+<span class="o">(</span>gdb<span class="o">)</span> undisplay             <span class="c"># delete the item from display list</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li>Stepping and resuming program</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>gdb<span class="o">)</span> step                  <span class="c1"># step by line</span>
-<span class="o">(</span>gdb<span class="o">)</span> istep                 <span class="c1"># step by instruction</span>
-<span class="o">(</span>gdb<span class="o">)</span> next                  <span class="c1"># continue to next line in current stack frame (including function)</span>
+<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>gdb<span class="o">)</span> step                  <span class="c"># step by line</span>
+<span class="o">(</span>gdb<span class="o">)</span> istep                 <span class="c"># step by instruction</span>
+<span class="o">(</span>gdb<span class="o">)</span> next                  <span class="c"># continue to next line in current stack frame (including function)</span>
 <span class="o">(</span>gdb<span class="o">)</span> <span class="k">continue</span>
-<span class="o">(</span>gdb<span class="o">)</span> where                 <span class="c1"># show current line number</span>
+<span class="o">(</span>gdb<span class="o">)</span> where                 <span class="c"># show current line number</span>
 <span class="o">(</span>gdb<span class="o">)</span> list &lt;none&gt;/&lt;line-num&gt;/&lt;range&gt;/&lt;<span class="k">function</span>-name&gt;/&lt;*address&gt;
 </pre></div>
 </div>
 <ul class="simple">
 <li>Checking stack and stack frames</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>gdb<span class="o">)</span> backtrace             <span class="c1"># display the current stack status</span>
-<span class="o">(</span>gdb<span class="o">)</span> frame                 <span class="c1"># show current stack frame</span>
-<span class="o">(</span>gdb<span class="o">)</span> frame &lt;frame-num&gt;     <span class="c1"># switch to frame &lt;frame-num&gt;</span>
+<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>gdb<span class="o">)</span> backtrace             <span class="c"># display the current stack status</span>
+<span class="o">(</span>gdb<span class="o">)</span> frame                 <span class="c"># show current stack frame</span>
+<span class="o">(</span>gdb<span class="o">)</span> frame &lt;frame-num&gt;     <span class="c"># switch to frame &lt;frame-num&gt;</span>
 </pre></div>
 </div>
 </div>
@@ -234,7 +234,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &copy; Copyright 2017, Ruixiang Du.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>
