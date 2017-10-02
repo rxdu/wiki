@@ -25,6 +25,7 @@ ________
 .. toctree::
    :maxdepth: 1
 
+   /_pages/Projects/Autonomous-RC-Car/auto-racing
    /_pages/Projects/Build-Your-Own-Quadrotor/Build-Your-Own-Quadrotor
    /_pages/Projects/Mobile-Robot-Toolkit/Mobile-Robot-Toolkit
    /_pages/Projects/Application-Notes/Application-Notes
