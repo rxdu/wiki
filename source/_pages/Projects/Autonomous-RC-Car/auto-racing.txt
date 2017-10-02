@@ -112,6 +112,12 @@ A mounting plate is very useful for attaching all parts to the chassis nicely. T
         2. The receiver is attached to the plate from the bottom but the antenna are left above.
         3. The receiver wires and ESC/servo signal wires go below the plate and the connectors could reach the MCU through reserved holes on the plate.
         4. Make sure the wires don't interfere with the belt/gears below the plate. If organized properly, they shouldn't move underneath the deck.
+        5. See the soldering joints I made in the following picture. The input wires from the battery are almost directly connected to the wires to the ESC. Remember to use a wider soldering tip. A very fine tip will not work.
+
+.. image:: /_images/projects/auto_racing/pdb.jpg
+       :width: 650px
+
+And what the car looks like after installing the mounting plate.
 
 .. image:: /_images/projects/auto_racing/with_deck.jpg
        :width: 650px
