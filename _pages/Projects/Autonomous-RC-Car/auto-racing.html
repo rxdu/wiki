@@ -85,8 +85,12 @@
 <li><a class="reference internal" href="#a-rc-car-chassis-and-basic-electronics" id="id2">a. RC Car Chassis and Basic Electronics</a></li>
 <li><a class="reference internal" href="#b-power-system" id="id3">b. Power System</a></li>
 <li><a class="reference internal" href="#c-mechanical-parts" id="id4">c. Mechanical Parts</a></li>
+<li><a class="reference internal" href="#d-control-system" id="id5">d. Control System</a></li>
+<li><a class="reference internal" href="#e-sensor" id="id6">e. Sensor</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#assembly-notes" id="id7">2. Assembly Notes</a></li>
+<li><a class="reference internal" href="#software-architecture" id="id8">3. Software Architecture</a></li>
 </ul>
 </div>
 <div class="section" id="hardware-components">
@@ -94,22 +98,20 @@
 <p>Since the RC car is built for the purpose of study and research, it is useful to leave some flexibility for possible extensions when choosing components. Also constrained by my budget, I try to reuse parts I bought for my quadrotors. The goal is to set up the platform as fast as possible so that I could start developing software early. I try my best to make a good balance between cost and performance. But the project just hasn&#8217;t reached the point for hardware optimization yet.</p>
 <div class="section" id="a-rc-car-chassis-and-basic-electronics">
 <h3><a class="toc-backref" href="#id2">a. RC Car Chassis and Basic Electronics</a><a class="headerlink" href="#a-rc-car-chassis-and-basic-electronics" title="Permalink to this headline">¶</a></h3>
-<ul>
-<li><p class="first"><a class="reference external" href="http://www3.towerhobbies.com/cgi-bin/wti0001p?&amp;I=LXGCWG&amp;P=ML">Tamiya TA07 Pro</a></p>
-</li>
-<li><p class="first"><a class="reference external" href="https://www.rcjuice.com/hobbystar-dshv-300t-digital-mega-torque-titanium-gear-high-voltage-servo-waterproof.html">HobbyStar DSHV-300T Digital, Mega-Torque Titanium Gear, High-Voltage Servo</a></p>
-</li>
-<li><dl class="first docutils">
-<dt><a class="reference external" href="https://www.rcjuice.com/motor-esc/motor-esc-combos/1-10-short-course-combos/hobbystar-1-10-race-combo-120a-turbo-esc-540-sensored-motor-lcd-program-card.html">HobbyStar 1/10 Race Combo</a></dt>
-<dd><ul class="first last simple">
-<li>HobbyStar 540 Competition Brushless Sensored Motor - 10.5T</li>
-<li>HobbyStar 120A 1/10 Competition Sensored ESC With Turbo/Boost</li>
+<ul class="simple">
+<li><a class="reference external" href="http://www3.towerhobbies.com/cgi-bin/wti0001p?&amp;I=LXGCWG&amp;P=ML">Tamiya TA07 Pro</a></li>
+<li><a class="reference external" href="https://www.rcjuice.com/hobbystar-dshv-300t-digital-mega-torque-titanium-gear-high-voltage-servo-waterproof.html">HobbyStar DSHV-300T Digital, Mega-Torque Titanium Gear, High-Voltage Servo</a></li>
+<li><a class="reference external" href="https://www.rcjuice.com/motor-esc/motor-esc-combos/1-10-short-course-combos/hobbystar-1-10-race-combo-120a-turbo-esc-540-sensored-motor-lcd-program-card.html">HobbyStar 1/10 Race Combo: 120A Turbo ESC + 540 Sensored Motor 10.5T</a></li>
+<li><a class="reference external" href="https://www.getfpv.com/frsky-taranis-x9d-plus-2-4ghz-accst-radio-mode-2.html?gclid=Cj0KCQjwx8fOBRD7ARIsAPVq-Nk5OHcIxFCXHjBQpzXuEv4WKaOzvbYtZkZCUayACJXc01fZ0Qzym1YaAvnWEALw_wcB">FrSky Taranis X9D Plus 2.4GHz ACCST Radio (Mode 2)</a></li>
+<li><a class="reference external" href="https://www.amazon.com/gp/product/B01HZB6XTI/ref=oh_aui_detailpage_o06_s00?ie=UTF8&amp;psc=1">FrSky XSR 2.4GHz 16CH ACCST Receiver S-Bus CPPM Output</a></li>
 </ul>
+<dl class="docutils">
+<dt><em>Note</em>: 1. Some servos may expect control signals other than PWM, for example SBUS. For simplicity, only PWM servos are supported by the firmware now.</dt>
+<dd><ol class="first last arabic simple" start="2">
+<li>I use FrSky Taranis radio because I own one for my quadrotors. It is used for manual control of the car and emergency brake during autonomous driving. You need at least 2 channels to control a car(steering and throttle). But more than 2 are planned to be used in the firmware for arm/disarm, mode switch etc. 6 or 8 channel should be enough.</li>
+</ol>
 </dd>
 </dl>
-</li>
-</ul>
-<p><em>Note</em>: Some servos may expect control signals other than PWM, for example SBUS. For simplicity, only PWM servos are supported by the firmware now.</p>
 </div>
 <div class="section" id="b-power-system">
 <h3><a class="toc-backref" href="#id3">b. Power System</a><a class="headerlink" href="#b-power-system" title="Permalink to this headline">¶</a></h3>
@@ -122,7 +124,13 @@
 <dl class="docutils">
 <dt><em>Note</em>: 1. Most FPV quadrotors use 3S, 4S LiPo batteries but for RC cars 2S batteries (with a lot more mAh) are more common.</dt>
 <dd><ol class="first last arabic simple" start="2">
-<li>RC Car batteries mostly come with Deans T plug, while it&#8217;s more common to see XT60 connectors on LiPo batteries for multicopters. I add an XT60 adapter on the car because I want to keep the compatibility across all my toys, batteries and the charger to make my life easier.</li>
+<li>RC Car batteries mostly come with Deans T plug, while it&#8217;s more common to see XT60 connectors on LiPo batteries for multicopters. I add an XT60 adapter on the car because I want to keep the compatibility across all my toys, batteries and the charger for easy maintenance.</li>
+<li>A power distribution board (PDB) is used because I need to distribute power from the battery to ESC (which powers motor and servo), microcontroller, single board computer and sensors.</li>
+<li>This PDB could support 20A continous current and 30A peak current from each channel. To avoid overheating and board damage, you should use the output pads closest to the input pads for the ESC connection and make solid/complete contact points when soldering.</li>
+<li>The PDB could be a bottle neck for the power system, but I didn&#8217;t know any better choices designed specifically for RC cars. A custom-designed PDB could be considered in the future. But this off-the-shelf choice works without any problem so far.</li>
+<li>The embedded 5V BEC on the PDB is used to power the MCU. A 5V UBEC supporting 6A continuous current is used to power raspberry pi or UP board. If a nvidia jetson is used in the future, an extra 4S battery and 12V BEC may be added.</li>
+<li>The 12V BEC on the PDB should not be used because it would require a 4s battery as input. It will not work properly with a 2S battery (7.4V).</li>
+<li>If using multiple battery design (2S + 4S), it might be a good idea to power the MCU and servo/motor from the same power source. By doing so you could still maintain manual control if the battery for SBC and sensors dies first.</li>
 </ol>
 </dd>
 </dl>
@@ -134,6 +142,34 @@
 <li>Acrylic Sheet for mounting plate, from Homedepot or Lowe&#8217;s</li>
 </ul>
 </div>
+<div class="section" id="d-control-system">
+<h3><a class="toc-backref" href="#id5">d. Control System</a><a class="headerlink" href="#d-control-system" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://store.mrobotics.io/mRo-PixRacer-R14-Official-p/auav-pxrcr-r14-mr.htm">Pixracer flight controller</a></li>
+<li>(Raspberry Pi 3)</li>
+<li>(UP Board)</li>
+</ul>
+<dl class="docutils">
+<dt><em>Note</em>: 1. Pixracer is a flight controller board for multicopters. I choose it because it is compact while having a rich set of sensors (2 sets of IMU) and hardware interfaces.</dt>
+<dd><ol class="first last arabic simple" start="2">
+<li>Available interfaces on pixracer: serial, I2C, SPI, CAN, 6 channels of PWM output (2 of which can be used for servo/motor control and the rest can be used for input pulse capture).</li>
+<li>Raspberry Pi 3 and UP board are used for experiments now. The final choice of single board computer is to be determined.</li>
+</ol>
+</dd>
+</dl>
+</div>
+<div class="section" id="e-sensor">
+<h3><a class="toc-backref" href="#id6">e. Sensor</a><a class="headerlink" href="#e-sensor" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>TBD</li>
+</ul>
+</div>
+</div>
+<div class="section" id="assembly-notes">
+<h2><a class="toc-backref" href="#id7">2. Assembly Notes</a><a class="headerlink" href="#assembly-notes" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="software-architecture">
+<h2><a class="toc-backref" href="#id8">3. Software Architecture</a><a class="headerlink" href="#software-architecture" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -150,8 +186,12 @@
 <li><a class="reference internal" href="#a-rc-car-chassis-and-basic-electronics">a. RC Car Chassis and Basic Electronics</a></li>
 <li><a class="reference internal" href="#b-power-system">b. Power System</a></li>
 <li><a class="reference internal" href="#c-mechanical-parts">c. Mechanical Parts</a></li>
+<li><a class="reference internal" href="#d-control-system">d. Control System</a></li>
+<li><a class="reference internal" href="#e-sensor">e. Sensor</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#assembly-notes">2. Assembly Notes</a></li>
+<li><a class="reference internal" href="#software-architecture">3. Software Architecture</a></li>
 </ul>
 </li>
 </ul>
