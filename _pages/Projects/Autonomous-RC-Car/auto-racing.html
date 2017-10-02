@@ -89,8 +89,15 @@
 <li><a class="reference internal" href="#e-sensor" id="id6">e. Sensor</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#assembly-notes" id="id7">2. Assembly Notes</a></li>
-<li><a class="reference internal" href="#software-architecture" id="id8">3. Software Architecture</a></li>
+<li><a class="reference internal" href="#assembly-notes" id="id7">2. Assembly Notes</a><ul>
+<li><a class="reference internal" href="#a-tamiya-ta07-pro-chassis" id="id8">a. Tamiya TA07 Pro Chassis</a></li>
+<li><a class="reference internal" href="#b-motor-and-servo-installation" id="id9">b. Motor and Servo Installation</a></li>
+<li><a class="reference internal" href="#c-wheels-and-tires" id="id10">c. Wheels and Tires</a></li>
+<li><a class="reference internal" href="#d-lower-mounting-plate" id="id11">d. Lower Mounting Plate</a></li>
+<li><a class="reference internal" href="#e-higher-mouting-plate" id="id12">e. Higher Mouting Plate</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#software-architecture" id="id13">3. Software Architecture</a></li>
 </ul>
 </div>
 <div class="section" id="hardware-components">
@@ -100,6 +107,7 @@
 <h3><a class="toc-backref" href="#id2">a. RC Car Chassis and Basic Electronics</a><a class="headerlink" href="#a-rc-car-chassis-and-basic-electronics" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><a class="reference external" href="http://www3.towerhobbies.com/cgi-bin/wti0001p?&amp;I=LXGCWG&amp;P=ML">Tamiya TA07 Pro</a></li>
+<li>(<a class="reference external" href="http://www.ebay.com/itm/Jazrider-Aluminum-Front-C-Hub-Carriers-Blue-Set-For-Tamiya-TA07-Pro-TB04-84382-/112436707457?hash=item1a2dc00081:g:ly0AAOSw9~5ZOm7w">Jazrider Aluminum Front C-Hub Carriers</a>)</li>
 <li><a class="reference external" href="https://www.rcjuice.com/hobbystar-dshv-300t-digital-mega-torque-titanium-gear-high-voltage-servo-waterproof.html">HobbyStar DSHV-300T Digital, Mega-Torque Titanium Gear, High-Voltage Servo</a></li>
 <li><a class="reference external" href="https://www.rcjuice.com/motor-esc/motor-esc-combos/1-10-short-course-combos/hobbystar-1-10-race-combo-120a-turbo-esc-540-sensored-motor-lcd-program-card.html">HobbyStar 1/10 Race Combo: 120A Turbo ESC + 540 Sensored Motor 10.5T</a></li>
 <li><a class="reference external" href="https://www.getfpv.com/frsky-taranis-x9d-plus-2-4ghz-accst-radio-mode-2.html?gclid=Cj0KCQjwx8fOBRD7ARIsAPVq-Nk5OHcIxFCXHjBQpzXuEv4WKaOzvbYtZkZCUayACJXc01fZ0Qzym1YaAvnWEALw_wcB">FrSky Taranis X9D Plus 2.4GHz ACCST Radio (Mode 2)</a></li>
@@ -109,6 +117,7 @@
 <dt><em>Note</em>: 1. Some servos may expect control signals other than PWM, for example SBUS. For simplicity, only PWM servos are supported by the firmware now.</dt>
 <dd><ol class="first last arabic simple" start="2">
 <li>I use FrSky Taranis radio because I own one for my quadrotors. It is used for manual control of the car and emergency brake during autonomous driving. You need at least 2 channels to control a car(steering and throttle). But more than 2 are planned to be used in the firmware for arm/disarm, mode switch etc. 6 or 8 channel should be enough.</li>
+<li>You can optionally upgrade some parts and the upgrade of aluminum front C-Hub carriers is highly recommended.</li>
 </ol>
 </dd>
 </dl>
@@ -139,6 +148,7 @@
 <h3><a class="toc-backref" href="#id4">c. Mechanical Parts</a><a class="headerlink" href="#c-mechanical-parts" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><a class="reference external" href="https://www.amazon.com/gp/product/B06XWCMPRD/ref=oh_aui_detailpage_o07_s00?ie=UTF8&amp;psc=1">M3 Brass Spacer Set Male-Female Spacers Hex Stand-Off Pillars DIY Set</a></li>
+<li><a class="reference external" href="https://www.amazon.com/gp/product/B06XDLB3KC/ref=oh_aui_detailpage_o00_s00?ie=UTF8&amp;psc=1">M2.5 Brass Spacers Hex Brass Standoffs Stainless Steel Screws Nuts Assorted Kit</a></li>
 <li>Acrylic Sheet for mounting plate, from Homedepot or Lowe&#8217;s</li>
 </ul>
 </div>
@@ -167,9 +177,57 @@
 </div>
 <div class="section" id="assembly-notes">
 <h2><a class="toc-backref" href="#id7">2. Assembly Notes</a><a class="headerlink" href="#assembly-notes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="a-tamiya-ta07-pro-chassis">
+<h3><a class="toc-backref" href="#id8">a. Tamiya TA07 Pro Chassis</a><a class="headerlink" href="#a-tamiya-ta07-pro-chassis" title="Permalink to this headline">¶</a></h3>
+<p>It is quite straightforward to follow the assembly instructions of the chassis.</p>
+<p>Additional information from the Internet:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://www.competitionx.com/news-feed/review-tamiya-ta07-pro-touring-car/">Review: Tamiya TA07 Pro Touring Car</a></li>
+<li><a class="reference external" href="http://www.competitionx.com/rc-blog-builds/tamiya-ta07-pro-build/">Tamiya TA07 Pro Online Build</a></li>
+<li><a class="reference external" href="http://tobyrcadventure.blogspot.com/2016/10/ta07-pro-build-and-design-review.html">TA07 Pro Build and Design review</a></li>
+<li><a class="reference external" href="http://www.rccaraction.com/online-build-tamiya-ta07-pro/">Online Build: Tamiya TA07 Pro</a></li>
+</ul>
+<dl class="docutils">
+<dt><em>Note</em>: 1. Don&#8217;t forget to buy instant glue, which is required but not included in the package. Other than that you get everything you need to put this chassis together.</dt>
+<dd><ol class="first last arabic simple" start="2">
+<li>A PPM receiver was chosen for its small size. But it&#8217;s convenient if you have a receiver that outputs PWM signal. You can test the servo and DC motor conveniently using only your trasmitter, without the MCU.</li>
+</ol>
+</dd>
+</dl>
+<a class="reference internal image-reference" href="../../../_images/chassis.jpg"><img alt="../../../_images/chassis.jpg" src="../../../_images/chassis.jpg" style="width: 650px;" /></a>
+</div>
+<div class="section" id="b-motor-and-servo-installation">
+<h3><a class="toc-backref" href="#id9">b. Motor and Servo Installation</a><a class="headerlink" href="#b-motor-and-servo-installation" title="Permalink to this headline">¶</a></h3>
+<p>Follow the instructions.</p>
+<p><em>Note</em>: 1. Don&#8217;t tighten servo related parts before you finish adjusting the neutral position of servo. You could adjust the control signal for a neutral position but you don&#8217;t want to get off the mechanical neutral position too much during installation.</p>
+<a class="reference internal image-reference" href="../../../_images/chassis_motor.jpg"><img alt="../../../_images/chassis_motor.jpg" src="../../../_images/chassis_motor.jpg" style="width: 650px;" /></a>
+</div>
+<div class="section" id="c-wheels-and-tires">
+<h3><a class="toc-backref" href="#id10">c. Wheels and Tires</a><a class="headerlink" href="#c-wheels-and-tires" title="Permalink to this headline">¶</a></h3>
+<p><em>Note</em>: 1. Make sure you don&#8217;t skip using glue on the tires to attach them to the wheels. They&#8217;re going to get off during the high-speed driving if you don&#8217;t. And I tried that.</p>
+<a class="reference internal image-reference" href="../../../_images/wheels_on.jpg"><img alt="../../../_images/wheels_on.jpg" src="../../../_images/wheels_on.jpg" style="width: 650px;" /></a>
+</div>
+<div class="section" id="d-lower-mounting-plate">
+<h3><a class="toc-backref" href="#id11">d. Lower Mounting Plate</a><a class="headerlink" href="#d-lower-mounting-plate" title="Permalink to this headline">¶</a></h3>
+<p>A mounting plate is very useful for attaching all parts to the chassis nicely. The current design tries to keep the lower plate as close to the chassis as possible but leave enough clearance to moving parts.</p>
+<dl class="docutils">
+<dt><em>Note</em>: 1. Currently the ESC and PDB are connected using a pair of XT60 connectors. In the future this connection point could be removed and the wires from the ESC could be soldered to the PDB directly.</dt>
+<dd><ol class="first last arabic simple" start="2">
+<li>The receiver is attached to the plate from the bottom but the antenna are left above.</li>
+<li>The receiver wires and ESC/servo signal wires go below the plate and the connectors could reach the MCU through reserved holes on the plate.</li>
+<li>Make sure the wires don&#8217;t interfere with the belt/gears below the plate.</li>
+</ol>
+</dd>
+</dl>
+<a class="reference internal image-reference" href="../../../_images/with_deck.jpg"><img alt="../../../_images/with_deck.jpg" src="../../../_images/with_deck.jpg" style="width: 650px;" /></a>
+</div>
+<div class="section" id="e-higher-mouting-plate">
+<h3><a class="toc-backref" href="#id12">e. Higher Mouting Plate</a><a class="headerlink" href="#e-higher-mouting-plate" title="Permalink to this headline">¶</a></h3>
+<p>TBD</p>
+</div>
 </div>
 <div class="section" id="software-architecture">
-<h2><a class="toc-backref" href="#id8">3. Software Architecture</a><a class="headerlink" href="#software-architecture" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id13">3. Software Architecture</a><a class="headerlink" href="#software-architecture" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -190,7 +248,14 @@
 <li><a class="reference internal" href="#e-sensor">e. Sensor</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#assembly-notes">2. Assembly Notes</a></li>
+<li><a class="reference internal" href="#assembly-notes">2. Assembly Notes</a><ul>
+<li><a class="reference internal" href="#a-tamiya-ta07-pro-chassis">a. Tamiya TA07 Pro Chassis</a></li>
+<li><a class="reference internal" href="#b-motor-and-servo-installation">b. Motor and Servo Installation</a></li>
+<li><a class="reference internal" href="#c-wheels-and-tires">c. Wheels and Tires</a></li>
+<li><a class="reference internal" href="#d-lower-mounting-plate">d. Lower Mounting Plate</a></li>
+<li><a class="reference internal" href="#e-higher-mouting-plate">e. Higher Mouting Plate</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#software-architecture">3. Software Architecture</a></li>
 </ul>
 </li>

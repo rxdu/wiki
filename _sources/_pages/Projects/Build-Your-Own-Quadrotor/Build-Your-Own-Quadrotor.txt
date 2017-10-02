@@ -80,3 +80,10 @@ The second build is improved in the following aspects:
        :width: 650px
 
 (I know it's generally recommended to put the two antenas at 90 degrees. But I hadn't found a good way to mount them in such configuration when I took this photo.)
+
+(Updated on 10/02/2017)
+
+More quadrotors (size 250, 150, 130, 90)
+
+.. image:: /_images/projects/quadrotor/quad_family.jpg
+       :width: 650px
