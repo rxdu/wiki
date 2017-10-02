@@ -15,11 +15,12 @@ a. RC Car Chassis and Basic Electronics
 
 - `Tamiya TA07 Pro <http://www3.towerhobbies.com/cgi-bin/wti0001p?&I=LXGCWG&P=ML>`_
 - `HobbyStar DSHV-300T Digital, Mega-Torque Titanium Gear, High-Voltage Servo <https://www.rcjuice.com/hobbystar-dshv-300t-digital-mega-torque-titanium-gear-high-voltage-servo-waterproof.html>`_
-- `HobbyStar 1/10 Race Combo <https://www.rcjuice.com/motor-esc/motor-esc-combos/1-10-short-course-combos/hobbystar-1-10-race-combo-120a-turbo-esc-540-sensored-motor-lcd-program-card.html>`_
-    - HobbyStar 540 Competition Brushless Sensored Motor - 10.5T
-    - HobbyStar 120A 1/10 Competition Sensored ESC With Turbo/Boost
+- `HobbyStar 1/10 Race Combo: 120A Turbo ESC + 540 Sensored Motor 10.5T <https://www.rcjuice.com/motor-esc/motor-esc-combos/1-10-short-course-combos/hobbystar-1-10-race-combo-120a-turbo-esc-540-sensored-motor-lcd-program-card.html>`_
+- `FrSky Taranis X9D Plus 2.4GHz ACCST Radio (Mode 2) <https://www.getfpv.com/frsky-taranis-x9d-plus-2-4ghz-accst-radio-mode-2.html?gclid=Cj0KCQjwx8fOBRD7ARIsAPVq-Nk5OHcIxFCXHjBQpzXuEv4WKaOzvbYtZkZCUayACJXc01fZ0Qzym1YaAvnWEALw_wcB>`_
+- `FrSky XSR 2.4GHz 16CH ACCST Receiver S-Bus CPPM Output <https://www.amazon.com/gp/product/B01HZB6XTI/ref=oh_aui_detailpage_o06_s00?ie=UTF8&psc=1>`_
 
-*Note*: Some servos may expect control signals other than PWM, for example SBUS. For simplicity, only PWM servos are supported by the firmware now.
+*Note*: 1. Some servos may expect control signals other than PWM, for example SBUS. For simplicity, only PWM servos are supported by the firmware now.
+        2. I use FrSky Taranis radio because I own one for my quadrotors. It is used for manual control of the car and emergency brake during autonomous driving. You need at least 2 channels to control a car(steering and throttle). But more than 2 are planned to be used in the firmware for arm/disarm, mode switch etc. 6 or 8 channel should be enough.
 
 b. Power System
 ^^^^^^^^^^^^^^^
@@ -31,9 +32,37 @@ b. Power System
 
 *Note*: 1. Most FPV quadrotors use 3S, 4S LiPo batteries but for RC cars 2S batteries (with a lot more mAh) are more common.
         2. RC Car batteries mostly come with Deans T plug, while it's more common to see XT60 connectors on LiPo batteries for multicopters. I add an XT60 adapter on the car because I want to keep the compatibility across all my toys, batteries and the charger for easy maintenance. 
+        3. A power distribution board (PDB) is used because I need to distribute power from the battery to ESC (which powers motor and servo), microcontroller, single board computer and sensors.
+        4. This PDB could support 20A continous current and 30A peak current from each channel. To avoid overheating and board damage, you should use the output pads closest to the input pads for the ESC connection and make solid/complete contact points when soldering.
+        5. The PDB could be a bottle neck for the power system, but I didn't know any better choices designed specifically for RC cars. A custom-designed PDB could be considered in the future. But this off-the-shelf choice works without any problem so far.    
+        6. The embedded 5V BEC on the PDB is used to power the MCU. A 5V UBEC supporting 6A continuous current is used to power raspberry pi or UP board. If a nvidia jetson is used in the future, an extra 4S battery and 12V BEC may be added.
+        7. The 12V BEC on the PDB should not be used because it would require a 4s battery as input. It will not work properly with a 2S battery (7.4V).
+        8. If using multiple battery design (2S + 4S), it might be a good idea to power the MCU and servo/motor from the same power source. By doing so you could still maintain manual control if the battery for SBC and sensors dies first.
 
 c. Mechanical Parts
 ^^^^^^^^^^^^^^^^^^^
 
 - `M3 Brass Spacer Set Male-Female Spacers Hex Stand-Off Pillars DIY Set <https://www.amazon.com/gp/product/B06XWCMPRD/ref=oh_aui_detailpage_o07_s00?ie=UTF8&psc=1>`_
 - Acrylic Sheet for mounting plate, from Homedepot or Lowe's
+
+d. Control System
+^^^^^^^^^^^^^^^^^
+
+- `Pixracer flight controller <https://store.mrobotics.io/mRo-PixRacer-R14-Official-p/auav-pxrcr-r14-mr.htm>`_
+- (Raspberry Pi 3)
+- (UP Board)
+
+*Note*: 1. Pixracer is a flight controller board for multicopters. I choose it because it is compact while having a rich set of sensors (2 sets of IMU) and hardware interfaces.
+        2. Available interfaces on pixracer: serial, I2C, SPI, CAN, 6 channels of PWM output (2 of which can be used for servo/motor control and the rest can be used for input pulse capture).
+        3. Raspberry Pi 3 and UP board are used for experiments now. The final choice of single board computer is to be determined. 
+
+e. Sensor
+^^^^^^^^^
+
+- TBD
+
+2. Assembly Notes
+-----------------
+
+3. Software Architecture
+------------------------
