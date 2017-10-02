@@ -1,0 +1,39 @@
+Autonomous RC Car
+=================
+
+.. contents::
+   :depth: 2
+   :local:
+
+1. Hardware Components
+----------------------
+
+Since the RC car is built for the purpose of study and research, it is useful to leave some flexibility for possible extensions when choosing components. Also constrained by my budget, I try to reuse parts I bought for my quadrotors. The goal is to set up the platform as fast as possible so that I could start developing software early. I try my best to make a good balance between cost and performance. But the project just hasn't reached the point for hardware optimization yet.  
+
+a. RC Car Chassis and Basic Electronics
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- `Tamiya TA07 Pro <http://www3.towerhobbies.com/cgi-bin/wti0001p?&I=LXGCWG&P=ML>`_
+- `HobbyStar DSHV-300T Digital, Mega-Torque Titanium Gear, High-Voltage Servo <https://www.rcjuice.com/hobbystar-dshv-300t-digital-mega-torque-titanium-gear-high-voltage-servo-waterproof.html>`_
+- `HobbyStar 1/10 Race Combo <https://www.rcjuice.com/motor-esc/motor-esc-combos/1-10-short-course-combos/hobbystar-1-10-race-combo-120a-turbo-esc-540-sensored-motor-lcd-program-card.html>`_
+    - HobbyStar 540 Competition Brushless Sensored Motor - 10.5T
+    - HobbyStar 120A 1/10 Competition Sensored ESC With Turbo/Boost
+
+*Note*: Some servos may expect control signals other than PWM, for example SBUS. For simplicity, only PWM servos are supported by the firmware now.
+
+b. Power System
+^^^^^^^^^^^^^^^
+
+- `Gens ace 7.4V 5000mAh 2S 50C LiPo Battery Pack HardCase with Deans T Plug <https://www.amazon.com/gp/product/B00WQCTQL4/ref=oh_aui_detailpage_o02_s00?ie=UTF8&psc=1>`_
+- `XT60 Female to Deans T Plug Male Connector Adapter <https://www.amazon.com/gp/product/B012ISRY1E/ref=oh_aui_detailpage_o02_s00?ie=UTF8&psc=1>`_
+- `Matek V3.1 PDB Power Distribution Board Mini Power Hub with BEC 5V & 12V for Multicopter Quadcopter <https://www.amazon.com/gp/product/B071CFKFY1/ref=oh_aui_detailpage_o08_s00?ie=UTF8&psc=1>`_
+- `ZTW UBEC 10A Peak continuous 6A 6.0V 5.5V.5.0V adjustable <https://www.amazon.com/gp/product/B071CHGWRM/ref=oh_aui_detailpage_o03_s00?ie=UTF8&psc=1>`_
+
+*Note*: 1. Most FPV quadrotors use 3S, 4S LiPo batteries but for RC cars 2S batteries (with a lot more mAh) are more common.
+        2. RC Car batteries mostly come with Deans T plug, while it's more common to see XT60 connectors on LiPo batteries for multicopters. I add an XT60 adapter on the car because I want to keep the compatibility across all my toys, batteries and the charger to make my life easier. 
+
+c. Mechanical Parts
+^^^^^^^^^^^^^^^^^^^
+
+- `M3 Brass Spacer Set Male-Female Spacers Hex Stand-Off Pillars DIY Set <https://www.amazon.com/gp/product/B06XWCMPRD/ref=oh_aui_detailpage_o07_s00?ie=UTF8&psc=1>`_
+- Acrylic Sheet for mounting plate, from Homedepot or Lowe's

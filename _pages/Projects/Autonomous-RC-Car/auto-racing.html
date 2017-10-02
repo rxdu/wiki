@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-67949307-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <!-- <title>Autonomous RC Car &mdash; RDU-Wiki 1.0 documentation</title> -->
+    <title>Autonomous RC Car</title>
+    
+    <link rel="stylesheet" href="../../../_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Dancing+Script:700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Courgette' rel='stylesheet' type='text/css'>
+    
+    <div class="rduhome"  role="contentinfo">
+		 <a href="http://rdu.im" style="font-family: 'Courgette', serif;" >Return to Ruixiang's Home Page</a>
+	</div>
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="RDU-Wiki 1.0 documentation" href="../../../index.html" />
+    <link rel="next" title="Build Your Own Quadrotor" href="../Build-Your-Own-Quadrotor/Build-Your-Own-Quadrotor.html" />
+    <link rel="prev" title="Guide on Graduate Research" href="../../Resource/guide.html" />
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../../../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head>
+  <body role="document">
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../Build-Your-Own-Quadrotor/Build-Your-Own-Quadrotor.html" title="Build Your Own Quadrotor"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../../Resource/guide.html" title="Guide on Graduate Research"
+             accesskey="P">previous</a> |</li>
+        <!-- <li class="nav-item nav-item-0"><a href="../../../index.html">RDU-Wiki 1.0 documentation</a> &raquo;</li> -->
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Main Page</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="autonomous-rc-car">
+<h1>Autonomous RC Car<a class="headerlink" href="#autonomous-rc-car" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#hardware-components" id="id1">1. Hardware Components</a><ul>
+<li><a class="reference internal" href="#a-rc-car-chassis-and-basic-electronics" id="id2">a. RC Car Chassis and Basic Electronics</a></li>
+<li><a class="reference internal" href="#b-power-system" id="id3">b. Power System</a></li>
+<li><a class="reference internal" href="#c-mechanical-parts" id="id4">c. Mechanical Parts</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="hardware-components">
+<h2><a class="toc-backref" href="#id1">1. Hardware Components</a><a class="headerlink" href="#hardware-components" title="Permalink to this headline">¶</a></h2>
+<p>Since the RC car is built for the purpose of study and research, it is useful to leave some flexibility for possible extensions when choosing components. Also constrained by my budget, I try to reuse parts I bought for my quadrotors. The goal is to set up the platform as fast as possible so that I could start developing software early. I try my best to make a good balance between cost and performance. But the project just hasn&#8217;t reached the point for hardware optimization yet.</p>
+<div class="section" id="a-rc-car-chassis-and-basic-electronics">
+<h3><a class="toc-backref" href="#id2">a. RC Car Chassis and Basic Electronics</a><a class="headerlink" href="#a-rc-car-chassis-and-basic-electronics" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first"><a class="reference external" href="http://www3.towerhobbies.com/cgi-bin/wti0001p?&amp;I=LXGCWG&amp;P=ML">Tamiya TA07 Pro</a></p>
+</li>
+<li><p class="first"><a class="reference external" href="https://www.rcjuice.com/hobbystar-dshv-300t-digital-mega-torque-titanium-gear-high-voltage-servo-waterproof.html">HobbyStar DSHV-300T Digital, Mega-Torque Titanium Gear, High-Voltage Servo</a></p>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference external" href="https://www.rcjuice.com/motor-esc/motor-esc-combos/1-10-short-course-combos/hobbystar-1-10-race-combo-120a-turbo-esc-540-sensored-motor-lcd-program-card.html">HobbyStar 1/10 Race Combo</a></dt>
+<dd><ul class="first last simple">
+<li>HobbyStar 540 Competition Brushless Sensored Motor - 10.5T</li>
+<li>HobbyStar 120A 1/10 Competition Sensored ESC With Turbo/Boost</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p><em>Note</em>: Some servos may expect control signals other than PWM, for example SBUS. For simplicity, only PWM servos are supported by the firmware now.</p>
+</div>
+<div class="section" id="b-power-system">
+<h3><a class="toc-backref" href="#id3">b. Power System</a><a class="headerlink" href="#b-power-system" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://www.amazon.com/gp/product/B00WQCTQL4/ref=oh_aui_detailpage_o02_s00?ie=UTF8&amp;psc=1">Gens ace 7.4V 5000mAh 2S 50C LiPo Battery Pack HardCase with Deans T Plug</a></li>
+<li><a class="reference external" href="https://www.amazon.com/gp/product/B012ISRY1E/ref=oh_aui_detailpage_o02_s00?ie=UTF8&amp;psc=1">XT60 Female to Deans T Plug Male Connector Adapter</a></li>
+<li><a class="reference external" href="https://www.amazon.com/gp/product/B071CFKFY1/ref=oh_aui_detailpage_o08_s00?ie=UTF8&amp;psc=1">Matek V3.1 PDB Power Distribution Board Mini Power Hub with BEC 5V &amp; 12V for Multicopter Quadcopter</a></li>
+<li><a class="reference external" href="https://www.amazon.com/gp/product/B071CHGWRM/ref=oh_aui_detailpage_o03_s00?ie=UTF8&amp;psc=1">ZTW UBEC 10A Peak continuous 6A 6.0V 5.5V.5.0V adjustable</a></li>
+</ul>
+<dl class="docutils">
+<dt><em>Note</em>: 1. Most FPV quadrotors use 3S, 4S LiPo batteries but for RC cars 2S batteries (with a lot more mAh) are more common.</dt>
+<dd><ol class="first last arabic simple" start="2">
+<li>RC Car batteries mostly come with Deans T plug, while it&#8217;s more common to see XT60 connectors on LiPo batteries for multicopters. I add an XT60 adapter on the car because I want to keep the compatibility across all my toys, batteries and the charger to make my life easier.</li>
+</ol>
+</dd>
+</dl>
+</div>
+<div class="section" id="c-mechanical-parts">
+<h3><a class="toc-backref" href="#id4">c. Mechanical Parts</a><a class="headerlink" href="#c-mechanical-parts" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://www.amazon.com/gp/product/B06XWCMPRD/ref=oh_aui_detailpage_o07_s00?ie=UTF8&amp;psc=1">M3 Brass Spacer Set Male-Female Spacers Hex Stand-Off Pillars DIY Set</a></li>
+<li>Acrylic Sheet for mounting plate, from Homedepot or Lowe&#8217;s</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Autonomous RC Car</a><ul>
+<li><a class="reference internal" href="#hardware-components">1. Hardware Components</a><ul>
+<li><a class="reference internal" href="#a-rc-car-chassis-and-basic-electronics">a. RC Car Chassis and Basic Electronics</a></li>
+<li><a class="reference internal" href="#b-power-system">b. Power System</a></li>
+<li><a class="reference internal" href="#c-mechanical-parts">c. Mechanical Parts</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../../Resource/guide.html"
+                        title="previous chapter">Guide on Graduate Research</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../Build-Your-Own-Quadrotor/Build-Your-Own-Quadrotor.html"
+                        title="next chapter">Build Your Own Quadrotor</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../Build-Your-Own-Quadrotor/Build-Your-Own-Quadrotor.html" title="Build Your Own Quadrotor"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../../Resource/guide.html" title="Guide on Graduate Research"
+             >previous</a> |</li>
+        <!-- <li class="nav-item nav-item-0"><a href="../../../index.html">RDU-Wiki 1.0 documentation</a> &raquo;</li> -->
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Main Page</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2017, Ruixiang Du.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.
+    </div>
+  </body>
+</html>
