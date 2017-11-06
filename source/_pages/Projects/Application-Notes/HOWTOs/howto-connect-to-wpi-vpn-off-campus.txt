@@ -1,12 +1,20 @@
-How to Obtain Gurobi Academic License Off Campus
-================================================
+How to Connect to WPI VPN
+=========================
 
 (Updated on 08/22/2016 for Ubuntu 14.04 64-bit)
+
+(Updated on 11/05/2017 for Ubuntu 16.04 64-bit)
 
 To use Gurobi, you need to obtain an free academic license. It's easy to do so when your computer is connected to the campus network. But if not, you will need to solve two problems to get one: connecting to campus network through VPN and route the network traffic through the VPN channel.
 
 Connecting to Campus Network
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+(Update for Ubuntu 16.04)
+
+Install the Pulse Secure client from here (https://www.pulsesecure.net/trynow/client-download/) and start vpn from the client directly. Then you don't need to go through the following steps to connect to the campus network. But traffic routing is still needed.
+
+(The below steps might be obsolete)
 
 WPI uses Juniper Network Connect Client to establish a VPN channel. For Ubuntu 64-bit, it was difficult to make the client work before this `official solution <http://kb.juniper.net/InfoCenter/index?page=content&id=KB25230>`_ is provided recently.
 
