@@ -17,8 +17,8 @@
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
     </script>
-    <!-- <title>How to Obtain Gurobi Academic License Off Campus &mdash; RDU-Wiki 1.0 documentation</title> -->
-    <title>How to Obtain Gurobi Academic License Off Campus</title>
+    <!-- <title>How to Connect to WPI VPN &mdash; RDU-Wiki 1.0 documentation</title> -->
+    <title>How to Connect to WPI VPN</title>
     
     <link rel="stylesheet" href="../../../../_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
@@ -79,12 +79,16 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="how-to-obtain-gurobi-academic-license-off-campus">
-<h1>How to Obtain Gurobi Academic License Off Campus<a class="headerlink" href="#how-to-obtain-gurobi-academic-license-off-campus" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="how-to-connect-to-wpi-vpn">
+<h1>How to Connect to WPI VPN<a class="headerlink" href="#how-to-connect-to-wpi-vpn" title="Permalink to this headline">¶</a></h1>
 <p>(Updated on 08/22/2016 for Ubuntu 14.04 64-bit)</p>
+<p>(Updated on 11/05/2017 for Ubuntu 16.04 64-bit)</p>
 <p>To use Gurobi, you need to obtain an free academic license. It&#8217;s easy to do so when your computer is connected to the campus network. But if not, you will need to solve two problems to get one: connecting to campus network through VPN and route the network traffic through the VPN channel.</p>
 <div class="section" id="connecting-to-campus-network">
 <h2>Connecting to Campus Network<a class="headerlink" href="#connecting-to-campus-network" title="Permalink to this headline">¶</a></h2>
+<p>(Update for Ubuntu 16.04)</p>
+<p>Install the Pulse Secure client from here (<a class="reference external" href="https://www.pulsesecure.net/trynow/client-download/">https://www.pulsesecure.net/trynow/client-download/</a>) and start vpn from the client directly. Then you don&#8217;t need to go through the following steps to connect to the campus network. But traffic routing is still needed.</p>
+<p>(The below steps might be obsolete)</p>
 <p>WPI uses Juniper Network Connect Client to establish a VPN channel. For Ubuntu 64-bit, it was difficult to make the client work before this <a class="reference external" href="http://kb.juniper.net/InfoCenter/index?page=content&amp;id=KB25230">official solution</a> is provided recently.</p>
 <p>Here is a brief summary:</p>
 <p>What you need:</p>
@@ -159,7 +163,7 @@ $ sudo ip route add default via 130.215.*.*
         <div class="sphinxsidebarwrapper">
   <h3><a href="../../../../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">How to Obtain Gurobi Academic License Off Campus</a><ul>
+<li><a class="reference internal" href="#">How to Connect to WPI VPN</a><ul>
 <li><a class="reference internal" href="#connecting-to-campus-network">Connecting to Campus Network</a></li>
 <li><a class="reference internal" href="#route-network-traffic-through-vpn-channel">Route Network Traffic through VPN Channel</a></li>
 </ul>

@@ -89,7 +89,7 @@
 <div class="section" id="install-java-8">
 <h2>Install Java 8<a class="headerlink" href="#install-java-8" title="Permalink to this headline">¶</a></h2>
 <p>Java 8 is not readily available in the apt-get repository of Ubuntu 14.04. You can use the following third-party ppa to install it.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo add-apt-repository ppa:openjdk-r/ppa
+<div class="highlight-bash"><div class="highlight"><pre>$ sudo add-apt-repository ppa:openjdk-r/ppa
 $ sudo apt-get update
 $ sudo apt install openjdk-8-jdk
 </pre></div>
@@ -97,11 +97,11 @@ $ sudo apt install openjdk-8-jdk
 </div>
 <div class="section" id="configure-the-default-java-runtime">
 <h2>Configure the default Java Runtime<a class="headerlink" href="#configure-the-default-java-runtime" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo update-alternatives --config java
+<div class="highlight-bash"><div class="highlight"><pre>$ sudo update-alternatives --config java
 </pre></div>
 </div>
 <p>Similarly, to choose a default javac compiler, run the following command. (You don&#8217;t need this step if you just want to run Eclipse CDT with no Java development.)</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo update-alternatives --config javac
+<div class="highlight-bash"><div class="highlight"><pre>$ sudo update-alternatives --config javac
 </pre></div>
 </div>
 <p>Now you should be able to run the latest Eclipse without the Java version error message.</p>
@@ -172,7 +172,7 @@ $ sudo apt install openjdk-8-jdk
     </div>
     <div class="footer" role="contentinfo">
         &copy; Copyright 2017, Ruixiang Du.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.
     </div>
   </body>
 </html>

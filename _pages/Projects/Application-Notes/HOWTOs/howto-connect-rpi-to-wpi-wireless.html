@@ -93,7 +93,7 @@
 <div class="section" id="register-wireless-adapter">
 <h2>Register Wireless Adapter<a class="headerlink" href="#register-wireless-adapter" title="Permalink to this headline">¶</a></h2>
 <p>Use command &#8220;ifconfig&#8221; to find the MAC address of the wireless adapter on your Raspberry Pi and register this device with your WPI account information. I assume you know how to do this step.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ifconfig
+<div class="highlight-bash"><div class="highlight"><pre>$ ifconfig
 </pre></div>
 </div>
 </div>
@@ -110,7 +110,7 @@
 <li>Process P12 to protect your WPI credentials</li>
 </ol>
 <p>You will have to put your WPI password in plain text directly if you don&#8217;t do this step. That means someone else may get your password and have access to all your WPI accounts if they get your RPi.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /etc/rpi3/certs
+<div class="highlight-bash"><div class="highlight"><pre>$ <span class="nb">cd</span> /etc/rpi3/certs
 $ sudo openssl pkcs12 -in certificate.p12 -out temp.pem -passin pass:YOUR-WPI-PASSWORD -passout pass:TEMPPASSWORD
 $ sudo openssl pkcs12 -export -in temp.pem -out certificate-final.p12 -passin pass:TEMPPASSWORD -passout pass:FINALPASSWORD
 $ sudo rm -rf temp.pem certificate.p12
@@ -119,11 +119,11 @@ $ sudo rm -rf temp.pem certificate.p12
 <ol class="arabic simple" start="3">
 <li>Convert the P12 file to PEM</li>
 </ol>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo openssl pkcs12 -in certificate-final.p12 -out certificate-final.pem -nodes
+<div class="highlight-bash"><div class="highlight"><pre>$ sudo openssl pkcs12 -in certificate-final.p12 -out certificate-final.pem -nodes
 </pre></div>
 </div>
 <p>After step 2 and 3, you will have 3 files ready to use for the next step:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>certificate-final.p12
+<div class="highlight-bash"><div class="highlight"><pre>certificate-final.p12
 certificate-final.pem
 CA-xxxxxx.cer
 </pre></div>
@@ -132,11 +132,11 @@ CA-xxxxxx.cer
 <div class="section" id="modify-wpa-supplicant-configuration-file">
 <h2>Modify wpa_supplicant Configuration File<a class="headerlink" href="#modify-wpa-supplicant-configuration-file" title="Permalink to this headline">¶</a></h2>
 <p>Now you need to tell wpa_supplicant how to use the certificate files you&#8217;ve prepared in the above steps.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
+<div class="highlight-bash"><div class="highlight"><pre>$ sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
 </pre></div>
 </div>
 <p>Add the WPI-Wireless configuration entry to your &#8220;wpa_supplicant.conf&#8221; file. You don&#8217;t have to delete other entries &#8220;network = {...}&#8221; in this file.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1">#ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev</span>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c1">#ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev</span>
 <span class="c1">#update_config=1</span>
 <span class="c1">#country=GB</span>
 
@@ -160,10 +160,10 @@ CA-xxxxxx.cer
 <div class="section" id="update-wireless-adapter-configuration">
 <h2>Update Wireless Adapter Configuration<a class="headerlink" href="#update-wireless-adapter-configuration" title="Permalink to this headline">¶</a></h2>
 <p>Add or update the following configuration for &#8220;wlan0&#8221; in &#8220;/etc/network/interface&#8221;</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo nano /etc/network/interface
+<div class="highlight-bash"><div class="highlight"><pre>$ sudo nano /etc/network/interface
 </pre></div>
 </div>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>auto lo
+<div class="highlight-bash"><div class="highlight"><pre>auto lo
 iface lo inet loopback
 
 auto wlan0
@@ -240,7 +240,7 @@ iface wlan0 inet dhcp
     </div>
     <div class="footer" role="contentinfo">
         &copy; Copyright 2017, Ruixiang Du.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.
     </div>
   </body>
 </html>
