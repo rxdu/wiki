@@ -18,7 +18,7 @@ Robotics and Artificial Intelligence
 
 
 Computer Science
-^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^
 
 * `Artificial Intelligence: A Modern Approach <http://aima.cs.berkeley.edu/>`_, by Stuart J. Russell, Peter Norvig
 * `Computer Systems: A Programmer's Perspective <http://csapp.cs.cmu.edu/>`_, by Randal E. Bryant and David R. O'Hallaron

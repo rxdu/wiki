@@ -96,11 +96,11 @@ Note that password you use here should be the "FINALPASSWORD" you used to genera
 Update Wireless Adapter Configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Add or update the following configuration for "wlan0" in "/etc/network/interface"
+Add or update the following configuration for "wlan0" in "/etc/network/interfaces"
 
 .. code-block:: bash
 
-    $ sudo nano /etc/network/interface
+    $ sudo nano /etc/network/interfaces
 
 .. code-block:: bash
 
