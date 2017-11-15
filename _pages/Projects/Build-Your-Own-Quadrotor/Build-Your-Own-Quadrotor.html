@@ -41,8 +41,10 @@
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
     <link rel="top" title="RDU-Wiki 1.0 documentation" href="../../../index.html" />
     <link rel="next" title="Mobile Robot Toolkit" href="../Mobile-Robot-Toolkit/Mobile-Robot-Toolkit.html" />
     <link rel="prev" title="Autonomous RC Car" href="../Autonomous-RC-Car/auto-racing.html" />
@@ -91,10 +93,10 @@
 <p>Here is a summary of how I built my quadrotors. The primary use of these quadrotors includes: flying for fun, autonomous flight for research. You may find configurations specialized for other purposes somewhere else from the Internet.</p>
 <div class="section" id="hardware-components">
 <h2><a class="toc-backref" href="#id1">1. Hardware Components</a><a class="headerlink" href="#hardware-components" title="Permalink to this headline">¶</a></h2>
-<ul>
+<ul class="simple">
 <li><dl class="first docutils">
 <dt>Hardware</dt>
-<dd><ul class="first last simple">
+<dd><ul class="first last">
 <li>Flight controller * 1</li>
 <li>(Companion computer * 1)</li>
 <li>250 frame * 1</li>
@@ -136,22 +138,22 @@
 <p>There are generally two protocols widely used to interface with sensors like MPU9250, SPI or I2C. Since SPI is simpler in terms of signal timing (it uses more pins though) and more importantly much faster than I2C, it gets used in more and more recent flight controllers.</p>
 <p>For digital sensors like MPU9250, the first step is to establish the communication between the MCU and the sensor. It can be very helpful at this time to use a logic analyzer if you cannot find out problems in your code that cause a communication failure.</p>
 <a class="reference internal image-reference" href="../../../_images/mpu9250_whoami.jpg"><img alt="../../../_images/mpu9250_whoami.jpg" src="../../../_images/mpu9250_whoami.jpg" style="width: 650px;" /></a>
-<p>The internal register WHO_AM_I of MPU9250 can be used to check the communication. The above screenshot is captured by a logic analyzer, showing this &#8220;handshake&#8221;: MCU sends the address of WHO_AM_I (0x80 | 0x75 = 0xF5 for reading from register) and gets 0x71 as a reply.</p>
+<p>The internal register WHO_AM_I of MPU9250 can be used to check the communication. The above screenshot is captured by a logic analyzer, showing this “handshake”: MCU sends the address of WHO_AM_I (0x80 | 0x75 = 0xF5 for reading from register) and gets 0x71 as a reply.</p>
 <p>After the communication is set up properly, we can further configure the registers of MPU9250, like enabling/disabling gyro/acc, selecting full scale of gyro/acc and so on. You can refer to specific datasheet for more details of each sensor model.</p>
 </div>
 <div class="section" id="the-completed-quadrotor">
 <h2><a class="toc-backref" href="#id4">4. The Completed Quadrotor</a><a class="headerlink" href="#the-completed-quadrotor" title="Permalink to this headline">¶</a></h2>
 <p>(Updated on 01/23/2016)</p>
-<p>I finally get enough time and money to get all parts to build a complete quadrotor. I choose the CC3D Revolution flight controller since it has a very small foot print and uses similar chips as what I&#8217;ve partially tested before. All parts are selected according to the specifications of commonly seen FPV racing quadrotors. I did a lot of research to find a balance between the performance and my budget when choosing each component. The total cost of the quadrotor and necessary accessories is about $500 dollars.</p>
+<p>I finally get enough time and money to get all parts to build a complete quadrotor. I choose the CC3D Revolution flight controller since it has a very small foot print and uses similar chips as what I’ve partially tested before. All parts are selected according to the specifications of commonly seen FPV racing quadrotors. I did a lot of research to find a balance between the performance and my budget when choosing each component. The total cost of the quadrotor and necessary accessories is about $500 dollars.</p>
 <a class="reference internal image-reference" href="../../../_images/quad250.JPG"><img alt="../../../_images/quad250.JPG" src="../../../_images/quad250.JPG" style="width: 650px;" /></a>
 <p>The second build is improved in the following aspects:</p>
 <ul class="simple">
 <li>Better quality frame: <a class="reference external" href="http://mokaframe.com/moka-deluxe">Moka Delux</a> vs <a class="reference external" href="https://hobbyking.com/en_us/kim250-pro-fpv-multrotor-with-pcb.html">Kim250 Pro</a></li>
-<li>Better motor/ESC: DJI Snail vs Multistar Elite 2306-2150KV &#8216;MINI MONSTER&#8217; + Afro Race Spec Mini 20Amp</li>
+<li>Better motor/ESC: DJI Snail vs Multistar Elite 2306-2150KV ‘MINI MONSTER’ + Afro Race Spec Mini 20Amp</li>
 <li>Better wire management</li>
 </ul>
 <a class="reference internal image-reference" href="../../../_images/quad250-2.jpg"><img alt="../../../_images/quad250-2.jpg" src="../../../_images/quad250-2.jpg" style="width: 650px;" /></a>
-<p>(I know it&#8217;s generally recommended to put the two antenas at 90 degrees. But I hadn&#8217;t found a good way to mount them in such configuration when I took this photo.)</p>
+<p>(I know it’s generally recommended to put the two antenas at 90 degrees. But I hadn’t found a good way to mount them in such configuration when I took this photo.)</p>
 <p>(Updated on 10/02/2017)</p>
 <p>More quadrotors (size 250, 150, 130, 90)</p>
 <a class="reference internal image-reference" href="../../../_images/quad_family.jpg"><img alt="../../../_images/quad_family.jpg" src="../../../_images/quad_family.jpg" style="width: 650px;" /></a>
@@ -216,7 +218,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &copy; Copyright 2017, Ruixiang Du.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.
     </div>
   </body>
 </html>
