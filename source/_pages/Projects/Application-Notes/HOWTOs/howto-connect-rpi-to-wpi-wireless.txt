@@ -73,9 +73,9 @@ Add the WPI-Wireless configuration entry to your "wpa_supplicant.conf" file. You
 
 .. code-block:: bash
 
-    #ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
-    #update_config=1
-    #country=GB
+    ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+    update_config=1
+    country=GB
 
     network={
             ssid="WPI-Wireless"
@@ -112,6 +112,12 @@ Add or update the following configuration for "wlan0" in "/etc/network/interface
         wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
 
 With this configuration, the "wpa_supplicant.conf" will be loaded when the wireless adapter is brought up. Now reboot your RPi and you should get connected to the WPI wireless network. Note the network icon on the desktop may not show you're connected to the network. Use "ifconfig" command to check the connectivity and if successful you should see "wlan0" is assigned an valid IP address. 
+
+Note: you might want to reset the default password for your Raspberry Pi for security reasons. The default password is "raspberry" for user "pi".
+
+.. code-block:: bash
+
+    $ passwd
 
 Reference:
 
