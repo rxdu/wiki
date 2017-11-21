@@ -138,9 +138,9 @@ CA-xxxxxx.cer
 </pre></div>
 </div>
 <p>Add the WPI-Wireless configuration entry to your “wpa_supplicant.conf” file. You don’t have to delete other entries “network = {…}” in this file.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1">#ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev</span>
-<span class="c1">#update_config=1</span>
-<span class="c1">#country=GB</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">ctrl_interface</span><span class="o">=</span><span class="nv">DIR</span><span class="o">=</span>/var/run/wpa_supplicant <span class="nv">GROUP</span><span class="o">=</span>netdev
+<span class="nv">update_config</span><span class="o">=</span><span class="m">1</span>
+<span class="nv">country</span><span class="o">=</span>GB
 
 <span class="nv">network</span><span class="o">={</span>
         <span class="nv">ssid</span><span class="o">=</span><span class="s2">&quot;WPI-Wireless&quot;</span>
@@ -174,6 +174,10 @@ iface wlan0 inet dhcp
 </pre></div>
 </div>
 <p>With this configuration, the “wpa_supplicant.conf” will be loaded when the wireless adapter is brought up. Now reboot your RPi and you should get connected to the WPI wireless network. Note the network icon on the desktop may not show you’re connected to the network. Use “ifconfig” command to check the connectivity and if successful you should see “wlan0” is assigned an valid IP address.</p>
+<p>Note: you might want to reset the default password for your Raspberry Pi for security reasons. The default password is “raspberry” for user “pi”.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ passwd
+</pre></div>
+</div>
 <p>Reference:</p>
 <ul class="simple">
 <li>[1] <a class="reference external" href="http://www.esologic.com/?p=1088">http://www.esologic.com/?p=1088</a></li>
