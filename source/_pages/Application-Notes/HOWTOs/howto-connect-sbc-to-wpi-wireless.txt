@@ -1,17 +1,22 @@
-How to Connect a Raspberry Pi to WPI Wireless
-=============================================
+How to Connect a Single-board Computer to WPI Wireless
+======================================================
 
 In order to connect to WPI-Wireless, you need to install certificates. It's generally straightforward for x86 platforms but could be difficult for ARM devices like Raspberry Pi (RPi), if you're not particularly familar with network configurations and Linux. 
 
-The instructions in this article were tested in the following environment.
+The instructions in this article were mainly tested in the following environment.
 
 * Platform: Raspberry Pi 3 Model B
 * OS: Raspbian Stretch with Desktop 2017-09-07
 * Test Date: 10/03/2017
 
-**Note**: The instructions should apply to different models of Raspberry Pi and all recent releases of Raspbian or similar Debian-based OS. But it's possible that configurations need to be changed slightly. 
+Other platforms tested:
 
-First forget about the GUI interface on Raspbian (at top right corner of your desktop) to configure Wireless network. It's only useful for simple network configurations and you should use command "ifconfig" to check your network status.
+* Udoo NEO Full
+* Google Pixel Phone
+
+**Note**: The instructions should apply to many variants of Linux OS. But it's possible that configurations need to be changed slightly. In some Linux distributions, you may not have to use wpa_supplicant. You can follow the same steps to generate certificate files and use a GUI tool (network manager) to fill in the network settings.
+
+The network manager in the Raspbian is very limited and only useful for simple network configurations. You should be prepared to use commandline tools such as "ifconfig" to check your network status and update configurations.
 
 Register Wireless Adapter
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -64,6 +69,8 @@ Modify wpa_supplicant Configuration File
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Now you need to tell wpa_supplicant how to use the certificate files you've prepared in the above steps.
+
+**Note**: If your system already runs a network manager, you need to make sure it's compatible with wpa_supplicant. Otherwise you will have to disable the default network manager. If your OS has a decent network manager, you could use the graphical tool to setup the configurations in this step and the next step.
 
 .. code-block:: bash
 
