@@ -1,0 +1,229 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-67949307-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <!-- <title>How to Connect a Raspberry Pi to WPI Wireless &mdash; RDU-Wiki 1.0 documentation</title> -->
+    <title>How to Connect a Raspberry Pi to WPI Wireless</title>
+    
+    <link rel="stylesheet" href="../../../_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Dancing+Script:700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Courgette' rel='stylesheet' type='text/css'>
+    
+    <div class="rduhome"  role="contentinfo">
+		 <a href="http://rdu.im" style="font-family: 'Courgette', serif;" >Return to Ruixiang's Home Page</a>
+	</div>
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="top" title="RDU-Wiki 1.0 documentation" href="../../../index.html" />
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../../../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head>
+  <body role="document">
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <!-- <li class="nav-item nav-item-0"><a href="../../../index.html">RDU-Wiki 1.0 documentation</a> &raquo;</li> -->
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Main Page</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="how-to-connect-a-raspberry-pi-to-wpi-wireless">
+<h1>How to Connect a Raspberry Pi to WPI Wireless<a class="headerlink" href="#how-to-connect-a-raspberry-pi-to-wpi-wireless" title="Permalink to this headline">¶</a></h1>
+<p>In order to connect to WPI-Wireless, you need to install certificates. It’s generally straightforward for x86 platforms but could be difficult for ARM devices like Raspberry Pi (RPi), if you’re not particularly familar with network configurations and Linux.</p>
+<p>The instructions in this article were tested in the following environment.</p>
+<ul class="simple">
+<li>Platform: Raspberry Pi 3 Model B</li>
+<li>OS: Raspbian Stretch with Desktop 2017-09-07</li>
+<li>Test Date: 10/03/2017</li>
+</ul>
+<p><strong>Note</strong>: The instructions should apply to different models of Raspberry Pi and all recent releases of Raspbian or similar Debian-based OS. But it’s possible that configurations need to be changed slightly.</p>
+<p>First forget about the GUI interface on Raspbian (at top right corner of your desktop) to configure Wireless network. It’s only useful for simple network configurations and you should use command “ifconfig” to check your network status.</p>
+<div class="section" id="register-wireless-adapter">
+<h2>Register Wireless Adapter<a class="headerlink" href="#register-wireless-adapter" title="Permalink to this headline">¶</a></h2>
+<p>Use command “ifconfig” to find the MAC address of the wireless adapter on your Raspberry Pi and register this device with your WPI account information. I assume you know how to do this step.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ifconfig
+</pre></div>
+</div>
+</div>
+<div class="section" id="prepare-certificate-files">
+<h2>Prepare Certificate Files<a class="headerlink" href="#prepare-certificate-files" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Download certificate files</li>
+</ol>
+<p>You can download the files from a computer connected to the WPI network and copy them to your RPi. Or if you could manage to connect your RPi to “WPI-Open”, you can also download to the RPi directly.</p>
+<p>Link: <a class="reference external" href="https://wpi-wireless-setup.wpi.edu/enroll/WPI/Production/process">https://wpi-wireless-setup.wpi.edu/enroll/WPI/Production/process</a></p>
+<p>Choose “Other Operating Systems” to download the certificate files. You should get two files: one named “CA-xxxxxx.cer” and one “certificate.p12”.</p>
+<p>You can put the file in your Home directory on RPi or somewhere else such as “/etc/rpi3/certs”. I will use “/etc/rpi3/certs” as an example below. Note that your account should be in the “sudo” group to manipulate files in “/etc” directory.</p>
+<ol class="arabic simple" start="2">
+<li>Process P12 to protect your WPI credentials</li>
+</ol>
+<p>You will have to put your WPI password in plain text directly if you don’t do this step. That means someone else may get your password and have access to all your WPI accounts if they get your RPi.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /etc/rpi3/certs
+$ sudo openssl pkcs12 -in certificate.p12 -out temp.pem -passin pass:YOUR-WPI-PASSWORD -passout pass:TEMPPASSWORD
+$ sudo openssl pkcs12 -export -in temp.pem -out certificate-final.p12 -passin pass:TEMPPASSWORD -passout pass:FINALPASSWORD
+$ sudo rm -rf temp.pem certificate.p12
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Convert the P12 file to PEM</li>
+</ol>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo openssl pkcs12 -in certificate-final.p12 -out certificate-final.pem -nodes
+</pre></div>
+</div>
+<p>After step 2 and 3, you will have 3 files ready to use for the next step:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>certificate-final.p12
+certificate-final.pem
+CA-xxxxxx.cer
+</pre></div>
+</div>
+</div>
+<div class="section" id="modify-wpa-supplicant-configuration-file">
+<h2>Modify wpa_supplicant Configuration File<a class="headerlink" href="#modify-wpa-supplicant-configuration-file" title="Permalink to this headline">¶</a></h2>
+<p>Now you need to tell wpa_supplicant how to use the certificate files you’ve prepared in the above steps.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
+</pre></div>
+</div>
+<p>Add the WPI-Wireless configuration entry to your “wpa_supplicant.conf” file. You don’t have to delete other entries “network = {…}” in this file.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">ctrl_interface</span><span class="o">=</span><span class="nv">DIR</span><span class="o">=</span>/var/run/wpa_supplicant <span class="nv">GROUP</span><span class="o">=</span>netdev
+<span class="nv">update_config</span><span class="o">=</span><span class="m">1</span>
+<span class="nv">country</span><span class="o">=</span>GB
+
+<span class="nv">network</span><span class="o">={</span>
+        <span class="nv">ssid</span><span class="o">=</span><span class="s2">&quot;WPI-Wireless&quot;</span>
+        <span class="nv">key_mgmt</span><span class="o">=</span>WPA-EAP
+        <span class="nv">proto</span><span class="o">=</span>WPA2
+        <span class="nv">pairwise</span><span class="o">=</span>CCMP
+        <span class="nv">group</span><span class="o">=</span>CCMP
+        <span class="nv">eap</span><span class="o">=</span>TLS
+        <span class="nv">identity</span><span class="o">=</span><span class="s2">&quot;YOUR-WPI-EMAIL-ADDRESS&quot;</span>
+        <span class="nv">ca_cert</span><span class="o">=</span><span class="s2">&quot;/etc/rpi3/certs/CA-[A-LONG-STRING-OF-NUMBERS].cer&quot;</span>
+        <span class="nv">client_cert</span><span class="o">=</span><span class="s2">&quot;/etc/rpi3/certs/certificate-final.pem&quot;</span>
+        <span class="nv">private_key</span><span class="o">=</span><span class="s2">&quot;/etc/rpi3/certs/certificate-final.p12&quot;</span>
+        <span class="nv">private_key_passwd</span><span class="o">=</span><span class="s2">&quot;FINALPASSWORD&quot;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>Note that password you use here should be the “FINALPASSWORD” you used to generate “certificate-final.p12”. It’s in plain text and that’s the reason why you shouldn’t use your WPI password directly.</p>
+</div>
+<div class="section" id="update-wireless-adapter-configuration">
+<h2>Update Wireless Adapter Configuration<a class="headerlink" href="#update-wireless-adapter-configuration" title="Permalink to this headline">¶</a></h2>
+<p>Add or update the following configuration for “wlan0” in “/etc/network/interfaces”</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo nano /etc/network/interfaces
+</pre></div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>auto lo
+iface lo inet loopback
+
+auto wlan0
+iface wlan0 inet dhcp
+    wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
+</pre></div>
+</div>
+<p>With this configuration, the “wpa_supplicant.conf” will be loaded when the wireless adapter is brought up. Now reboot your RPi and you should get connected to the WPI wireless network. Note the network icon on the desktop may not show you’re connected to the network. Use “ifconfig” command to check the connectivity and if successful you should see “wlan0” is assigned an valid IP address.</p>
+<p>Note: you might want to reset the default password for your Raspberry Pi for security reasons. The default password is “raspberry” for user “pi”.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ passwd
+</pre></div>
+</div>
+<p>Reference:</p>
+<ul class="simple">
+<li>[1] <a class="reference external" href="http://www.esologic.com/?p=1088">http://www.esologic.com/?p=1088</a></li>
+<li>[2] <a class="reference external" href="https://it.wpi.edu/Article/Connect-to-WPI-Wireless-Using-a-Raspberry-Pi">https://it.wpi.edu/Article/Connect-to-WPI-Wireless-Using-a-Raspberry-Pi</a></li>
+<li>[3] <a class="reference external" href="https://wiki.debian.org/WiFi/HowToUse">https://wiki.debian.org/WiFi/HowToUse</a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">How to Connect a Raspberry Pi to WPI Wireless</a><ul>
+<li><a class="reference internal" href="#register-wireless-adapter">Register Wireless Adapter</a></li>
+<li><a class="reference internal" href="#prepare-certificate-files">Prepare Certificate Files</a></li>
+<li><a class="reference internal" href="#modify-wpa-supplicant-configuration-file">Modify wpa_supplicant Configuration File</a></li>
+<li><a class="reference internal" href="#update-wireless-adapter-configuration">Update Wireless Adapter Configuration</a></li>
+</ul>
+</li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <!-- <li class="nav-item nav-item-0"><a href="../../../index.html">RDU-Wiki 1.0 documentation</a> &raquo;</li> -->
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Main Page</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2017, Ruixiang Du.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.
+    </div>
+  </body>
+</html>

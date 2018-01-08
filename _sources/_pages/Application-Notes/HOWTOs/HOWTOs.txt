@@ -1,0 +1,9 @@
+HOWTOs
+======
+
+.. toctree::
+   :maxdepth: 1
+
+   /_pages/Projects/Application-Notes/HOWTOs/howto-connect-rpi-to-wpi-wireless
+   /_pages/Projects/Application-Notes/HOWTOs/howto-connect-to-wpi-vpn-off-campus
+   /_pages/Projects/Application-Notes/HOWTOs/howto-install-eclipse-cdt-with-java8
