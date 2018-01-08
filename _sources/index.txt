@@ -18,15 +18,6 @@ ________
    /_pages/Resource/literature
    /_pages/Resource/guide
 
-Application Notes
-=================
-_________________
-
-.. toctree::
-   :maxdepth: 1
-
-   /_pages/Application-Notes/Application-Notes
-
 Projects
 ========
 ________
@@ -37,6 +28,15 @@ ________
    /_pages/Projects/Autonomous-RC-Car/auto-racing
    /_pages/Projects/Build-Your-Own-Quadrotor/Build-Your-Own-Quadrotor
    /_pages/Projects/Mobile-Robot-Toolkit/Mobile-Robot-Toolkit
+
+Application Notes
+=================
+_________________
+
+.. toctree::
+   :maxdepth: 1
+
+   /_pages/Application-Notes/Application-Notes
 
 Knowledge Base
 ==============
