@@ -41,10 +41,8 @@
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="index" title="Index" href="../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../search.html" />
     <link rel="top" title="RDU-Wiki 1.0 documentation" href="../../../index.html" />
     <link rel="next" title="Build Your Own Quadrotor" href="../Build-Your-Own-Quadrotor/Build-Your-Own-Quadrotor.html" />
     <link rel="prev" title="Guide on Graduate Research" href="../../Resource/guide.html" />
@@ -104,7 +102,7 @@
 </div>
 <div class="section" id="hardware-components">
 <h2><a class="toc-backref" href="#id1">1. Hardware Components</a><a class="headerlink" href="#hardware-components" title="Permalink to this headline">¶</a></h2>
-<p>Since the RC car is built for the purpose of study and research, it is useful to leave some flexibility for possible extensions when choosing components. Also constrained by my budget, I try to reuse parts I bought for my quadrotors. The goal is to set up the platform as fast as possible so that I could start developing software early. I try my best to make a good balance between cost and performance. But the project just hasn’t reached the point for hardware optimization yet.</p>
+<p>Since the RC car is built for the purpose of study and research, it is useful to leave some flexibility for possible extensions when choosing components. Also constrained by my budget, I try to reuse parts I bought for my quadrotors. The goal is to set up the platform as fast as possible so that I could start developing software early. I try my best to make a good balance between cost and performance. But the project just hasn&#8217;t reached the point for hardware optimization yet.</p>
 <div class="section" id="a-rc-car-chassis-and-basic-electronics">
 <h3><a class="toc-backref" href="#id2">a. RC Car Chassis and Basic Electronics</a><a class="headerlink" href="#a-rc-car-chassis-and-basic-electronics" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
@@ -135,10 +133,10 @@
 <dl class="docutils">
 <dt><em>Note</em>: 1. Most FPV quadrotors use 3S, 4S LiPo batteries but for RC cars 2S batteries (with a lot more mAh) are more common.</dt>
 <dd><ol class="first last arabic simple" start="2">
-<li>RC Car batteries mostly come with Deans T plug, while it’s more common to see XT60 connectors on LiPo batteries for multicopters. I add an XT60 adapter on the car because I want to keep the compatibility across all my toys, batteries and the charger for easy maintenance.</li>
+<li>RC Car batteries mostly come with Deans T plug, while it&#8217;s more common to see XT60 connectors on LiPo batteries for multicopters. I add an XT60 adapter on the car because I want to keep the compatibility across all my toys, batteries and the charger for easy maintenance.</li>
 <li>A power distribution board (PDB) is used because I need to distribute power from the battery to ESC (which powers motor and servo), microcontroller, single board computer and sensors.</li>
 <li>This PDB could support 20A continous current and 30A peak current from each channel. To avoid overheating and board damage, you should use the output pads closest to the input pads for the ESC connection and make solid/complete contact points when soldering.</li>
-<li>The PDB could be a bottle neck for the power system, but I didn’t know any better choices designed specifically for RC cars. A custom-designed PDB could be considered in the future. But this off-the-shelf choice works without any problem so far.</li>
+<li>The PDB could be a bottle neck for the power system, but I didn&#8217;t know any better choices designed specifically for RC cars. A custom-designed PDB could be considered in the future. But this off-the-shelf choice works without any problem so far.</li>
 <li>The embedded 5V BEC on the PDB is used to power the MCU. A 5V UBEC supporting 6A continuous current is used to power raspberry pi or UP board. If a nvidia jetson is used in the future, an extra 4S battery and 12V BEC may be added.</li>
 <li>The 12V BEC on the PDB should not be used because it would require a 4s battery as input. It will not work properly with a 2S battery (7.4V).</li>
 <li>If using multiple battery design (2S + 4S), it might be a good idea to power the MCU and servo/motor from the same power source. By doing so you could still maintain manual control if the battery for SBC and sensors dies first.</li>
@@ -151,7 +149,7 @@
 <ul class="simple">
 <li><a class="reference external" href="https://www.amazon.com/gp/product/B06XWCMPRD/ref=oh_aui_detailpage_o07_s00?ie=UTF8&amp;psc=1">M3 Brass Spacer Set Male-Female Spacers Hex Stand-Off Pillars DIY Set</a></li>
 <li><a class="reference external" href="https://www.amazon.com/gp/product/B06XDLB3KC/ref=oh_aui_detailpage_o00_s00?ie=UTF8&amp;psc=1">M2.5 Brass Spacers Hex Brass Standoffs Stainless Steel Screws Nuts Assorted Kit</a></li>
-<li>Acrylic Sheet for mounting plate, from Homedepot or Lowe’s</li>
+<li>Acrylic Sheet for mounting plate, from Homedepot or Lowe&#8217;s</li>
 </ul>
 </div>
 <div class="section" id="d-control-system">
@@ -190,9 +188,9 @@
 <li><a class="reference external" href="http://www.rccaraction.com/online-build-tamiya-ta07-pro/">Online Build: Tamiya TA07 Pro</a></li>
 </ul>
 <dl class="docutils">
-<dt><em>Note</em>: 1. Don’t forget to buy instant glue, which is required but not included in the package. Other than that you get everything you need to put this chassis together.</dt>
+<dt><em>Note</em>: 1. Don&#8217;t forget to buy instant glue, which is required but not included in the package. Other than that you get everything you need to put this chassis together.</dt>
 <dd><ol class="first last arabic simple" start="2">
-<li>A PPM receiver was chosen for its small size. But it’s convenient if you have a receiver that outputs PWM signal. You can test the servo and DC motor conveniently using only your trasmitter, without the MCU.</li>
+<li>A PPM receiver was chosen for its small size. But it&#8217;s convenient if you have a receiver that outputs PWM signal. You can test the servo and DC motor conveniently using only your trasmitter, without the MCU.</li>
 </ol>
 </dd>
 </dl>
@@ -201,12 +199,12 @@
 <div class="section" id="b-motor-and-servo-installation">
 <h3><a class="toc-backref" href="#id9">b. Motor and Servo Installation</a><a class="headerlink" href="#b-motor-and-servo-installation" title="Permalink to this headline">¶</a></h3>
 <p>Follow the instructions.</p>
-<p><em>Note</em>: 1. Don’t tighten servo related parts before you finish adjusting the neutral position of servo. You could adjust the control signal for a neutral position but you don’t want to get off the mechanical neutral position too much during installation.</p>
+<p><em>Note</em>: 1. Don&#8217;t tighten servo related parts before you finish adjusting the neutral position of servo. You could adjust the control signal for a neutral position but you don&#8217;t want to get off the mechanical neutral position too much during installation.</p>
 <a class="reference internal image-reference" href="../../../_images/chassis_motor.jpg"><img alt="../../../_images/chassis_motor.jpg" src="../../../_images/chassis_motor.jpg" style="width: 650px;" /></a>
 </div>
 <div class="section" id="c-wheels-and-tires">
 <h3><a class="toc-backref" href="#id10">c. Wheels and Tires</a><a class="headerlink" href="#c-wheels-and-tires" title="Permalink to this headline">¶</a></h3>
-<p><em>Note</em>: 1. Make sure you don’t skip using glue on the tires to attach them to the wheels. They’re going to get off during the high-speed driving if you don’t. And I tried that.</p>
+<p><em>Note</em>: 1. Make sure you don&#8217;t skip using glue on the tires to attach them to the wheels. They&#8217;re going to get off during the high-speed driving if you don&#8217;t. And I tried that.</p>
 <a class="reference internal image-reference" href="../../../_images/wheels_on.jpg"><img alt="../../../_images/wheels_on.jpg" src="../../../_images/wheels_on.jpg" style="width: 650px;" /></a>
 </div>
 <div class="section" id="d-lower-mounting-plate">
@@ -217,7 +215,7 @@
 <dd><ol class="first last arabic simple" start="2">
 <li>The receiver is attached to the plate from the bottom but the antenna are left above.</li>
 <li>The receiver wires and ESC/servo signal wires go below the plate and the connectors could reach the MCU through reserved holes on the plate.</li>
-<li>Make sure the wires don’t interfere with the belt/gears below the plate. If organized properly, they shouldn’t move underneath the deck.</li>
+<li>Make sure the wires don&#8217;t interfere with the belt/gears below the plate. If organized properly, they shouldn&#8217;t move underneath the deck.</li>
 <li>See the soldering joints I made in the following picture. The input wires from the battery are almost directly connected to the wires to the ESC. Remember to use a wider soldering tip. A very fine tip will not work.</li>
 </ol>
 </dd>
@@ -307,7 +305,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &copy; Copyright 2017, Ruixiang Du.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
     </div>
   </body>
 </html>

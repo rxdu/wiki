@@ -17,8 +17,8 @@
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
     </script>
-    <!-- <title>Intel Edison &mdash; RDU-Wiki 1.0 documentation</title> -->
-    <title>Intel Edison</title>
+    <!-- <title>BeagleBone Blue &mdash; RDU-Wiki 1.0 documentation</title> -->
+    <title>BeagleBone Blue</title>
     
     <link rel="stylesheet" href="../../../../_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
@@ -45,7 +45,7 @@
     <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
     <link rel="top" title="RDU-Wiki 1.0 documentation" href="../../../../index.html" />
     <link rel="up" title="Application Notes" href="../../Application-Notes.html" />
-    <link rel="next" title="Raspberry Pi" href="Raspberry-Pi.html" />
+    <link rel="next" title="Intel Edison" href="Intel-Edison.html" />
     <link rel="prev" title="Application Notes" href="../../Application-Notes.html" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
@@ -63,7 +63,7 @@
           <a href="../../../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="Raspberry-Pi.html" title="Raspberry Pi"
+          <a href="Intel-Edison.html" title="Intel Edison"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="../../Application-Notes.html" title="Application Notes"
@@ -79,36 +79,70 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="intel-edison">
-<h1>Intel Edison<a class="headerlink" href="#intel-edison" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="useful-commands">
-<h2>Useful Commands<a class="headerlink" href="#useful-commands" title="Permalink to this headline">¶</a></h2>
-<p><strong>curl</strong>: download a file</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -O link-to-remote-file
+  <div class="section" id="beaglebone-blue">
+<h1>BeagleBone Blue<a class="headerlink" href="#beaglebone-blue" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="flash-the-emmc-and-setup-your-account">
+<h2>Flash the eMMC and setup your account<a class="headerlink" href="#flash-the-emmc-and-setup-your-account" title="Permalink to this headline">¶</a></h2>
+<p>Follow reference [1] to flash the OS to the eMMC storage.</p>
+<p>You can login to the system after the board boots up</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>ssh debian@192.168.7.2
 </pre></div>
 </div>
-<p><strong>su</strong>: get root privileges</p>
-<p><strong>exit</strong>: log out of &#8220;su&#8221; mode, shortcut: Ctrl+D</p>
+<p>Now you can add your own account and delete the default one</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sudo adduser --ingroup users &lt;USERNAME&gt;
+<span class="nv">$ </span>sudo adduser &lt;YOUR_USERNAME&gt; sudo
+<span class="nv">$ </span><span class="nb">logout</span>
+<span class="nv">$ </span>sudo deluser --remove-home user
+</pre></div>
 </div>
-<div class="section" id="build-debian-image">
-<h2>Build Debian Image<a class="headerlink" href="#build-debian-image" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><a class="reference external" href="https://jakehewitt.github.io/custom-edison-image/">https://jakehewitt.github.io/custom-edison-image/</a></li>
-</ul>
 </div>
-<div class="section" id="configuration-after-os-install">
-<h2>Configuration after OS Install<a class="headerlink" href="#configuration-after-os-install" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="mount-usr-and-home-on-sd-card">
+<h2>Mount &#8220;/usr&#8221; and &#8220;/home&#8221; on SD card<a class="headerlink" href="#mount-usr-and-home-on-sd-card" title="Permalink to this headline">¶</a></h2>
+<p>The BeagleBone Blue has 4G on-board eMMC flash storage. It could be enough for many applications. But for experimental projects, it&#8217;s more convenient to have more space so that you don&#8217;t need to worry too much about filling the eMMC flash up when installing new packages.</p>
+<p>Check reference [2] to get more detailed instructions. Here is a brief summary of what you need to do:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># 1. format your SD card into two partitions</span>
+<span class="c"># 2. insert the SD card and power up the board</span>
+<span class="c"># 3. check if you have the two partitions on the SD card recognized by the OS correctly</span>
+<span class="nv">$ </span>fdisk -l
+<span class="c"># (the two partitions are labeled as &quot;/dev/mmcblk0p1&quot; and &quot;/dev/mmcblk0p2&quot; on my board)</span>
+<span class="c"># 4. format the two partions as ext4</span>
+<span class="nv">$ </span>mkfs.ext4 /dev/mmcblk0p1
+<span class="nv">$ </span>mkfs.ext4 /dev/mmcblk0p2
+<span class="c"># 5. create temporary folders in /tmp and mount the two partitions to the temporary folders, copy files from /usr and /home accordingly</span>
+<span class="nv">$ </span>sudo mkdir /tmp/usr
+<span class="nv">$ </span>sudo mkdir /tmp/home
+<span class="nv">$ </span>sudo mount /dev/mmcblk0p1 /tmp/usr
+<span class="nv">$ </span>sudo mount /dev/mmcblk0p2 /tmp/home
+<span class="nv">$ </span>sudo rsync -ahv --progress /usr/ /tmp/usr/
+<span class="nv">$ </span>sudo rsync -ahv --progress /home/ /tmp/home/
+<span class="c"># 6. update /etc/fstab to reflect the change</span>
+<span class="nv">$ </span>sudo lsblk -no UUID /dev/mmcblk0p1 <span class="c"># get UUID of /dev/mmcblk0p1</span>
+<span class="c"># add one line in /etc/fstab</span>
+<span class="nv">$ UUID</span><span class="o">=</span>&lt;ID-YOU-GOT-FROM-ABOVE-CMD&gt; /usr ext4    defaults <span class="m">0</span> 1
+<span class="c"># repeat for /dev/mmcblk0p2</span>
+<span class="c"># 7. reboot and check the files</span>
+<span class="nv">$ </span>df -h
+</pre></div>
+</div>
+</div>
+<div class="section" id="setup-wifi">
+<h2>Setup Wifi<a class="headerlink" href="#setup-wifi" title="Permalink to this headline">¶</a></h2>
+<p>You can use &#8220;connman&#8221; to manage the wireless network. But I personally prefer using the old way.</p>
 <ul class="simple">
-<li>Default account info</li>
+<li>Disable connman</li>
 </ul>
-<p>user name: user</p>
-<p>password: edison</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>systemctl disable connman.service
+</pre></div>
+</div>
 <ul class="simple">
-<li>Wifi Network</li>
+<li>Generate WPA passphrase for your WiFi</li>
 </ul>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>wpa_passphrase &lt;ssid&gt; &lt;password&gt;
 </pre></div>
 </div>
+<ul class="simple">
+<li>Update /etc/network/interfaces</li>
+</ul>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sudo nano /etc/network/interfaces
 </pre></div>
 </div>
@@ -119,24 +153,15 @@ iface lo inet loopback
 auto wlan0
 iface wlan0 inet dhcp
     wpa-ssid ExampleWifi
-    wpa-psk 81088ba3b4b387ea4d22a4ad369ffa42f4966d2f3d61f6c65cdc001460239dc4
+    wpa-psk &lt;wpa-psk-generated-by-wpa-passphrase-command&gt;
 </pre></div>
 </div>
+<p>Reference</p>
 <ul class="simple">
-<li>Update system time</li>
+<li>[1] <a class="reference external" href="https://gist.github.com/rxdu/35fb70c71cde5b44815e52bd8c338ff3">https://gist.github.com/rxdu/35fb70c71cde5b44815e52bd8c338ff3</a></li>
+<li>[2] <a class="reference external" href="https://github.com/beagleboard/beaglebone-blue/wiki/Flashing-firmware">https://github.com/beagleboard/beaglebone-blue/wiki/Flashing-firmware</a></li>
+<li>[3] <a class="reference external" href="http://xeikonmirkwood.blogspot.com/2014/05/connman-is-annoying.html">http://xeikonmirkwood.blogspot.com/2014/05/connman-is-annoying.html</a></li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>apt-get install ntp
-</pre></div>
-</div>
-<ul class="simple">
-<li>User account</li>
-</ul>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sudo adduser --ingroup users &lt;USERNAME&gt;
-<span class="nv">$ </span>sudo adduser &lt;YOUR_USERNAME&gt; sudo
-<span class="nv">$ </span><span class="nb">logout</span>
-<span class="nv">$ </span>sudo deluser --remove-home user
-</pre></div>
-</div>
 </div>
 </div>
 
@@ -148,10 +173,10 @@ iface wlan0 inet dhcp
         <div class="sphinxsidebarwrapper">
   <h3><a href="../../../../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Intel Edison</a><ul>
-<li><a class="reference internal" href="#useful-commands">Useful Commands</a></li>
-<li><a class="reference internal" href="#build-debian-image">Build Debian Image</a></li>
-<li><a class="reference internal" href="#configuration-after-os-install">Configuration after OS Install</a></li>
+<li><a class="reference internal" href="#">BeagleBone Blue</a><ul>
+<li><a class="reference internal" href="#flash-the-emmc-and-setup-your-account">Flash the eMMC and setup your account</a></li>
+<li><a class="reference internal" href="#mount-usr-and-home-on-sd-card">Mount &#8220;/usr&#8221; and &#8220;/home&#8221; on SD card</a></li>
+<li><a class="reference internal" href="#setup-wifi">Setup Wifi</a></li>
 </ul>
 </li>
 </ul>
@@ -160,8 +185,8 @@ iface wlan0 inet dhcp
   <p class="topless"><a href="../../Application-Notes.html"
                         title="previous chapter">Application Notes</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="Raspberry-Pi.html"
-                        title="next chapter">Raspberry Pi</a></p>
+  <p class="topless"><a href="Intel-Edison.html"
+                        title="next chapter">Intel Edison</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../../../search.html" method="get">
@@ -186,7 +211,7 @@ iface wlan0 inet dhcp
           <a href="../../../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="Raspberry-Pi.html" title="Raspberry Pi"
+          <a href="Intel-Edison.html" title="Intel Edison"
              >next</a> |</li>
         <li class="right" >
           <a href="../../Application-Notes.html" title="Application Notes"

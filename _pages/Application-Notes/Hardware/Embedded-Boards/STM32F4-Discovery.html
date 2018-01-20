@@ -41,13 +41,11 @@
     <script type="text/javascript" src="../../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
-    <link rel="index" title="Index" href="../../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../../search.html" />
     <link rel="top" title="RDU-Wiki 1.0 documentation" href="../../../../index.html" />
     <link rel="up" title="Application Notes" href="../../Application-Notes.html" />
-    <link rel="next" title="Using GDB Debugger" href="../../Software/gdb.html" />
+    <link rel="next" title="CAN Bus in Linux" href="../../Software/can-bus-in-linux.html" />
     <link rel="prev" title="Raspberry Pi" href="Raspberry-Pi.html" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
@@ -65,7 +63,7 @@
           <a href="../../../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="../../Software/gdb.html" title="Using GDB Debugger"
+          <a href="../../Software/can-bus-in-linux.html" title="CAN Bus in Linux"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="Raspberry-Pi.html" title="Raspberry Pi"
@@ -87,17 +85,17 @@
 <h2>Setup STLink for on circuit debugging<a class="headerlink" href="#setup-stlink-for-on-circuit-debugging" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Download stlink from this [git repository](<a class="reference external" href="https://github.com/texane/stlink">https://github.com/texane/stlink</a>)</li>
-<li>Follow “README” to build to tools and set up udev rules</li>
+<li>Follow &#8220;README&#8221; to build to tools and set up udev rules</li>
 <li>Connect the board to PC and check if the OS has detected stlink correct</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ lsusb
-$ ..
-$ Bus <span class="m">001</span> Device <span class="m">041</span>: ID <span class="m">0483</span>:3748 SGS Thomson Microelectronics ST-LINK/V2
-$ ..
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>lsusb
+<span class="nv">$ </span>..
+<span class="nv">$ </span>Bus <span class="m">001</span> Device 041: ID 0483:3748 SGS Thomson Microelectronics ST-LINK/V2
+<span class="nv">$ </span>..
 </pre></div>
 </div>
 <p>If the tool shows permission restriction when starts, use this command:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo chmod <span class="m">777</span> /dev/bus/usb/002/004
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sudo chmod <span class="m">777</span> /dev/bus/usb/002/004
 </pre></div>
 </div>
 </div>
@@ -121,8 +119,8 @@ $ ..
   <p class="topless"><a href="Raspberry-Pi.html"
                         title="previous chapter">Raspberry Pi</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="../../Software/gdb.html"
-                        title="next chapter">Using GDB Debugger</a></p>
+  <p class="topless"><a href="../../Software/can-bus-in-linux.html"
+                        title="next chapter">CAN Bus in Linux</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../../../search.html" method="get">
@@ -147,7 +145,7 @@ $ ..
           <a href="../../../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="../../Software/gdb.html" title="Using GDB Debugger"
+          <a href="../../Software/can-bus-in-linux.html" title="CAN Bus in Linux"
              >next</a> |</li>
         <li class="right" >
           <a href="Raspberry-Pi.html" title="Raspberry Pi"
@@ -159,7 +157,7 @@ $ ..
     </div>
     <div class="footer" role="contentinfo">
         &copy; Copyright 2017, Ruixiang Du.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
     </div>
   </body>
 </html>
