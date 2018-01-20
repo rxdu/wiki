@@ -6,6 +6,7 @@ Application Notes
 .. toctree::
    :maxdepth: 1
 
+   /_pages/Application-Notes/Hardware/Embedded-Boards/BeagleBone-Blue
    /_pages/Application-Notes/Hardware/Embedded-Boards/Intel-Edison
    /_pages/Application-Notes/Hardware/Embedded-Boards/Raspberry-Pi
    /_pages/Application-Notes/Hardware/Embedded-Boards/STM32F4-Discovery

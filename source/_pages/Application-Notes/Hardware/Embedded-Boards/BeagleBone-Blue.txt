@@ -1,0 +1,100 @@
+BeagleBone Blue
+===============
+
+Flash the eMMC and setup your account
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Follow reference [1] to flash the OS to the eMMC storage.
+
+You can login to the system after the board boots up
+
+.. code-block:: bash
+
+   $ ssh debian@192.168.7.2
+   
+Now you can add your own account and delete the default one
+
+.. code-block:: bash
+
+   $ sudo adduser --ingroup users <USERNAME>
+   $ sudo adduser <YOUR_USERNAME> sudo
+   $ logout
+   $ sudo deluser --remove-home user
+
+Mount "/usr" and "/home" on SD card
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The BeagleBone Blue has 4G on-board eMMC flash storage. It could be enough for many applications. But for experimental projects, it's more convenient to have more space so that you don't need to worry too much about filling the eMMC flash up when installing new packages.
+
+Check reference [2] to get more detailed instructions. Here is a brief summary of what you need to do:
+
+.. code-block:: bash
+
+   # 1. format your SD card into two partitions
+   # 2. insert the SD card and power up the board
+   # 3. check if you have the two partitions on the SD card recognized by the OS correctly
+   $ fdisk -l
+   # (the two partitions are labeled as "/dev/mmcblk0p1" and "/dev/mmcblk0p2" on my board)
+   # 4. format the two partions as ext4
+   $ mkfs.ext4 /dev/mmcblk0p1
+   $ mkfs.ext4 /dev/mmcblk0p2 
+   # 5. create temporary folders in /tmp and mount the two partitions to the temporary folders, copy files from /usr and /home accordingly
+   $ sudo mkdir /tmp/usr 
+   $ sudo mkdir /tmp/home
+   $ sudo mount /dev/mmcblk0p1 /tmp/usr 
+   $ sudo mount /dev/mmcblk0p2 /tmp/home
+   $ sudo rsync -ahv --progress /usr/ /tmp/usr/
+   $ sudo rsync -ahv --progress /home/ /tmp/home/ 
+   # 6. update /etc/fstab to reflect the change
+   $ sudo lsblk -no UUID /dev/mmcblk0p1 # get UUID of /dev/mmcblk0p1
+   # add one line in /etc/fstab
+   $ UUID=<ID-YOU-GOT-FROM-ABOVE-CMD> /usr ext4    defaults 0 1
+   # repeat for /dev/mmcblk0p2
+   # 7. reboot and check the files
+   $ df -h
+
+Setup Wifi
+^^^^^^^^^^
+
+You can use "connman" to manage the wireless network. But I personally prefer using the old way.
+
+* Disable connman
+
+.. code-block:: bash
+
+   $ systemctl disable connman.service
+
+* Generate WPA passphrase for your WiFi
+
+.. code-block:: bash
+
+   $ wpa_passphrase <ssid> <password>
+
+* Update /etc/network/interfaces
+
+.. code-block:: bash
+
+   $ sudo nano /etc/network/interfaces
+
+.. code-block:: bash
+
+   # interfaces(5) file used by ifup(8) and ifdown(8)
+   auto lo
+   iface lo inet loopback
+
+   auto wlan0
+   iface wlan0 inet dhcp
+       wpa-ssid ExampleWifi
+       wpa-psk <wpa-psk-generated-by-wpa-passphrase-command>
+
+Setup CAN bus
+^^^^^^^^^^^^^
+
+Check reference [4]. NOT TESTED YET!
+
+Reference
+
+* [1] https://gist.github.com/rxdu/35fb70c71cde5b44815e52bd8c338ff3
+* [2] https://github.com/beagleboard/beaglebone-blue/wiki/Flashing-firmware
+* [3] http://xeikonmirkwood.blogspot.com/2014/05/connman-is-annoying.html
+* [4] http://pdkb.azurewebsites.net/Home/Detail/installing-can-bus-drivers-for-osd3358-systems-running-debian
