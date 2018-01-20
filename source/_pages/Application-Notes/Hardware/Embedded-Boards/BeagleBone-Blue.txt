@@ -90,7 +90,7 @@ You can use "connman" to manage the wireless network. But I personally prefer us
 Setup CAN bus
 ^^^^^^^^^^^^^
 
-Check reference [4]. NOT TESTED YET!
+Refer to the "CAN Bus in Linux" note [5].
 
 Reference
 
@@ -98,3 +98,4 @@ Reference
 * [2] https://github.com/beagleboard/beaglebone-blue/wiki/Flashing-firmware
 * [3] http://xeikonmirkwood.blogspot.com/2014/05/connman-is-annoying.html
 * [4] http://pdkb.azurewebsites.net/Home/Detail/installing-can-bus-drivers-for-osd3358-systems-running-debian
+* [5] http://wiki.rdu.im/_pages/Application-Notes/Software/can-bus-in-linux.html
