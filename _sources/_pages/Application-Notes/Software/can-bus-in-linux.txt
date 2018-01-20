@@ -4,7 +4,7 @@ CAN Bus in Linux
 Bring up CAN interface
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Note that the maximum bitrate depends on your specific hardware, for example 1000000 for PiCAN2.
+Note that the maximum bitrate depends on your specific hardware, for example PiCAN2 supports up to 1Mbps.
 
 .. code-block:: bash
 
