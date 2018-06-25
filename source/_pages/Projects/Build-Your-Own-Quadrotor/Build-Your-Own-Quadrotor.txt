@@ -61,7 +61,7 @@ The internal register WHO_AM_I of MPU9250 can be used to check the communication
 After the communication is set up properly, we can further configure the registers of MPU9250, like enabling/disabling gyro/acc, selecting full scale of gyro/acc and so on. You can refer to specific datasheet for more details of each sensor model.
 
 4. The Completed Quadrotor
--------------------------
+--------------------------
 
 (Updated on 01/23/2016)
 

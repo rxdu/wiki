@@ -4,13 +4,19 @@ BeagleBone Blue
 Flash the eMMC and setup your account
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Follow reference [1] to flash the OS to the eMMC storage.
+Follow reference [1] to flash the OS to the eMMC storage. A brief summary:
+
+* Download image and extract the .img file
+* Create a bootable SD card with the image (using tools such as etcher)
+* Boot into the OS on the SD card (holding the SD button and then power up the board)
+* Modify "/boot/uEnv.txt" and uncomment the line that enables the flasher
+* Shutdown the board and boot from the SD again, wait until the eMMC is flashed with the system
 
 You can login to the system after the board boots up
 
 .. code-block:: bash
 
-   $ ssh debian@192.168.7.2
+   $ ssh debian@192.168.7.2 # default password: temppwd
    
 Now you can add your own account and delete the default one
 
@@ -47,9 +53,12 @@ Check reference [2] to get more detailed instructions. Here is a brief summary o
    $ sudo rsync -ahv --progress /home/ /tmp/home/ 
    # 6. update /etc/fstab to reflect the change
    $ sudo lsblk -no UUID /dev/mmcblk0p1 # get UUID of /dev/mmcblk0p1
-   # add one line in /etc/fstab
+   # add two lines in /etc/fstab
    $ UUID=<ID-YOU-GOT-FROM-ABOVE-CMD> /usr ext4    defaults 0 1
-   # repeat for /dev/mmcblk0p2
+   $ UUID=<ID-YOU-GOT-FROM-ABOVE-CMD> /home ext4    defaults 0 1
+   or
+   $ /dev/mmcblk0p1 /usr ext4 defaults 0 1
+   $ /dev/mmcblk0p2 /home ext4 defaults 0 1
    # 7. reboot and check the files
    $ df -h
 
@@ -100,8 +109,8 @@ You can upgrade or change to a Preempt-RT patched kernel using the script provid
 .. code-block:: bash
 
    $ cd /opt/scripts/tools
-   $ git pull
-   $ sudo /opt/scripts/tools/update_kernel.sh --bone-rt-channel --lts-4_4
+   $ git pull   # you may need to use sudo here
+   $ sudo /opt/scripts/tools/update_kernel.sh --bone-rt-channel --lts-4_4   # --lts-stable or other available options
 
 Refer to [6] for additiona options.
 
