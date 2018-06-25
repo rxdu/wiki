@@ -8,7 +8,7 @@ Autonomous RC Car
 1. Hardware Components
 ----------------------
 
-Since the RC car is built for the purpose of study and research, it is useful to leave some flexibility for possible extensions when choosing components. Also constrained by my budget, I try to reuse parts I bought for my quadrotors. The goal is to set up the platform as fast as possible so that I could start developing software early. I try my best to make a good balance between cost and performance. But the project just hasn't reached the point for hardware optimization yet.  
+Since the RC car is built for the purpose of study and research, it is convenient to leave some flexibility for possible extensions when choosing components. I also try to reuse parts I bought for my quadrotors, due to my limited budget. The goal is to set up the platform as fast as possible so that I could start developing software early. I try my best to make a good balance between cost and performance. But the project just hasn't reached the point for hardware optimization yet.  
 
 a. RC Car Chassis and Basic Electronics
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -104,7 +104,7 @@ c. Wheels and Tires
        :width: 650px
 
 d. Lower Mounting Plate
-^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^
 
 A mounting plate is very useful for attaching all parts to the chassis nicely. The current design tries to keep the lower plate as close to the chassis as possible but leave enough clearance to moving parts.
 
@@ -122,10 +122,13 @@ And what the car looks like after installing the mounting plate.
 .. image:: /_images/projects/auto_racing/with_deck.jpg
        :width: 650px
 
-e. Higher Mouting Plate
-^^^^^^^^^^^^^^^^^^^^^^^
+e. More Electronics
+^^^^^^^^^^^^^^^^^^^
 
-TBD
+In the following image, an Udoo Neo Full, a Pixracer and an racing version of Revolution are installed. Other boards include the voltage regulation modules and CAN bus tranceiver modules. The final combination will be decided later.
+
+.. image:: /_images/projects/auto_racing/udoo_neo.jpg
+       :width: 650px
 
 
 3. Software Architecture

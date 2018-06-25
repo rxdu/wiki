@@ -41,8 +41,10 @@
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
     <link rel="top" title="RDU-Wiki 1.0 documentation" href="../../../index.html" />
     <link rel="up" title="Application Notes" href="../Application-Notes.html" />
     <link rel="next" title="How to Install Eclipse CDT with Java 8" href="howto-install-eclipse-cdt-with-java8.html" />
@@ -83,12 +85,12 @@
 <h1>How to Connect to WPI VPN in Linux<a class="headerlink" href="#how-to-connect-to-wpi-vpn-in-linux" title="Permalink to this headline">¶</a></h1>
 <p>(Updated on 08/22/2016 for Ubuntu 14.04 64-bit)</p>
 <p>(Updated on 11/05/2017 for Ubuntu 16.04 64-bit)</p>
-<p>You may need to use the WPI VPN to access some campus network resources or to obtain an free academic license, such as Gurobi. It&#8217;s easy to do so when your computer is connected to the campus network. But if not, you will need to solve two problems to get one: connecting to campus network through VPN and route the network traffic through the VPN channel.</p>
+<p>You may need to use the WPI VPN to access some campus network resources or to obtain an free academic license, such as Gurobi. It’s easy to do so when your computer is connected to the campus network. But if not, you will need to solve two problems to get one: connecting to campus network through VPN and route the network traffic through the VPN channel.</p>
 <div class="section" id="connecting-to-campus-network">
 <h2>Connecting to Campus Network<a class="headerlink" href="#connecting-to-campus-network" title="Permalink to this headline">¶</a></h2>
 <p>(Update for Ubuntu 16.04 and Debian 8)</p>
-<p>Install the Pulse Secure client from here (<a class="reference external" href="https://www.pulsesecure.net/trynow/client-download/">https://www.pulsesecure.net/trynow/client-download/</a>) and start vpn from the client directly. Then you don&#8217;t need to go through the following steps to connect to the campus network. But traffic routing is still needed.</p>
-<p>Note that you will have install necessary dependencies to run this app. If you try to start the client app by clicking the icon and nothing happens, you could run the app from a terminal to get more information. It&#8217;s likely that some dependencies are missing so that the app won&#8217;t start.</p>
+<p>Install the Pulse Secure client from here (<a class="reference external" href="https://www.pulsesecure.net/trynow/client-download/">https://www.pulsesecure.net/trynow/client-download/</a>) and start vpn from the client directly. Then you don’t need to go through the following steps to connect to the campus network. But traffic routing is still needed.</p>
+<p>Note that you will have install necessary dependencies to run this app. If you try to start the client app by clicking the icon and nothing happens, you could run the app from a terminal to get more information. It’s likely that some dependencies are missing so that the app won’t start.</p>
 <p>(The below steps might be obsolete and will not be updated anymore)</p>
 <p>WPI uses Juniper Network Connect Client to establish a VPN channel. For Ubuntu 64-bit, it was difficult to make the client work before this <a class="reference external" href="http://kb.juniper.net/InfoCenter/index?page=content&amp;id=KB25230">official solution</a> is provided recently.</p>
 <p>Here is a brief summary:</p>
@@ -100,52 +102,52 @@
 </ul>
 <p>Configuration steps:</p>
 <ul class="simple">
-<li>Install 64-bit Firefox if you don&#8217;t have one.</li>
+<li>Install 64-bit Firefox if you don’t have one.</li>
 <li>Install IcedTea-Web-plug-in</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sudo apt-get install openjdk-7-jre icedtea-7-plugin
+<div class="highlight-bash notranslate"><div class="highlight"><pre>$ sudo apt-get install openjdk-7-jre icedtea-7-plugin
 </pre></div>
 </div>
 <ul class="simple">
 <li>Install the 32-bit Java version.</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sudo apt-get install openjdk-7-jre:i386
+<div class="highlight-bash notranslate"><div class="highlight"><pre>$ sudo apt-get install openjdk-7-jre:i386
 </pre></div>
 </div>
 <ul class="simple">
 <li>Add symbolic link to update-alternatives</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sudo ln -s /usr/bin/update-alternatives /usr/sbin/
+<div class="highlight-bash notranslate"><div class="highlight"><pre>$ sudo ln -s /usr/bin/update-alternatives /usr/sbin/
 </pre></div>
 </div>
 <ul class="simple">
 <li>Keep the default Java version to be the 64-bit one.</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sudo update-alternatives --config java
+<div class="highlight-bash notranslate"><div class="highlight"><pre>$ sudo update-alternatives --config java
 </pre></div>
 </div>
-<p>Now you can try to connect the VPN. Refer to the original document for more details if you get any problems. Don&#8217;t forget to use <strong>Firefox</strong> to connect to <a class="reference external" href="https://vpn.wpi.edu">https://vpn.wpi.edu</a>. Chrome will not work.</p>
+<p>Now you can try to connect the VPN. Refer to the original document for more details if you get any problems. Don’t forget to use <strong>Firefox</strong> to connect to <a class="reference external" href="https://vpn.wpi.edu">https://vpn.wpi.edu</a>. Chrome will not work.</p>
 </div>
 <div class="section" id="route-network-traffic-through-vpn-channel">
 <h2>Route Network Traffic through VPN Channel<a class="headerlink" href="#route-network-traffic-through-vpn-channel" title="Permalink to this headline">¶</a></h2>
 <p>Use <em>ifconfig</em> command to check if you have successfully connected to VPN. You should see something like this:</p>
 <a class="reference internal image-reference" href="../../../_images/vpn_channel.png"><img alt="../../../_images/vpn_channel.png" src="../../../_images/vpn_channel.png" style="width: 600px;" /></a>
-<p>If you try to obtain the license now, you would probably find that the Gurobi website still complains that you&#8217;re not in a campus network. This is because the network traffic from your computer is not going through the VPN channel, even if you&#8217;ve established one.</p>
+<p>If you try to obtain the license now, you would probably find that the Gurobi website still complains that you’re not in a campus network. This is because the network traffic from your computer is not going through the VPN channel, even if you’ve established one.</p>
 <ul class="simple">
 <li>Find the remote gateway IP address:</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>route -n
+<div class="highlight-bash notranslate"><div class="highlight"><pre>$ route -n
 </pre></div>
 </div>
-<p>You should be able to find an IP address starting from &#8220;130.215.*.*&#8221; via interface &#8220;tun0&#8221;.</p>
+<p>You should be able to find an IP address starting from “130.215.*.*” via interface “tun0”.</p>
 <ul class="simple">
 <li>Delete the default gateway and add the new one:</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sudo ip route del default via 192.168.1.1
-<span class="nv">$ </span>sudo ip route add default via 130.215.*.*
+<div class="highlight-bash notranslate"><div class="highlight"><pre>$ sudo ip route del default via 192.168.1.1
+$ sudo ip route add default via 130.215.*.*
 </pre></div>
 </div>
-<p>Note that you need to change the ip addresses according to your actual situation. Some routers may use &#8220;192.168.1.254&#8221; as the default gateway ip. <strong>When you finish, you need to change the default gateway back.</strong> Otherwise when you disconnect the VPN channel, you might not be able to connect to the Internet. This method works on my computer. If you encounter any problems, check the reference for more information..</p>
+<p>Note that you need to change the ip addresses according to your actual situation. Some routers may use “192.168.1.254” as the default gateway ip. <strong>When you finish, you need to change the default gateway back.</strong> Otherwise when you disconnect the VPN channel, you might not be able to connect to the Internet. This method works on my computer. If you encounter any problems, check the reference for more information..</p>
 <ul class="simple">
 <li>[1] <a class="reference external" href="http://www.cyberciti.biz/faq/how-to-find-gateway-ip-address/">http://www.cyberciti.biz/faq/how-to-find-gateway-ip-address/</a></li>
 <li>[2] <a class="reference external" href="http://www.cyberciti.biz/tips/configuring-static-routes-in-debian-or-red-hat-linux-systems.html">http://www.cyberciti.biz/tips/configuring-static-routes-in-debian-or-red-hat-linux-systems.html</a></li>
@@ -213,7 +215,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &copy; Copyright 2017, Ruixiang Du.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
     </div>
   </body>
 </html>

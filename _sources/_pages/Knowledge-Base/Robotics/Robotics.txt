@@ -15,10 +15,10 @@ DH Representation
 """""""""""""""""
 
 II. Inverse Kinematics
-^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^
 
 III. Differential Kinematics
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 IV. Reference Materials
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -89,7 +89,7 @@ I. MDP
 ^^^^^^
 
 II. POMDP
-^^^^^^^^
+^^^^^^^^^
 
 III. Reference Materials
 ^^^^^^^^^^^^^^^^^^^^^^^^

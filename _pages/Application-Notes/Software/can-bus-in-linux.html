@@ -41,8 +41,10 @@
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
     <link rel="top" title="RDU-Wiki 1.0 documentation" href="../../../index.html" />
     <link rel="up" title="Application Notes" href="../Application-Notes.html" />
     <link rel="next" title="Using GDB Debugger" href="gdb.html" />
@@ -84,65 +86,65 @@
 <div class="section" id="bring-up-can-interface">
 <h2>Bring up CAN interface<a class="headerlink" href="#bring-up-can-interface" title="Permalink to this headline">¶</a></h2>
 <p>Note that the maximum bitrate depends on your specific hardware, for example PiCAN2 supports up to 1Mbps.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sudo ip link <span class="nb">set </span>can0 up <span class="nb">type </span>can bitrate 1000000
+<div class="highlight-bash notranslate"><div class="highlight"><pre>$ sudo ip link <span class="nb">set</span> can0 up <span class="nb">type</span> can bitrate 1000000
 </pre></div>
 </div>
-<p>To bring up the interface when boot, you can modify &#8220;/etc/network/interfaces&#8221;</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sudo nano /etc/network/interfaces
+<p>To bring up the interface when boot, you can modify “/etc/network/interfaces”</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>$ sudo nano /etc/network/interfaces
 </pre></div>
 </div>
 <p>Add the following lines</p>
-<div class="highlight-bash"><div class="highlight"><pre>auto can0
+<div class="highlight-bash notranslate"><div class="highlight"><pre>auto can0
   iface can0 inet manual
-  pre-up /sbin/ip link <span class="nb">set </span>can0 <span class="nb">type </span>can bitrate 1000000
+  pre-up /sbin/ip link <span class="nb">set</span> can0 <span class="nb">type</span> can bitrate 1000000
   up /sbin/ifconfig can0 up
   down /sbin/ifconfig can0 down
 </pre></div>
 </div>
-<p>You can check if CAN is brought up by using command &#8220;ifconfig&#8221;. You should see something similar to this</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>can0: <span class="nv">flags</span><span class="o">=</span>193&lt;UP,RUNNING,NOARP&gt;  mtu 16
-<span class="nv">$ </span>    unspec 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00  txqueuelen <span class="m">10</span>  <span class="o">(</span>UNSPEC<span class="o">)</span>
-<span class="nv">$ </span>    RX packets <span class="m">4</span>  bytes <span class="m">32</span> <span class="o">(</span>32.0 B<span class="o">)</span>
-<span class="nv">$ </span>    RX errors <span class="m">0</span>  dropped <span class="m">0</span>  overruns <span class="m">0</span>  frame 0
-<span class="nv">$ </span>    TX packets <span class="m">4</span>  bytes <span class="m">32</span> <span class="o">(</span>32.0 B<span class="o">)</span>
-<span class="nv">$ </span>    TX errors <span class="m">1</span>  dropped <span class="m">1</span> overruns <span class="m">0</span>  carrier <span class="m">1</span>  collisions 0
+<p>You can check if CAN is brought up by using command “ifconfig”. You should see something similar to this</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>$ can0: <span class="nv">flags</span><span class="o">=</span>193&lt;UP,RUNNING,NOARP&gt;  mtu 16
+$     unspec 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00  txqueuelen <span class="m">10</span>  <span class="o">(</span>UNSPEC<span class="o">)</span>
+$     RX packets <span class="m">4</span>  bytes <span class="m">32</span> <span class="o">(</span>32.0 B<span class="o">)</span>
+$     RX errors <span class="m">0</span>  dropped <span class="m">0</span>  overruns <span class="m">0</span>  frame 0
+$     TX packets <span class="m">4</span>  bytes <span class="m">32</span> <span class="o">(</span>32.0 B<span class="o">)</span>
+$     TX errors <span class="m">1</span>  dropped <span class="m">1</span> overruns <span class="m">0</span>  carrier <span class="m">1</span>  collisions 0
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
 <li>Loopback test</li>
 </ol>
 <p>You can use the loopback mode to test if PiCAN2 is working properly. You need to enable the loopback mode first.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sudo ip link <span class="nb">set </span>can0 down
-<span class="nv">$ </span>sudo ip link <span class="nb">set </span>can0 <span class="nb">type </span>can loopback on
-<span class="nv">$ </span>sudo ip link <span class="nb">set </span>can0 up <span class="nb">type </span>can bitrate 1000000
+<div class="highlight-bash notranslate"><div class="highlight"><pre>$ sudo ip link <span class="nb">set</span> can0 down
+$ sudo ip link <span class="nb">set</span> can0 <span class="nb">type</span> can loopback on
+$ sudo ip link <span class="nb">set</span> can0 up <span class="nb">type</span> can bitrate 1000000
 </pre></div>
 </div>
 <p>Now open two terminals, one as sender and one as receiver.</p>
 <p>In sender terminal:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>cansend can0 001#1122334455667788
+<div class="highlight-bash notranslate"><div class="highlight"><pre>$ cansend can0 001#1122334455667788
 </pre></div>
 </div>
 <p>In receiver terminal:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>candump can0
+<div class="highlight-bash notranslate"><div class="highlight"><pre>$ candump can0
 </pre></div>
 </div>
 <p>If successful, you should expect</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>candump can0
-<span class="nv">$ </span>can0  <span class="m">001</span>   <span class="o">[</span>8<span class="o">]</span>  <span class="m">11</span> <span class="m">22</span> <span class="m">33</span> <span class="m">44</span> <span class="m">55</span> <span class="m">66</span> <span class="m">77</span> 88
-<span class="nv">$ </span>can0  <span class="m">001</span>   <span class="o">[</span>8<span class="o">]</span>  <span class="m">11</span> <span class="m">22</span> <span class="m">33</span> <span class="m">44</span> <span class="m">55</span> <span class="m">66</span> <span class="m">77</span> 88
+<div class="highlight-bash notranslate"><div class="highlight"><pre>$ candump can0
+$ can0  <span class="m">001</span>   <span class="o">[</span>8<span class="o">]</span>  <span class="m">11</span> <span class="m">22</span> <span class="m">33</span> <span class="m">44</span> <span class="m">55</span> <span class="m">66</span> <span class="m">77</span> 88
+$ can0  <span class="m">001</span>   <span class="o">[</span>8<span class="o">]</span>  <span class="m">11</span> <span class="m">22</span> <span class="m">33</span> <span class="m">44</span> <span class="m">55</span> <span class="m">66</span> <span class="m">77</span> 88
 </pre></div>
 </div>
 <p>Turn off the loopback mode:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sudo ip link <span class="nb">set </span>can0 down
-<span class="nv">$ </span>sudo ip link <span class="nb">set </span>can0 <span class="nb">type </span>can loopback off
-<span class="nv">$ </span>sudo ip link <span class="nb">set </span>can0 up <span class="nb">type </span>can bitrate 1000000
+<div class="highlight-bash notranslate"><div class="highlight"><pre>$ sudo ip link <span class="nb">set</span> can0 down
+$ sudo ip link <span class="nb">set</span> can0 <span class="nb">type</span> can loopback off
+$ sudo ip link <span class="nb">set</span> can0 up <span class="nb">type</span> can bitrate 1000000
 </pre></div>
 </div>
 <ol class="arabic simple" start="4">
 <li>More commands</li>
 </ol>
 <p>Use this command to find more information of CAN related commands</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>ip link <span class="nb">set </span>can0 up <span class="nb">type </span>can <span class="nb">help</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>$ ip link <span class="nb">set</span> can0 up <span class="nb">type</span> can <span class="nb">help</span>
 </pre></div>
 </div>
 <p>Reference</p>
@@ -211,7 +213,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &copy; Copyright 2017, Ruixiang Du.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
     </div>
   </body>
 </html>

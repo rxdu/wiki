@@ -41,12 +41,14 @@
     <script type="text/javascript" src="../../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../../_static/doctools.js"></script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
     <link rel="top" title="RDU-Wiki 1.0 documentation" href="../../../../index.html" />
     <link rel="up" title="Application Notes" href="../../Application-Notes.html" />
     <link rel="next" title="Raspberry Pi" href="Raspberry-Pi.html" />
-    <link rel="prev" title="Application Notes" href="../../Application-Notes.html" />
+    <link rel="prev" title="BeagleBone Blue" href="BeagleBone-Blue.html" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <!--[if lte IE 6]>
@@ -66,7 +68,7 @@
           <a href="Raspberry-Pi.html" title="Raspberry Pi"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="../../Application-Notes.html" title="Application Notes"
+          <a href="BeagleBone-Blue.html" title="BeagleBone Blue"
              accesskey="P">previous</a> |</li>
         <!-- <li class="nav-item nav-item-0"><a href="../../../../index.html">RDU-Wiki 1.0 documentation</a> &raquo;</li> -->
         <li class="nav-item nav-item-0"><a href="../../../../index.html">Main Page</a> &raquo;</li>
@@ -84,11 +86,11 @@
 <div class="section" id="useful-commands">
 <h2>Useful Commands<a class="headerlink" href="#useful-commands" title="Permalink to this headline">¶</a></h2>
 <p><strong>curl</strong>: download a file</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -O link-to-remote-file
+<div class="highlight-bash notranslate"><div class="highlight"><pre>$ curl -O link-to-remote-file
 </pre></div>
 </div>
 <p><strong>su</strong>: get root privileges</p>
-<p><strong>exit</strong>: log out of &#8220;su&#8221; mode, shortcut: Ctrl+D</p>
+<p><strong>exit</strong>: log out of “su” mode, shortcut: Ctrl+D</p>
 </div>
 <div class="section" id="build-debian-image">
 <h2>Build Debian Image<a class="headerlink" href="#build-debian-image" title="Permalink to this headline">¶</a></h2>
@@ -106,13 +108,13 @@
 <ul class="simple">
 <li>Wifi Network</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>wpa_passphrase &lt;ssid&gt; &lt;password&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre>$ wpa_passphrase &lt;ssid&gt; &lt;password&gt;
 </pre></div>
 </div>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sudo nano /etc/network/interfaces
+<div class="highlight-bash notranslate"><div class="highlight"><pre>$ sudo nano /etc/network/interfaces
 </pre></div>
 </div>
-<div class="highlight-bash"><div class="highlight"><pre><span class="c"># interfaces(5) file used by ifup(8) and ifdown(8)</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span class="c1"># interfaces(5) file used by ifup(8) and ifdown(8)</span>
 auto lo
 iface lo inet loopback
 
@@ -125,16 +127,16 @@ iface wlan0 inet dhcp
 <ul class="simple">
 <li>Update system time</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>apt-get install ntp
+<div class="highlight-bash notranslate"><div class="highlight"><pre>$ apt-get install ntp
 </pre></div>
 </div>
 <ul class="simple">
 <li>User account</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sudo adduser --ingroup users &lt;USERNAME&gt;
-<span class="nv">$ </span>sudo adduser &lt;YOUR_USERNAME&gt; sudo
-<span class="nv">$ </span><span class="nb">logout</span>
-<span class="nv">$ </span>sudo deluser --remove-home user
+<div class="highlight-bash notranslate"><div class="highlight"><pre>$ sudo adduser --ingroup users &lt;USERNAME&gt;
+$ sudo adduser &lt;YOUR_USERNAME&gt; sudo
+$ <span class="nb">logout</span>
+$ sudo deluser --remove-home user
 </pre></div>
 </div>
 </div>
@@ -157,8 +159,8 @@ iface wlan0 inet dhcp
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="../../Application-Notes.html"
-                        title="previous chapter">Application Notes</a></p>
+  <p class="topless"><a href="BeagleBone-Blue.html"
+                        title="previous chapter">BeagleBone Blue</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="Raspberry-Pi.html"
                         title="next chapter">Raspberry Pi</a></p>
@@ -189,7 +191,7 @@ iface wlan0 inet dhcp
           <a href="Raspberry-Pi.html" title="Raspberry Pi"
              >next</a> |</li>
         <li class="right" >
-          <a href="../../Application-Notes.html" title="Application Notes"
+          <a href="BeagleBone-Blue.html" title="BeagleBone Blue"
              >previous</a> |</li>
         <!-- <li class="nav-item nav-item-0"><a href="../../../../index.html">RDU-Wiki 1.0 documentation</a> &raquo;</li> -->
         <li class="nav-item nav-item-0"><a href="../../../../index.html">Main Page</a> &raquo;</li>
@@ -198,7 +200,7 @@ iface wlan0 inet dhcp
     </div>
     <div class="footer" role="contentinfo">
         &copy; Copyright 2017, Ruixiang Du.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
     </div>
   </body>
 </html>
