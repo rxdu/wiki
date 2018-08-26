@@ -20,6 +20,8 @@ Robotics and Artificial Intelligence
 
 * `Artificial Intelligence: A Modern Approach <http://aima.cs.berkeley.edu/>`_, by Stuart J. Russell, Peter Norvig
 
+Mathematics
+^^^^^^^^^^^
 
 Programming
 ^^^^^^^^^^^
@@ -29,11 +31,6 @@ Programming
 
 Websites
 --------
-
-Robotics
-^^^^^^^^
-
-* Underactuated Robotics, Algorithms for Walking, Running, Swimming, Flying, and Manipulation: http://underactuated.csail.mit.edu/underactuated.html
 
 Programming
 ^^^^^^^^^^^

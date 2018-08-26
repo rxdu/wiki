@@ -151,6 +151,6 @@ Reference
 * [2] https://gist.github.com/rxdu/35fb70c71cde5b44815e52bd8c338ff3
 * [3] http://xeikonmirkwood.blogspot.com/2014/05/connman-is-annoying.html
 * [4] http://pdkb.azurewebsites.net/Home/Detail/installing-can-bus-drivers-for-osd3358-systems-running-debian
-* [5] http://wiki.rdu.im/_pages/Application-Notes/Software/can-bus-in-linux.html
+* [5] http://wiki.rdu.im/_pages/Notes/Software/can-bus-in-linux.html
 * [6] https://github.com/beagleboard/bb.org-overlays
 * [7] https://groups.google.com/forum/#!topic/beagleboard/od6h9yTKUD4
