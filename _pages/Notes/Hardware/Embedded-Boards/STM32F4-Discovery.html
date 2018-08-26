@@ -1,4 +1,3 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -18,11 +17,11 @@
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
     </script>
-    <!-- <title>Index &mdash; RDU-Wiki 1.0 documentation</title> -->
-    <title>Index</title>
+    <!-- <title>STM32F4 Discovery Board &mdash; RDU-Wiki 1.0 documentation</title> -->
+    <title>STM32F4 Discovery Board</title>
     
-    <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
     <link href='http://fonts.googleapis.com/css?family=Dancing+Script:700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Courgette' rel='stylesheet' type='text/css'>
     
@@ -32,25 +31,25 @@
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
+        URL_ROOT:    '../../../../',
         VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="index" title="Index" href="#" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="top" title="RDU-Wiki 1.0 documentation" href="index.html" />
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="top" title="RDU-Wiki 1.0 documentation" href="../../../../index.html" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <!--[if lte IE 6]>
-<link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../../../../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
 <![endif]-->
 
   </head>
@@ -60,10 +59,10 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="#" title="General Index"
+          <a href="../../../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <!-- <li class="nav-item nav-item-0"><a href="index.html">RDU-Wiki 1.0 documentation</a> &raquo;</li> -->
-        <li class="nav-item nav-item-0"><a href="index.html">Main Page</a> &raquo;</li> 
+        <!-- <li class="nav-item nav-item-0"><a href="../../../../index.html">RDU-Wiki 1.0 documentation</a> &raquo;</li> -->
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Main Page</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -72,11 +71,26 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-
-<h1 id="index">Index</h1>
-
-<div class="genindex-jumpbox">
- 
+  <div class="section" id="stm32f4-discovery-board">
+<h1>STM32F4 Discovery Board<a class="headerlink" href="#stm32f4-discovery-board" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="setup-stlink-for-on-circuit-debugging">
+<h2>Setup STLink for on circuit debugging<a class="headerlink" href="#setup-stlink-for-on-circuit-debugging" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Download stlink from this [git repository](<a class="reference external" href="https://github.com/texane/stlink">https://github.com/texane/stlink</a>)</li>
+<li>Follow “README” to build to tools and set up udev rules</li>
+<li>Connect the board to PC and check if the OS has detected stlink correct</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ lsusb
+$ ..
+$ Bus <span class="m">001</span> Device <span class="m">041</span>: ID <span class="m">0483</span>:3748 SGS Thomson Microelectronics ST-LINK/V2
+$ ..
+</pre></div>
+</div>
+<p>If the tool shows permission restriction when starts, use this command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo chmod <span class="m">777</span> /dev/bus/usb/002/004
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -85,12 +99,17 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-
-   
+  <h3><a href="../../../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">STM32F4 Discovery Board</a><ul>
+<li><a class="reference internal" href="#setup-stlink-for-on-circuit-debugging">Setup STLink for on circuit debugging</a></li>
+</ul>
+</li>
+</ul>
 
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
+    <form class="search" action="../../../../search.html" method="get">
       <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
@@ -109,10 +128,10 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="#" title="General Index"
+          <a href="../../../../genindex.html" title="General Index"
              >index</a></li>
-        <!-- <li class="nav-item nav-item-0"><a href="index.html">RDU-Wiki 1.0 documentation</a> &raquo;</li> -->
-        <li class="nav-item nav-item-0"><a href="index.html">Main Page</a> &raquo;</li> 
+        <!-- <li class="nav-item nav-item-0"><a href="../../../../index.html">RDU-Wiki 1.0 documentation</a> &raquo;</li> -->
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Main Page</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

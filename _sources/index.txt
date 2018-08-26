@@ -6,17 +6,15 @@
 Welcome to Ruixiang's Wiki
 **************************
 
-Resource
-========
-________
+Notes
+=====
+_________________
 
 .. toctree::
    :maxdepth: 1
 
-   /_pages/Resource/online_course
-   /_pages/Resource/software
-   /_pages/Resource/literature
-   /_pages/Resource/guide
+   /_pages/Notes/Application-Notes
+   /_pages/Notes/HOWTOs
 
 Projects
 ========
@@ -28,15 +26,6 @@ ________
    /_pages/Projects/Autonomous-RC-Car/auto-racing
    /_pages/Projects/Build-Your-Own-Quadrotor/Build-Your-Own-Quadrotor
    /_pages/Projects/Mobile-Robot-Toolkit/Mobile-Robot-Toolkit
-
-Application Notes
-=================
-_________________
-
-.. toctree::
-   :maxdepth: 1
-
-   /_pages/Application-Notes/Application-Notes
 
 Knowledge Base
 ==============
@@ -50,16 +39,28 @@ ________
    /_pages/Knowledge-Base/Programming/Programming
    /_pages/Knowledge-Base/Embedded-System/Embedded-System
 
-Important Dates
-===============
+Resource
+========
 ________
 
-..  role:: strikethrough
+.. toctree::
+   :maxdepth: 1
 
-* :strikethrough:`IEEE ICRA 2017, Singapore, 05/29-06/02, 2017 -- deadline: 09/15/2016`
+   /_pages/Resource/online_course
+   /_pages/Resource/software
+   /_pages/Resource/literature
+   /_pages/Resource/guide
 
-* :strikethrough:`The 2017 American Control Conference, 05/24 - 05/26, Seattle, WA, USA -- 09/19/2016`
+..  Important Dates
+    ===============
+    ________
 
-* `IEEE/RSJ IROS 2017, Vancouver, BC, Canada <http://www.iros2017.org/>`_ -- deadline: 03/01/2017
+    ..  role:: strikethrough
 
-* `The 2017 IEEE Conference on Decision and Control, Melbourne, Australia <http://cdc2017.ieeecss.org/>`_ -- deadline: 03/20/2017
+    * :strikethrough:`IEEE ICRA 2017, Singapore, 05/29-06/02, 2017 -- deadline: 09/15/2016`
+
+    * :strikethrough:`The 2017 American Control Conference, 05/24 - 05/26, Seattle, WA, USA -- 09/19/2016`
+
+    * `IEEE/RSJ IROS 2017, Vancouver, BC, Canada <http://www.iros2017.org/>`_ -- deadline: 03/01/2017
+
+    * `The 2017 IEEE Conference on Decision and Control, Melbourne, Australia <http://cdc2017.ieeecss.org/>`_ -- deadline: 03/20/2017

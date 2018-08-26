@@ -14,14 +14,14 @@ Open Course
 		Dan Klein and Pieter Abbeel, University of California, Berkeley
 	- `Underactuated Robotics <https://courses.edx.org/courses/MITx/6.832x/3T2014/info>`_
 		Russ Tedrake, MIT
-	- `Dynamics <https://courses.edx.org/courses/MITx/2.03x/3T2013/info>`_
+	.. - `Dynamics <https://courses.edx.org/courses/MITx/2.03x/3T2013/info>`_
 		Multiple Professors, MIT
 * Udacity
 	- `Artificial Intelligence for Robotics: Programming a Robotic Car <https://www.udacity.com/course/cs373>`_
 		Sebastian Thrun, Standford University
-	- `Intro to Parallel Programming Using CUDA to Harness the Power of GPUs <https://www.udacity.com/course/cs344>`_
+	.. - `Intro to Parallel Programming Using CUDA to Harness the Power of GPUs <https://www.udacity.com/course/cs344>`_
 		David Luebke,University of Virginia, John Owens, University of California, Davis
-* Iversity
+.. * Iversity
 	- `Modelling and Simulation using MATLAB <https://iversity.org/en/my/courses/modelling-and-simulation-using-matlab/lesson_units>`_
 		multiple instructors from RheinMain University of Applied Sciences
 
@@ -41,5 +41,7 @@ Electrical & Computer Engineering
 
 Robotics
 
+* `Underactuated Robotics, Algorithms for Walking, Running, Swimming, Flying, and Manipulation <http://underactuated.csail.mit.edu/underactuated.html>`_
+* `Kalman and Bayesian Filters in Python <https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python>`_
 * `CMU: An Introduction to Physically Based Modeling <http://www.cs.cmu.edu/~baraff/pbm/pbm.html>`_
-* `WPI: RBE595/CS525 Motion Planning <http://users.wpi.edu/~dberenson/courses/spring2015motionplanning/index.html>`_
+.. * `WPI: RBE595/CS525 Motion Planning <http://users.wpi.edu/~dberenson/courses/spring2015motionplanning/index.html>`_

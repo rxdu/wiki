@@ -46,7 +46,7 @@
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="top" title="RDU-Wiki 1.0 documentation" href="../../../index.html" />
-    <link rel="next" title="Application Notes" href="../../Application-Notes/Application-Notes.html" />
+    <link rel="next" title="Robotics" href="../../Knowledge-Base/Robotics/Robotics.html" />
     <link rel="prev" title="Build Your Own Quadrotor" href="../Build-Your-Own-Quadrotor/Build-Your-Own-Quadrotor.html" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
@@ -64,7 +64,7 @@
           <a href="../../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="../../Application-Notes/Application-Notes.html" title="Application Notes"
+          <a href="../../Knowledge-Base/Robotics/Robotics.html" title="Robotics"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="../Build-Your-Own-Quadrotor/Build-Your-Own-Quadrotor.html" title="Build Your Own Quadrotor"
@@ -123,7 +123,7 @@
 <div class="section" id="understand-the-simulation-process">
 <h3><a class="toc-backref" href="#id9">Understand the Simulation Process</a><a class="headerlink" href="#understand-the-simulation-process" title="Permalink to this headline">¶</a></h3>
 <p>Essentially a robot simulation process is to calculate the system state using it’s mathematic model with given initial conditions and inputs. Generally we use ordinary differential equations (ODEs) to describe our robots. By solving for the system states from the set of ODEs at discrete time (0, 1*ts, 2*ts, …) , we can get the simulated behavior of the robot during the simulated period.</p>
-<p>Similarly a physics engine can calculate the state of a system using some kind of numerical methods. (Read about ODE/Bullet for more information) We can set a step size (t<sub>phy_s</sub>) for the physics engine so that we can get the calculated system state at time t<sub>phy_s</sub>, t<sub>phy_s</sub> * 2, t<sub>phy_s</sub> * 3 … consecutively when we call the physics engine to do the calculation. If we invoke the calculation at f<sub>phy</sub> Hz with the step size of t<sub>phy_s</sub>, it means we will have the system state simulated from time 0 to f<sub>phy</sub> * t<sub>phy_s</sub> in 1 second. For example f<sub>phy</sub> = 1k Hz, and t<sub>phy_s</sub> = 1ms, after the last calculation iteration we will get the system state at t = 1k * 1ms = 1s. Since the wall time of the real world elapses for 1s and the simulated system state also advances for 1s, we can say that the real-time factor is 1.</p>
+<p>Similarly a physics engine can calculate the state of a system using numerical methods. (Read about ODE/Bullet for more information) We can set a step size (t<sub>phy_s</sub>) for the physics engine so that we can get the calculated system state at time t<sub>phy_s</sub>, t<sub>phy_s</sub> * 2, t<sub>phy_s</sub> * 3 … consecutively when we call the physics engine to do the calculation. If we invoke the calculation at f<sub>phy</sub> Hz with the step size of t<sub>phy_s</sub>, it means we will have the system state simulated from time 0 to f<sub>phy</sub> * t<sub>phy_s</sub> in 1 second. For example f<sub>phy</sub> = 1k Hz, and t<sub>phy_s</sub> = 1ms, after the last calculation iteration we will get the system state at t = 1k * 1ms = 1s. Since the wall time of the real world elapses for 1s and the simulated system state also advances for 1s, we can say that the real-time factor is 1.</p>
 <p>In an extreme condition, if we call the physics engine to calculate very fast and we use a big step size, then by the end of the 1s simulation period, we will get the calculated system state at time t<sub>sim_end</sub> &gt; 1s. This means time in the simulator elapses faster than time in the real world, thus real-time factor is greater than 1.</p>
 <p>Of course, limited by the computational power of the computer, the update rate of the physics engine cannot be infinitely high. If a system is extremely complex and the the physics engine cannot get a solution within 1s, then even if we set the step size to be 1s (which is pretty large when simulating a process), we still cannot get a real time factor to be equal or greater than 1.</p>
 <p>As to the simulation step, it involves sensing and rendering. The physics engine can run at a much higher rate while we don’t necessarily update the result to the user at each step. Hence we may have the physics engine run at 1kHz in the background and only refresh the simulation scene for the user at 50Hz.</p>
@@ -275,7 +275,7 @@
 62
 63
 64
-65</pre></div></td><td class="code"><div class="highlight"><pre><span class="n">simSetThreadSwitchTiming</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+65</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">simSetThreadSwitchTiming</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="c1">-- Choose a port that is probably not used (try to always use a similar code):</span>
 <span class="n">simSetThreadAutomaticSwitch</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
@@ -283,41 +283,41 @@
 <span class="kd">local</span> <span class="n">portStart</span><span class="o">=</span><span class="n">simGetIntegerParameter</span><span class="p">(</span><span class="n">sim_intparam_server_port_start</span><span class="p">)</span>
 <span class="kd">local</span> <span class="n">portRange</span><span class="o">=</span><span class="n">simGetIntegerParameter</span><span class="p">(</span><span class="n">sim_intparam_server_port_range</span><span class="p">)</span>
 <span class="kd">local</span> <span class="n">newPortNb</span><span class="o">=</span><span class="n">portNb</span><span class="o">+</span><span class="mi">1</span>
-<span class="k">if</span> <span class="p">(</span><span class="n">newPortNb</span><span class="o">&gt;=</span><span class="n">portStart</span><span class="o">+</span><span class="n">portRange</span><span class="p">)</span> <span class="k">then</span>
+<span class="kr">if</span> <span class="p">(</span><span class="n">newPortNb</span><span class="o">&gt;=</span><span class="n">portStart</span><span class="o">+</span><span class="n">portRange</span><span class="p">)</span> <span class="kr">then</span>
     <span class="n">newPortNb</span><span class="o">=</span><span class="n">portStart</span>
-<span class="k">end</span>
+<span class="kr">end</span>
 <span class="n">simSetIntegerParameter</span><span class="p">(</span><span class="n">sim_intparam_server_port_next</span><span class="p">,</span><span class="n">newPortNb</span><span class="p">)</span>
 <span class="n">simSetThreadAutomaticSwitch</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
 
 <span class="c1">-- Check what OS we are using:</span>
 <span class="n">platf</span><span class="o">=</span><span class="n">simGetIntegerParameter</span><span class="p">(</span><span class="n">sim_intparam_platform</span><span class="p">)</span>
-<span class="k">if</span> <span class="p">(</span><span class="n">platf</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span> <span class="k">then</span>
-    <span class="n">pluginFile</span><span class="o">=</span><span class="s1">&#39;</span><span class="s">v_repExtRemoteApi.dll&#39;</span>
-<span class="k">end</span>
-<span class="k">if</span> <span class="p">(</span><span class="n">platf</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="k">then</span>
-    <span class="n">pluginFile</span><span class="o">=</span><span class="s1">&#39;</span><span class="s">libv_repExtRemoteApi.dylib&#39;</span>
-<span class="k">end</span>
-<span class="k">if</span> <span class="p">(</span><span class="n">platf</span><span class="o">==</span><span class="mi">2</span><span class="p">)</span> <span class="k">then</span>
-    <span class="n">pluginFile</span><span class="o">=</span><span class="s1">&#39;</span><span class="s">libv_repExtRemoteApi.so&#39;</span>
-<span class="k">end</span>
+<span class="kr">if</span> <span class="p">(</span><span class="n">platf</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span> <span class="kr">then</span>
+    <span class="n">pluginFile</span><span class="o">=</span><span class="s1">&#39;v_repExtRemoteApi.dll&#39;</span>
+<span class="kr">end</span>
+<span class="kr">if</span> <span class="p">(</span><span class="n">platf</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="kr">then</span>
+    <span class="n">pluginFile</span><span class="o">=</span><span class="s1">&#39;libv_repExtRemoteApi.dylib&#39;</span>
+<span class="kr">end</span>
+<span class="kr">if</span> <span class="p">(</span><span class="n">platf</span><span class="o">==</span><span class="mi">2</span><span class="p">)</span> <span class="kr">then</span>
+    <span class="n">pluginFile</span><span class="o">=</span><span class="s1">&#39;libv_repExtRemoteApi.so&#39;</span>
+<span class="kr">end</span>
 
 <span class="c1">-- Check if the required remote Api plugin is there:</span>
 <span class="n">moduleName</span><span class="o">=</span><span class="mi">0</span>
 <span class="n">moduleVersion</span><span class="o">=</span><span class="mi">0</span>
 <span class="n">index</span><span class="o">=</span><span class="mi">0</span>
 <span class="n">pluginNotFound</span><span class="o">=</span><span class="kc">true</span>
-<span class="k">while</span> <span class="n">moduleName</span> <span class="k">do</span>
+<span class="kr">while</span> <span class="n">moduleName</span> <span class="kr">do</span>
     <span class="n">moduleName</span><span class="p">,</span><span class="n">moduleVersion</span><span class="o">=</span><span class="n">simGetModuleName</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">moduleName</span><span class="o">==</span><span class="s1">&#39;</span><span class="s">RemoteApi&#39;</span><span class="p">)</span> <span class="k">then</span>
+    <span class="kr">if</span> <span class="p">(</span><span class="n">moduleName</span><span class="o">==</span><span class="s1">&#39;RemoteApi&#39;</span><span class="p">)</span> <span class="kr">then</span>
             <span class="n">pluginNotFound</span><span class="o">=</span><span class="kc">false</span>
-    <span class="k">end</span>
+    <span class="kr">end</span>
     <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="o">+</span><span class="mi">1</span>
-<span class="k">end</span>
+<span class="kr">end</span>
 
-<span class="k">if</span> <span class="p">(</span><span class="n">pluginNotFound</span><span class="p">)</span> <span class="k">then</span>
+<span class="kr">if</span> <span class="p">(</span><span class="n">pluginNotFound</span><span class="p">)</span> <span class="kr">then</span>
     <span class="c1">-- Plugin was not found</span>
-    <span class="n">simDisplayDialog</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">Error&#39;</span><span class="p">,</span><span class="s2">&quot;</span><span class="s">Remote Api plugin was not found. (&#39;&quot;</span><span class="o">..</span><span class="n">pluginFile</span><span class="o">..</span><span class="s2">&quot;</span><span class="s">&#39;)&amp;&amp;nSimulation will not run properly&quot;</span><span class="p">,</span><span class="n">sim_dlgstyle_ok</span><span class="p">,</span><span class="kc">true</span><span class="p">,</span><span class="kc">nil</span><span class="p">,{</span><span class="mf">0.8</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">},{</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">})</span>
-<span class="k">else</span>
+    <span class="n">simDisplayDialog</span><span class="p">(</span><span class="s1">&#39;Error&#39;</span><span class="p">,</span><span class="s2">&quot;Remote Api plugin was not found. (&#39;&quot;</span><span class="o">..</span><span class="n">pluginFile</span><span class="o">..</span><span class="s2">&quot;&#39;)&amp;&amp;nSimulation will not run properly&quot;</span><span class="p">,</span><span class="n">sim_dlgstyle_ok</span><span class="p">,</span><span class="kc">true</span><span class="p">,</span><span class="kc">nil</span><span class="p">,{</span><span class="mf">0.8</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">},{</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">})</span>
+<span class="kr">else</span>
     <span class="c1">-- Ok, we found the plugin.</span>
 
     <span class="c1">-- We first start the remote Api server service (this requires the v_repExtRemoteApi plugin):</span>
@@ -330,13 +330,13 @@
     <span class="c1">--simAddBanner(&quot;Remote API @ Port: &quot; .. portNb,0,sim_banner_bitmapfont+sim_banner_overlay,nil,simGetObjectAssociatedWithScript(sim_handle_self),black,blue)</span>
 
     <span class="c1">-- Now we start the client application:</span>
-    <span class="n">result</span><span class="o">=</span><span class="n">simLaunchExecutable</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">quad_sim_river&#39;</span><span class="p">,</span><span class="n">portNb</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">result</span><span class="o">=</span><span class="n">simLaunchExecutable</span><span class="p">(</span><span class="s1">&#39;quad_sim_river&#39;</span><span class="p">,</span><span class="n">portNb</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="p">(</span><span class="n">result</span><span class="o">==-</span><span class="mi">1</span><span class="p">)</span> <span class="k">then</span>
+    <span class="kr">if</span> <span class="p">(</span><span class="n">result</span><span class="o">==-</span><span class="mi">1</span><span class="p">)</span> <span class="kr">then</span>
             <span class="c1">-- The executable could not be launched!</span>
-            <span class="n">simDisplayDialog</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">Error&#39;</span><span class="p">,</span><span class="s2">&quot;</span><span class="s">&#39;quad_sim_river&#39; could not be launched. &amp;&amp;nSimulation will not run properly&quot;</span><span class="p">,</span><span class="n">sim_dlgstyle_ok</span><span class="p">,</span><span class="kc">true</span><span class="p">,</span><span class="kc">nil</span><span class="p">,{</span><span class="mf">0.8</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">},{</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">})</span>
-    <span class="k">end</span>
-<span class="k">end</span>
+            <span class="n">simDisplayDialog</span><span class="p">(</span><span class="s1">&#39;Error&#39;</span><span class="p">,</span><span class="s2">&quot;&#39;quad_sim_river&#39; could not be launched. &amp;&amp;nSimulation will not run properly&quot;</span><span class="p">,</span><span class="n">sim_dlgstyle_ok</span><span class="p">,</span><span class="kc">true</span><span class="p">,</span><span class="kc">nil</span><span class="p">,{</span><span class="mf">0.8</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">},{</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">})</span>
+    <span class="kr">end</span>
+<span class="kr">end</span>
 
 <span class="c1">-- This thread ends here. The robot will however still be controlled by</span>
 <span class="c1">-- the client application via the remote Api mechanism!</span>
@@ -403,7 +403,7 @@
 58
 59
 60
-61</pre></div></td><td class="code"><div class="highlight"><pre><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+61</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp"></span>
@@ -511,8 +511,8 @@
   <p class="topless"><a href="../Build-Your-Own-Quadrotor/Build-Your-Own-Quadrotor.html"
                         title="previous chapter">Build Your Own Quadrotor</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="../../Application-Notes/Application-Notes.html"
-                        title="next chapter">Application Notes</a></p>
+  <p class="topless"><a href="../../Knowledge-Base/Robotics/Robotics.html"
+                        title="next chapter">Robotics</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../../search.html" method="get">
@@ -537,7 +537,7 @@
           <a href="../../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="../../Application-Notes/Application-Notes.html" title="Application Notes"
+          <a href="../../Knowledge-Base/Robotics/Robotics.html" title="Robotics"
              >next</a> |</li>
         <li class="right" >
           <a href="../Build-Your-Own-Quadrotor/Build-Your-Own-Quadrotor.html" title="Build Your Own Quadrotor"
@@ -548,7 +548,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &copy; Copyright 2017, Ruixiang Du.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.7.
     </div>
   </body>
 </html>

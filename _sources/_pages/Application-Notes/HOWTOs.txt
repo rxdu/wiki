@@ -1,0 +1,11 @@
+HOWTOs
+======
+
+**HOWTOs**
+
+.. toctree::
+   :maxdepth: 1
+
+   /_pages/Application-Notes/HOWTOs/howto-connect-sbc-to-wpi-wireless
+   /_pages/Application-Notes/HOWTOs/howto-connect-to-wpi-vpn-off-campus
+   /_pages/Application-Notes/HOWTOs/howto-install-eclipse-cdt-with-java8

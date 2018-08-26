@@ -1,0 +1,20 @@
+Application Notes
+=================
+
+**Hardware**
+
+.. toctree::
+   :maxdepth: 1
+
+   /_pages/Notes/Hardware/Embedded-Boards/BeagleBone-Blue
+   /_pages/Notes/Hardware/Embedded-Boards/Intel-Edison
+   /_pages/Notes/Hardware/Embedded-Boards/Raspberry-Pi
+   /_pages/Notes/Hardware/Embedded-Boards/STM32F4-Discovery
+
+**Software**
+
+.. toctree::
+   :maxdepth: 1
+
+   /_pages/Notes/Software/can-bus-in-linux
+   /_pages/Notes/Software/gdb

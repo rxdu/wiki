@@ -1,0 +1,133 @@
+How to Connect a Single-board Computer to WPI Wireless
+======================================================
+
+In order to connect to WPI-Wireless, you need to install certificates. It's generally straightforward for x86 platforms but could be difficult for ARM devices like Raspberry Pi (RPi), if you're not particularly familar with network configurations and Linux. 
+
+The instructions in this article were mainly tested in the following environment.
+
+* Platform: Raspberry Pi 3 Model B
+* OS: Raspbian Stretch with Desktop 2017-09-07
+* Test Date: 10/03/2017
+
+Other platforms tested:
+
+* Udoo NEO Full
+* Google Pixel Phone
+
+**Note**: The instructions should apply to many variants of Linux OS. But it's possible that configurations need to be changed slightly. In some Linux distributions, you may not have to use wpa_supplicant. You can follow the same steps to generate certificate files and use a GUI tool (network manager) to fill in the network settings.
+
+The network manager in the Raspbian is very limited and only useful for simple network configurations. You should be prepared to use commandline tools such as "ifconfig" to check your network status and update configurations.
+
+Register Wireless Adapter
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Use command "ifconfig" to find the MAC address of the wireless adapter on your Raspberry Pi and register this device with your WPI account information. I assume you know how to do this step.
+
+.. code-block:: bash
+
+   $ ifconfig
+
+Prepare Certificate Files
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Download certificate files
+
+You can download the files from a computer connected to the WPI network and copy them to your RPi. Or if you could manage to connect your RPi to "WPI-Open", you can also download to the RPi directly.
+
+Link: https://wpi-wireless-setup.wpi.edu/enroll/WPI/Production/process
+
+Choose "Other Operating Systems" to download the certificate files. You should get two files: one named "CA-xxxxxx.cer" and one "certificate.p12".
+
+You can put the file in your Home directory on RPi or somewhere else such as "/etc/rpi3/certs". I will use "/etc/rpi3/certs" as an example below. Note that your account should be in the "sudo" group to manipulate files in "/etc" directory.
+
+2. Process P12 to protect your WPI credentials
+
+You will have to put your WPI password in plain text directly if you don't do this step. That means someone else may get your password and have access to all your WPI accounts if they get your RPi. 
+
+.. code-block:: bash
+
+    $ cd /etc/rpi3/certs
+    $ sudo openssl pkcs12 -in certificate.p12 -out temp.pem -passin pass:YOUR-WPI-PASSWORD -passout pass:TEMPPASSWORD
+    $ sudo openssl pkcs12 -export -in temp.pem -out certificate-final.p12 -passin pass:TEMPPASSWORD -passout pass:FINALPASSWORD
+    $ sudo rm -rf temp.pem certificate.p12
+
+3. Convert the P12 file to PEM 
+
+.. code-block:: bash
+
+    $ sudo openssl pkcs12 -in certificate-final.p12 -out certificate-final.pem -nodes
+
+After step 2 and 3, you will have 3 files ready to use for the next step:
+
+.. code-block:: bash
+
+    certificate-final.p12
+    certificate-final.pem
+    CA-xxxxxx.cer
+
+Modify wpa_supplicant Configuration File
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Now you need to tell wpa_supplicant how to use the certificate files you've prepared in the above steps.
+
+**Note**: If your system already runs a network manager, you need to make sure it's compatible with wpa_supplicant. Otherwise you will have to disable the default network manager. If your OS has a decent network manager, you could use the graphical tool to setup the configurations in this step and the next step.
+
+.. code-block:: bash
+
+    $ sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
+
+Add the WPI-Wireless configuration entry to your "wpa_supplicant.conf" file. You don't have to delete other entries "network = {...}" in this file.
+
+.. code-block:: bash
+
+    ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+    update_config=1
+    country=GB
+
+    network={
+            ssid="WPI-Wireless"
+            key_mgmt=WPA-EAP
+            proto=WPA2
+            pairwise=CCMP
+            group=CCMP
+            eap=TLS
+            identity="YOUR-WPI-EMAIL-ADDRESS"
+            ca_cert="/etc/rpi3/certs/CA-[A-LONG-STRING-OF-NUMBERS].cer"
+            client_cert="/etc/rpi3/certs/certificate-final.pem"
+            private_key="/etc/rpi3/certs/certificate-final.p12"
+            private_key_passwd="FINALPASSWORD"
+    }
+
+Note that password you use here should be the "FINALPASSWORD" you used to generate "certificate-final.p12". It's in plain text and that's the reason why you shouldn't use your WPI password directly.
+
+Update Wireless Adapter Configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Add or update the following configuration for "wlan0" in "/etc/network/interfaces"
+
+.. code-block:: bash
+
+    $ sudo nano /etc/network/interfaces
+
+.. code-block:: bash
+
+    auto lo
+    iface lo inet loopback
+
+    auto wlan0
+    iface wlan0 inet dhcp
+        wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
+
+With this configuration, the "wpa_supplicant.conf" will be loaded when the wireless adapter is brought up. Now reboot your RPi and you should get connected to the WPI wireless network. Note the network icon on the desktop may not show you're connected to the network. Use "ifconfig" command to check the connectivity and if successful you should see "wlan0" is assigned an valid IP address. 
+
+Note: you might want to reset the default password for your Raspberry Pi for security reasons. The default password is "raspberry" for user "pi".
+
+.. code-block:: bash
+
+    $ passwd
+
+Reference:
+
+- [1] http://www.esologic.com/?p=1088
+- [2] https://it.wpi.edu/Article/Connect-to-WPI-Wireless-Using-a-Raspberry-Pi
+- [3] https://wiki.debian.org/WiFi/HowToUse
