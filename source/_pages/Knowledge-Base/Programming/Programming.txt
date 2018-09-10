@@ -73,9 +73,9 @@ III. Bootstrapping
 IV. Reference Materials
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-* `Endianness in wikipedia <http://en.wikipedia.org/wiki/Endianness>`_
-* `Computer Systems: A Programmer's Perspective, 2nd Ed <http://csapp.cs.cmu.edu>`_
-* `Character Encoding in wikipedia <http://en.wikipedia.org/wiki/Character_encoding>`_
+* [1] `Endianness in wikipedia <http://en.wikipedia.org/wiki/Endianness>`_
+* [2] `Computer Systems: A Programmer's Perspective, 2nd Ed <http://csapp.cs.cmu.edu>`_
+* [3] `Character Encoding in wikipedia <http://en.wikipedia.org/wiki/Character_encoding>`_
 
 
 Algorithms and Data Structures

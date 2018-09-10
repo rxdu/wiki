@@ -35,7 +35,6 @@ ________
    :maxdepth: 1
 
    /_pages/Knowledge-Base/Robotics/Robotics
-   /_pages/Knowledge-Base/Unmanned_Aerial_Vehicles/UAV
    /_pages/Knowledge-Base/Programming/Programming
    /_pages/Knowledge-Base/Embedded-System/Embedded-System
 
