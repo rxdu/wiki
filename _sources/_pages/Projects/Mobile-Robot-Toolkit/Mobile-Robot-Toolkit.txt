@@ -20,6 +20,12 @@ This `tech note <http://rdu.im/c/c++/programming/2015/05/26/C-and-C-plus-plus-lo
 
 * `g3log github repo <https://github.com/KjellKod/g3log>`_
 
+(Updated on 09/09/2018)
+
+After more experiments, I find spdlog works a lot better for my use case.
+
+* `spdlog github repo <https://github.com/gabime/spdlog>`_
+
 3. Log Analysis
 ---------------
 

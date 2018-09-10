@@ -1,0 +1,22 @@
+Microcontroller
+---------------
+
+.. contents::
+   :depth: 2
+   :local:
+
+Embedded Programming
+^^^^^^^^^^^^^^^^^^^^
+
+* `Embedded Programming using the GNU Toolchain <http://www.bravegnu.org/gnu-eprog/>`_
+* `TEXT, DATA and BSS: Code and Data Size Explained <http://mcuoneclipse.com/2013/04/14/text-data-and-bss-code-and-data-size-explained/>`_
+
+Bare Metal Software
+^^^^^^^^^^^^^^^^^^^
+
+Embedded software without using an OS.
+
+Real-Time Operating Systems
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+RTOS kernels and complete RTOS.
