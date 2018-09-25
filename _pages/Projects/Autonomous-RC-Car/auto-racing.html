@@ -47,7 +47,7 @@
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="top" title="RDU-Wiki 1.0 documentation" href="../../../index.html" />
     <link rel="next" title="Build Your Own Quadrotor" href="../Build-Your-Own-Quadrotor/Build-Your-Own-Quadrotor.html" />
-    <link rel="prev" title="Guide on Graduate Research" href="../../Resource/guide.html" />
+    <link rel="prev" title="How to Install Eclipse CDT with Java 8" href="../../Notes/HOWTOs/howto-install-eclipse-cdt-with-java8.html" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <!--[if lte IE 6]>
@@ -67,7 +67,7 @@
           <a href="../Build-Your-Own-Quadrotor/Build-Your-Own-Quadrotor.html" title="Build Your Own Quadrotor"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="../../Resource/guide.html" title="Guide on Graduate Research"
+          <a href="../../Notes/HOWTOs/howto-install-eclipse-cdt-with-java8.html" title="How to Install Eclipse CDT with Java 8"
              accesskey="P">previous</a> |</li>
         <!-- <li class="nav-item nav-item-0"><a href="../../../index.html">RDU-Wiki 1.0 documentation</a> &raquo;</li> -->
         <li class="nav-item nav-item-0"><a href="../../../index.html">Main Page</a> &raquo;</li> 
@@ -88,7 +88,7 @@
 <li><a class="reference internal" href="#b-power-system" id="id3">b. Power System</a></li>
 <li><a class="reference internal" href="#c-mechanical-parts" id="id4">c. Mechanical Parts</a></li>
 <li><a class="reference internal" href="#d-control-system" id="id5">d. Control System</a></li>
-<li><a class="reference internal" href="#e-sensor" id="id6">e. Sensor</a></li>
+<li><a class="reference internal" href="#e-additional-sensors" id="id6">e. Additional Sensors</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#assembly-notes" id="id7">2. Assembly Notes</a><ul>
@@ -99,14 +99,19 @@
 <li><a class="reference internal" href="#e-more-electronics" id="id12">e. More Electronics</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#software-architecture" id="id13">3. Software Architecture</a></li>
+<li><a class="reference internal" href="#software-architecture" id="id13">3. Software Architecture</a><ul>
+<li><a class="reference internal" href="#a-firmware" id="id14">a. Firmware</a></li>
+</ul>
+</li>
 </ul>
 </div>
+<p>(Last update on: 09/25/2018)</p>
 <div class="section" id="hardware-components">
 <h2><a class="toc-backref" href="#id1">1. Hardware Components</a><a class="headerlink" href="#hardware-components" title="Permalink to this headline">¶</a></h2>
 <p>Since the RC car is built for the purpose of study and research, it is convenient to leave some flexibility for possible extensions when choosing components. I also try to reuse parts I bought for my quadrotors, due to my limited budget. The goal is to set up the platform as fast as possible so that I could start developing software early. I try my best to make a good balance between cost and performance. But the project just hasn’t reached the point for hardware optimization yet.</p>
 <div class="section" id="a-rc-car-chassis-and-basic-electronics">
 <h3><a class="toc-backref" href="#id2">a. RC Car Chassis and Basic Electronics</a><a class="headerlink" href="#a-rc-car-chassis-and-basic-electronics" title="Permalink to this headline">¶</a></h3>
+<p>Main parts for my car:</p>
 <ul class="simple">
 <li><a class="reference external" href="http://www3.towerhobbies.com/cgi-bin/wti0001p?&amp;I=LXGCWG&amp;P=ML">Tamiya TA07 Pro</a></li>
 <li>(<a class="reference external" href="http://www.ebay.com/itm/Jazrider-Aluminum-Front-C-Hub-Carriers-Blue-Set-For-Tamiya-TA07-Pro-TB04-84382-/112436707457?hash=item1a2dc00081:g:ly0AAOSw9~5ZOm7w">Jazrider Aluminum Front C-Hub Carriers</a>)</li>
@@ -116,10 +121,10 @@
 <li><a class="reference external" href="https://www.amazon.com/gp/product/B01HZB6XTI/ref=oh_aui_detailpage_o06_s00?ie=UTF8&amp;psc=1">FrSky XSR 2.4GHz 16CH ACCST Receiver S-Bus CPPM Output</a></li>
 </ul>
 <dl class="docutils">
-<dt><em>Note</em>: 1. Some servos may expect control signals other than PWM, for example SBUS. For simplicity, only PWM servos are supported by the firmware now.</dt>
+<dt><em>Note</em>: 1. Some servos may expect control signals other than PWM, for example SBUS. For simplicity, only PWM servos is               planned to be supported by the firmware.</dt>
 <dd><ol class="first last arabic simple" start="2">
-<li>I use FrSky Taranis radio because I own one for my quadrotors. It is used for manual control of the car and emergency brake during autonomous driving. You need at least 2 channels to control a car(steering and throttle). But more than 2 are planned to be used in the firmware for arm/disarm, mode switch etc. 6 or 8 channel should be enough.</li>
-<li>You can optionally upgrade some parts and the upgrade of aluminum front C-Hub carriers is highly recommended.</li>
+<li>I use FrSky Taranis radio because I own one for my quadrotors. It is used for manual control of the car and emergency brake during autonomous driving. You need at least 2 channels to control a car(steering and throttle). But more than 2 may be used in the firmware for arm/disarm, mode switch etc.</li>
+<li>You can optionally upgrade some parts of the chassis. Especially the upgrade of aluminum front C-Hub carriers is highly recommended.</li>
 </ol>
 </dd>
 </dl>
@@ -139,7 +144,7 @@
 <li>A power distribution board (PDB) is used because I need to distribute power from the battery to ESC (which powers motor and servo), microcontroller, single board computer and sensors.</li>
 <li>This PDB could support 20A continous current and 30A peak current from each channel. To avoid overheating and board damage, you should use the output pads closest to the input pads for the ESC connection and make solid/complete contact points when soldering.</li>
 <li>The PDB could be a bottle neck for the power system, but I didn’t know any better choices designed specifically for RC cars. A custom-designed PDB could be considered in the future. But this off-the-shelf choice works without any problem so far.</li>
-<li>The embedded 5V BEC on the PDB is used to power the MCU. A 5V UBEC supporting 6A continuous current is used to power raspberry pi or UP board. If a nvidia jetson is used in the future, an extra 4S battery and 12V BEC may be added.</li>
+<li>The embedded 5V BEC on the PDB is used to power the MCU. A 5V UBEC supporting 6A continuous current is used to power raspberry pi or UP board. An extra 4S battery and 12V BEC may be added if a more powerful single-board computer is used in the future.</li>
 <li>The 12V BEC on the PDB should not be used because it would require a 4s battery as input. It will not work properly with a 2S battery (7.4V).</li>
 <li>If using multiple battery design (2S + 4S), it might be a good idea to power the MCU and servo/motor from the same power source. By doing so you could still maintain manual control if the battery for SBC and sensors dies first.</li>
 </ol>
@@ -162,7 +167,7 @@
 <li>(UP Board)</li>
 </ul>
 <dl class="docutils">
-<dt><em>Note</em>: 1. Pixracer is a flight controller board for multicopters. I choose it because it is compact while having a rich set of sensors (2 sets of IMU) and hardware interfaces.</dt>
+<dt><em>Note</em>: 1. Pixracer is a flight controller board for multicopters. I choose it because it is compact while having a rich set         of sensors (2 sets of IMU) and hardware interfaces.</dt>
 <dd><ol class="first last arabic simple" start="2">
 <li>Available interfaces on pixracer: serial, I2C, SPI, CAN, 6 channels of PWM output (2 of which can be used for servo/motor control and the rest can be used for input pulse capture).</li>
 <li>Raspberry Pi 3 and UP board are used for experiments now. The final choice of single board computer is to be determined.</li>
@@ -170,9 +175,10 @@
 </dd>
 </dl>
 </div>
-<div class="section" id="e-sensor">
-<h3><a class="toc-backref" href="#id6">e. Sensor</a><a class="headerlink" href="#e-sensor" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="e-additional-sensors">
+<h3><a class="toc-backref" href="#id6">e. Additional Sensors</a><a class="headerlink" href="#e-additional-sensors" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
+<li>Intel Realsense D435</li>
 <li>TBD</li>
 </ul>
 </div>
@@ -192,7 +198,7 @@
 <dl class="docutils">
 <dt><em>Note</em>: 1. Don’t forget to buy instant glue, which is required but not included in the package. Other than that you get everything you need to put this chassis together.</dt>
 <dd><ol class="first last arabic simple" start="2">
-<li>A PPM receiver was chosen for its small size. But it’s convenient if you have a receiver that outputs PWM signal. You can test the servo and DC motor conveniently using only your trasmitter, without the MCU.</li>
+<li>A PPM receiver was chosen for its small size. But it’s convenient if you have a receiver that outputs PWM signal. You can test the servo and DC motor conveniently simply with your trasmitter, without an microcontroller or doing any coding.</li>
 </ol>
 </dd>
 </dl>
@@ -201,12 +207,12 @@
 <div class="section" id="b-motor-and-servo-installation">
 <h3><a class="toc-backref" href="#id9">b. Motor and Servo Installation</a><a class="headerlink" href="#b-motor-and-servo-installation" title="Permalink to this headline">¶</a></h3>
 <p>Follow the instructions.</p>
-<p><em>Note</em>: 1. Don’t tighten servo related parts before you finish adjusting the neutral position of servo. You could adjust the control signal for a neutral position but you don’t want to get off the mechanical neutral position too much during installation.</p>
+<p><em>Note</em>: 1. Don’t tighten servo related parts before you finish adjusting the neutral position of servo. You could adjust the control signal for a neutral position but you probably don’t want to get off the mechanical neutral position too much during installation.</p>
 <a class="reference internal image-reference" href="../../../_images/chassis_motor.jpg"><img alt="../../../_images/chassis_motor.jpg" src="../../../_images/chassis_motor.jpg" style="width: 650px;" /></a>
 </div>
 <div class="section" id="c-wheels-and-tires">
 <h3><a class="toc-backref" href="#id10">c. Wheels and Tires</a><a class="headerlink" href="#c-wheels-and-tires" title="Permalink to this headline">¶</a></h3>
-<p><em>Note</em>: 1. Make sure you don’t skip using glue on the tires to attach them to the wheels. They’re going to get off during the high-speed driving if you don’t. And I tried that.</p>
+<p><em>Note</em>: 1. Make sure you don’t skip using glue on the tires to attach them to the wheels. They’re going to get off during the high-speed driving if you don’t.</p>
 <a class="reference internal image-reference" href="../../../_images/wheels_on.jpg"><img alt="../../../_images/wheels_on.jpg" src="../../../_images/wheels_on.jpg" style="width: 650px;" /></a>
 </div>
 <div class="section" id="d-lower-mounting-plate">
@@ -228,12 +234,26 @@
 </div>
 <div class="section" id="e-more-electronics">
 <h3><a class="toc-backref" href="#id12">e. More Electronics</a><a class="headerlink" href="#e-more-electronics" title="Permalink to this headline">¶</a></h3>
-<p>In the following image, an Udoo Neo Full, a Pixracer and an racing version of Revolution are installed. Other boards include the voltage regulation modules and CAN bus tranceiver modules. The final combination will be decided later.</p>
+<p>In the following image, an Udoo Neo Full, a Pixracer and a racing version of Revolution flight controller are installed. Other boards include the voltage regulation modules and CAN bus tranceiver modules. The final combination will be decided later.</p>
 <a class="reference internal image-reference" href="../../../_images/udoo_neo.jpg"><img alt="../../../_images/udoo_neo.jpg" src="../../../_images/udoo_neo.jpg" style="width: 650px;" /></a>
 </div>
 </div>
 <div class="section" id="software-architecture">
 <h2><a class="toc-backref" href="#id13">3. Software Architecture</a><a class="headerlink" href="#software-architecture" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="a-firmware">
+<h3><a class="toc-backref" href="#id14">a. Firmware</a><a class="headerlink" href="#a-firmware" title="Permalink to this headline">¶</a></h3>
+<p>A microcontroller is used to ensure the reliability of the low-level control. It’s desirable that you could still control your RC car with the remote controller even in the extreme situations when the single-board computer running Linux shuts down or your high-level control algorithms go crazy. It’s a lot easier to make a reliable microcontroller system with only low-level functionalities.</p>
+<p>I did some experiments to evaluate how I could reuse opensource flight control code so that I don’t have to implement functions like motor control, PWM receiver decoding, IMU data collection etc for a microcontroller by myself. At first I tried to port dRonin firmware stack to Pixracer, but I counldn’t make it work as reliably as a stock version would do on a quadrotor. (This process helped me to get a lot more familar with the openpilot flight stack though.) Then I tried to setup Pixracer with PX4 and it didn’t take a lot of efforts to realize basic remote control. But I don’t really like the complexity of PX4 and I feel it would be a pain for the maintenance when I want to do more and more customizations in the long run. Additionally I had to add an additional board for CAN bus and hall sensor output processing to avoid getting significantly involved in the PX4 firmware implementation details. The two-board setup works but I don’t like it either. It requires me to put two MCU boards, which does not only increases hardware and firmware complexity but also decreases system reliability. The best choice seems to be using the Pixracer with custom firmware and only reuse code at module level, compared to adopting the whole system architecture.</p>
+<p>The following hardware-related functions need to be implemented:</p>
+<ul class="simple">
+<li>PWM output * 2: one for servo, one for DC motor</li>
+<li>Input capture: 3-channel hall sensor output, could use the hall sensor interface of STM32</li>
+<li>PPM decoding: remote control signal</li>
+<li>CAN bus/serial: communication with SBC</li>
+<li>(IMU data collection)</li>
+</ul>
+<p>Additionally a control logic needs to be implemented to coordinate all tasks.</p>
+</div>
 </div>
 </div>
 
@@ -251,7 +271,7 @@
 <li><a class="reference internal" href="#b-power-system">b. Power System</a></li>
 <li><a class="reference internal" href="#c-mechanical-parts">c. Mechanical Parts</a></li>
 <li><a class="reference internal" href="#d-control-system">d. Control System</a></li>
-<li><a class="reference internal" href="#e-sensor">e. Sensor</a></li>
+<li><a class="reference internal" href="#e-additional-sensors">e. Additional Sensors</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#assembly-notes">2. Assembly Notes</a><ul>
@@ -262,14 +282,17 @@
 <li><a class="reference internal" href="#e-more-electronics">e. More Electronics</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#software-architecture">3. Software Architecture</a></li>
+<li><a class="reference internal" href="#software-architecture">3. Software Architecture</a><ul>
+<li><a class="reference internal" href="#a-firmware">a. Firmware</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="../../Resource/guide.html"
-                        title="previous chapter">Guide on Graduate Research</a></p>
+  <p class="topless"><a href="../../Notes/HOWTOs/howto-install-eclipse-cdt-with-java8.html"
+                        title="previous chapter">How to Install Eclipse CDT with Java 8</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="../Build-Your-Own-Quadrotor/Build-Your-Own-Quadrotor.html"
                         title="next chapter">Build Your Own Quadrotor</a></p>
@@ -300,7 +323,7 @@
           <a href="../Build-Your-Own-Quadrotor/Build-Your-Own-Quadrotor.html" title="Build Your Own Quadrotor"
              >next</a> |</li>
         <li class="right" >
-          <a href="../../Resource/guide.html" title="Guide on Graduate Research"
+          <a href="../../Notes/HOWTOs/howto-install-eclipse-cdt-with-java8.html" title="How to Install Eclipse CDT with Java 8"
              >previous</a> |</li>
         <!-- <li class="nav-item nav-item-0"><a href="../../../index.html">RDU-Wiki 1.0 documentation</a> &raquo;</li> -->
         <li class="nav-item nav-item-0"><a href="../../../index.html">Main Page</a> &raquo;</li> 
@@ -308,7 +331,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &copy; Copyright 2017, Ruixiang Du.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.7.
     </div>
   </body>
 </html>
