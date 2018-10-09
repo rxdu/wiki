@@ -13,8 +13,8 @@ _________________
 .. toctree::
    :maxdepth: 1
 
-   /_pages/Notes/Application-Notes
    /_pages/Notes/HOWTOs
+   /_pages/Notes/Application-Notes
 
 Projects
 ========

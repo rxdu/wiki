@@ -1,0 +1,13 @@
+Intel Edison
+============
+
+Build Debian Image
+^^^^^^^^^^^^^^^^^^
+
+* https://jakehewitt.github.io/custom-edison-image/
+
+Configuration after OS Install
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* Default account: user name: user, password: edison
+

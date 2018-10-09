@@ -1,8 +1,8 @@
-BeagleBone Blue
-===============
+BeagleBone
+==========
 
-Flash the eMMC and setup your account
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Flash the eMMC
+^^^^^^^^^^^^^^
 
 Follow reference [1] to flash the OS to the eMMC storage. A brief summary:
 
@@ -17,7 +17,10 @@ You can login to the system after the board boots up
 .. code-block:: bash
 
    $ ssh debian@192.168.7.2 # default password: temppwd
-   
+
+Add new user
+^^^^^^^^^^^^
+
 Now you can add your own account and delete the default one
 
 .. code-block:: bash
@@ -26,6 +29,40 @@ Now you can add your own account and delete the default one
    $ sudo adduser <YOUR_USERNAME> sudo
    $ logout
    $ sudo deluser --remove-home user
+
+Setup Wifi
+^^^^^^^^^^
+
+You can use "connman" to manage the wireless network. But I personally prefer using the old way.
+
+* Disable connman
+
+.. code-block:: bash
+
+   $ systemctl disable connman.service
+
+* Generate WPA passphrase for your WiFi
+
+.. code-block:: bash
+
+   $ wpa_passphrase <ssid> <password>
+
+* Update /etc/network/interfaces
+
+.. code-block:: bash
+
+   $ sudo nano /etc/network/interfaces
+
+.. code-block:: bash
+
+   # interfaces(5) file used by ifup(8) and ifdown(8)
+   auto lo
+   iface lo inet loopback
+
+   auto wlan0
+   iface wlan0 inet dhcp
+       wpa-ssid ExampleWifi
+       wpa-psk <wpa-psk-generated-by-wpa-passphrase-command>   
 
 Mount "/usr" and "/home" on SD card
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -62,45 +99,6 @@ Check reference [2] to get more detailed instructions. Here is a brief summary o
    # 7. reboot and check the files
    $ df -h
 
-Setup Wifi
-^^^^^^^^^^
-
-You can use "connman" to manage the wireless network. But I personally prefer using the old way.
-
-* Disable connman
-
-.. code-block:: bash
-
-   $ systemctl disable connman.service
-
-* Generate WPA passphrase for your WiFi
-
-.. code-block:: bash
-
-   $ wpa_passphrase <ssid> <password>
-
-* Update /etc/network/interfaces
-
-.. code-block:: bash
-
-   $ sudo nano /etc/network/interfaces
-
-.. code-block:: bash
-
-   # interfaces(5) file used by ifup(8) and ifdown(8)
-   auto lo
-   iface lo inet loopback
-
-   auto wlan0
-   iface wlan0 inet dhcp
-       wpa-ssid ExampleWifi
-       wpa-psk <wpa-psk-generated-by-wpa-passphrase-command>
-
-Setup CAN bus
-^^^^^^^^^^^^^
-
-Refer to the "CAN Bus in Linux" note [5].
-
 Update Kernel
 ^^^^^^^^^^^^^
 
@@ -112,9 +110,14 @@ You can upgrade or change to a Preempt-RT patched kernel using the script provid
    $ git pull   # you may need to use sudo here
    $ sudo /opt/scripts/tools/update_kernel.sh --bone-rt-channel --lts-4_4   # --lts-stable or other available options
 
-Refer to [6] for additiona options.
+Refer to [5] for additiona options.
 
 Note that if you use the kernel from TI channel (for example, use "--ti-rt-channel" option), you might experience errors related to the PINMUX helper driver. 
+
+Robotics Cape library
+^^^^^^^^^^^^^^^^^^^^^
+
+TI channel kernels have more complete support to PRU drivers so you may want to use a kernel from the TI channel if you're using the Robotics Cape or Beaglebone Blue.[7]
 
 When using the TI channel RT kernel 4.4 and 4.9 on Beaglebone Blue with the Robotics Cape library, I got the following error message from the library:
 
@@ -143,7 +146,13 @@ The solution is to add a symbolic link of clpru executable to /usr/share/ti/cgt-
      cd bin
      ln -s /usr/bin/clpru clpru
 
-See [7] for more discussions on this issue and the above solution is from this page.
+See [6] for more discussions on this issue and the above solution is from this page.
+
+Buid u-boot
+^^^^^^^^^^^
+
+Buid Kernel
+^^^^^^^^^^^
 
 Reference
 
@@ -151,6 +160,6 @@ Reference
 * [2] https://gist.github.com/rxdu/35fb70c71cde5b44815e52bd8c338ff3
 * [3] http://xeikonmirkwood.blogspot.com/2014/05/connman-is-annoying.html
 * [4] http://pdkb.azurewebsites.net/Home/Detail/installing-can-bus-drivers-for-osd3358-systems-running-debian
-* [5] http://wiki.rdu.im/_pages/Notes/Software/can-bus-in-linux.html
-* [6] https://github.com/beagleboard/bb.org-overlays
-* [7] https://groups.google.com/forum/#!topic/beagleboard/od6h9yTKUD4
+* [5] https://github.com/beagleboard/bb.org-overlays
+* [6] https://groups.google.com/forum/#!topic/beagleboard/od6h9yTKUD4
+* [7] https://github.com/StrawsonDesign/librobotcontrol/issues/130
