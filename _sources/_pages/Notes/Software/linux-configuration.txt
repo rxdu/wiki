@@ -1,0 +1,63 @@
+Linux Configuration
+===================
+
+Add new user
+^^^^^^^^^^^^
+
+.. code-block:: bash
+
+   $ sudo adduser --ingroup users <USERNAME>
+   $ sudo adduser <YOUR_USERNAME> sudo
+   $ logout
+   $ sudo deluser --remove-home user
+
+Setup Wifi
+^^^^^^^^^^
+
+* Generate WPA passphrase for your WiFi
+
+.. code-block:: bash
+
+   $ wpa_passphrase <ssid> <password>
+
+* Update /etc/network/interfaces
+
+.. code-block:: bash
+
+   $ sudo nano /etc/network/interfaces
+
+.. code-block:: bash
+
+   # interfaces(5) file used by ifup(8) and ifdown(8)
+   auto lo
+   iface lo inet loopback
+
+   auto wlan0
+   iface wlan0 inet dhcp
+       wpa-ssid <ExampleWifi>
+       wpa-psk <wpa-psk-generated-by-wpa-passphrase-command>
+
+More wpa_supplicant usage examples can be found at [1].
+
+* Update system time
+
+.. code-block:: bash
+
+   $ sudo apt-get install ntp       
+
+Useful Commands
+^^^^^^^^^^^^^^^
+
+**curl**: download a file
+
+.. code-block:: bash
+
+   $ curl -O link-to-remote-file
+
+**su**: get root privileges
+
+**exit**: log out of "su" mode, shortcut: Ctrl+D
+
+Reference
+
+* [1] file:///home/rdu/Website/rdu_wiki/build/html/_pages/Notes/HOWTOs/howto-connect-sbc-to-wpi-wireless.html

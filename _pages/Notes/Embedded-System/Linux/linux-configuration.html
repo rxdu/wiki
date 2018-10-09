@@ -17,8 +17,8 @@
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
     </script>
-    <!-- <title>Intel Edison &mdash; RDU-Wiki 1.0 documentation</title> -->
-    <title>Intel Edison</title>
+    <!-- <title>Linux Configuration &mdash; RDU-Wiki 1.0 documentation</title> -->
+    <title>Linux Configuration</title>
     
     <link rel="stylesheet" href="../../../../_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
@@ -47,8 +47,8 @@
     <link rel="search" title="Search" href="../../../../search.html" />
     <link rel="top" title="RDU-Wiki 1.0 documentation" href="../../../../index.html" />
     <link rel="up" title="Application Notes" href="../../Application-Notes.html" />
-    <link rel="next" title="Linux Configuration" href="../../Software/linux-configuration.html" />
-    <link rel="prev" title="Raspberry Pi" href="Raspberry-Pi.html" />
+    <link rel="next" title="Build Custom Linux" href="build-custom-linux.html" />
+    <link rel="prev" title="CAN Bus in Linux" href="can-bus-in-linux.html" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <!--[if lte IE 6]>
@@ -65,10 +65,10 @@
           <a href="../../../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="../../Software/linux-configuration.html" title="Linux Configuration"
+          <a href="build-custom-linux.html" title="Build Custom Linux"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="Raspberry-Pi.html" title="Raspberry Pi"
+          <a href="can-bus-in-linux.html" title="CAN Bus in Linux"
              accesskey="P">previous</a> |</li>
         <!-- <li class="nav-item nav-item-0"><a href="../../../../index.html">RDU-Wiki 1.0 documentation</a> &raquo;</li> -->
         <li class="nav-item nav-item-0"><a href="../../../../index.html">Main Page</a> &raquo;</li>
@@ -81,18 +81,60 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="intel-edison">
-<h1>Intel Edison<a class="headerlink" href="#intel-edison" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="build-debian-image">
-<h2>Build Debian Image<a class="headerlink" href="#build-debian-image" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><a class="reference external" href="https://jakehewitt.github.io/custom-edison-image/">https://jakehewitt.github.io/custom-edison-image/</a></li>
-</ul>
+  <div class="section" id="linux-configuration">
+<h1>Linux Configuration<a class="headerlink" href="#linux-configuration" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="add-new-user">
+<h2>Add new user<a class="headerlink" href="#add-new-user" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo adduser --ingroup users &lt;USERNAME&gt;
+$ sudo adduser &lt;YOUR_USERNAME&gt; sudo
+$ <span class="nb">logout</span>
+$ sudo deluser --remove-home user
+</pre></div>
 </div>
-<div class="section" id="configuration-after-os-install">
-<h2>Configuration after OS Install<a class="headerlink" href="#configuration-after-os-install" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="setup-wifi">
+<h2>Setup Wifi<a class="headerlink" href="#setup-wifi" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Default account: user name: user, password: edison</li>
+<li>Generate WPA passphrase for your WiFi</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ wpa_passphrase &lt;ssid&gt; &lt;password&gt;
+</pre></div>
+</div>
+<ul class="simple">
+<li>Update /etc/network/interfaces</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo nano /etc/network/interfaces
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># interfaces(5) file used by ifup(8) and ifdown(8)</span>
+auto lo
+iface lo inet loopback
+
+auto wlan0
+iface wlan0 inet dhcp
+    wpa-ssid &lt;ExampleWifi&gt;
+    wpa-psk &lt;wpa-psk-generated-by-wpa-passphrase-command&gt;
+</pre></div>
+</div>
+<p>More wpa_supplicant usage examples can be found at [1].</p>
+<ul class="simple">
+<li>Update system time</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get install ntp
+</pre></div>
+</div>
+</div>
+<div class="section" id="useful-commands">
+<h2>Useful Commands<a class="headerlink" href="#useful-commands" title="Permalink to this headline">¶</a></h2>
+<p><strong>curl</strong>: download a file</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ curl -O link-to-remote-file
+</pre></div>
+</div>
+<p><strong>su</strong>: get root privileges</p>
+<p><strong>exit</strong>: log out of “su” mode, shortcut: Ctrl+D</p>
+<p>Reference</p>
+<ul class="simple">
+<li>[1] <a class="reference external" href="file:///home/rdu/Website/rdu_wiki/build/html/_pages/Notes/HOWTOs/howto-connect-sbc-to-wpi-wireless.html">file:///home/rdu/Website/rdu_wiki/build/html/_pages/Notes/HOWTOs/howto-connect-sbc-to-wpi-wireless.html</a></li>
 </ul>
 </div>
 </div>
@@ -105,19 +147,20 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="../../../../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Intel Edison</a><ul>
-<li><a class="reference internal" href="#build-debian-image">Build Debian Image</a></li>
-<li><a class="reference internal" href="#configuration-after-os-install">Configuration after OS Install</a></li>
+<li><a class="reference internal" href="#">Linux Configuration</a><ul>
+<li><a class="reference internal" href="#add-new-user">Add new user</a></li>
+<li><a class="reference internal" href="#setup-wifi">Setup Wifi</a></li>
+<li><a class="reference internal" href="#useful-commands">Useful Commands</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="Raspberry-Pi.html"
-                        title="previous chapter">Raspberry Pi</a></p>
+  <p class="topless"><a href="can-bus-in-linux.html"
+                        title="previous chapter">CAN Bus in Linux</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="../../Software/linux-configuration.html"
-                        title="next chapter">Linux Configuration</a></p>
+  <p class="topless"><a href="build-custom-linux.html"
+                        title="next chapter">Build Custom Linux</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../../../search.html" method="get">
@@ -142,10 +185,10 @@
           <a href="../../../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="../../Software/linux-configuration.html" title="Linux Configuration"
+          <a href="build-custom-linux.html" title="Build Custom Linux"
              >next</a> |</li>
         <li class="right" >
-          <a href="Raspberry-Pi.html" title="Raspberry Pi"
+          <a href="can-bus-in-linux.html" title="CAN Bus in Linux"
              >previous</a> |</li>
         <!-- <li class="nav-item nav-item-0"><a href="../../../../index.html">RDU-Wiki 1.0 documentation</a> &raquo;</li> -->
         <li class="nav-item nav-item-0"><a href="../../../../index.html">Main Page</a> &raquo;</li>

@@ -1,20 +1,31 @@
 Application Notes
 =================
 
-**Hardware**
+**Embedded System**
+
+Board Setup
 
 .. toctree::
    :maxdepth: 1
 
-   /_pages/Notes/Hardware/Embedded-Boards/BeagleBone-Blue
-   /_pages/Notes/Hardware/Embedded-Boards/Intel-Edison
-   /_pages/Notes/Hardware/Embedded-Boards/Raspberry-Pi
-   /_pages/Notes/Hardware/Embedded-Boards/STM32F4-Discovery
+   /_pages/Notes/Embedded-System/Boards/BeagleBone
+   /_pages/Notes/Embedded-System/Boards/Raspberry-Pi
+   /_pages/Notes/Embedded-System/Boards/Intel-Edison
 
-**Software**
+Linux System
 
 .. toctree::
    :maxdepth: 1
 
-   /_pages/Notes/Software/can-bus-in-linux
-   /_pages/Notes/Software/gdb
+   /_pages/Notes/Embedded-System/Linux/can-bus-in-linux
+   /_pages/Notes/Embedded-System/Linux/linux-configuration
+   /_pages/Notes/Embedded-System/Linux/beaglebone-xenomai
+
+**Programming**
+
+.. toctree::
+   :maxdepth: 1
+
+   /_pages/Notes/Programming/gdb
+
+   

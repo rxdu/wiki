@@ -1,0 +1,166 @@
+Build Custom Linux
+==================
+
+Build customized Linux for Beaglebone Black[1].
+
+Install toolchain
+^^^^^^^^^^^^^^^^^
+
+.. code-block:: bash
+
+   $ wget -c https://releases.linaro.org/components/toolchain/binaries/6.4-2018.05/arm-linux-gnueabihf/gcc-linaro-6.4.1-2018.05-x86_64_arm-linux-gnueabihf.tar.xz
+   $ tar xf gcc-linaro-6.4.1-2018.05-x86_64_arm-linux-gnueabihf.tar.xz
+
+Install dependencies
+^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: bash
+
+   $ sudo apt install bison flex lzop u-boot-tools
+
+Build bootloader
+^^^^^^^^^^^^^^^^
+
+.. code-block:: bash
+
+   $ git clone https://github.com/u-boot/u-boot
+   $ cd u-boot/
+   $ git checkout v2018.09 -b tmp
+
+   $ wget -c https://rcn-ee.com/repos/git/u-boot-patches/v2018.09/0001-am335x_evm-uEnv.txt-bootz-n-fixes.patch
+   $ wget -c https://rcn-ee.com/repos/git/u-boot-patches/v2018.09/0002-U-Boot-BeagleBone-Cape-Manager.patch
+ 
+   $ patch -p1 < 0001-am335x_evm-uEnv.txt-bootz-n-fixes.patch
+   $ patch -p1 < 0002-U-Boot-BeagleBone-Cape-Manager.patch
+
+   $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- distclean
+   $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- am335x_evm_defconfig
+   $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- 
+
+Setup Wifi
+^^^^^^^^^^
+
+You can use "connman" to manage the wireless network. But I personally prefer using the old way.
+
+* Disable connman
+
+.. code-block:: bash
+
+   $ systemctl disable connman.service
+
+* Generate WPA passphrase for your WiFi
+
+.. code-block:: bash
+
+   $ wpa_passphrase <ssid> <password>
+
+* Update /etc/network/interfaces
+
+.. code-block:: bash
+
+   $ sudo nano /etc/network/interfaces
+
+.. code-block:: bash
+
+   # interfaces(5) file used by ifup(8) and ifdown(8)
+   auto lo
+   iface lo inet loopback
+
+   auto wlan0
+   iface wlan0 inet dhcp
+       wpa-ssid ExampleWifi
+       wpa-psk <wpa-psk-generated-by-wpa-passphrase-command>   
+
+Mount "/usr" and "/home" on SD card
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The BeagleBone Blue has 4G on-board eMMC flash storage. It could be enough for many applications. But for experimental projects, it's more convenient to have more space so that you don't need to worry too much about filling the eMMC flash up when installing new packages.
+
+Check reference [2] to get more detailed instructions. Here is a brief summary of what you need to do:
+
+.. code-block:: bash
+
+   # 1. format your SD card into two partitions
+   # 2. insert the SD card and power up the board
+   # 3. check if you have the two partitions on the SD card recognized by the OS correctly
+   $ fdisk -l
+   # (the two partitions are labeled as "/dev/mmcblk0p1" and "/dev/mmcblk0p2" on my board)
+   # 4. format the two partions as ext4
+   $ mkfs.ext4 /dev/mmcblk0p1
+   $ mkfs.ext4 /dev/mmcblk0p2 
+   # 5. create temporary folders in /tmp and mount the two partitions to the temporary folders, copy files from /usr and /home accordingly
+   $ sudo mkdir /tmp/usr 
+   $ sudo mkdir /tmp/home
+   $ sudo mount /dev/mmcblk0p1 /tmp/usr 
+   $ sudo mount /dev/mmcblk0p2 /tmp/home
+   $ sudo rsync -ahv --progress /usr/ /tmp/usr/
+   $ sudo rsync -ahv --progress /home/ /tmp/home/ 
+   # 6. update /etc/fstab to reflect the change
+   $ sudo lsblk -no UUID /dev/mmcblk0p1 # get UUID of /dev/mmcblk0p1
+   # add two lines in /etc/fstab
+   $ UUID=<ID-YOU-GOT-FROM-ABOVE-CMD> /usr ext4    defaults 0 1
+   $ UUID=<ID-YOU-GOT-FROM-ABOVE-CMD> /home ext4    defaults 0 1
+   or
+   $ /dev/mmcblk0p1 /usr ext4 defaults 0 1
+   $ /dev/mmcblk0p2 /home ext4 defaults 0 1
+   # 7. reboot and check the files
+   $ df -h
+
+Update Kernel
+^^^^^^^^^^^^^
+
+You can upgrade or change to a Preempt-RT patched kernel using the script provided in the Debian OS from Beaglebone
+
+.. code-block:: bash
+
+   $ cd /opt/scripts/tools
+   $ git pull   # you may need to use sudo here
+   $ sudo /opt/scripts/tools/update_kernel.sh --bone-rt-channel --lts-4_4   # --lts-stable or other available options
+
+Refer to [5] for additiona options.
+
+Note that if you use the kernel from TI channel (for example, use "--ti-rt-channel" option), you might experience errors related to the PINMUX helper driver. 
+
+Robotics Cape library
+^^^^^^^^^^^^^^^^^^^^^
+
+TI channel kernels have more complete support to PRU drivers so you may want to use a kernel from the TI channel if you're using the Robotics Cape or Beaglebone Blue.[7]
+
+When using the TI channel RT kernel 4.4 and 4.9 on Beaglebone Blue with the Robotics Cape library, I got the following error message from the library:
+
+.. code-block:: bash
+
+    ...
+    can't open: /sys/devices/platform/ocp/ocp:P9_24_pinmux/state
+    Pinmux: No such file or directory
+    WARNING: missing PINMUX driver
+    You probbaly just need a newer kernel
+
+I'm not sure if this will happen to other boards or how to install this pinmux helper driver manually for the TI channel kernels. I resolved this issue by switching to a bone channel kernel.
+
+The other issue related to the Robotics Cape library that occured even after installing the bone channel RT kernel is on the pru-rproc driver, which gives the error message
+
+.. code-block:: bash
+
+    ERROR: pru-rproc driver missing
+
+The solution is to add a symbolic link of clpru executable to /usr/share/ti/cgt-pru/bin folder:
+
+.. code-block:: bash   
+
+     cd /usr/share/ti/cgt-pru
+     mkdir bin
+     cd bin
+     ln -s /usr/bin/clpru clpru
+
+See [6] for more discussions on this issue and the above solution is from this page.
+
+Buid u-boot
+^^^^^^^^^^^
+
+Buid Kernel
+^^^^^^^^^^^
+
+Reference
+
+* [1] https://www.digikey.com/eewiki/display/linuxonarm/BeagleBone+Black

@@ -1,0 +1,235 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-67949307-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <!-- <title>Build Custom Linux &mdash; RDU-Wiki 1.0 documentation</title> -->
+    <title>Build Custom Linux</title>
+    
+    <link rel="stylesheet" href="../../../../_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Dancing+Script:700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Courgette' rel='stylesheet' type='text/css'>
+    
+    <div class="rduhome"  role="contentinfo">
+		 <a href="http://rdu.im" style="font-family: 'Courgette', serif;" >Return to Ruixiang's Home Page</a>
+	</div>
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="top" title="RDU-Wiki 1.0 documentation" href="../../../../index.html" />
+    <link rel="up" title="Application Notes" href="../../Application-Notes.html" />
+    <link rel="next" title="Using GDB Debugger" href="../../Programming/gdb.html" />
+    <link rel="prev" title="Linux Configuration" href="linux-configuration.html" />
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../../../../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head>
+  <body role="document">
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../Programming/gdb.html" title="Using GDB Debugger"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="linux-configuration.html" title="Linux Configuration"
+             accesskey="P">previous</a> |</li>
+        <!-- <li class="nav-item nav-item-0"><a href="../../../../index.html">RDU-Wiki 1.0 documentation</a> &raquo;</li> -->
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Main Page</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../../Application-Notes.html" accesskey="U">Application Notes</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="build-custom-linux">
+<h1>Build Custom Linux<a class="headerlink" href="#build-custom-linux" title="Permalink to this headline">¶</a></h1>
+<p>Build customized Linux for Beaglebone Black[1]. The general building step for other ARM boards should be similar but specific details can be drastically different.</p>
+<div class="section" id="install-toolchain">
+<h2>Install toolchain<a class="headerlink" href="#install-toolchain" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ wget -c https://releases.linaro.org/components/toolchain/binaries/6.4-2018.05/arm-linux-gnueabihf/gcc-linaro-6.4.1-2018.05-x86_64_arm-linux-gnueabihf.tar.xz
+$ tar xf gcc-linaro-6.4.1-2018.05-x86_64_arm-linux-gnueabihf.tar.xz
+</pre></div>
+</div>
+</div>
+<div class="section" id="install-dependencies">
+<h2>Install dependencies<a class="headerlink" href="#install-dependencies" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo apt install bison flex lzop u-boot-tools
+</pre></div>
+</div>
+</div>
+<div class="section" id="build-bootloader">
+<h2>Build bootloader<a class="headerlink" href="#build-bootloader" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/u-boot/u-boot
+$ <span class="nb">cd</span> u-boot/
+$ git checkout v2018.09 -b tmp
+
+$ wget -c https://rcn-ee.com/repos/git/u-boot-patches/v2018.09/0001-am335x_evm-uEnv.txt-bootz-n-fixes.patch
+$ wget -c https://rcn-ee.com/repos/git/u-boot-patches/v2018.09/0002-U-Boot-BeagleBone-Cape-Manager.patch
+
+$ patch -p1 &lt; <span class="m">0001</span>-am335x_evm-uEnv.txt-bootz-n-fixes.patch
+$ patch -p1 &lt; <span class="m">0002</span>-U-Boot-BeagleBone-Cape-Manager.patch
+
+$ make <span class="nv">ARCH</span><span class="o">=</span>arm <span class="nv">CROSS_COMPILE</span><span class="o">=</span>arm-linux-gnueabihf- distclean
+$ make <span class="nv">ARCH</span><span class="o">=</span>arm <span class="nv">CROSS_COMPILE</span><span class="o">=</span>arm-linux-gnueabihf- am335x_evm_defconfig
+$ make <span class="nv">ARCH</span><span class="o">=</span>arm <span class="nv">CROSS_COMPILE</span><span class="o">=</span>arm-linux-gnueabihf-
+</pre></div>
+</div>
+</div>
+<div class="section" id="buid-kernel">
+<h2>Buid Kernel<a class="headerlink" href="#buid-kernel" title="Permalink to this headline">¶</a></h2>
+<p>Download kernel source file</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/beagleboard/linux.git
+
+<span class="c1"># look for the desired branch, for example</span>
+$ git tag -l <span class="p">|</span> grep <span class="m">4</span>.9
+
+<span class="c1"># checkout the desired version into a new branch, use &quot;4.9.88-ti-xenomai-r107&quot; as an example</span>
+$ git checkout <span class="m">4</span>.9.88-ti-xenomai-r107 -b tmp-4.9.88-ti-xenomai-r107
+</pre></div>
+</div>
+<p>Start the configuration menu and modify kernel options</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ make <span class="nv">ARCH</span><span class="o">=</span>arm <span class="nv">CROSS_COMPILE</span><span class="o">=</span>arm-linux-gnueabihf- bb.org_defconfig
+$ make <span class="nv">ARCH</span><span class="o">=</span>arm <span class="nv">CROSS_COMPILE</span><span class="o">=</span>arm-linux-gnueabihf- menuconfig
+</pre></div>
+</div>
+<p>Check the following configurations:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>* General setup ---&gt;
+ - Local version - append to kernel release : <span class="s2">&quot;-ti-xenomai-r107&quot;</span>
+ - Stack Protector buffer overflow detection: Disable
+* Kernel Features  ---&gt;
+ - Preemption Model : <span class="k">select</span> <span class="s2">&quot;Preemptible Kernel (Low-Latency Desktop)&quot;</span>
+ - Timer frequency : change to 1000Hz
+ - <span class="o">[]</span> Allow <span class="k">for</span> memory compaction : Disable
+ - <span class="o">[]</span> Contiguous Memory Allocator : Disable
+* CPU Power Management  ---&gt;
+ - <span class="o">[]</span> CPU Frequency scaling : Disable
+
+* Kernel hacking  ---&gt;
+ - <span class="o">[]</span> KGDB: kernel debugger : Disable
+</pre></div>
+</div>
+<p>You could also enable Xenomai supported device drivers in the config.</p>
+<p>Build kernel image:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ make -j8 <span class="nv">ARCH</span><span class="o">=</span>arm <span class="nv">CROSS_COMPILE</span><span class="o">=</span>arm-linux-gnueabihf- zImage dtbs
+$ make -j8 <span class="nv">ARCH</span><span class="o">=</span>arm <span class="nv">CROSS_COMPILE</span><span class="o">=</span>arm-linux-gnueabihf- modules
+</pre></div>
+</div>
+<p>If you need to build uImage</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ make -j8 <span class="nv">ARCH</span><span class="o">=</span>arm <span class="nv">CROSS_COMPILE</span><span class="o">=</span>arm-linux-gnueabihf- uImage <span class="nv">LOADADDR</span><span class="o">=</span>0x80008000
+</pre></div>
+</div>
+<p>You can also build debian packages for easier installation</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ make -j8 <span class="nv">ARCH</span><span class="o">=</span>arm <span class="nv">CROSS_COMPILE</span><span class="o">=</span>arm-linux-gnueabihf- deb-pkg
+</pre></div>
+</div>
+<p>Otherwise, you could install to the SD card manually.</p>
+<p>Reference</p>
+<ul class="simple">
+<li>[1] <a class="reference external" href="https://www.digikey.com/eewiki/display/linuxonarm/BeagleBone+Black">https://www.digikey.com/eewiki/display/linuxonarm/BeagleBone+Black</a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Build Custom Linux</a><ul>
+<li><a class="reference internal" href="#install-toolchain">Install toolchain</a></li>
+<li><a class="reference internal" href="#install-dependencies">Install dependencies</a></li>
+<li><a class="reference internal" href="#build-bootloader">Build bootloader</a></li>
+<li><a class="reference internal" href="#buid-kernel">Buid Kernel</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="linux-configuration.html"
+                        title="previous chapter">Linux Configuration</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../../Programming/gdb.html"
+                        title="next chapter">Using GDB Debugger</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../Programming/gdb.html" title="Using GDB Debugger"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="linux-configuration.html" title="Linux Configuration"
+             >previous</a> |</li>
+        <!-- <li class="nav-item nav-item-0"><a href="../../../../index.html">RDU-Wiki 1.0 documentation</a> &raquo;</li> -->
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Main Page</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../../Application-Notes.html" >Application Notes</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2017, Ruixiang Du.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.7.
+    </div>
+  </body>
+</html>

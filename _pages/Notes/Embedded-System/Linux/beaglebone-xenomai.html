@@ -1,0 +1,389 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-67949307-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <!-- <title>Xenomai on Beaglebone &mdash; RDU-Wiki 1.0 documentation</title> -->
+    <title>Xenomai on Beaglebone</title>
+    
+    <link rel="stylesheet" href="../../../../_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Dancing+Script:700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Courgette' rel='stylesheet' type='text/css'>
+    
+    <div class="rduhome"  role="contentinfo">
+		 <a href="http://rdu.im" style="font-family: 'Courgette', serif;" >Return to Ruixiang's Home Page</a>
+	</div>
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="top" title="RDU-Wiki 1.0 documentation" href="../../../../index.html" />
+    <link rel="up" title="Application Notes" href="../../Application-Notes.html" />
+    <link rel="next" title="Using GDB Debugger" href="../../Programming/gdb.html" />
+    <link rel="prev" title="Linux Configuration" href="linux-configuration.html" />
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../../../../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head>
+  <body role="document">
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../Programming/gdb.html" title="Using GDB Debugger"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="linux-configuration.html" title="Linux Configuration"
+             accesskey="P">previous</a> |</li>
+        <!-- <li class="nav-item nav-item-0"><a href="../../../../index.html">RDU-Wiki 1.0 documentation</a> &raquo;</li> -->
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Main Page</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../../Application-Notes.html" accesskey="U">Application Notes</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="xenomai-on-beaglebone">
+<h1>Xenomai on Beaglebone<a class="headerlink" href="#xenomai-on-beaglebone" title="Permalink to this headline">¶</a></h1>
+<p>Build Xenomai-patched Linux for Beaglebone Black[1]. The general building step for other ARM boards should be similar but specific details can be drastically different.</p>
+<div class="section" id="install-toolchain">
+<h2>Install toolchain<a class="headerlink" href="#install-toolchain" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ wget -c https://releases.linaro.org/components/toolchain/binaries/6.4-2018.05/arm-linux-gnueabihf/gcc-linaro-6.4.1-2018.05-x86_64_arm-linux-gnueabihf.tar.xz
+$ tar xf gcc-linaro-6.4.1-2018.05-x86_64_arm-linux-gnueabihf.tar.xz
+</pre></div>
+</div>
+</div>
+<div class="section" id="install-dependencies">
+<h2>Install dependencies<a class="headerlink" href="#install-dependencies" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo apt install bison flex lzop u-boot-tools
+</pre></div>
+</div>
+</div>
+<div class="section" id="build-bootloader">
+<h2>Build bootloader<a class="headerlink" href="#build-bootloader" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/u-boot/u-boot
+$ <span class="nb">cd</span> u-boot/
+$ git checkout v2018.09 -b tmp-v2018.09
+
+$ wget -c https://rcn-ee.com/repos/git/u-boot-patches/v2018.09/0001-am335x_evm-uEnv.txt-bootz-n-fixes.patch
+$ wget -c https://rcn-ee.com/repos/git/u-boot-patches/v2018.09/0002-U-Boot-BeagleBone-Cape-Manager.patch
+
+$ patch -p1 &lt; <span class="m">0001</span>-am335x_evm-uEnv.txt-bootz-n-fixes.patch
+$ patch -p1 &lt; <span class="m">0002</span>-U-Boot-BeagleBone-Cape-Manager.patch
+
+$ make <span class="nv">ARCH</span><span class="o">=</span>arm <span class="nv">CROSS_COMPILE</span><span class="o">=</span>arm-linux-gnueabihf- distclean
+$ make <span class="nv">ARCH</span><span class="o">=</span>arm <span class="nv">CROSS_COMPILE</span><span class="o">=</span>arm-linux-gnueabihf- am335x_evm_defconfig
+$ make <span class="nv">ARCH</span><span class="o">=</span>arm <span class="nv">CROSS_COMPILE</span><span class="o">=</span>arm-linux-gnueabihf-
+</pre></div>
+</div>
+<p>You should get “MLO”, “u-boot.img” at the root folder of u-boot after successful compilation.</p>
+</div>
+<div class="section" id="buid-kernel">
+<h2>Buid Kernel<a class="headerlink" href="#buid-kernel" title="Permalink to this headline">¶</a></h2>
+<p>Download kernel source file</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/beagleboard/linux.git
+
+<span class="c1"># look for the desired branch, for example</span>
+$ git tag -l <span class="p">|</span> grep <span class="m">4</span>.9
+
+<span class="c1"># checkout the desired version into a new branch, use &quot;4.9.88-ti-xenomai-r107&quot; as an example</span>
+$ git checkout <span class="m">4</span>.9.88-ti-xenomai-r107 -b tmp-4.9.88-ti-xenomai-r107
+</pre></div>
+</div>
+<p>Start the configuration menu and modify kernel options</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ make <span class="nv">ARCH</span><span class="o">=</span>arm <span class="nv">CROSS_COMPILE</span><span class="o">=</span>arm-linux-gnueabihf- bb.org_defconfig
+$ make <span class="nv">ARCH</span><span class="o">=</span>arm <span class="nv">CROSS_COMPILE</span><span class="o">=</span>arm-linux-gnueabihf- menuconfig
+</pre></div>
+</div>
+<p>Check the following configurations for Xenomai:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>* General setup ---&gt;
+ - Local version - append to kernel release : <span class="s2">&quot;-ti-xenomai-r107&quot;</span>
+ - Stack Protector buffer overflow detection: Disable
+* Kernel Features  ---&gt;
+ - Preemption Model : <span class="k">select</span> <span class="s2">&quot;Preemptible Kernel (Low-Latency Desktop)&quot;</span>
+ - Timer frequency : change to 1000Hz
+ - <span class="o">[]</span> Allow <span class="k">for</span> memory compaction : Disable
+ - <span class="o">[]</span> Contiguous Memory Allocator : Disable
+* CPU Power Management  ---&gt;
+ - <span class="o">[]</span> CPU Frequency scaling : Disable
+
+* Kernel hacking  ---&gt;
+ - <span class="o">[]</span> KGDB: kernel debugger : Disable
+</pre></div>
+</div>
+<p>You could also enable Xenomai supported device drivers in the config according to your needs.</p>
+<p>Build kernel image:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ make -j8 <span class="nv">ARCH</span><span class="o">=</span>arm <span class="nv">CROSS_COMPILE</span><span class="o">=</span>arm-linux-gnueabihf- zImage dtbs
+$ make -j8 <span class="nv">ARCH</span><span class="o">=</span>arm <span class="nv">CROSS_COMPILE</span><span class="o">=</span>arm-linux-gnueabihf- modules
+</pre></div>
+</div>
+<p>If you need to build uImage</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ make -j8 <span class="nv">ARCH</span><span class="o">=</span>arm <span class="nv">CROSS_COMPILE</span><span class="o">=</span>arm-linux-gnueabihf- uImage <span class="nv">LOADADDR</span><span class="o">=</span>0x80008000
+</pre></div>
+</div>
+<p>You can also build debian packages for easier installation (for example, update kernel on the eMMC)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ make -j8 <span class="nv">ARCH</span><span class="o">=</span>arm <span class="nv">CROSS_COMPILE</span><span class="o">=</span>arm-linux-gnueabihf- deb-pkg
+</pre></div>
+</div>
+<p>Alternatively, you could deploy to the SD card manually.</p>
+</div>
+<div class="section" id="prepare-sd-card">
+<h2>Prepare SD card<a class="headerlink" href="#prepare-sd-card" title="Permalink to this headline">¶</a></h2>
+<p>Create 2 partitions</p>
+<ul class="simple">
+<li>/boot formated in FAT32 with “boot” flag</li>
+<li>/rootfs formated in ext4</li>
+</ul>
+<p>Set SD card location and kernel version for installation</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">SD_ROOTFS</span><span class="o">=</span>/media/rdu/rootfs
+$ <span class="nb">export</span> <span class="nv">kernel_version</span><span class="o">=</span><span class="m">4</span>.9.88-ti-xenomai-r107
+</pre></div>
+</div>
+</div>
+<div class="section" id="deploy-u-boot">
+<h2>Deploy u-boot<a class="headerlink" href="#deploy-u-boot" title="Permalink to this headline">¶</a></h2>
+<p>You need to copy “MLO”, “u-boot.img”, and the “uEnv.txt” into the /boot partitiona on the SD card.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">##Rename as: uEnv.txt to override old bootloader in eMMC</span>
+<span class="c1">##These are needed to be compliant with Angstrom&#39;s 2013.06.20 u-boot.</span>
+
+<span class="nv">loadaddr</span><span class="o">=</span>0x82000000
+<span class="nv">fdtaddr</span><span class="o">=</span>0x88000000
+<span class="nv">rdaddr</span><span class="o">=</span>0x88080000
+
+<span class="nv">initrd_high</span><span class="o">=</span>0xffffffff
+<span class="nv">fdt_high</span><span class="o">=</span>0xffffffff
+
+<span class="c1">##These are needed to be compliant with Debian 2014-05-14 u-boot.</span>
+
+<span class="nv">loadximage</span><span class="o">=</span><span class="nb">echo</span> debug: <span class="o">[</span>/boot/vmlinuz-<span class="si">${</span><span class="nv">uname_r</span><span class="si">}</span><span class="o">]</span> ... <span class="p">;</span> load mmc <span class="m">0</span>:2 <span class="si">${</span><span class="nv">loadaddr</span><span class="si">}</span> /boot/vmlinuz-<span class="si">${</span><span class="nv">uname_r</span><span class="si">}</span>
+<span class="nv">loadxfdt</span><span class="o">=</span><span class="nb">echo</span> debug: <span class="o">[</span>/boot/dtbs/<span class="si">${</span><span class="nv">uname_r</span><span class="si">}</span>/<span class="si">${</span><span class="nv">fdtfile</span><span class="si">}</span><span class="o">]</span> ... <span class="p">;</span>load mmc <span class="m">0</span>:2 <span class="si">${</span><span class="nv">fdtaddr</span><span class="si">}</span> /boot/dtbs/<span class="si">${</span><span class="nv">uname_r</span><span class="si">}</span>/<span class="si">${</span><span class="nv">fdtfile</span><span class="si">}</span>
+<span class="nv">loadxrd</span><span class="o">=</span><span class="nb">echo</span> debug: <span class="o">[</span>/boot/initrd.img-<span class="si">${</span><span class="nv">uname_r</span><span class="si">}</span><span class="o">]</span> ... <span class="p">;</span> load mmc <span class="m">0</span>:2 <span class="si">${</span><span class="nv">rdaddr</span><span class="si">}</span> /boot/initrd.img-<span class="si">${</span><span class="nv">uname_r</span><span class="si">}</span><span class="p">;</span> setenv rdsize <span class="si">${</span><span class="nv">filesize</span><span class="si">}</span>
+<span class="nv">loaduEnvtxt</span><span class="o">=</span>load mmc <span class="m">0</span>:2 <span class="si">${</span><span class="nv">loadaddr</span><span class="si">}</span> /boot/uEnv.txt <span class="p">;</span> env import -t <span class="si">${</span><span class="nv">loadaddr</span><span class="si">}</span> <span class="si">${</span><span class="nv">filesize</span><span class="si">}</span><span class="p">;</span>
+<span class="nv">check_dtb</span><span class="o">=</span><span class="k">if</span> <span class="nb">test</span> -n <span class="si">${</span><span class="nv">dtb</span><span class="si">}</span><span class="p">;</span> <span class="k">then</span> setenv fdtfile <span class="si">${</span><span class="nv">dtb</span><span class="si">}</span><span class="p">;</span><span class="k">fi</span><span class="p">;</span>
+<span class="nv">check_uboot_overlays</span><span class="o">=</span><span class="k">if</span> <span class="nb">test</span> -n <span class="si">${</span><span class="nv">enable_uboot_overlays</span><span class="si">}</span><span class="p">;</span> <span class="k">then</span> setenv enable_uboot_overlays <span class="p">;</span><span class="k">fi</span><span class="p">;</span>
+<span class="nv">loadall</span><span class="o">=</span>run loaduEnvtxt<span class="p">;</span> run check_dtb<span class="p">;</span> run check_uboot_overlays<span class="p">;</span> run loadximage<span class="p">;</span> run loadxrd<span class="p">;</span> run loadxfdt<span class="p">;</span>
+
+<span class="nv">mmcargs</span><span class="o">=</span>setenv bootargs <span class="nv">console</span><span class="o">=</span>tty0 <span class="nv">console</span><span class="o">=</span><span class="si">${</span><span class="nv">console</span><span class="si">}</span> <span class="si">${</span><span class="nv">optargs</span><span class="si">}</span> <span class="si">${</span><span class="nv">cape_disable</span><span class="si">}</span> <span class="si">${</span><span class="nv">cape_enable</span><span class="si">}</span> <span class="nv">root</span><span class="o">=</span>/dev/mmcblk0p2 <span class="nv">rootfstype</span><span class="o">=</span><span class="si">${</span><span class="nv">mmcrootfstype</span><span class="si">}</span> <span class="si">${</span><span class="nv">cmdline</span><span class="si">}</span>
+
+<span class="nv">uenvcmd</span><span class="o">=</span>run loadall<span class="p">;</span> run mmcargs<span class="p">;</span> <span class="nb">echo</span> debug: <span class="o">[</span><span class="si">${</span><span class="nv">bootargs</span><span class="si">}</span><span class="o">]</span> ... <span class="p">;</span> <span class="nb">echo</span> debug: <span class="o">[</span>bootz <span class="si">${</span><span class="nv">loadaddr</span><span class="si">}</span> <span class="si">${</span><span class="nv">rdaddr</span><span class="si">}</span>:<span class="si">${</span><span class="nv">rdsize</span><span class="si">}</span> <span class="si">${</span><span class="nv">fdtaddr</span><span class="si">}</span><span class="o">]</span> ... <span class="p">;</span> bootz <span class="si">${</span><span class="nv">loadaddr</span><span class="si">}</span> <span class="si">${</span><span class="nv">rdaddr</span><span class="si">}</span>:<span class="si">${</span><span class="nv">rdsize</span><span class="si">}</span> <span class="si">${</span><span class="nv">fdtaddr</span><span class="si">}</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Make sure you specify the right path to the rootfs in “/boot/uEnv.txt”. In the uEnv.txt shown above, it is “root=/dev/mmcblk0p2”.</p>
+</div>
+<div class="section" id="deploy-kernel">
+<h2>Deploy Kernel<a class="headerlink" href="#deploy-kernel" title="Permalink to this headline">¶</a></h2>
+<p>Copy pre-built root file system to the SD card</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ wget -c https://rcn-ee.com/rootfs/eewiki/minfs/debian-9.5-minimal-armhf-2018-07-30.tar.xz
+$ tar xf debian-9.5-minimal-armhf-2018-07-30.tar.xz
+$ sudo tar xfvp ./*-*-*-armhf-*/armhf-rootfs-*.tar -C /media/rootfs/
+$ sync
+$ sudo chown root:root /media/rootfs/
+$ sudo chmod <span class="m">755</span> /media/rootfs/
+</pre></div>
+</div>
+<p>Install kernel and device tree:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># kernel</span>
+$ sudo cp -v ./arch/arm/boot/zImage <span class="si">${</span><span class="nv">SD_ROOTFS</span><span class="si">}</span>/boot/vmlinuz-<span class="si">${</span><span class="nv">kernel_version</span><span class="si">}</span>
+
+<span class="c1"># device tree</span>
+$ sudo mkdir -p <span class="si">${</span><span class="nv">SD_ROOTFS</span><span class="si">}</span>/boot/dtbs/<span class="si">${</span><span class="nv">kernel_version</span><span class="si">}</span>
+$ sudo cp -v ./arch/arm/boot/dts/am335x* <span class="si">${</span><span class="nv">SD_ROOTFS</span><span class="si">}</span>/boot/dtbs/<span class="si">${</span><span class="nv">kernel_version</span><span class="si">}</span>
+</pre></div>
+</div>
+<p>Install headers:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ make -j8 <span class="nv">ARCH</span><span class="o">=</span>arm headers_check
+$ sudo make -j8 <span class="nv">ARCH</span><span class="o">=</span>arm <span class="nv">INSTALL_HDR_PATH</span><span class="o">=</span><span class="si">${</span><span class="nv">SD_ROOTFS</span><span class="si">}</span> headers_install
+</pre></div>
+</div>
+<p>Install modules and firmware</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo make -j8 <span class="nv">ARCH</span><span class="o">=</span>arm <span class="nv">CROSS_COMPILE</span><span class="o">=</span>arm-linux-gnueabihf- modules_install <span class="nv">INSTALL_MOD_PATH</span><span class="o">=</span><span class="si">${</span><span class="nv">SD_ROOTFS</span><span class="si">}</span>
+$ sudo make -j8 <span class="nv">ARCH</span><span class="o">=</span>arm <span class="nv">CROSS_COMPILE</span><span class="o">=</span>arm-linux-gnueabihf- firmware_install <span class="nv">INSTALL_MOD_PATH</span><span class="o">=</span><span class="si">${</span><span class="nv">SD_ROOTFS</span><span class="si">}</span>
+</pre></div>
+</div>
+<p>Update “/rootfs/boot/uEnv.txt”:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">uname_r</span><span class="o">=</span><span class="m">4</span>.9.88-ti-xenomai-r107
+</pre></div>
+</div>
+</div>
+<div class="section" id="additional-configurations">
+<h2>Additional configurations<a class="headerlink" href="#additional-configurations" title="Permalink to this headline">¶</a></h2>
+<p>Update fstab (Note you may need to change “/dev/mmcblk0p2” according to your SD configuration)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo sh -c <span class="s2">&quot;echo &#39;/dev/mmcblk0p2  /  auto  errors=remount-ro  0  1&#39; &gt;&gt; /media/rootfs/etc/fstab&quot;</span>
+</pre></div>
+</div>
+<p>Update hostname (default is “arm”)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo nano /etc/hostname
+$ sudo nano /etc/hosts
+</pre></div>
+</div>
+<p>Update network interface</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo nano /etc/network/interfaces
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet dhcp
+</pre></div>
+</div>
+<p>At this point, you should have a bootable Linux running on the Beaglebone.</p>
+</div>
+<div class="section" id="install-xenomai-tools-and-libraries">
+<h2>Install Xenomai tools and libraries<a class="headerlink" href="#install-xenomai-tools-and-libraries" title="Permalink to this headline">¶</a></h2>
+<p>First you need to check which version of Xenomai is install with the kernel.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cat /proc/xenomai/version
+</pre></div>
+</div>
+<p>In this case, the version of Xenomai is 3.0.6. Download code from the Xenomai website.</p>
+<p>Install dependencies</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get install build-essential libtool libltdl-dev
+</pre></div>
+</div>
+<p>Finally build the code</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ./scripts/bootstrap
+$ ./configure --enable-smp --with-core<span class="o">=</span>cobalt
+$ make
+$ sudo make install
+</pre></div>
+</div>
+<p>Once finished, you can test if the installation is successful</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /usr/xenomai/bin
+$ sudo ./latency
+</pre></div>
+</div>
+<p>You should get something like</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">==</span> Sampling period: <span class="m">1000</span> <span class="nv">us</span>
+<span class="o">==</span> Test mode: periodic user-mode <span class="nv">task</span>
+<span class="o">==</span> All results in microseconds
+warming up...
+RTT<span class="p">|</span>  <span class="m">00</span>:00:01  <span class="o">(</span>periodic user-mode task, <span class="m">1000</span> us period, priority <span class="m">99</span><span class="o">)</span>
+RTH<span class="p">|</span>----lat min<span class="p">|</span>----lat avg<span class="p">|</span>----lat max<span class="p">|</span>-overrun<span class="p">|</span>---msw<span class="p">|</span>---lat best<span class="p">|</span>--lat worst
+RTD<span class="p">|</span>      <span class="m">4</span>.041<span class="p">|</span>      <span class="m">6</span>.969<span class="p">|</span>     <span class="m">28</span>.750<span class="p">|</span>       <span class="m">0</span><span class="p">|</span>     <span class="m">0</span><span class="p">|</span>      <span class="m">4</span>.041<span class="p">|</span>     <span class="m">28</span>.750
+RTD<span class="p">|</span>      <span class="m">4</span>.083<span class="p">|</span>      <span class="m">8</span>.077<span class="p">|</span>     <span class="m">39</span>.708<span class="p">|</span>       <span class="m">0</span><span class="p">|</span>     <span class="m">0</span><span class="p">|</span>      <span class="m">4</span>.041<span class="p">|</span>     <span class="m">39</span>.708
+RTD<span class="p">|</span>      <span class="m">4</span>.041<span class="p">|</span>      <span class="m">7</span>.884<span class="p">|</span>     <span class="m">40</span>.541<span class="p">|</span>       <span class="m">0</span><span class="p">|</span>     <span class="m">0</span><span class="p">|</span>      <span class="m">4</span>.041<span class="p">|</span>     <span class="m">40</span>.541
+RTD<span class="p">|</span>      <span class="m">4</span>.082<span class="p">|</span>      <span class="m">7</span>.033<span class="p">|</span>     <span class="m">37</span>.291<span class="p">|</span>       <span class="m">0</span><span class="p">|</span>     <span class="m">0</span><span class="p">|</span>      <span class="m">4</span>.041<span class="p">|</span>     <span class="m">40</span>.541
+RTD<span class="p">|</span>      <span class="m">4</span>.082<span class="p">|</span>      <span class="m">8</span>.122<span class="p">|</span>     <span class="m">42</span>.165<span class="p">|</span>       <span class="m">0</span><span class="p">|</span>     <span class="m">0</span><span class="p">|</span>      <span class="m">4</span>.041<span class="p">|</span>     <span class="m">42</span>.165
+RTD<span class="p">|</span>      <span class="m">4</span>.082<span class="p">|</span>      <span class="m">7</span>.020<span class="p">|</span>     <span class="m">37</span>.249<span class="p">|</span>       <span class="m">0</span><span class="p">|</span>     <span class="m">0</span><span class="p">|</span>      <span class="m">4</span>.041<span class="p">|</span>     <span class="m">42</span>.165
+RTD<span class="p">|</span>      <span class="m">4</span>.082<span class="p">|</span>      <span class="m">8</span>.145<span class="p">|</span>     <span class="m">42</span>.457<span class="p">|</span>       <span class="m">0</span><span class="p">|</span>     <span class="m">0</span><span class="p">|</span>      <span class="m">4</span>.041<span class="p">|</span>     <span class="m">42</span>.457
+RTD<span class="p">|</span>      <span class="m">3</span>.831<span class="p">|</span>      <span class="m">7</span>.878<span class="p">|</span>     <span class="m">41</span>.415<span class="p">|</span>       <span class="m">0</span><span class="p">|</span>     <span class="m">0</span><span class="p">|</span>      <span class="m">3</span>.831<span class="p">|</span>     <span class="m">42</span>.457
+RTD<span class="p">|</span>      <span class="m">4</span>.040<span class="p">|</span>      <span class="m">6</span>.717<span class="p">|</span>     <span class="m">32</span>.665<span class="p">|</span>       <span class="m">0</span><span class="p">|</span>     <span class="m">0</span><span class="p">|</span>      <span class="m">3</span>.831<span class="p">|</span>     <span class="m">42</span>.457
+</pre></div>
+</div>
+<p>Reference</p>
+<ul class="simple">
+<li>[1] <a class="reference external" href="https://www.digikey.com/eewiki/display/linuxonarm/BeagleBone+Black">https://www.digikey.com/eewiki/display/linuxonarm/BeagleBone+Black</a></li>
+<li>[2] <a class="reference external" href="http://www.simplerobot.net/2018/06/build-realtime-xenomai-3-kernel-for.html">http://www.simplerobot.net/2018/06/build-realtime-xenomai-3-kernel-for.html</a></li>
+<li>[3] <a class="reference external" href="https://lemariva.com/blog/2018/07/raspberry-pi-xenomai-patching-tutorial-for-kernel-4-14-y">https://lemariva.com/blog/2018/07/raspberry-pi-xenomai-patching-tutorial-for-kernel-4-14-y</a></li>
+<li>[4] <a class="reference external" href="https://stackoverflow.com/questions/21740619/how-can-i-generate-kernel-headers-for-an-unknown-embedded-arm-system">https://stackoverflow.com/questions/21740619/how-can-i-generate-kernel-headers-for-an-unknown-embedded-arm-system</a></li>
+<li>[5] <a class="reference external" href="https://www.vultr.com/docs/how-to-change-your-hostname-on-debian">https://www.vultr.com/docs/how-to-change-your-hostname-on-debian</a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Xenomai on Beaglebone</a><ul>
+<li><a class="reference internal" href="#install-toolchain">Install toolchain</a></li>
+<li><a class="reference internal" href="#install-dependencies">Install dependencies</a></li>
+<li><a class="reference internal" href="#build-bootloader">Build bootloader</a></li>
+<li><a class="reference internal" href="#buid-kernel">Buid Kernel</a></li>
+<li><a class="reference internal" href="#prepare-sd-card">Prepare SD card</a></li>
+<li><a class="reference internal" href="#deploy-u-boot">Deploy u-boot</a></li>
+<li><a class="reference internal" href="#deploy-kernel">Deploy Kernel</a></li>
+<li><a class="reference internal" href="#additional-configurations">Additional configurations</a></li>
+<li><a class="reference internal" href="#install-xenomai-tools-and-libraries">Install Xenomai tools and libraries</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="linux-configuration.html"
+                        title="previous chapter">Linux Configuration</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../../Programming/gdb.html"
+                        title="next chapter">Using GDB Debugger</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../Programming/gdb.html" title="Using GDB Debugger"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="linux-configuration.html" title="Linux Configuration"
+             >previous</a> |</li>
+        <!-- <li class="nav-item nav-item-0"><a href="../../../../index.html">RDU-Wiki 1.0 documentation</a> &raquo;</li> -->
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">Main Page</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../../Application-Notes.html" >Application Notes</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2017, Ruixiang Du.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.7.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,105 @@
+Build Custom Linux
+==================
+
+Build customized Linux for Beaglebone Black[1]. The general building step for other ARM boards should be similar but specific details can be drastically different.
+
+Install toolchain
+^^^^^^^^^^^^^^^^^
+
+.. code-block:: bash
+
+   $ wget -c https://releases.linaro.org/components/toolchain/binaries/6.4-2018.05/arm-linux-gnueabihf/gcc-linaro-6.4.1-2018.05-x86_64_arm-linux-gnueabihf.tar.xz
+   $ tar xf gcc-linaro-6.4.1-2018.05-x86_64_arm-linux-gnueabihf.tar.xz
+
+Install dependencies
+^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: bash
+
+   $ sudo apt install bison flex lzop u-boot-tools
+
+Build bootloader
+^^^^^^^^^^^^^^^^
+
+.. code-block:: bash
+
+   $ git clone https://github.com/u-boot/u-boot
+   $ cd u-boot/
+   $ git checkout v2018.09 -b tmp
+
+   $ wget -c https://rcn-ee.com/repos/git/u-boot-patches/v2018.09/0001-am335x_evm-uEnv.txt-bootz-n-fixes.patch
+   $ wget -c https://rcn-ee.com/repos/git/u-boot-patches/v2018.09/0002-U-Boot-BeagleBone-Cape-Manager.patch
+ 
+   $ patch -p1 < 0001-am335x_evm-uEnv.txt-bootz-n-fixes.patch
+   $ patch -p1 < 0002-U-Boot-BeagleBone-Cape-Manager.patch
+
+   $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- distclean
+   $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- am335x_evm_defconfig
+   $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- 
+
+Buid Kernel
+^^^^^^^^^^^
+
+Download kernel source file
+
+.. code-block:: bash
+
+   $ git clone https://github.com/beagleboard/linux.git
+
+   # look for the desired branch, for example
+   $ git tag -l | grep 4.9
+
+   # checkout the desired version into a new branch, use "4.9.88-ti-xenomai-r107" as an example
+   $ git checkout 4.9.88-ti-xenomai-r107 -b tmp-4.9.88-ti-xenomai-r107
+
+Start the configuration menu and modify kernel options
+
+.. code-block:: bash
+
+   $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bb.org_defconfig 
+   $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- menuconfig
+
+Check the following configurations:
+
+.. code-block:: bash
+
+   * General setup ---> 
+    - Local version - append to kernel release : "-ti-xenomai-r107"
+    - Stack Protector buffer overflow detection: Disable 
+   * Kernel Features  --->
+    - Preemption Model : select "Preemptible Kernel (Low-Latency Desktop)"                           
+    - Timer frequency : change to 1000Hz
+    - [] Allow for memory compaction : Disable
+    - [] Contiguous Memory Allocator : Disable
+   * CPU Power Management  --->
+    - [] CPU Frequency scaling : Disable
+        
+   * Kernel hacking  --->
+    - [] KGDB: kernel debugger : Disable
+
+You could also enable Xenomai supported device drivers in the config.
+
+Build kernel image:
+
+.. code-block:: bash
+
+   $ make -j8 ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage dtbs
+   $ make -j8 ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- modules
+
+If you need to build uImage
+
+.. code-block:: bash
+
+   $ make -j8 ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- uImage LOADADDR=0x80008000
+
+You can also build debian packages for easier installation
+
+.. code-block:: bash
+
+   $ make -j8 ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- deb-pkg
+
+Otherwise, you could install to the SD card manually.
+
+Reference
+
+* [1] https://www.digikey.com/eewiki/display/linuxonarm/BeagleBone+Black
