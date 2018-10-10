@@ -1,0 +1,47 @@
+Online Courses
+==============
+
+Open Course
+------------
+
+* Coursera
+	- `Control of Mobile Robots <https://www.coursera.org/course/conrob>`_
+		Dr. Magnus Egerstedt, Georgia Institute of Technology
+	- `Algorithms: Design and Analysis, Part 1 <https://www.coursera.org/course/algo>`_
+		Tim Roughgarden, Stanford University
+* EdX
+	- `Artificial Intelligence <https://courses.edx.org/courses/BerkeleyX/CS188x_1/1T2013/info>`_
+		Dan Klein and Pieter Abbeel, University of California, Berkeley
+	- `Underactuated Robotics <https://courses.edx.org/courses/MITx/6.832x/3T2014/info>`_
+		Russ Tedrake, MIT
+	.. - `Dynamics <https://courses.edx.org/courses/MITx/2.03x/3T2013/info>`_
+		Multiple Professors, MIT
+* Udacity
+	- `Artificial Intelligence for Robotics: Programming a Robotic Car <https://www.udacity.com/course/cs373>`_
+		Sebastian Thrun, Standford University
+	.. - `Intro to Parallel Programming Using CUDA to Harness the Power of GPUs <https://www.udacity.com/course/cs344>`_
+		David Luebke,University of Virginia, John Owens, University of California, Davis
+.. * Iversity
+	- `Modelling and Simulation using MATLAB <https://iversity.org/en/my/courses/modelling-and-simulation-using-matlab/lesson_units>`_
+		multiple instructors from RheinMain University of Applied Sciences
+
+Course Site
+------------
+
+Computer Science
+
+* `IIT: CS 351: Systems Programming <http://moss.cs.iit.edu/cs351/>`_
+* `IIT: CS 450: Operating Systems <http://moss.cs.iit.edu/cs450/>`_
+* `Stanford: CS106L: Standard C++ Programming Laboratory <http://web.stanford.edu/class/cs106l/>`_
+
+Electrical & Computer Engineering
+
+* `Stanford: Convex Optimization <http://stanford.edu/~boyd/cvxbook/>`_
+* `Advanced Embedded System Design and Experiments <http://wiki.csie.ncku.edu.tw/embedded/schedule>`_
+
+Robotics
+
+* `Underactuated Robotics, Algorithms for Walking, Running, Swimming, Flying, and Manipulation <http://underactuated.csail.mit.edu/underactuated.html>`_
+* `Kalman and Bayesian Filters in Python <https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python>`_
+* `CMU: An Introduction to Physically Based Modeling <http://www.cs.cmu.edu/~baraff/pbm/pbm.html>`_
+.. * `WPI: RBE595/CS525 Motion Planning <http://users.wpi.edu/~dberenson/courses/spring2015motionplanning/index.html>`_

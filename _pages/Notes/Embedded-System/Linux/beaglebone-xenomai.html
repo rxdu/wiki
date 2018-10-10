@@ -83,9 +83,10 @@
             
   <div class="section" id="xenomai-on-beaglebone">
 <h1>Xenomai on Beaglebone<a class="headerlink" href="#xenomai-on-beaglebone" title="Permalink to this headline">¶</a></h1>
-<p>Build Xenomai-patched Linux for Beaglebone Black[1]. The general building step for other ARM boards should be similar but specific details can be drastically different.</p>
+<p>Build Xenomai-patched Linux for Beaglebone Black[1]. The general building steps for other ARM-based boards should be similar but specific details related to hardware can be drastically different.</p>
 <div class="section" id="install-toolchain">
 <h2>Install toolchain<a class="headerlink" href="#install-toolchain" title="Permalink to this headline">¶</a></h2>
+<p>If you use a pre-built root file system, make sure you’re using a compatible toolchain to compile bootloader and kernel.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ wget -c https://releases.linaro.org/components/toolchain/binaries/6.4-2018.05/arm-linux-gnueabihf/gcc-linaro-6.4.1-2018.05-x86_64_arm-linux-gnueabihf.tar.xz
 $ tar xf gcc-linaro-6.4.1-2018.05-x86_64_arm-linux-gnueabihf.tar.xz
 </pre></div>
@@ -114,7 +115,7 @@ $ make <span class="nv">ARCH</span><span class="o">=</span>arm <span class="nv">
 $ make <span class="nv">ARCH</span><span class="o">=</span>arm <span class="nv">CROSS_COMPILE</span><span class="o">=</span>arm-linux-gnueabihf-
 </pre></div>
 </div>
-<p>You should get “MLO”, “u-boot.img” at the root folder of u-boot after successful compilation.</p>
+<p>You should get “MLO”, “u-boot.img” in the root folder of u-boot after successful compilation.</p>
 </div>
 <div class="section" id="buid-kernel">
 <h2>Buid Kernel<a class="headerlink" href="#buid-kernel" title="Permalink to this headline">¶</a></h2>
@@ -133,7 +134,7 @@ $ git checkout <span class="m">4</span>.9.88-ti-xenomai-r107 -b tmp-4.9.88-ti-xe
 $ make <span class="nv">ARCH</span><span class="o">=</span>arm <span class="nv">CROSS_COMPILE</span><span class="o">=</span>arm-linux-gnueabihf- menuconfig
 </pre></div>
 </div>
-<p>Check the following configurations for Xenomai:</p>
+<p>Check the following configurations for Xenomai</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>* General setup ---&gt;
  - Local version - append to kernel release : <span class="s2">&quot;-ti-xenomai-r107&quot;</span>
  - Stack Protector buffer overflow detection: Disable
@@ -208,8 +209,9 @@ $ <span class="nb">export</span> <span class="nv">kernel_version</span><span cla
 </div>
 <p>Make sure you specify the right path to the rootfs in “/boot/uEnv.txt”. In the uEnv.txt shown above, it is “root=/dev/mmcblk0p2”.</p>
 </div>
-<div class="section" id="deploy-kernel">
-<h2>Deploy Kernel<a class="headerlink" href="#deploy-kernel" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="root-file-system">
+<h2>Root file system<a class="headerlink" href="#root-file-system" title="Permalink to this headline">¶</a></h2>
+<p>You can use tools like buildroot to make your customized root file system or you can use debootstrap or multistrap to build your Debian/Ubuntu distribution. Here I use the pre-built debian for Beaglebone.</p>
 <p>Copy pre-built root file system to the SD card</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ wget -c https://rcn-ee.com/rootfs/eewiki/minfs/debian-9.5-minimal-armhf-2018-07-30.tar.xz
 $ tar xf debian-9.5-minimal-armhf-2018-07-30.tar.xz
@@ -219,6 +221,9 @@ $ sudo chown root:root /media/rootfs/
 $ sudo chmod <span class="m">755</span> /media/rootfs/
 </pre></div>
 </div>
+</div>
+<div class="section" id="deploy-kernel">
+<h2>Deploy kernel<a class="headerlink" href="#deploy-kernel" title="Permalink to this headline">¶</a></h2>
 <p>Install kernel and device tree:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># kernel</span>
 $ sudo cp -v ./arch/arm/boot/zImage <span class="si">${</span><span class="nv">SD_ROOTFS</span><span class="si">}</span>/boot/vmlinuz-<span class="si">${</span><span class="nv">kernel_version</span><span class="si">}</span>
@@ -334,7 +339,8 @@ RTD<span class="p">|</span>      <span class="m">4</span>.040<span class="p">|</
 <li><a class="reference internal" href="#buid-kernel">Buid Kernel</a></li>
 <li><a class="reference internal" href="#prepare-sd-card">Prepare SD card</a></li>
 <li><a class="reference internal" href="#deploy-u-boot">Deploy u-boot</a></li>
-<li><a class="reference internal" href="#deploy-kernel">Deploy Kernel</a></li>
+<li><a class="reference internal" href="#root-file-system">Root file system</a></li>
+<li><a class="reference internal" href="#deploy-kernel">Deploy kernel</a></li>
 <li><a class="reference internal" href="#additional-configurations">Additional configurations</a></li>
 <li><a class="reference internal" href="#install-xenomai-tools-and-libraries">Install Xenomai tools and libraries</a></li>
 </ul>

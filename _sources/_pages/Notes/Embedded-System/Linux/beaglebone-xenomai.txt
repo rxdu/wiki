@@ -1,10 +1,12 @@
 Xenomai on Beaglebone
 =====================
 
-Build Xenomai-patched Linux for Beaglebone Black[1]. The general building step for other ARM boards should be similar but specific details can be drastically different.
+Build Xenomai-patched Linux for Beaglebone Black[1]. The general building steps for other ARM-based boards should be similar but specific details related to hardware can be drastically different.
 
 Install toolchain
 ^^^^^^^^^^^^^^^^^
+
+If you use a pre-built root file system, make sure you're using a compatible toolchain to compile bootloader and kernel.
 
 .. code-block:: bash
 
@@ -37,7 +39,7 @@ Build bootloader
    $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- am335x_evm_defconfig
    $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- 
 
-You should get "MLO", "u-boot.img" at the root folder of u-boot after successful compilation.
+You should get "MLO", "u-boot.img" in the root folder of u-boot after successful compilation.
 
 Buid Kernel
 ^^^^^^^^^^^
@@ -61,7 +63,7 @@ Start the configuration menu and modify kernel options
    $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bb.org_defconfig 
    $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- menuconfig
 
-Check the following configurations for Xenomai:
+Check the following configurations for Xenomai
 
 .. code-block:: bash
 
@@ -150,8 +152,10 @@ You need to copy "MLO", "u-boot.img", and the "uEnv.txt" into the /boot partitio
 
 Make sure you specify the right path to the rootfs in "/boot/uEnv.txt". In the uEnv.txt shown above, it is "root=/dev/mmcblk0p2".
 
-Deploy Kernel
-^^^^^^^^^^^^^
+Root file system
+^^^^^^^^^^^^^^^^
+
+You can use tools like buildroot to make your customized root file system or you can use debootstrap or multistrap to build your Debian/Ubuntu distribution. Here I use the pre-built debian for Beaglebone.
 
 Copy pre-built root file system to the SD card
 
@@ -163,6 +167,9 @@ Copy pre-built root file system to the SD card
    $ sync
    $ sudo chown root:root /media/rootfs/
    $ sudo chmod 755 /media/rootfs/
+
+Deploy kernel
+^^^^^^^^^^^^^
 
 Install kernel and device tree:
 

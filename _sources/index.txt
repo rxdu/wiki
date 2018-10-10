@@ -13,7 +13,6 @@ _________________
 .. toctree::
    :maxdepth: 1
 
-   /_pages/Notes/HOWTOs
    /_pages/Notes/Application-Notes
 
 Projects
@@ -35,8 +34,8 @@ ________
    :maxdepth: 1
 
    /_pages/Knowledge-Base/Robotics/Robotics
-   /_pages/Knowledge-Base/Programming/Programming
-   /_pages/Knowledge-Base/Embedded-System/Embedded-System
+   /_pages/Knowledge-Base/Computer-Science/Computer-Science
+   /_pages/Knowledge-Base/Literature/Literature
 
 Resource
 ========
@@ -45,10 +44,10 @@ ________
 .. toctree::
    :maxdepth: 1
 
-   /_pages/Resource/online_course
    /_pages/Resource/software
-   /_pages/Resource/literature
-   /_pages/Resource/guide
+   /_pages/Resource/online-course
+   /_pages/Resource/tech-blog
+   /_pages/Resource/graduate-guide
 
 ..  Important Dates
     ===============

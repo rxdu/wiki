@@ -1,0 +1,38 @@
+Embedded System
+===============
+
+.. contents::
+   :depth: 2
+   :local:
+
+Microcontroller
+---------------
+
+I. Programming Model
+^^^^^^^^^^^^^^^^^^^^
+
+II. Bare Metal Software
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Embedded software without using an OS.
+
+III. Real-Time Operating Systems
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+RTOS kernels and complete RTOS.
+
+IV. Reference Materials
+^^^^^^^^^^^^^^^^^^^^^^^
+
+* [1] `Embedded Programming using the GNU Toolchain <http://www.bravegnu.org/gnu-eprog/>`_
+* [2] `TEXT, DATA and BSS: Code and Data Size Explained <http://mcuoneclipse.com/2013/04/14/text-data-and-bss-code-and-data-size-explained/>`_
+
+Single-Board Computer
+---------------------
+
+Embedded Linux
+^^^^^^^^^^^^^^
+
+Realtime Linux
+^^^^^^^^^^^^^^
+
