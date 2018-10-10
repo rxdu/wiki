@@ -1,24 +1,65 @@
-Referred Literature
-===================
+Literature
+==========
 
-Books
------
+Mathematics
+^^^^^^^^^^^
+
+Linear Algebra 
+
+* `Linear Algebra Done Right <https://www.springer.com/us/book/9783319110790>`_, by Axler, Sheldon 
+* `Introduction to Applied Linear Algebra <https://web.stanford.edu/~boyd/vmls/>`_, by Stephen Boyd and Lieven Vandenberghe
+
+Analysis
+
+* `Principles of Mathematical Analysis <https://www.mheducation.com/highered/product/principles-mathematical-analysis-rudin/M007054235X.html>`_, by Walter Rudin
+* `Introductory Functional Analysis with Applications <https://www.wiley.com/en-us/Introductory+Functional+Analysis+with+Applications-p-9780471504597>`_, by Erwin Kreyszig
+
+Computational
+
+* `Numerical Analysis <https://cengage.com.au/product/title/numerical-analysis/isbn/9781305253667>`_, by Richard L. Burden and J. Douglas Faires
+* `Convex Optimization <https://web.stanford.edu/~boyd/cvxbook/>`_, by Stephen Boyd and Lieven Vandenberghe
+* `Applied Mathematical Programming <http://web.mit.edu/15.053/www/AMP.htm>`_, by Bradley, Hax, and Magnanti
+
+Systems and Control
+^^^^^^^^^^^^^^^^^^^
+
+* `Calculus of Variations and Optimal Control Theory: A Concise Introduction <http://liberzon.csl.illinois.edu/teaching/cvoc/cvoc.html>`_, by Daniel Liberzon
+* `Optimal Control Theory: An Introduction <http://store.doverpublications.com/0486434842.html>`_, by Donald E. Kirk
+
+* `Markov Models for Pattern Recognition: From Theory to Applications <https://www.springer.com/us/book/9781447163077>`_, by Fink, Gernot A.
 
 Robotics and Artificial Intelligence
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Introductory
+
 * `Robot Modeling and Control <http://www.wiley.com/WileyCDA/WileyTitle/productCd-EHEP000518.html>`_, by Mark W. Spong, Seth Hutchinson, M. Vidyasagar
+* `Robotics: Modelling, Planning and Control <http://www.springer.com/us/book/9781846286414>`_, by Bruno Siciliano, Lorenzo Sciavicco, Luigi Villani, Giuseppe Oriolo
 * `Introduction to Autonomous Mobile Robots <http://www.mobilerobots.ethz.ch/>`_, by Roland Siegwart, Illah R. Nourbakhsh, Davide Scaramuzza
 * `Control of Robot Manipulators in Joint Space <http://www.springer.com/us/book/9781852339944>`_, by Rafael Kelly, Victor Santibáñez Davila, Julio Antonio Loría Perez
-* `Robotics: Modelling, Planning and Control <http://www.springer.com/us/book/9781846286414>`_, by Bruno Siciliano, Lorenzo Sciavicco, Luigi Villani, Giuseppe Oriolo
+* `Artificial Intelligence: A Modern Approach <http://aima.cs.berkeley.edu/>`_, by Stuart J. Russell, Peter Norvig
+
+Motion Planning
 
 * `Planning Algorithms <http://planning.cs.uiuc.edu/>`_, by Steven M. LaValle
 * `Probabilistic Robotics <http://www.probabilistic-robotics.org/>`_, by Sebastian Thrun, Dieter Fox
 * `Principles of Robot Motion: Theory, Algorithms, and Implementations <http://biorobotics.ri.cmu.edu/book/>`_, by H. Choset, K. M. Lynch, S. Hutchinson, G. Kantor, W. Burgard, L. E. Kavraki and S. Thrun
 
+Publications
 
-Computer Science
-^^^^^^^^^^^^^^^^
+* `Top Publications of Robotics from Google Scholar <https://scholar.google.com/citations?view_op=top_venues&hl=en&vq=eng_robotics>`_
 
-* `Artificial Intelligence: A Modern Approach <http://aima.cs.berkeley.edu/>`_, by Stuart J. Russell, Peter Norvig
+Programming
+^^^^^^^^^^^
+
+Foundations
+
 * `Computer Systems: A Programmer's Perspective <http://csapp.cs.cmu.edu/>`_, by Randal E. Bryant and David R. O'Hallaron
+* `Data Structures and Algorithm Analysis in C++, 4th Edition <https://www.pearson.com/us/higher-education/program/Weiss-Data-Structures-and-Algorithm-Analysis-in-C-4th-Edition/PGM148299.html>`_, by Mark A. Weiss
+* `The Algorithm Design Manual, 2nd Edition`_, by Steven Skiena
+
+C++
+
+* `Effective Modern C++: 42 Specific Ways to Improve Your Use of C++11 and C++14 <http://shop.oreilly.com/product/0636920033707.do>`_, by Scott Meyers
+* `C++ Templates: The Complete Guide, 2nd Edition <http://www.tmplbook.com/>`_, by David Vandevoorde, Nicolai M. Josuttis, and Douglas Gregor
+* `The Definitive C++ Book Guide and List <http://stackoverflow.com/questions/388242/the-definitive-c-book-guide-and-list>`_

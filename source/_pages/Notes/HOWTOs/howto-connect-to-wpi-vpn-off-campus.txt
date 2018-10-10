@@ -5,7 +5,7 @@ How to Connect to WPI VPN in Linux
 
 (Updated on 11/05/2017 for Ubuntu 16.04 64-bit)
 
-You may need to use the WPI VPN to access some campus network resources or to obtain an free academic license, such as Gurobi. It's easy to do so when your computer is connected to the campus network. But if not, you will need to solve two problems to get one: connecting to campus network through VPN and route the network traffic through the VPN channel.
+You may need to use the WPI VPN to access some campus network resources or to obtain an free academic license for software such as Gurobi. It's easy to do so when you're using your computer on campus. But if not, you will need to solve two problems to get one: connecting to campus network through VPN and route the network traffic through the VPN channel.
 
 Connecting to Campus Network
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -16,7 +16,7 @@ Install the Pulse Secure client from here (https://www.pulsesecure.net/trynow/cl
 
 Note that you will have install necessary dependencies to run this app. If you try to start the client app by clicking the icon and nothing happens, you could run the app from a terminal to get more information. It's likely that some dependencies are missing so that the app won't start.
 
-(The below steps might be obsolete and will not be updated anymore)
+(The instructions below are obsolete and will not be updated anymore.)
 
 WPI uses Juniper Network Connect Client to establish a VPN channel. For Ubuntu 64-bit, it was difficult to make the client work before this `official solution <http://kb.juniper.net/InfoCenter/index?page=content&id=KB25230>`_ is provided recently.
 

@@ -1,5 +1,5 @@
-Programming
-===========
+Computer Science
+================
 
 .. contents::
    :depth: 2
