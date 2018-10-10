@@ -33,6 +33,7 @@ Computer Science
 * `IIT: CS 351: Systems Programming <http://moss.cs.iit.edu/cs351/>`_
 * `IIT: CS 450: Operating Systems <http://moss.cs.iit.edu/cs450/>`_
 * `Stanford: CS106L: Standard C++ Programming Laboratory <http://web.stanford.edu/class/cs106l/>`_
+* `CSE 373 - Analysis of Algorithms <https://www3.cs.stonybrook.edu/~skiena/373/>`_
 
 Electrical & Computer Engineering
 
