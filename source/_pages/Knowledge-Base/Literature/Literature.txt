@@ -56,7 +56,7 @@ Foundations
 
 * `Computer Systems: A Programmer's Perspective <http://csapp.cs.cmu.edu/>`_, by Randal E. Bryant and David R. O'Hallaron
 * `Data Structures and Algorithm Analysis in C++, 4th Edition <https://www.pearson.com/us/higher-education/program/Weiss-Data-Structures-and-Algorithm-Analysis-in-C-4th-Edition/PGM148299.html>`_, by Mark A. Weiss
-* `The Algorithm Design Manual, 2nd Edition`_, by Steven Skiena
+* `The Algorithm Design Manual, 2nd Edition <http://www.algorist.com/>`_, by Steven Skiena
 
 C++
 
