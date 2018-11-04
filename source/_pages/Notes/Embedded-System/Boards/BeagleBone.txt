@@ -148,12 +148,6 @@ The solution is to add a symbolic link of clpru executable to /usr/share/ti/cgt-
 
 See [6] for more discussions on this issue and the above solution is from this page.
 
-Buid u-boot
-^^^^^^^^^^^
-
-Buid Kernel
-^^^^^^^^^^^
-
 Reference
 
 * [1] https://github.com/beagleboard/beaglebone-blue/wiki/Flashing-firmware

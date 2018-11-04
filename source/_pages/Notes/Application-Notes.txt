@@ -27,6 +27,7 @@ Linux System
    :maxdepth: 1
 
    /_pages/Notes/Programming/gdb
+   /_pages/Notes/Programming/valgrind
 
 **HOWTOs**
 
