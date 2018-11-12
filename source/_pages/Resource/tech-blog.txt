@@ -1,6 +1,11 @@
 Technical Blogs
 ===============
 
+Robotics
+^^^^^^^^
+
+* Rodney Brooks: https://rodneybrooks.com/blog/
+
 Programming
 ^^^^^^^^^^^
 

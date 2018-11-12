@@ -58,6 +58,12 @@ Open-source Software
 * Matplotlib - https://matplotlib.org/
 	*"Matplotlib is a Python 2D plotting library which produces publication quality figures in a variety of hardcopy formats and interactive environments across platforms."*
 
+* TBB - https://www.threadingbuildingblocks.org/
+    *"Threading Building Blocks (TBB) lets you easily write parallel C++ programs that take full advantage of multicore performance, that are portable and composable, and that have future-proof scalability."*
+
+* OpenMP - https://www.openmp.org/
+    *"The OpenMP API specification for parallel programming"*
+
 .. * GNU Plot - http://www.gnuplot.info/
 	*"Gnuplot is a portable command-line driven graphing utility for Linux, OS/2, MS Windows, OSX, VMS, and many other platforms. The source code is copyrighted but freely distributed (i.e., you don't have to pay for it). It was originally created to allow scientists and students to visualize mathematical functions and data interactively, but has grown to support many non-interactive uses such as web scripting."*
 
