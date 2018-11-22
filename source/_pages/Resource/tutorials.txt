@@ -1,0 +1,4 @@
+Tutorials
+=========
+
+* `Guide into OpenMP: Easy multithreading programming for C++ <https://bisqwit.iki.fi/story/howto/openmp/#Syntax>`_
