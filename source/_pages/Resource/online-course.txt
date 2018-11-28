@@ -28,6 +28,10 @@ Open Course
 Course Site
 ------------
 
+Math
+
+* `Linear Algebra by Zhicheng Zhou <https://ccjou.wordpress.com/>`_
+
 Computer Science
 
 * `IIT: CS 351: Systems Programming <http://moss.cs.iit.edu/cs351/>`_

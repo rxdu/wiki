@@ -1,5 +1,5 @@
-Computer Science
-================
+Computing
+=========
 
 .. contents::
    :depth: 2

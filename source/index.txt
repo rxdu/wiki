@@ -34,8 +34,8 @@ ________
    :maxdepth: 1
 
    /_pages/Knowledge-Base/Robotics/Robotics
-   /_pages/Knowledge-Base/Computer-Science/Computer-Science
-   /_pages/Knowledge-Base/Literature/Literature
+   /_pages/Knowledge-Base/Computing/Computing
+   /_pages/Knowledge-Base/Literature/BookList
 
 Resource
 ========

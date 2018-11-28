@@ -26,6 +26,18 @@ Open-source Software
 * The Open Motion Planning Library (OMPL) - http://ompl.kavrakilab.org/
 	*"OMPL, the Open Motion Planning Library, consists of many state-of-the-art sampling-based motion planning algorithms."*
 
+* Drake - https://drake.mit.edu/
+    *"A planning, control and analysis toolbox for nonlinear dynamical systems"*
+
+* Control Toolbox - https://bitbucket.org/adrlab/ct/wiki/Home
+    *"An open-source C++ library for efficient modelling, control, estimation, trajectory optimization and model predictive control."*
+
+* CARLA - http://carla.org/
+    *"Open-source simulator for autonomous driving research."*
+
+* SUMO - https://www.dlr.de/ts/en/desktopdefault.aspx/tabid-9883/16931_read-41000/
+    *"SUMO allows modelling of intermodal traffic systems including road vehicles, public transport and pedestrians."*
+
 * Additional robotics libraries: https://github.com/jslee02/awesome-robotics-libraries
 
 **Communication**
@@ -33,6 +45,9 @@ Open-source Software
 
 * Lightweight Communications and Marshalling (LCM) - https://lcm-proj.github.io/
 	*"LCM is a set of libraries and tools for message passing and data marshalling, targeted at real-time systems where high-bandwidth and low latency are critical."*
+
+* FastRTPS - https://github.com/eProsima/Fast-RTPS
+    *"eprosima Fast RTPS is a C++ implementation of the RTPS (Real Time Publish Subscribe) protocol, which provides publisher-subscriber communications over unreliable transports such as UDP, as defined and maintained by the Object Management Group (OMG) consortium"*
 
 .. * Low Level Skeleton Library for Communication on GNU/Linux platforms - https://github.com/intel-iot-devkit/mraa
 	*"Libmraa is a C/C++ library with bindings to javascript & python to interface with the IO on Galileo, Edison & other platforms, with a structured and sane API where port names/numbering matches the board that you are on."*
@@ -42,9 +57,6 @@ Open-source Software
 
 * Eigen - http://eigen.tuxfamily.org/index.php?title=Main_Page
 	*"Eigen is a C++ template library for linear algebra: matrices, vectors, numerical solvers, and related algorithms."*
-
-.. * OpenGL Mathematics - http://glm.g-truc.net/0.9.6/index.html
-	*"OpenGL Mathematics (GLM) is a header only C++ mathematics library for graphics software based on the OpenGL Shading Language (GLSL) specifications."*
 
 * GSL - GNU Scientific Library - http://www.gnu.org/software/gsl/
 	*"The GNU Scientific Library (GSL) is a numerical library for C and C++ programmers. It is free software under the GNU General Public License. The library provides a wide range of mathematical routines such as random number generators, special functions and least-squares fitting. There are over 1000 functions in total with an extensive test suite."*
@@ -64,6 +76,12 @@ Open-source Software
 * OpenMP - https://www.openmp.org/
     *"The OpenMP API specification for parallel programming"*
 
+* Heat Method for Distance Computation - http://www.cs.cmu.edu/~kmcrane/Projects/HeatMethod/index.html
+    *"The heat method for solving the single- or multiple-source shortest path problem on both flat and curved domains."*
+
+.. * OpenGL Mathematics - http://glm.g-truc.net/0.9.6/index.html
+	*"OpenGL Mathematics (GLM) is a header only C++ mathematics library for graphics software based on the OpenGL Shading Language (GLSL) specifications."*
+
 .. * GNU Plot - http://www.gnuplot.info/
 	*"Gnuplot is a portable command-line driven graphing utility for Linux, OS/2, MS Windows, OSX, VMS, and many other platforms. The source code is copyrighted but freely distributed (i.e., you don't have to pay for it). It was originally created to allow scientists and students to visualize mathematical functions and data interactively, but has grown to support many non-interactive uses such as web scripting."*
 
@@ -79,14 +97,14 @@ Open-source Software
 **Operating Systems**
 ^^^^^^^^^^^^^^^^^^^^^
 
+* PREEMPT_RT - https://wiki.linuxfoundation.org/realtime/start
+    *Patch to improve the realtime performance of Linux kernel*
+
 * Xenomai - https://xenomai.org/
 	*"Xenomai is about making various real-time operating system APIs available to Linux-based platforms. When the target Linux kernel cannot meet the requirements with respect to response time constraints, Xenomai can also supplement it for delivering stringent real-time guarantees."*
 
 **Debugging**
 ^^^^^^^^^^^^^
-
-.. * Pantheios - http://www.pantheios.org/
-	*"Pantheios is an Open Source C/C++ Diagnostic Logging API library, offering an optimal combination of 100% type-safety, efficiency, genericity and extensibility."*
 
 * Valgrind - http://valgrind.org
 	*"Valgrind is an instrumentation framework for building dynamic analysis tools. There are Valgrind tools that can automatically detect many memory management and threading bugs, and profile your programs in detail. You can also use Valgrind to build new tools."*
@@ -94,5 +112,11 @@ Open-source Software
 * Spdlog - https://github.com/gabime/spdlog
 	*"Very fast, header only, C++ logging library."*
 
+.. * Pantheios - http://www.pantheios.org/
+	*"Pantheios is an Open Source C/C++ Diagnostic Logging API library, offering an optimal combination of 100% type-safety, efficiency, genericity and extensibility."*
+
 **Miscellaneous**
 ^^^^^^^^^^^^^^^^^
+
+* Dear ImGui - https://github.com/ocornut/imgui
+    *"Bloat-free Immediate Mode Graphical User interface for C++ with minimal dependencies"*

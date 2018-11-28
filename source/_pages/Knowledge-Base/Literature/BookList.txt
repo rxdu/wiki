@@ -1,5 +1,5 @@
-Literature
-==========
+Book List
+=========
 
 Mathematics
 ^^^^^^^^^^^
@@ -7,6 +7,7 @@ Mathematics
 Linear Algebra 
 
 * `Linear Algebra Done Right <https://www.springer.com/us/book/9783319110790>`_, by Axler, Sheldon 
+* `Linear Algebra Done Wrong <https://www.math.brown.edu/~treil/papers/LADW/LADW.html>`_, by Sergei Treil
 * `Introduction to Applied Linear Algebra <https://web.stanford.edu/~boyd/vmls/>`_, by Stephen Boyd and Lieven Vandenberghe
 
 Analysis
@@ -39,11 +40,17 @@ Introductory
 * `Control of Robot Manipulators in Joint Space <http://www.springer.com/us/book/9781852339944>`_, by Rafael Kelly, Victor Santibáñez Davila, Julio Antonio Loría Perez
 * `Artificial Intelligence: A Modern Approach <http://aima.cs.berkeley.edu/>`_, by Stuart J. Russell, Peter Norvig
 
+Perception & Estimation
+
+* `Probabilistic Robotics <http://www.probabilistic-robotics.org/>`_, by Sebastian Thrun, Wolfram Burgard, Dieter Fox 
+* `State Estimation for Robotics <http://asrl.utias.utoronto.ca/~tdb/>`_, by Tim Barfoot 
+* `Optimal State Estimation: Kalman, H Infinity, and Nonlinear Approaches <https://www.wiley.com/en-us/Optimal+State+Estimation%3A+Kalman%2C+H+Infinity%2C+and+Nonlinear+Approaches-p-9780471708582>`_, by Dan Simon
+
 Motion Planning
 
-* `Planning Algorithms <http://planning.cs.uiuc.edu/>`_, by Steven M. LaValle
-* `Probabilistic Robotics <http://www.probabilistic-robotics.org/>`_, by Sebastian Thrun, Dieter Fox
+* `Robot Motion Planning <https://www.springer.com/us/book/9780792392064>`_, by Latombe, Jean-Claude
 * `Principles of Robot Motion: Theory, Algorithms, and Implementations <http://biorobotics.ri.cmu.edu/book/>`_, by H. Choset, K. M. Lynch, S. Hutchinson, G. Kantor, W. Burgard, L. E. Kavraki and S. Thrun
+* `Planning Algorithms <http://planning.cs.uiuc.edu/>`_, by Steven M. LaValle
 
 Publications
 

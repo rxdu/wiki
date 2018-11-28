@@ -24,7 +24,7 @@ Main parts for my car:
 - `FrSky Taranis X9D Plus 2.4GHz ACCST Radio (Mode 2) <https://www.getfpv.com/frsky-taranis-x9d-plus-2-4ghz-accst-radio-mode-2.html?gclid=Cj0KCQjwx8fOBRD7ARIsAPVq-Nk5OHcIxFCXHjBQpzXuEv4WKaOzvbYtZkZCUayACJXc01fZ0Qzym1YaAvnWEALw_wcB>`_
 - `FrSky XSR 2.4GHz 16CH ACCST Receiver S-Bus CPPM Output <https://www.amazon.com/gp/product/B01HZB6XTI/ref=oh_aui_detailpage_o06_s00?ie=UTF8&psc=1>`_
 
-*Note*: 1. Some servos may expect control signals other than PWM, for example SBUS. For simplicity, only PWM servos is               planned to be supported by the firmware.
+*Note*: 1. Some servos may expect control signals other than PWM, for example SBUS. For simplicity, only PWM servos is planned to be supported by the firmware.
         2. I use FrSky Taranis radio because I own one for my quadrotors. It is used for manual control of the car and emergency brake during autonomous driving. You need at least 2 channels to control a car(steering and throttle). But more than 2 may be used in the firmware for arm/disarm, mode switch etc.
         3. You can optionally upgrade some parts of the chassis. Especially the upgrade of aluminum front C-Hub carriers is highly recommended.
 
@@ -143,13 +143,13 @@ a. Firmware
 
 A microcontroller is used to ensure the reliability of the low-level control. It's desirable that you could still control your RC car with the remote controller even in the extreme situations when the single-board computer running Linux shuts down or your high-level control algorithms go crazy. It's a lot easier to make a reliable microcontroller system with only low-level functionalities. 
 
-I did some experiments to evaluate how I could reuse opensource flight control code so that I don't have to implement functions like motor control, PWM receiver decoding, IMU data collection etc for a microcontroller by myself. At first I tried to port dRonin firmware stack to Pixracer, but I counldn't make it work as reliably as a stock version would do on a quadrotor. (This process helped me to get a lot more familar with the openpilot flight stack though.) Then I tried to setup Pixracer with PX4 and it didn't take a lot of efforts to realize basic remote control. But I don't really like the complexity of PX4 and I feel it would be a pain for the maintenance when I want to do more and more customizations in the long run. Additionally I had to add an additional board for CAN bus and hall sensor output processing to avoid getting significantly involved in the PX4 firmware implementation details. The two-board setup works but I don't like it either. It requires me to put two MCU boards, which does not only increases hardware and firmware complexity but also decreases system reliability. The best choice seems to be using the Pixracer with custom firmware and only reuse code at module level, compared to adopting the whole system architecture.
+I did some experiments to evaluate how I could reuse opensource flight control code so that I don't have to implement functions like motor control, PWM receiver decoding, IMU data collection etc. for a microcontroller by myself. At first I tried to port dRonin firmware stack to Pixracer, but I counldn't make it work as reliably as how a stock version would do on a quadrotor. (This process helped me to get a lot more familar with the openpilot flight stack though.) Then I tried to setup Pixracer with PX4 and it didn't take a lot of efforts to realize basic remote control. But I don't really like the complexity of PX4 and I feel it would be a pain for the maintenance when I want to do more and more customizations in the long run. Additionally I had to add an additional board for CAN bus and hall sensor output processing to avoid getting significantly involved in the PX4 firmware implementation details. The two-board setup works but I don't like it either. It requires me to put two MCU boards, which does not only increases hardware and firmware complexity but also decreases system reliability. The best choice seems to be using the Pixracer with custom firmware and only reuse code at module level, compared to adopting the whole system architecture.
 
 The following hardware-related functions need to be implemented:
 
 * PWM output * 2: one for servo, one for DC motor
 * Input capture: 3-channel hall sensor output, could use the hall sensor interface of STM32
-* PPM decoding: remote control signal
+* PPM/SBUS decoding: remote control signal
 * CAN bus/serial: communication with SBC
 * (IMU data collection)
 
