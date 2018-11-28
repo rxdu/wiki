@@ -47,7 +47,7 @@
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="top" title="RDU-Wiki 1.0 documentation" href="../../../index.html" />
     <link rel="next" title="Build Your Own Quadrotor" href="../Build-Your-Own-Quadrotor/Build-Your-Own-Quadrotor.html" />
-    <link rel="prev" title="Using GDB Debugger" href="../../Notes/Software/gdb.html" />
+    <link rel="prev" title="How to Connect to WPI VPN in Linux" href="../../Notes/HOWTOs/howto-connect-to-wpi-vpn-off-campus.html" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <!--[if lte IE 6]>
@@ -67,7 +67,7 @@
           <a href="../Build-Your-Own-Quadrotor/Build-Your-Own-Quadrotor.html" title="Build Your Own Quadrotor"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="../../Notes/Software/gdb.html" title="Using GDB Debugger"
+          <a href="../../Notes/HOWTOs/howto-connect-to-wpi-vpn-off-campus.html" title="How to Connect to WPI VPN in Linux"
              accesskey="P">previous</a> |</li>
         <!-- <li class="nav-item nav-item-0"><a href="../../../index.html">RDU-Wiki 1.0 documentation</a> &raquo;</li> -->
         <li class="nav-item nav-item-0"><a href="../../../index.html">Main Page</a> &raquo;</li> 
@@ -121,7 +121,7 @@
 <li><a class="reference external" href="https://www.amazon.com/gp/product/B01HZB6XTI/ref=oh_aui_detailpage_o06_s00?ie=UTF8&amp;psc=1">FrSky XSR 2.4GHz 16CH ACCST Receiver S-Bus CPPM Output</a></li>
 </ul>
 <dl class="docutils">
-<dt><em>Note</em>: 1. Some servos may expect control signals other than PWM, for example SBUS. For simplicity, only PWM servos is               planned to be supported by the firmware.</dt>
+<dt><em>Note</em>: 1. Some servos may expect control signals other than PWM, for example SBUS. For simplicity, only PWM servos is planned to be supported by the firmware.</dt>
 <dd><ol class="first last arabic simple" start="2">
 <li>I use FrSky Taranis radio because I own one for my quadrotors. It is used for manual control of the car and emergency brake during autonomous driving. You need at least 2 channels to control a car(steering and throttle). But more than 2 may be used in the firmware for arm/disarm, mode switch etc.</li>
 <li>You can optionally upgrade some parts of the chassis. Especially the upgrade of aluminum front C-Hub carriers is highly recommended.</li>
@@ -243,12 +243,12 @@
 <div class="section" id="a-firmware">
 <h3><a class="toc-backref" href="#id14">a. Firmware</a><a class="headerlink" href="#a-firmware" title="Permalink to this headline">¶</a></h3>
 <p>A microcontroller is used to ensure the reliability of the low-level control. It’s desirable that you could still control your RC car with the remote controller even in the extreme situations when the single-board computer running Linux shuts down or your high-level control algorithms go crazy. It’s a lot easier to make a reliable microcontroller system with only low-level functionalities.</p>
-<p>I did some experiments to evaluate how I could reuse opensource flight control code so that I don’t have to implement functions like motor control, PWM receiver decoding, IMU data collection etc for a microcontroller by myself. At first I tried to port dRonin firmware stack to Pixracer, but I counldn’t make it work as reliably as a stock version would do on a quadrotor. (This process helped me to get a lot more familar with the openpilot flight stack though.) Then I tried to setup Pixracer with PX4 and it didn’t take a lot of efforts to realize basic remote control. But I don’t really like the complexity of PX4 and I feel it would be a pain for the maintenance when I want to do more and more customizations in the long run. Additionally I had to add an additional board for CAN bus and hall sensor output processing to avoid getting significantly involved in the PX4 firmware implementation details. The two-board setup works but I don’t like it either. It requires me to put two MCU boards, which does not only increases hardware and firmware complexity but also decreases system reliability. The best choice seems to be using the Pixracer with custom firmware and only reuse code at module level, compared to adopting the whole system architecture.</p>
+<p>I did some experiments to evaluate how I could reuse opensource flight control code so that I don’t have to implement functions like motor control, PWM receiver decoding, IMU data collection etc. for a microcontroller by myself. At first I tried to port dRonin firmware stack to Pixracer, but I counldn’t make it work as reliably as how a stock version would do on a quadrotor. (This process helped me to get a lot more familar with the openpilot flight stack though.) Then I tried to setup Pixracer with PX4 and it didn’t take a lot of efforts to realize basic remote control. But I don’t really like the complexity of PX4 and I feel it would be a pain for the maintenance when I want to do more and more customizations in the long run. Additionally I had to add an additional board for CAN bus and hall sensor output processing to avoid getting significantly involved in the PX4 firmware implementation details. The two-board setup works but I don’t like it either. It requires me to put two MCU boards, which does not only increases hardware and firmware complexity but also decreases system reliability. The best choice seems to be using the Pixracer with custom firmware and only reuse code at module level, compared to adopting the whole system architecture.</p>
 <p>The following hardware-related functions need to be implemented:</p>
 <ul class="simple">
 <li>PWM output * 2: one for servo, one for DC motor</li>
 <li>Input capture: 3-channel hall sensor output, could use the hall sensor interface of STM32</li>
-<li>PPM decoding: remote control signal</li>
+<li>PPM/SBUS decoding: remote control signal</li>
 <li>CAN bus/serial: communication with SBC</li>
 <li>(IMU data collection)</li>
 </ul>
@@ -291,8 +291,8 @@
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="../../Notes/Software/gdb.html"
-                        title="previous chapter">Using GDB Debugger</a></p>
+  <p class="topless"><a href="../../Notes/HOWTOs/howto-connect-to-wpi-vpn-off-campus.html"
+                        title="previous chapter">How to Connect to WPI VPN in Linux</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="../Build-Your-Own-Quadrotor/Build-Your-Own-Quadrotor.html"
                         title="next chapter">Build Your Own Quadrotor</a></p>
@@ -323,7 +323,7 @@
           <a href="../Build-Your-Own-Quadrotor/Build-Your-Own-Quadrotor.html" title="Build Your Own Quadrotor"
              >next</a> |</li>
         <li class="right" >
-          <a href="../../Notes/Software/gdb.html" title="Using GDB Debugger"
+          <a href="../../Notes/HOWTOs/howto-connect-to-wpi-vpn-off-campus.html" title="How to Connect to WPI VPN in Linux"
              >previous</a> |</li>
         <!-- <li class="nav-item nav-item-0"><a href="../../../index.html">RDU-Wiki 1.0 documentation</a> &raquo;</li> -->
         <li class="nav-item nav-item-0"><a href="../../../index.html">Main Page</a> &raquo;</li> 

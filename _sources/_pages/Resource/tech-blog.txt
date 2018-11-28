@@ -1,11 +1,6 @@
 Technical Blogs
 ===============
 
-Math
-^^^^
-
-* Linear Algebra: https://ccjou.wordpress.com/
-
 Robotics
 ^^^^^^^^
 
