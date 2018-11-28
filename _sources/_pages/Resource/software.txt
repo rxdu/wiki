@@ -26,6 +26,9 @@ Open-source Software
 * The Open Motion Planning Library (OMPL) - http://ompl.kavrakilab.org/
 	*"OMPL, the Open Motion Planning Library, consists of many state-of-the-art sampling-based motion planning algorithms."*
 
+* SUMO - https://www.dlr.de/ts/en/desktopdefault.aspx/tabid-9883/16931_read-41000/
+    *"SUMO allows modelling of intermodal traffic systems including road vehicles, public transport and pedestrians."*
+
 * Additional robotics libraries: https://github.com/jslee02/awesome-robotics-libraries
 
 **Communication**
@@ -63,6 +66,9 @@ Open-source Software
 
 * OpenMP - https://www.openmp.org/
     *"The OpenMP API specification for parallel programming"*
+
+* Heat Method for Distance Computation - http://www.cs.cmu.edu/~kmcrane/Projects/HeatMethod/index.html
+    *"The heat method for solving the single- or multiple-source shortest path problem on both flat and curved domains."*
 
 .. * GNU Plot - http://www.gnuplot.info/
 	*"Gnuplot is a portable command-line driven graphing utility for Linux, OS/2, MS Windows, OSX, VMS, and many other platforms. The source code is copyrighted but freely distributed (i.e., you don't have to pay for it). It was originally created to allow scientists and students to visualize mathematical functions and data interactively, but has grown to support many non-interactive uses such as web scripting."*
