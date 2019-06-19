@@ -172,6 +172,26 @@ $ df -h
 </pre></div>
 </div>
 </div>
+<div class="section" id="add-a-swap-file">
+<h2>Add a Swap File<a class="headerlink" href="#add-a-swap-file" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes a swap area may be needed to compile a large project on beaglebone black. Instead of setting up a swap partition, you can also use a swap file.</p>
+<p>In the following steps, a swap file “/usr/swapfile1” will be created and used.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Create Storage File</span>
+$ sudo dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">of</span><span class="o">=</span>/usr/swapfile1 <span class="nv">bs</span><span class="o">=</span><span class="m">1024</span> <span class="nv">count</span><span class="o">=</span><span class="m">524288</span>
+<span class="c1"># 2. Secure swap file</span>
+$ sudo chown root:root /usr/swapfile1
+$ sudo chmod <span class="m">0600</span> /usr/swapfile1
+<span class="c1"># 3. Set up a Linux swap area and enable the swap file</span>
+$ sudo mkswap /usr/swapfile1
+$ sudo swapon /usr/swapfile1
+<span class="c1"># 4. Update /etc/fstab file</span>
+$ sudo nano /etc/fstab
+<span class="c1"># Add the following line</span>
+/usr/swapfile1 none swap sw <span class="m">0</span> <span class="m">0</span>
+</pre></div>
+</div>
+<p>Reboot the board and use htop to check if the swap file is set up correctly.</p>
+</div>
 <div class="section" id="update-kernel">
 <h2>Update Kernel<a class="headerlink" href="#update-kernel" title="Permalink to this headline">¶</a></h2>
 <p>You can upgrade or change to a Preempt-RT patched kernel using the script provided in the Debian OS from Beaglebone</p>
@@ -216,6 +236,7 @@ ln -s /usr/bin/clpru clpru
 <li>[5] <a class="reference external" href="https://github.com/beagleboard/bb.org-overlays">https://github.com/beagleboard/bb.org-overlays</a></li>
 <li>[6] <a class="reference external" href="https://groups.google.com/forum/#!topic/beagleboard/od6h9yTKUD4">https://groups.google.com/forum/#!topic/beagleboard/od6h9yTKUD4</a></li>
 <li>[7] <a class="reference external" href="https://github.com/StrawsonDesign/librobotcontrol/issues/130">https://github.com/StrawsonDesign/librobotcontrol/issues/130</a></li>
+<li>[8] <a class="reference external" href="https://www.cyberciti.biz/faq/linux-add-a-swap-file-howto/">https://www.cyberciti.biz/faq/linux-add-a-swap-file-howto/</a></li>
 </ul>
 </div>
 </div>
@@ -233,6 +254,7 @@ ln -s /usr/bin/clpru clpru
 <li><a class="reference internal" href="#add-new-user">Add new user</a></li>
 <li><a class="reference internal" href="#setup-wifi">Setup Wifi</a></li>
 <li><a class="reference internal" href="#mount-usr-and-home-on-sd-card">Mount “/usr” and “/home” on SD card</a></li>
+<li><a class="reference internal" href="#add-a-swap-file">Add a Swap File</a></li>
 <li><a class="reference internal" href="#update-kernel">Update Kernel</a></li>
 <li><a class="reference internal" href="#robotics-cape-library">Robotics Cape library</a></li>
 </ul>
