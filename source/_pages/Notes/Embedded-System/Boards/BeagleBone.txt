@@ -99,6 +99,30 @@ Check reference [2] to get more detailed instructions. Here is a brief summary o
    # 7. reboot and check the files
    $ df -h
 
+Add a Swap File
+^^^^^^^^^^^^^^^
+
+Sometimes a swap area may be needed to compile a large project on beaglebone black. Instead of setting up a swap partition, you can also use a swap file.
+
+In the following steps, a swap file "/usr/swapfile1" will be created and used.
+
+.. code-block:: bash
+
+   # 1. Create Storage File
+   $ sudo dd if=/dev/zero of=/usr/swapfile1 bs=1024 count=524288
+   # 2. Secure swap file
+   $ sudo chown root:root /usr/swapfile1
+   $ sudo chmod 0600 /usr/swapfile1
+   # 3. Set up a Linux swap area and enable the swap file
+   $ sudo mkswap /usr/swapfile1
+   $ sudo swapon /usr/swapfile1
+   # 4. Update /etc/fstab file
+   $ sudo nano /etc/fstab 
+   # Add the following line
+   /usr/swapfile1 none swap sw 0 0
+
+Reboot the board and use htop to check if the swap file is set up correctly.
+
 Update Kernel
 ^^^^^^^^^^^^^
 
@@ -157,3 +181,4 @@ Reference
 * [5] https://github.com/beagleboard/bb.org-overlays
 * [6] https://groups.google.com/forum/#!topic/beagleboard/od6h9yTKUD4
 * [7] https://github.com/StrawsonDesign/librobotcontrol/issues/130
+* [8] https://www.cyberciti.biz/faq/linux-add-a-swap-file-howto/
