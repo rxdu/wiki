@@ -1,0 +1,34 @@
+How to Use Tools in Linux
+=========================
+
+* Merge multiple PDFs into one
+
+.. code-block:: bash
+
+   # Install pdftk
+   $ sudo snap install pdftk
+
+   # Merge files
+   $ pdftk file1.pdf file2.pdf cat output result.pdf
+
+* Create gif animation using "imagemagick"
+
+.. code-block:: bash
+
+   $ convert -delay 120 -loop 0 *.png animated.gif
+
+* Screenshot and screencast
+
+.. code-block:: bash
+
+   $ sudo apt install kazam
+
+* Get statistics of a code base
+
+.. code-block:: bash
+
+   $ sudo apt install cloc
+   $ cd <code-folder>
+   $ cloc --exclude-dir=cmake,third_party .
+
+- [1] https://askubuntu.com/questions/2799/how-to-merge-several-pdf-files
