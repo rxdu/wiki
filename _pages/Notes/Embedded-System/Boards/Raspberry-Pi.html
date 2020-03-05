@@ -5,18 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <script type="text/javascript">
-
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-67949307-1']);
-      _gaq.push(['_trackPageview']);
-
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    </script>
+    
     <!-- <title>Raspberry Pi &mdash; RDU-Wiki 1.0 documentation</title> -->
     <title>Raspberry Pi</title>
     
@@ -89,11 +78,11 @@
 <ol class="arabic simple">
 <li>Setup driver</li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo nano /boot/config.txt
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo nano /boot/config.txt
 </pre></div>
 </div>
 <p>Add the following lines</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">dtparam</span><span class="o">=</span><span class="nv">spi</span><span class="o">=</span>on
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">dtparam</span><span class="o">=</span><span class="nv">spi</span><span class="o">=</span>on
 <span class="nv">dtoverlay</span><span class="o">=</span>mcp2515-can0,oscillator<span class="o">=</span><span class="m">16000000</span>,interrupt<span class="o">=</span><span class="m">25</span>
 <span class="nv">dtoverlay</span><span class="o">=</span>spi-bcm2835
 </pre></div>
@@ -103,15 +92,15 @@
 <li>Bring up CAN interface</li>
 </ol>
 <p>Note that the maximum bitrate is 1000000 for PiCAN2.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo ip link <span class="nb">set</span> can0 up <span class="nb">type</span> can bitrate <span class="m">1000000</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo ip link <span class="nb">set</span> can0 up <span class="nb">type</span> can bitrate <span class="m">1000000</span>
 </pre></div>
 </div>
 <p>To bring up the interface when boot, you can modify “/etc/network/interfaces”</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo nano /etc/network/interfaces
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo nano /etc/network/interfaces
 </pre></div>
 </div>
 <p>Add the following lines</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>auto can0
+<div class="highlight-bash"><div class="highlight"><pre><span></span>auto can0
   iface can0 inet manual
   pre-up /sbin/ip link <span class="nb">set</span> can0 <span class="nb">type</span> can bitrate <span class="m">1000000</span>
   up /sbin/ifconfig can0 up
@@ -119,7 +108,7 @@
 </pre></div>
 </div>
 <p>You can check if CAN is brought up by using command “ifconfig”. You should see something similar to this</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ can0: <span class="nv">flags</span><span class="o">=</span><span class="m">193</span>&lt;UP,RUNNING,NOARP&gt;  mtu <span class="m">16</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ can0: <span class="nv">flags</span><span class="o">=</span><span class="m">193</span>&lt;UP,RUNNING,NOARP&gt;  mtu <span class="m">16</span>
 $     unspec <span class="m">00</span>-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00  txqueuelen <span class="m">10</span>  <span class="o">(</span>UNSPEC<span class="o">)</span>
 $     RX packets <span class="m">4</span>  bytes <span class="m">32</span> <span class="o">(</span><span class="m">32</span>.0 B<span class="o">)</span>
 $     RX errors <span class="m">0</span>  dropped <span class="m">0</span>  overruns <span class="m">0</span>  frame <span class="m">0</span>
@@ -131,28 +120,28 @@ $     TX errors <span class="m">1</span>  dropped <span class="m">1</span> overr
 <li>Loopback test</li>
 </ol>
 <p>You can use the loopback mode to test if PiCAN2 is working properly. You need to enable the loopback mode first.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo ip link <span class="nb">set</span> can0 down
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo ip link <span class="nb">set</span> can0 down
 $ sudo ip link <span class="nb">set</span> can0 <span class="nb">type</span> can loopback on
 $ sudo ip link <span class="nb">set</span> can0 up <span class="nb">type</span> can bitrate <span class="m">1000000</span>
 </pre></div>
 </div>
 <p>Now open two terminals, one as sender and one as receiver.</p>
 <p>In sender terminal:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cansend can0 <span class="m">001</span><span class="c1">#1122334455667788</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ cansend can0 <span class="m">001</span><span class="c1">#1122334455667788</span>
 </pre></div>
 </div>
 <p>In receiver terminal:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ candump can0
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ candump can0
 </pre></div>
 </div>
 <p>If successful, you should expect</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ candump can0
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ candump can0
 $ can0  <span class="m">001</span>   <span class="o">[</span><span class="m">8</span><span class="o">]</span>  <span class="m">11</span> <span class="m">22</span> <span class="m">33</span> <span class="m">44</span> <span class="m">55</span> <span class="m">66</span> <span class="m">77</span> <span class="m">88</span>
 $ can0  <span class="m">001</span>   <span class="o">[</span><span class="m">8</span><span class="o">]</span>  <span class="m">11</span> <span class="m">22</span> <span class="m">33</span> <span class="m">44</span> <span class="m">55</span> <span class="m">66</span> <span class="m">77</span> <span class="m">88</span>
 </pre></div>
 </div>
 <p>Turn off the loopback mode:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo ip link <span class="nb">set</span> can0 down
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo ip link <span class="nb">set</span> can0 down
 $ sudo ip link <span class="nb">set</span> can0 <span class="nb">type</span> can loopback off
 $ sudo ip link <span class="nb">set</span> can0 up <span class="nb">type</span> can bitrate <span class="m">1000000</span>
 </pre></div>
@@ -161,7 +150,7 @@ $ sudo ip link <span class="nb">set</span> can0 up <span class="nb">type</span> 
 <li>More commands</li>
 </ol>
 <p>Use this command to find more information of CAN related commands</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ip link <span class="nb">set</span> can0 up <span class="nb">type</span> can <span class="nb">help</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ip link <span class="nb">set</span> can0 up <span class="nb">type</span> can <span class="nb">help</span>
 </pre></div>
 </div>
 <p>Reference</p>
@@ -229,8 +218,8 @@ $ sudo ip link <span class="nb">set</span> can0 up <span class="nb">type</span> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2019, Ruixiang Du.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.7.
+        &copy; Copyright 2020, Ruixiang Du.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
     </div>
   </body>
 </html>

@@ -5,18 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <script type="text/javascript">
-
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-67949307-1']);
-      _gaq.push(['_trackPageview']);
-
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    </script>
+    
     <!-- <title>How to Connect a Single-board Computer to WPI Wireless &mdash; RDU-Wiki 1.0 documentation</title> -->
     <title>How to Connect a Single-board Computer to WPI Wireless</title>
     
@@ -48,7 +37,7 @@
     <link rel="top" title="RDU-Wiki 1.0 documentation" href="../../../index.html" />
     <link rel="up" title="Application Notes" href="../Application-Notes.html" />
     <link rel="next" title="How to Connect to WPI VPN in Linux" href="howto-connect-to-wpi-vpn-off-campus.html" />
-    <link rel="prev" title="Using Valgrind" href="../Programming/valgrind.html" />
+    <link rel="prev" title="How to Recover SWD after Disabed with JLink" href="howto-recover-swd-after-disabled-with-jlink.html" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <!--[if lte IE 6]>
@@ -68,7 +57,7 @@
           <a href="howto-connect-to-wpi-vpn-off-campus.html" title="How to Connect to WPI VPN in Linux"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="../Programming/valgrind.html" title="Using Valgrind"
+          <a href="howto-recover-swd-after-disabled-with-jlink.html" title="How to Recover SWD after Disabed with JLink"
              accesskey="P">previous</a> |</li>
         <!-- <li class="nav-item nav-item-0"><a href="../../../index.html">RDU-Wiki 1.0 documentation</a> &raquo;</li> -->
         <li class="nav-item nav-item-0"><a href="../../../index.html">Main Page</a> &raquo;</li>
@@ -100,7 +89,7 @@
 <div class="section" id="register-wireless-adapter">
 <h2>Register Wireless Adapter<a class="headerlink" href="#register-wireless-adapter" title="Permalink to this headline">¶</a></h2>
 <p>Use command “ifconfig” to find the MAC address of the wireless adapter on your Raspberry Pi and register this device with your WPI account information. I assume you know how to do this step.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ifconfig
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ifconfig
 </pre></div>
 </div>
 </div>
@@ -117,7 +106,7 @@
 <li>Process P12 to protect your WPI credentials</li>
 </ol>
 <p>You will have to put your WPI password in plain text directly if you don’t do this step. That means someone else may get your password and have access to all your WPI accounts if they get your RPi.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /etc/rpi3/certs
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /etc/rpi3/certs
 $ sudo openssl pkcs12 -in certificate.p12 -out temp.pem -passin pass:YOUR-WPI-PASSWORD -passout pass:TEMPPASSWORD
 $ sudo openssl pkcs12 -export -in temp.pem -out certificate-final.p12 -passin pass:TEMPPASSWORD -passout pass:FINALPASSWORD
 $ sudo rm -rf temp.pem certificate.p12
@@ -126,11 +115,11 @@ $ sudo rm -rf temp.pem certificate.p12
 <ol class="arabic simple" start="3">
 <li>Convert the P12 file to PEM</li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo openssl pkcs12 -in certificate-final.p12 -out certificate-final.pem -nodes
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo openssl pkcs12 -in certificate-final.p12 -out certificate-final.pem -nodes
 </pre></div>
 </div>
 <p>After step 2 and 3, you will have 3 files ready to use for the next step:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>certificate-final.p12
+<div class="highlight-bash"><div class="highlight"><pre><span></span>certificate-final.p12
 certificate-final.pem
 CA-xxxxxx.cer
 </pre></div>
@@ -140,11 +129,11 @@ CA-xxxxxx.cer
 <h2>Modify wpa_supplicant Configuration File<a class="headerlink" href="#modify-wpa-supplicant-configuration-file" title="Permalink to this headline">¶</a></h2>
 <p>Now you need to tell wpa_supplicant how to use the certificate files you’ve prepared in the above steps.</p>
 <p><strong>Note</strong>: If your system already runs a network manager, you need to make sure it’s compatible with wpa_supplicant. Otherwise you will have to disable the default network manager. If your OS has a decent network manager, you could use the graphical tool to setup the configurations in this step and the next step.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
 </pre></div>
 </div>
 <p>Add the WPI-Wireless configuration entry to your “wpa_supplicant.conf” file. You don’t have to delete other entries “network = {…}” in this file.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">ctrl_interface</span><span class="o">=</span><span class="nv">DIR</span><span class="o">=</span>/var/run/wpa_supplicant <span class="nv">GROUP</span><span class="o">=</span>netdev
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">ctrl_interface</span><span class="o">=</span><span class="nv">DIR</span><span class="o">=</span>/var/run/wpa_supplicant <span class="nv">GROUP</span><span class="o">=</span>netdev
 <span class="nv">update_config</span><span class="o">=</span><span class="m">1</span>
 <span class="nv">country</span><span class="o">=</span>GB
 
@@ -168,10 +157,10 @@ CA-xxxxxx.cer
 <div class="section" id="update-wireless-adapter-configuration">
 <h2>Update Wireless Adapter Configuration<a class="headerlink" href="#update-wireless-adapter-configuration" title="Permalink to this headline">¶</a></h2>
 <p>Add or update the following configuration for “wlan0” in “/etc/network/interfaces”</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo nano /etc/network/interfaces
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo nano /etc/network/interfaces
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>auto lo
+<div class="highlight-bash"><div class="highlight"><pre><span></span>auto lo
 iface lo inet loopback
 
 auto wlan0
@@ -181,7 +170,7 @@ iface wlan0 inet dhcp
 </div>
 <p>With this configuration, the “wpa_supplicant.conf” will be loaded when the wireless adapter is brought up. Now reboot your RPi and you should get connected to the WPI wireless network. Note the network icon on the desktop may not show you’re connected to the network. Use “ifconfig” command to check the connectivity and if successful you should see “wlan0” is assigned an valid IP address.</p>
 <p>Note: you might want to reset the default password for your Raspberry Pi for security reasons. The default password is “raspberry” for user “pi”.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ passwd
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ passwd
 </pre></div>
 </div>
 <p>Reference:</p>
@@ -211,8 +200,8 @@ iface wlan0 inet dhcp
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="../Programming/valgrind.html"
-                        title="previous chapter">Using Valgrind</a></p>
+  <p class="topless"><a href="howto-recover-swd-after-disabled-with-jlink.html"
+                        title="previous chapter">How to Recover SWD after Disabed with JLink</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="howto-connect-to-wpi-vpn-off-campus.html"
                         title="next chapter">How to Connect to WPI VPN in Linux</a></p>
@@ -243,7 +232,7 @@ iface wlan0 inet dhcp
           <a href="howto-connect-to-wpi-vpn-off-campus.html" title="How to Connect to WPI VPN in Linux"
              >next</a> |</li>
         <li class="right" >
-          <a href="../Programming/valgrind.html" title="Using Valgrind"
+          <a href="howto-recover-swd-after-disabled-with-jlink.html" title="How to Recover SWD after Disabed with JLink"
              >previous</a> |</li>
         <!-- <li class="nav-item nav-item-0"><a href="../../../index.html">RDU-Wiki 1.0 documentation</a> &raquo;</li> -->
         <li class="nav-item nav-item-0"><a href="../../../index.html">Main Page</a> &raquo;</li>
@@ -251,8 +240,8 @@ iface wlan0 inet dhcp
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2019, Ruixiang Du.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.7.
+        &copy; Copyright 2020, Ruixiang Du.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
     </div>
   </body>
 </html>

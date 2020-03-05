@@ -5,18 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <script type="text/javascript">
-
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-67949307-1']);
-      _gaq.push(['_trackPageview']);
-
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    </script>
+    
     <!-- <title>Xenomai on Beaglebone &mdash; RDU-Wiki 1.0 documentation</title> -->
     <title>Xenomai on Beaglebone</title>
     
@@ -87,20 +76,20 @@
 <div class="section" id="install-toolchain">
 <h2>Install toolchain<a class="headerlink" href="#install-toolchain" title="Permalink to this headline">¶</a></h2>
 <p>If you use a pre-built root file system, make sure you’re using a compatible toolchain to compile bootloader and kernel.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ wget -c https://releases.linaro.org/components/toolchain/binaries/6.4-2018.05/arm-linux-gnueabihf/gcc-linaro-6.4.1-2018.05-x86_64_arm-linux-gnueabihf.tar.xz
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ wget -c https://releases.linaro.org/components/toolchain/binaries/6.4-2018.05/arm-linux-gnueabihf/gcc-linaro-6.4.1-2018.05-x86_64_arm-linux-gnueabihf.tar.xz
 $ tar xf gcc-linaro-6.4.1-2018.05-x86_64_arm-linux-gnueabihf.tar.xz
 </pre></div>
 </div>
 </div>
 <div class="section" id="install-dependencies">
 <h2>Install dependencies<a class="headerlink" href="#install-dependencies" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo apt install bison flex lzop u-boot-tools
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo apt install bison flex lzop u-boot-tools
 </pre></div>
 </div>
 </div>
 <div class="section" id="build-bootloader">
 <h2>Build bootloader<a class="headerlink" href="#build-bootloader" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/u-boot/u-boot
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ git clone https://github.com/u-boot/u-boot
 $ <span class="nb">cd</span> u-boot/
 $ git checkout v2018.09 -b tmp-v2018.09
 
@@ -120,7 +109,7 @@ $ make <span class="nv">ARCH</span><span class="o">=</span>arm <span class="nv">
 <div class="section" id="buid-kernel">
 <h2>Buid Kernel<a class="headerlink" href="#buid-kernel" title="Permalink to this headline">¶</a></h2>
 <p>Download kernel source file</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/beagleboard/linux.git
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ git clone https://github.com/beagleboard/linux.git
 
 <span class="c1"># look for the desired branch, for example</span>
 $ git tag -l <span class="p">|</span> grep <span class="m">4</span>.9
@@ -130,12 +119,12 @@ $ git checkout <span class="m">4</span>.9.88-ti-xenomai-r107 -b tmp-4.9.88-ti-xe
 </pre></div>
 </div>
 <p>Start the configuration menu and modify kernel options</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ make <span class="nv">ARCH</span><span class="o">=</span>arm <span class="nv">CROSS_COMPILE</span><span class="o">=</span>arm-linux-gnueabihf- bb.org_defconfig
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ make <span class="nv">ARCH</span><span class="o">=</span>arm <span class="nv">CROSS_COMPILE</span><span class="o">=</span>arm-linux-gnueabihf- bb.org_defconfig
 $ make <span class="nv">ARCH</span><span class="o">=</span>arm <span class="nv">CROSS_COMPILE</span><span class="o">=</span>arm-linux-gnueabihf- menuconfig
 </pre></div>
 </div>
 <p>Check the following configurations for Xenomai</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>* General setup ---&gt;
+<div class="highlight-bash"><div class="highlight"><pre><span></span>* General setup ---&gt;
  - Local version - append to kernel release : <span class="s2">&quot;-ti-xenomai-r107&quot;</span>
  - Stack Protector buffer overflow detection: Disable
 * Kernel Features  ---&gt;
@@ -152,16 +141,16 @@ $ make <span class="nv">ARCH</span><span class="o">=</span>arm <span class="nv">
 </div>
 <p>You could also enable Xenomai supported device drivers in the config according to your needs.</p>
 <p>Build kernel image:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ make -j8 <span class="nv">ARCH</span><span class="o">=</span>arm <span class="nv">CROSS_COMPILE</span><span class="o">=</span>arm-linux-gnueabihf- zImage dtbs
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ make -j8 <span class="nv">ARCH</span><span class="o">=</span>arm <span class="nv">CROSS_COMPILE</span><span class="o">=</span>arm-linux-gnueabihf- zImage dtbs
 $ make -j8 <span class="nv">ARCH</span><span class="o">=</span>arm <span class="nv">CROSS_COMPILE</span><span class="o">=</span>arm-linux-gnueabihf- modules
 </pre></div>
 </div>
 <p>If you need to build uImage</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ make -j8 <span class="nv">ARCH</span><span class="o">=</span>arm <span class="nv">CROSS_COMPILE</span><span class="o">=</span>arm-linux-gnueabihf- uImage <span class="nv">LOADADDR</span><span class="o">=</span>0x80008000
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ make -j8 <span class="nv">ARCH</span><span class="o">=</span>arm <span class="nv">CROSS_COMPILE</span><span class="o">=</span>arm-linux-gnueabihf- uImage <span class="nv">LOADADDR</span><span class="o">=</span>0x80008000
 </pre></div>
 </div>
 <p>You can also build debian packages for easier installation (for example, update kernel on the eMMC)</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ make -j8 <span class="nv">ARCH</span><span class="o">=</span>arm <span class="nv">CROSS_COMPILE</span><span class="o">=</span>arm-linux-gnueabihf- deb-pkg
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ make -j8 <span class="nv">ARCH</span><span class="o">=</span>arm <span class="nv">CROSS_COMPILE</span><span class="o">=</span>arm-linux-gnueabihf- deb-pkg
 </pre></div>
 </div>
 <p>Alternatively, you could deploy to the SD card manually.</p>
@@ -174,7 +163,7 @@ $ make -j8 <span class="nv">ARCH</span><span class="o">=</span>arm <span class="
 <li>/rootfs formated in ext4</li>
 </ul>
 <p>Set SD card location and kernel version for installation</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">SD_ROOTFS</span><span class="o">=</span>/media/rdu/rootfs
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">SD_ROOTFS</span><span class="o">=</span>/media/rdu/rootfs
 $ <span class="nb">export</span> <span class="nv">kernel_version</span><span class="o">=</span><span class="m">4</span>.9.88-ti-xenomai-r107
 </pre></div>
 </div>
@@ -182,7 +171,7 @@ $ <span class="nb">export</span> <span class="nv">kernel_version</span><span cla
 <div class="section" id="deploy-u-boot">
 <h2>Deploy u-boot<a class="headerlink" href="#deploy-u-boot" title="Permalink to this headline">¶</a></h2>
 <p>You need to copy “MLO”, “u-boot.img”, and the “uEnv.txt” into the /boot partitiona on the SD card.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">##Rename as: uEnv.txt to override old bootloader in eMMC</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1">##Rename as: uEnv.txt to override old bootloader in eMMC</span>
 <span class="c1">##These are needed to be compliant with Angstrom&#39;s 2013.06.20 u-boot.</span>
 
 <span class="nv">loadaddr</span><span class="o">=</span>0x82000000
@@ -213,7 +202,7 @@ $ <span class="nb">export</span> <span class="nv">kernel_version</span><span cla
 <h2>Root file system<a class="headerlink" href="#root-file-system" title="Permalink to this headline">¶</a></h2>
 <p>You can use tools like buildroot to make your customized root file system or you can use debootstrap or multistrap to build your Debian/Ubuntu distribution. Here I use the pre-built debian for Beaglebone.</p>
 <p>Copy pre-built root file system to the SD card</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ wget -c https://rcn-ee.com/rootfs/eewiki/minfs/debian-9.5-minimal-armhf-2018-07-30.tar.xz
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ wget -c https://rcn-ee.com/rootfs/eewiki/minfs/debian-9.5-minimal-armhf-2018-07-30.tar.xz
 $ tar xf debian-9.5-minimal-armhf-2018-07-30.tar.xz
 $ sudo tar xfvp ./*-*-*-armhf-*/armhf-rootfs-*.tar -C /media/rootfs/
 $ sync
@@ -225,7 +214,7 @@ $ sudo chmod <span class="m">755</span> /media/rootfs/
 <div class="section" id="deploy-kernel">
 <h2>Deploy kernel<a class="headerlink" href="#deploy-kernel" title="Permalink to this headline">¶</a></h2>
 <p>Install kernel and device tree:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># kernel</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># kernel</span>
 $ sudo cp -v ./arch/arm/boot/zImage <span class="si">${</span><span class="nv">SD_ROOTFS</span><span class="si">}</span>/boot/vmlinuz-<span class="si">${</span><span class="nv">kernel_version</span><span class="si">}</span>
 
 <span class="c1"># device tree</span>
@@ -234,36 +223,36 @@ $ sudo cp -v ./arch/arm/boot/dts/am335x* <span class="si">${</span><span class="
 </pre></div>
 </div>
 <p>Install headers:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ make -j8 <span class="nv">ARCH</span><span class="o">=</span>arm headers_check
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ make -j8 <span class="nv">ARCH</span><span class="o">=</span>arm headers_check
 $ sudo make -j8 <span class="nv">ARCH</span><span class="o">=</span>arm <span class="nv">INSTALL_HDR_PATH</span><span class="o">=</span><span class="si">${</span><span class="nv">SD_ROOTFS</span><span class="si">}</span> headers_install
 </pre></div>
 </div>
 <p>Install modules and firmware</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo make -j8 <span class="nv">ARCH</span><span class="o">=</span>arm <span class="nv">CROSS_COMPILE</span><span class="o">=</span>arm-linux-gnueabihf- modules_install <span class="nv">INSTALL_MOD_PATH</span><span class="o">=</span><span class="si">${</span><span class="nv">SD_ROOTFS</span><span class="si">}</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo make -j8 <span class="nv">ARCH</span><span class="o">=</span>arm <span class="nv">CROSS_COMPILE</span><span class="o">=</span>arm-linux-gnueabihf- modules_install <span class="nv">INSTALL_MOD_PATH</span><span class="o">=</span><span class="si">${</span><span class="nv">SD_ROOTFS</span><span class="si">}</span>
 $ sudo make -j8 <span class="nv">ARCH</span><span class="o">=</span>arm <span class="nv">CROSS_COMPILE</span><span class="o">=</span>arm-linux-gnueabihf- firmware_install <span class="nv">INSTALL_MOD_PATH</span><span class="o">=</span><span class="si">${</span><span class="nv">SD_ROOTFS</span><span class="si">}</span>
 </pre></div>
 </div>
 <p>Update “/rootfs/boot/uEnv.txt”:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">uname_r</span><span class="o">=</span><span class="m">4</span>.9.88-ti-xenomai-r107
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">uname_r</span><span class="o">=</span><span class="m">4</span>.9.88-ti-xenomai-r107
 </pre></div>
 </div>
 </div>
 <div class="section" id="additional-configurations">
 <h2>Additional configurations<a class="headerlink" href="#additional-configurations" title="Permalink to this headline">¶</a></h2>
 <p>Update fstab (Note you may need to change “/dev/mmcblk0p2” according to your SD configuration)</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo sh -c <span class="s2">&quot;echo &#39;/dev/mmcblk0p2  /  auto  errors=remount-ro  0  1&#39; &gt;&gt; /media/rootfs/etc/fstab&quot;</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo sh -c <span class="s2">&quot;echo &#39;/dev/mmcblk0p2  /  auto  errors=remount-ro  0  1&#39; &gt;&gt; /media/rootfs/etc/fstab&quot;</span>
 </pre></div>
 </div>
 <p>Update hostname (default is “arm”)</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo nano /etc/hostname
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo nano /etc/hostname
 $ sudo nano /etc/hosts
 </pre></div>
 </div>
 <p>Update network interface</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo nano /etc/network/interfaces
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo nano /etc/network/interfaces
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>auto lo
+<div class="highlight-bash"><div class="highlight"><pre><span></span>auto lo
 iface lo inet loopback
 
 auto eth0
@@ -275,28 +264,28 @@ iface eth0 inet dhcp
 <div class="section" id="install-xenomai-tools-and-libraries">
 <h2>Install Xenomai tools and libraries<a class="headerlink" href="#install-xenomai-tools-and-libraries" title="Permalink to this headline">¶</a></h2>
 <p>First you need to check which version of Xenomai is install with the kernel.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cat /proc/xenomai/version
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ cat /proc/xenomai/version
 </pre></div>
 </div>
 <p>In this case, the version of Xenomai is 3.0.6. Download code from the Xenomai website.</p>
 <p>Install dependencies</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get install build-essential libtool libltdl-dev
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo apt-get install build-essential libtool libltdl-dev
 </pre></div>
 </div>
 <p>Finally build the code</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ./scripts/bootstrap
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ./scripts/bootstrap
 $ ./configure --enable-smp --with-core<span class="o">=</span>cobalt
 $ make
 $ sudo make install
 </pre></div>
 </div>
 <p>Once finished, you can test if the installation is successful</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /usr/xenomai/bin
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /usr/xenomai/bin
 $ sudo ./latency
 </pre></div>
 </div>
 <p>You should get something like</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">==</span> Sampling period: <span class="m">1000</span> <span class="nv">us</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">==</span> Sampling period: <span class="m">1000</span> <span class="nv">us</span>
 <span class="o">==</span> Test mode: periodic user-mode <span class="nv">task</span>
 <span class="o">==</span> All results in microseconds
 warming up...
@@ -388,8 +377,8 @@ RTD<span class="p">|</span>      <span class="m">4</span>.040<span class="p">|</
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2019, Ruixiang Du.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.7.
+        &copy; Copyright 2020, Ruixiang Du.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
     </div>
   </body>
 </html>

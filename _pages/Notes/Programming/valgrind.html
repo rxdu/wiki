@@ -5,18 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <script type="text/javascript">
-
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-67949307-1']);
-      _gaq.push(['_trackPageview']);
-
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    </script>
+    
     <!-- <title>Using Valgrind &mdash; RDU-Wiki 1.0 documentation</title> -->
     <title>Using Valgrind</title>
     
@@ -47,7 +36,7 @@
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="top" title="RDU-Wiki 1.0 documentation" href="../../../index.html" />
     <link rel="up" title="Application Notes" href="../Application-Notes.html" />
-    <link rel="next" title="How to Connect a Single-board Computer to WPI Wireless" href="../HOWTOs/howto-connect-sbc-to-wpi-wireless.html" />
+    <link rel="next" title="How to Recover SWD after Disabed with JLink" href="../HOWTOs/howto-recover-swd-after-disabled-with-jlink.html" />
     <link rel="prev" title="Using GDB Debugger" href="gdb.html" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
@@ -65,7 +54,7 @@
           <a href="../../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="../HOWTOs/howto-connect-sbc-to-wpi-wireless.html" title="How to Connect a Single-board Computer to WPI Wireless"
+          <a href="../HOWTOs/howto-recover-swd-after-disabled-with-jlink.html" title="How to Recover SWD after Disabed with JLink"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="gdb.html" title="Using GDB Debugger"
@@ -95,7 +84,7 @@
 <ul class="simple">
 <li>Install the tool</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># valgrind</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># valgrind</span>
 $ sudo apt-get install valgrind
 <span class="c1"># useful tools that can be used together with valgrind</span>
 $ sudo apt-get install kcachegrind graphviz
@@ -104,7 +93,7 @@ $ sudo apt-get install kcachegrind graphviz
 <ul class="simple">
 <li>Memory error check</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># quick check</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># quick check</span>
 $ valgrind &lt;name-of-executable&gt;
 <span class="c1"># full memory leak check</span>
 $ valgrind --leak-check<span class="o">=</span>full &lt;name-of-executable&gt;
@@ -113,7 +102,7 @@ $ valgrind --leak-check<span class="o">=</span>full &lt;name-of-executable&gt;
 <ul class="simple">
 <li>Program profiling</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># profile program and get an output file like callgrind.out.xxxxxx</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># profile program and get an output file like callgrind.out.xxxxxx</span>
 $ valgrind --tool<span class="o">=</span>callgrind &lt;name-of-executable&gt;
 <span class="c1"># then you can load the file with Kcachegrind</span>
 $ kcachegrind &lt;name-of-profiling-output-file&gt;
@@ -140,8 +129,8 @@ $ kcachegrind &lt;name-of-profiling-output-file&gt;
   <p class="topless"><a href="gdb.html"
                         title="previous chapter">Using GDB Debugger</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="../HOWTOs/howto-connect-sbc-to-wpi-wireless.html"
-                        title="next chapter">How to Connect a Single-board Computer to WPI Wireless</a></p>
+  <p class="topless"><a href="../HOWTOs/howto-recover-swd-after-disabled-with-jlink.html"
+                        title="next chapter">How to Recover SWD after Disabed with JLink</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../../search.html" method="get">
@@ -166,7 +155,7 @@ $ kcachegrind &lt;name-of-profiling-output-file&gt;
           <a href="../../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="../HOWTOs/howto-connect-sbc-to-wpi-wireless.html" title="How to Connect a Single-board Computer to WPI Wireless"
+          <a href="../HOWTOs/howto-recover-swd-after-disabled-with-jlink.html" title="How to Recover SWD after Disabed with JLink"
              >next</a> |</li>
         <li class="right" >
           <a href="gdb.html" title="Using GDB Debugger"
@@ -177,8 +166,8 @@ $ kcachegrind &lt;name-of-profiling-output-file&gt;
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2019, Ruixiang Du.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.7.
+        &copy; Copyright 2020, Ruixiang Du.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
     </div>
   </body>
 </html>

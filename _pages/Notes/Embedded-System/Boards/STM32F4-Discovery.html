@@ -5,18 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <script type="text/javascript">
-
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-67949307-1']);
-      _gaq.push(['_trackPageview']);
-
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    </script>
+    
     <!-- <title>STM32F4 Discovery Board &mdash; RDU-Wiki 1.0 documentation</title> -->
     <title>STM32F4 Discovery Board</title>
     
@@ -80,14 +69,14 @@
 <li>Follow “README” to build to tools and set up udev rules</li>
 <li>Connect the board to PC and check if the OS has detected stlink correct</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ lsusb
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ lsusb
 $ ..
 $ Bus <span class="m">001</span> Device <span class="m">041</span>: ID <span class="m">0483</span>:3748 SGS Thomson Microelectronics ST-LINK/V2
 $ ..
 </pre></div>
 </div>
 <p>If the tool shows permission restriction when starts, use this command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo chmod <span class="m">777</span> /dev/bus/usb/002/004
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo chmod <span class="m">777</span> /dev/bus/usb/002/004
 </pre></div>
 </div>
 </div>
@@ -135,8 +124,8 @@ $ ..
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2019, Ruixiang Du.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.7.
+        &copy; Copyright 2020, Ruixiang Du.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
     </div>
   </body>
 </html>

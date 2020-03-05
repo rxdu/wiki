@@ -5,18 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <script type="text/javascript">
-
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-67949307-1']);
-      _gaq.push(['_trackPageview']);
-
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    </script>
+    
     <!-- <title>How to Connect to WPI VPN in Linux &mdash; RDU-Wiki 1.0 documentation</title> -->
     <title>How to Connect to WPI VPN in Linux</title>
     
@@ -47,7 +36,7 @@
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="top" title="RDU-Wiki 1.0 documentation" href="../../../index.html" />
     <link rel="up" title="Application Notes" href="../Application-Notes.html" />
-    <link rel="next" title="Autonomous RC Car" href="../../Projects/Autonomous-RC-Car/auto-racing.html" />
+    <link rel="next" title="How to Use Tools in Linux" href="howto-use-linux-tools.html" />
     <link rel="prev" title="How to Connect a Single-board Computer to WPI Wireless" href="howto-connect-sbc-to-wpi-wireless.html" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
@@ -65,7 +54,7 @@
           <a href="../../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="../../Projects/Autonomous-RC-Car/auto-racing.html" title="Autonomous RC Car"
+          <a href="howto-use-linux-tools.html" title="How to Use Tools in Linux"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="howto-connect-sbc-to-wpi-wireless.html" title="How to Connect a Single-board Computer to WPI Wireless"
@@ -105,25 +94,25 @@
 <li>Install 64-bit Firefox if you don’t have one.</li>
 <li>Install IcedTea-Web-plug-in</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get install openjdk-7-jre icedtea-7-plugin
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo apt-get install openjdk-7-jre icedtea-7-plugin
 </pre></div>
 </div>
 <ul class="simple">
 <li>Install the 32-bit Java version.</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get install openjdk-7-jre:i386
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo apt-get install openjdk-7-jre:i386
 </pre></div>
 </div>
 <ul class="simple">
 <li>Add symbolic link to update-alternatives</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo ln -s /usr/bin/update-alternatives /usr/sbin/
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo ln -s /usr/bin/update-alternatives /usr/sbin/
 </pre></div>
 </div>
 <ul class="simple">
 <li>Keep the default Java version to be the 64-bit one.</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo update-alternatives --config java
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo update-alternatives --config java
 </pre></div>
 </div>
 <p>Now you can try to connect the VPN. Refer to the original document for more details if you get any problems. Don’t forget to use <strong>Firefox</strong> to connect to <a class="reference external" href="https://vpn.wpi.edu">https://vpn.wpi.edu</a>. Chrome will not work.</p>
@@ -136,14 +125,14 @@
 <ul class="simple">
 <li>Find the remote gateway IP address:</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ route -n
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ route -n
 </pre></div>
 </div>
 <p>You should be able to find an IP address starting from “130.215.*.*” via interface “tun0”.</p>
 <ul class="simple">
 <li>Delete the default gateway and add the new one:</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo ip route del default via <span class="m">192</span>.168.1.1
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo ip route del default via <span class="m">192</span>.168.1.1
 $ sudo ip route add default via <span class="m">130</span>.215.*.*
 </pre></div>
 </div>
@@ -177,8 +166,8 @@ $ sudo ip route add default via <span class="m">130</span>.215.*.*
   <p class="topless"><a href="howto-connect-sbc-to-wpi-wireless.html"
                         title="previous chapter">How to Connect a Single-board Computer to WPI Wireless</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="../../Projects/Autonomous-RC-Car/auto-racing.html"
-                        title="next chapter">Autonomous RC Car</a></p>
+  <p class="topless"><a href="howto-use-linux-tools.html"
+                        title="next chapter">How to Use Tools in Linux</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../../search.html" method="get">
@@ -203,7 +192,7 @@ $ sudo ip route add default via <span class="m">130</span>.215.*.*
           <a href="../../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="../../Projects/Autonomous-RC-Car/auto-racing.html" title="Autonomous RC Car"
+          <a href="howto-use-linux-tools.html" title="How to Use Tools in Linux"
              >next</a> |</li>
         <li class="right" >
           <a href="howto-connect-sbc-to-wpi-wireless.html" title="How to Connect a Single-board Computer to WPI Wireless"
@@ -214,8 +203,8 @@ $ sudo ip route add default via <span class="m">130</span>.215.*.*
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2019, Ruixiang Du.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.7.
+        &copy; Copyright 2020, Ruixiang Du.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
     </div>
   </body>
 </html>

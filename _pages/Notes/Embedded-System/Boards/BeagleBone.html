@@ -5,18 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <script type="text/javascript">
-
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-67949307-1']);
-      _gaq.push(['_trackPageview']);
-
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    </script>
+    
     <!-- <title>BeagleBone &mdash; RDU-Wiki 1.0 documentation</title> -->
     <title>BeagleBone</title>
     
@@ -94,14 +83,14 @@
 <li>Shutdown the board and boot from the SD again, wait until the eMMC is flashed with the system</li>
 </ul>
 <p>You can login to the system after the board boots up</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ssh debian@192.168.7.2 <span class="c1"># default password: temppwd</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ssh debian@192.168.7.2 <span class="c1"># default password: temppwd</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="add-new-user">
 <h2>Add new user<a class="headerlink" href="#add-new-user" title="Permalink to this headline">¶</a></h2>
 <p>Now you can add your own account and delete the default one</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo adduser --ingroup users &lt;USERNAME&gt;
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo adduser --ingroup users &lt;USERNAME&gt;
 $ sudo adduser &lt;YOUR_USERNAME&gt; sudo
 $ <span class="nb">logout</span>
 $ sudo deluser --remove-home user
@@ -114,22 +103,22 @@ $ sudo deluser --remove-home user
 <ul class="simple">
 <li>Disable connman</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ systemctl disable connman.service
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ systemctl disable connman.service
 </pre></div>
 </div>
 <ul class="simple">
 <li>Generate WPA passphrase for your WiFi</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ wpa_passphrase &lt;ssid&gt; &lt;password&gt;
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ wpa_passphrase &lt;ssid&gt; &lt;password&gt;
 </pre></div>
 </div>
 <ul class="simple">
 <li>Update /etc/network/interfaces</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo nano /etc/network/interfaces
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo nano /etc/network/interfaces
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># interfaces(5) file used by ifup(8) and ifdown(8)</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># interfaces(5) file used by ifup(8) and ifdown(8)</span>
 auto lo
 iface lo inet loopback
 
@@ -144,7 +133,7 @@ iface wlan0 inet dhcp
 <h2>Mount “/usr” and “/home” on SD card<a class="headerlink" href="#mount-usr-and-home-on-sd-card" title="Permalink to this headline">¶</a></h2>
 <p>The BeagleBone Blue has 4G on-board eMMC flash storage. It could be enough for many applications. But for experimental projects, it’s more convenient to have more space so that you don’t need to worry too much about filling the eMMC flash up when installing new packages.</p>
 <p>Check reference [2] to get more detailed instructions. Here is a brief summary of what you need to do:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. format your SD card into two partitions</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># 1. format your SD card into two partitions</span>
 <span class="c1"># 2. insert the SD card and power up the board</span>
 <span class="c1"># 3. check if you have the two partitions on the SD card recognized by the OS correctly</span>
 $ fdisk -l
@@ -176,7 +165,7 @@ $ df -h
 <h2>Add a Swap File<a class="headerlink" href="#add-a-swap-file" title="Permalink to this headline">¶</a></h2>
 <p>Sometimes a swap area may be needed to compile a large project on beaglebone black. Instead of setting up a swap partition, you can also use a swap file.</p>
 <p>In the following steps, a swap file “/usr/swapfile1” will be created and used.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Create Storage File</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># 1. Create Storage File</span>
 $ sudo dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">of</span><span class="o">=</span>/usr/swapfile1 <span class="nv">bs</span><span class="o">=</span><span class="m">1024</span> <span class="nv">count</span><span class="o">=</span><span class="m">524288</span>
 <span class="c1"># 2. Secure swap file</span>
 $ sudo chown root:root /usr/swapfile1
@@ -195,7 +184,7 @@ $ sudo nano /etc/fstab
 <div class="section" id="update-kernel">
 <h2>Update Kernel<a class="headerlink" href="#update-kernel" title="Permalink to this headline">¶</a></h2>
 <p>You can upgrade or change to a Preempt-RT patched kernel using the script provided in the Debian OS from Beaglebone</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /opt/scripts/tools
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /opt/scripts/tools
 $ git pull   <span class="c1"># you may need to use sudo here</span>
 $ sudo /opt/scripts/tools/update_kernel.sh --bone-rt-channel --lts-4_4   <span class="c1"># --lts-stable or other available options</span>
 </pre></div>
@@ -207,7 +196,7 @@ $ sudo /opt/scripts/tools/update_kernel.sh --bone-rt-channel --lts-4_4   <span c
 <h2>Robotics Cape library<a class="headerlink" href="#robotics-cape-library" title="Permalink to this headline">¶</a></h2>
 <p>TI channel kernels have more complete support to PRU drivers so you may want to use a kernel from the TI channel if you’re using the Robotics Cape or Beaglebone Blue.[7]</p>
 <p>When using the TI channel RT kernel 4.4 and 4.9 on Beaglebone Blue with the Robotics Cape library, I got the following error message from the library:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>...
+<div class="highlight-bash"><div class="highlight"><pre><span></span>...
 can&#39;t open: /sys/devices/platform/ocp/ocp:P9_24_pinmux/state
 Pinmux: No such file or directory
 WARNING: missing PINMUX driver
@@ -216,11 +205,11 @@ You probbaly just need a newer kernel
 </div>
 <p>I’m not sure if this will happen to other boards or how to install this pinmux helper driver manually for the TI channel kernels. I resolved this issue by switching to a bone channel kernel.</p>
 <p>The other issue related to the Robotics Cape library that occured even after installing the bone channel RT kernel is on the pru-rproc driver, which gives the error message</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ERROR: pru-rproc driver missing
+<div class="highlight-bash"><div class="highlight"><pre><span></span>ERROR: pru-rproc driver missing
 </pre></div>
 </div>
 <p>The solution is to add a symbolic link of clpru executable to /usr/share/ti/cgt-pru/bin folder:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /usr/share/ti/cgt-pru
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">cd</span> /usr/share/ti/cgt-pru
 mkdir bin
 <span class="nb">cd</span> bin
 ln -s /usr/bin/clpru clpru
@@ -302,8 +291,8 @@ ln -s /usr/bin/clpru clpru
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2019, Ruixiang Du.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.7.
+        &copy; Copyright 2020, Ruixiang Du.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
     </div>
   </body>
 </html>
