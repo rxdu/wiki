@@ -147,11 +147,11 @@ When using the TI channel RT kernel 4.4 and 4.9 on Beaglebone Blue with the Robo
 
 .. code-block:: bash
 
-    ...
-    can't open: /sys/devices/platform/ocp/ocp:P9_24_pinmux/state
-    Pinmux: No such file or directory
-    WARNING: missing PINMUX driver
-    You probbaly just need a newer kernel
+   ...
+   can't open: /sys/devices/platform/ocp/ocp:P9_24_pinmux/state
+   Pinmux: No such file or directory
+   WARNING: missing PINMUX driver
+   You probbaly just need a newer kernel
 
 I'm not sure if this will happen to other boards or how to install this pinmux helper driver manually for the TI channel kernels. I resolved this issue by switching to a bone channel kernel.
 

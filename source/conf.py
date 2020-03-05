@@ -31,12 +31,12 @@ import os
 extensions = [
     'sphinx.ext.todo',
     'sphinx.ext.mathjax',
-    'sphinxcontrib.googleanalytics',
+    # 'sphinxcontrib.googleanalytics',
 ]
 
 # Google Analytics
-googleanalytics_id = 'UA-67949307-1'
-googleanalytics_enabled = True
+# googleanalytics_id = 'UA-67949307-1'
+# googleanalytics_enabled = True
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -52,7 +52,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'RDU-Wiki'
-copyright = u'2019, Ruixiang Du'
+copyright = u'2020, Ruixiang Du'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
