@@ -30,7 +30,7 @@
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../../../_static/language_data.js"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -75,7 +75,7 @@
 <ul class="simple">
 <li>Merge multiple PDFs into one</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Install pdftk</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install pdftk</span>
 $ sudo snap install pdftk
 
 <span class="c1"># Merge files</span>
@@ -85,19 +85,19 @@ $ pdftk file1.pdf file2.pdf cat output result.pdf
 <ul class="simple">
 <li>Create gif animation using “imagemagick”</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ convert -delay <span class="m">120</span> -loop <span class="m">0</span> *.png animated.gif
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ convert -delay <span class="m">120</span> -loop <span class="m">0</span> *.png animated.gif
 </pre></div>
 </div>
 <ul class="simple">
 <li>Screenshot and screencast</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo apt install kazam
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo apt install kazam
 </pre></div>
 </div>
 <ul class="simple">
 <li>Get statistics of a code base</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo apt install cloc
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo apt install cloc
 $ <span class="nb">cd</span> &lt;code-folder&gt;
 $ cloc --exclude-dir<span class="o">=</span>cmake,third_party .
 </pre></div>
@@ -155,7 +155,7 @@ $ cloc --exclude-dir<span class="o">=</span>cmake,third_party .
     </div>
     <div class="footer" role="contentinfo">
         &copy; Copyright 2020, Ruixiang Du.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
     </div>
   </body>
 </html>

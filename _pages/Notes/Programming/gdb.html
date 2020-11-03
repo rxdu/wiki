@@ -30,7 +30,7 @@
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../../../_static/language_data.js"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -98,27 +98,27 @@
 <ul class="simple">
 <li>Starting a debugging session</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ gdb &lt;name-of-executable&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gdb &lt;name-of-executable&gt;
 <span class="o">(</span>gdb<span class="o">)</span> run arg1 arg2
 </pre></div>
 </div>
 <p>Arg1 and arg2 will be remembered and used when you run again. If you want to reset or clear the arguments, use:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>gdb<span class="o">)</span> <span class="nb">set</span> args &lt;arg1/arg2/.../or none to clear saved args&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>gdb<span class="o">)</span> <span class="nb">set</span> args &lt;arg1/arg2/.../or none to clear saved args&gt;
 </pre></div>
 </div>
 <p>If your program is already running, you can still use gdb to debug it.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ gdb &lt;name-of-executable&gt; &lt;process-id&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gdb &lt;name-of-executable&gt; &lt;process-id&gt;
 </pre></div>
 </div>
 <p>Or you can use the attach command:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ gdb
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gdb
 <span class="o">(</span>gdb<span class="o">)</span> attach &lt;process-id&gt;
 </pre></div>
 </div>
 <ul class="simple">
 <li>Using breakpoints and watchpoints</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>gdb<span class="o">)</span> <span class="nb">break</span> &lt;<span class="k">function</span>-name&gt; <span class="c1"># set break point by function name</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>gdb<span class="o">)</span> <span class="nb">break</span> &lt;<span class="k">function</span>-name&gt; <span class="c1"># set break point by function name</span>
 <span class="o">(</span>gdb<span class="o">)</span> <span class="nb">break</span> &lt;line-number&gt;
 <span class="o">(</span>gdb<span class="o">)</span> <span class="nb">break</span> &lt;file-name:line-number&gt;
 <span class="o">(</span>gdb<span class="o">)</span> <span class="nb">break</span> &lt;virtual-memory-address&gt;
@@ -135,7 +135,7 @@
 <ul class="simple">
 <li>Manipulating variables</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>gdb<span class="o">)</span> ptype &lt;var-name&gt;      <span class="c1"># print data type</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>gdb<span class="o">)</span> ptype &lt;var-name&gt;      <span class="c1"># print data type</span>
 <span class="o">(</span>gdb<span class="o">)</span> print &lt;var-name&gt;      <span class="c1"># print data value</span>
 <span class="o">(</span>gdb<span class="o">)</span> print /FMT &lt;var-name&gt; <span class="c1"># o:octal,x:hex,d:decimal,u:unsigned decimal,t:binary,  f:float,a:address,c:char</span>
 <span class="o">(</span>gdb<span class="o">)</span> <span class="nb">set</span> &lt;var-name&gt; <span class="o">=</span> &lt;new-value&gt;
@@ -149,7 +149,7 @@
 <ul class="simple">
 <li>Stepping and resuming program</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>gdb<span class="o">)</span> step                  <span class="c1"># step by line</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>gdb<span class="o">)</span> step                  <span class="c1"># step by line</span>
 <span class="o">(</span>gdb<span class="o">)</span> istep                 <span class="c1"># step by instruction</span>
 <span class="o">(</span>gdb<span class="o">)</span> next                  <span class="c1"># continue to next line in current stack frame (including function)</span>
 <span class="o">(</span>gdb<span class="o">)</span> <span class="k">continue</span>
@@ -160,7 +160,7 @@
 <ul class="simple">
 <li>Checking stack and stack frames</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>gdb<span class="o">)</span> backtrace             <span class="c1"># display the current stack status</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>gdb<span class="o">)</span> backtrace             <span class="c1"># display the current stack status</span>
 <span class="o">(</span>gdb<span class="o">)</span> frame                 <span class="c1"># show current stack frame</span>
 <span class="o">(</span>gdb<span class="o">)</span> frame &lt;frame-num&gt;     <span class="c1"># switch to frame &lt;frame-num&gt;</span>
 </pre></div>
@@ -225,7 +225,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &copy; Copyright 2020, Ruixiang Du.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
     </div>
   </body>
 </html>

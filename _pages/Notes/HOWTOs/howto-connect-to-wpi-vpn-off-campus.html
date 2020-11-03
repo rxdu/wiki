@@ -30,7 +30,7 @@
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../../../_static/language_data.js"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -94,25 +94,25 @@
 <li>Install 64-bit Firefox if you don’t have one.</li>
 <li>Install IcedTea-Web-plug-in</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo apt-get install openjdk-7-jre icedtea-7-plugin
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get install openjdk-7-jre icedtea-7-plugin
 </pre></div>
 </div>
 <ul class="simple">
 <li>Install the 32-bit Java version.</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo apt-get install openjdk-7-jre:i386
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get install openjdk-7-jre:i386
 </pre></div>
 </div>
 <ul class="simple">
 <li>Add symbolic link to update-alternatives</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo ln -s /usr/bin/update-alternatives /usr/sbin/
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo ln -s /usr/bin/update-alternatives /usr/sbin/
 </pre></div>
 </div>
 <ul class="simple">
 <li>Keep the default Java version to be the 64-bit one.</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo update-alternatives --config java
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo update-alternatives --config java
 </pre></div>
 </div>
 <p>Now you can try to connect the VPN. Refer to the original document for more details if you get any problems. Don’t forget to use <strong>Firefox</strong> to connect to <a class="reference external" href="https://vpn.wpi.edu">https://vpn.wpi.edu</a>. Chrome will not work.</p>
@@ -125,14 +125,14 @@
 <ul class="simple">
 <li>Find the remote gateway IP address:</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ route -n
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ route -n
 </pre></div>
 </div>
 <p>You should be able to find an IP address starting from “130.215.*.*” via interface “tun0”.</p>
 <ul class="simple">
 <li>Delete the default gateway and add the new one:</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo ip route del default via <span class="m">192</span>.168.1.1
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo ip route del default via <span class="m">192</span>.168.1.1
 $ sudo ip route add default via <span class="m">130</span>.215.*.*
 </pre></div>
 </div>
@@ -204,7 +204,7 @@ $ sudo ip route add default via <span class="m">130</span>.215.*.*
     </div>
     <div class="footer" role="contentinfo">
         &copy; Copyright 2020, Ruixiang Du.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
     </div>
   </body>
 </html>

@@ -30,7 +30,7 @@
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../../../_static/language_data.js"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -64,7 +64,7 @@
 <h1>How to Safely Revert to a Previous Commit in Git<a class="headerlink" href="#how-to-safely-revert-to-a-previous-commit-in-git" title="Permalink to this headline">¶</a></h1>
 <p>[TO BE VERIFIED]</p>
 <p>If you want to commit on top of the current HEAD with the exact state at a different commit, undoing all the intermediate commits, then you can use reset to create the correct state of the index to make the commit.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Reset the index to the desired tree</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reset the index to the desired tree</span>
 $ git reset 56e05fced
 
 <span class="c1"># Move the branch pointer back to the previous HEAD</span>
@@ -116,7 +116,7 @@ $ git reset --hard
     </div>
     <div class="footer" role="contentinfo">
         &copy; Copyright 2020, Ruixiang Du.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
     </div>
   </body>
 </html>

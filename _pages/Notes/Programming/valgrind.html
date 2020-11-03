@@ -30,7 +30,7 @@
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../../../_static/language_data.js"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -84,7 +84,7 @@
 <ul class="simple">
 <li>Install the tool</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># valgrind</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># valgrind</span>
 $ sudo apt-get install valgrind
 <span class="c1"># useful tools that can be used together with valgrind</span>
 $ sudo apt-get install kcachegrind graphviz
@@ -93,7 +93,7 @@ $ sudo apt-get install kcachegrind graphviz
 <ul class="simple">
 <li>Memory error check</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># quick check</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># quick check</span>
 $ valgrind &lt;name-of-executable&gt;
 <span class="c1"># full memory leak check</span>
 $ valgrind --leak-check<span class="o">=</span>full &lt;name-of-executable&gt;
@@ -102,7 +102,7 @@ $ valgrind --leak-check<span class="o">=</span>full &lt;name-of-executable&gt;
 <ul class="simple">
 <li>Program profiling</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># profile program and get an output file like callgrind.out.xxxxxx</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># profile program and get an output file like callgrind.out.xxxxxx</span>
 $ valgrind --tool<span class="o">=</span>callgrind &lt;name-of-executable&gt;
 <span class="c1"># then you can load the file with Kcachegrind</span>
 $ kcachegrind &lt;name-of-profiling-output-file&gt;
@@ -167,7 +167,7 @@ $ kcachegrind &lt;name-of-profiling-output-file&gt;
     </div>
     <div class="footer" role="contentinfo">
         &copy; Copyright 2020, Ruixiang Du.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
     </div>
   </body>
 </html>
