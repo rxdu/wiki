@@ -10,7 +10,7 @@ Note that the maximum bitrate depends on your specific hardware, for example PiC
 
    $ sudo ip link set can0 up type can bitrate 1000000
 
-To bring up the interface when boot, you can modify "/etc/network/interfaces"
+To automatically bring up the interface during boot, you can modify "/etc/network/interfaces"
 
 .. code-block:: bash
 
@@ -77,7 +77,37 @@ Turn off the loopback mode:
    $ sudo ip link set can0 type can loopback off
    $ sudo ip link set can0 up type can bitrate 1000000
 
-4. More commands
+4. Log can frames and playback
+
+You can log can frames from a CAN interface to a file for debugging
+
+.. code-block:: bash
+
+   $ candump -l can0
+
+Then you can playback the log file
+
+.. code-block:: bash
+
+   $ canplayer -I <candump-log-file-name>.log
+
+5. Dump CAN frames with filter mask
+
+Dump can frames with filter
+
+.. code-block:: bash
+
+   $ candump can0,<interested-can-id(s)>:<filter-mask>
+
+Example:
+
+.. code-block:: bash
+
+   $ candump can0,602:1fffffff
+
+The example command dumps CAN message with ID 0x602 from can0. If you wang to dump all messages with ID 0x60x, you can adjust the filter to be 1ffffff0.
+
+6. More commands
 
 Use this command to find more information of CAN related commands
 
@@ -91,3 +121,5 @@ Reference
 * https://raspberrypi.stackexchange.com/questions/51829/unable-to-bring-can-interface-up-on-raspberry-pi-3
 * https://www.raspberrypi.org/forums/viewtopic.php?t=141052
 * https://harrisonsand.com/can-on-the-raspberry-pi/
+* https://dayba.wordpress.com/2017/05/25/playing-with-socketcan-using-can-utils/
+* http://www.cse.dmu.ac.uk/~eg/tele/CanbusIDandMask.html
