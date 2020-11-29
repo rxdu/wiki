@@ -14,13 +14,15 @@ Specify a file name while creating the key pair
 
 .. code-block:: bash
 
-   $ ssh-keygen -f ~/tatu-key-ecdsa -t ecdsa -b 521
+   $ ssh-keygen -f ~/.ssh/rdu_github -t rsa -b 4096
 
 Typically you want the permissions to be:
 
 * .ssh directory: 700 (drwx------)
 * public key (.pub file): 644 (-rw-r--r--)
 * private key (id_rsa): 600 (-rw-------)
+
+Reference
 
 - [1] https://www.ssh.com/ssh/keygen/
 - [2] https://superuser.com/questions/215504/permissions-on-private-key-in-ssh-folder
